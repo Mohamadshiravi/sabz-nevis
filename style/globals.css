@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "moraba-regular";
+  src: url("../public/font/moraba/Morabba-Regular.woff2");
+}
+.moraba-regular {
+  font-family: "moraba-regular";
+  -moz-font-feature-settings: "ss01";
+  -webkit-font-feature-settings: "ss01";
+  font-feature-settings: "ss01";
+}
+@font-face {
+  font-family: "moraba-bold";
+  src: url("../public/font/moraba/Morabba-Bold.woff2");
+}
+.moraba-bold {
+  font-family: "moraba-bold";
+  -moz-font-feature-settings: "ss01";
+  -webkit-font-feature-settings: "ss01";
+  font-feature-settings: "ss01";
+}
+@font-face {
+  font-family: "moraba-heavy";
+  src: url("../public/font/moraba/Morabba-Heavy.woff2");
+}
+.moraba-heavy {
+  font-family: "moraba-heavy";
+  -moz-font-feature-settings: "ss01";
+  -webkit-font-feature-settings: "ss01";
+  font-feature-settings: "ss01";
+}
+
+@font-face {
+  font-family: "yekan-regular";
+  src: url("../public/font/yekan-b/YekanBakhFaNum-Regular.woff2");
+}
+.yekan-regular {
+  font-family: "yekan-regular";
+}
+@font-face {
+  font-family: "yekan-bold";
+  src: url("../public/font/yekan-b/YekanBakhFaNum-Bold.woff2");
+}
+.yekan-bold {
+  font-family: "yekan-bold";
+}
+@font-face {
+  font-family: "yekan-extra";
+  src: url("../public/font/yekan-b/YekanBakhFaNum-ExtraBlack.woff2");
+}
+.yekan-extra {
+  font-family: "yekan-extra";
+}
+/* *::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background-color: rgb(42, 42, 42);
+}
+*::-webkit-scrollbar-thumb {
+  width: 3px;
+  height: 3px;
+  background-color: rgb(33, 33, 33);
+} */

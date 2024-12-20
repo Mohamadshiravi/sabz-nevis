@@ -9,8 +9,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        virgoolBlue: "#107abe",
+        virgoolBlueHover: "#0e6aa6",
+        virgoolText: "#323232",
       },
     },
   },
