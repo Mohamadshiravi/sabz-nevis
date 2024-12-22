@@ -8,11 +8,20 @@ type PostProps = {
 export default function Post({ border }: PostProps) {
   return (
     <div
-      className={`flex flex-col ${border && "border-b border-zinc-200 pb-6"}`}
+      className={`flex flex-col ${border && "border-b border-zinc-200 pb-6"} `}
     >
-      <div className="flex justify-between items-center">
-        <div className="flex flex-col sm:gap-4 gap-2">
-          <div className="flex items-center gap-1 text-virgoolText-600">
+      <div className="items-center gap-1 text-virgoolText-600 sm:hidden flex">
+        <img
+          src="/images/photo_2024-12-15_16-52-24.jpg"
+          className="w-[24px] rounded-full ml-3"
+        />
+        <span className="text-sm text-zinc-600 text-xs">Sadra SG</span>
+        <GoDotFill className="text-[4px]" />
+        <span className="text-xs">17 دقیقه پیش</span>
+      </div>
+      <div className="flex justify-between mt-3">
+        <div className="flex flex-col sm:gap-3 gap-2 sm:pl-10 pl-4">
+          <div className="items-center gap-1 text-virgoolText-600 sm:flex hidden">
             <img
               src="/images/photo_2024-12-15_16-52-24.jpg"
               className="w-[24px] rounded-full ml-3"
@@ -21,18 +30,17 @@ export default function Post({ border }: PostProps) {
             <GoDotFill className="text-[4px]" />
             <span className="text-xs">17 دقیقه پیش</span>
           </div>
-          <div className="flex flex-col sm:gap-3 gap-2 sm:pl-10 pl-4">
-            <h2 className="text-lg vazir-bold">حقوق مردان چه ؟</h2>
-            <p className="twoLineText sm:text-sm text-xs text-virgoolText-600">
-              تو این دوره زمونه به ما مردا کم ظلم نشده؛از نا عدالتی ها تا طرد
-              شدنمون از جامعه.بیشتر زنا از مردا بخاطر کارای اجدادمون متنفرن.بعضی
-              نام فک م…شدنمون از جامعه.بیشتر زنا از مردا بخاطر کارای اجدادمون
-              متنفرن.بعضی نام فک م… شدنمون از جامعه.بیشتر زنا از مردا بخاطر
-              کارای اجدادمون متنفرن.بعضی نام فک م… شدنمون از جامعه.بیشتر زنا از
-              مردا بخاطر کارای اجدادمون متنفرن.بعضی نام فک م…
-            </p>
-          </div>
+          <h2 className="text-lg vazir-bold">حقوق مردان چه ؟</h2>
+          <p className="twoLineText sm:text-sm text-xs text-virgoolText-600">
+            تو این دوره زمونه به ما مردا کم ظلم نشده؛از نا عدالتی ها تا طرد
+            شدنمون از جامعه.بیشتر زنا از مردا بخاطر کارای اجدادمون متنفرن.بعضی
+            نام فک م…شدنمون از جامعه.بیشتر زنا از مردا بخاطر کارای اجدادمون
+            متنفرن.بعضی نام فک م… شدنمون از جامعه.بیشتر زنا از مردا بخاطر کارای
+            اجدادمون متنفرن.بعضی نام فک م… شدنمون از جامعه.بیشتر زنا از مردا
+            بخاطر کارای اجدادمون متنفرن.بعضی نام فک م…
+          </p>
         </div>
+
         <Image
           src={"/images/milky-way-mountains-5120x5120-15475.jpg"}
           width={800}

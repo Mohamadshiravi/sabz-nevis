@@ -9,8 +9,8 @@ export default function Home() {
   return (
     <>
       <HomeBanner />
-      <main className="md:px-20 px-6 grid lg:grid-cols-[8fr_4fr] grid-cols-[1fr] gap-32">
-        <section className="w-full py-14 flex flex-col gap-8">
+      <main className="md:px-20 px-4 grid lg:grid-cols-[8fr_4fr] grid-cols-[1fr] gap-32">
+        <section className="w-full sm:py-14 py-8 flex flex-col gap-8">
           <Post />
           <ADSection />
           <Post border />
