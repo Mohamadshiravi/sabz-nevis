@@ -17,8 +17,8 @@ export default function Header() {
         <button className="rounded-full p-2 bg-zinc-100 text-2xl ml-3">
           <IoInformationCircleOutline />
         </button>
-        <button className="rounded-full px-4 py-1.5 text-xs">ورود</button>
-        <button className="bg-virgoolBlue hover:bg-virgoolBlueHover transition rounded-full px-4 py-1.5 text-white yekan-bold">
+        <button className="rounded-full px-4 py-1.5">ورود</button>
+        <button className="bg-virgoolBlue hover:bg-virgoolBlueHover transition rounded-full px-4 py-1.5 text-white vazir-bold">
           ثبت نام
         </button>
       </div>

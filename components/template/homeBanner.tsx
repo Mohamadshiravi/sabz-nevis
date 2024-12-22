@@ -15,8 +15,8 @@ export default function HomeBanner() {
               className="w-[100px] sm:hidden block"
             />
             <div className="flex flex-col sm:gap-10 gap-4">
-              <h2 className="sm:text-4xl text-2xl yekan-extra">به ویرگول,</h2>
-              <h2 className="sm:text-4xl text-2xl yekan-extra">
+              <h2 className="sm:text-4xl text-2xl vazir-black">به ویرگول,</h2>
+              <h2 className="sm:text-4xl text-2xl vazir-black">
                 دنیای کلمات خوش آمدید.
               </h2>
             </div>
@@ -35,7 +35,7 @@ export default function HomeBanner() {
             height={800}
             className="w-[140px] sm:block hidden"
           />
-          <button className="flex text-nowrap text-xs items-center gap-3 bg-virgoolBlue hover:bg-virgoolBlueHover transition rounded-full pr-5 pl-3 py-1.5 text-white yekan-bold">
+          <button className="flex text-nowrap text-xs items-center gap-3 bg-virgoolBlue hover:bg-virgoolBlueHover transition rounded-full pr-5 pl-3 py-1.5 text-white vazir-bold">
             شروع به نوشتن
             <IoIosArrowBack className="text-sm" />
           </button>

@@ -11,7 +11,11 @@ const config: Config = {
       colors: {
         virgoolBlue: "#107abe",
         virgoolBlueHover: "#0e6aa6",
-        virgoolText: "#323232",
+        virgoolText: {
+          500: "#8e8e8e",
+          600: "#6e6e6e",
+          800: "#323232",
+        },
       },
     },
   },

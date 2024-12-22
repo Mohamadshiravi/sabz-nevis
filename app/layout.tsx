@@ -1,15 +1,16 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "@/style/globals.css";
 import Header from "@/components/module/header";
 
 export const metadata: Metadata = {
-  title: "کپی شده وبسایت ویرگول",
+  title: "وبسایت ویرگول Clone",
   description: "این وبسایت صرفا یک کپی از وبسایت ویرگول برای نمونه کار است",
   icons: {
     icon: "/images/logo.webp",
   },
-  themeColor: "#107ABE",
 };
+
+export const viewport: Viewport = { themeColor: "#107ABE" };
 
 export default function RootLayout({
   children,
@@ -18,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa-IR" dir="rtl">
-      <body className={`antialiased yekan-regular`}>
+      <body className={`antialiased vazir-regular text-virgoolText-800`}>
         <Header />
         {children}
       </body>

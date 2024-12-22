@@ -34,25 +34,39 @@
 }
 
 @font-face {
-  font-family: "yekan-regular";
-  src: url("../public/font/yekan-b/YekanBakhFaNum-Regular.woff2");
+  font-family: "vazir-regular";
+  src: url("../public/font/vazir/Vazir-Regular-FD.woff2");
 }
-.yekan-regular {
-  font-family: "yekan-regular";
-}
-@font-face {
-  font-family: "yekan-bold";
-  src: url("../public/font/yekan-b/YekanBakhFaNum-Bold.woff2");
-}
-.yekan-bold {
-  font-family: "yekan-bold";
+.vazir-regular {
+  font-family: "vazir-regular";
 }
 @font-face {
-  font-family: "yekan-extra";
-  src: url("../public/font/yekan-b/YekanBakhFaNum-ExtraBlack.woff2");
+  font-family: "vazir-medium";
+  src: url("../public/font/vazir/Vazir-Medium-FD.woff2");
 }
-.yekan-extra {
-  font-family: "yekan-extra";
+.vazir-medium {
+  font-family: "vazir-medium";
+}
+@font-face {
+  font-family: "vazir-light";
+  src: url("../public/font/vazir/Vazir-Light-FD.woff2");
+}
+.vazir-light {
+  font-family: "vazir-light";
+}
+@font-face {
+  font-family: "vazir-bold";
+  src: url("../public/font/vazir/Vazir-Bold-FD.woff2");
+}
+.vazir-bold {
+  font-family: "vazir-bold";
+}
+@font-face {
+  font-family: "vazir-black";
+  src: url("../public/font/vazir/Vazir-Black-FD.woff2");
+}
+.vazir-black {
+  font-family: "vazir-black";
 }
 /* *::-webkit-scrollbar {
   width: 5px;
@@ -64,3 +78,13 @@
   height: 3px;
   background-color: rgb(33, 33, 33);
 } */
+.twoLineText {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+#fullShadow {
+  box-shadow: 2px 2px 6px rgba(121, 121, 121, 0.2),
+    -2px -2px 6px rgba(121, 121, 121, 0.2);
+}
