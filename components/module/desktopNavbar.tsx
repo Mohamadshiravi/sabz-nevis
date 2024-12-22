@@ -27,7 +27,7 @@ export default function DesktopNavbar() {
     "فیلم سینمایی",
   ]);
   return (
-    <section className="w-full sm:pt-14 py-4 flex flex-col gap-4 lg:px-8 px-0 lg:border-r border-zinc-200">
+    <section className="w-full sm:pt-14 py-4 lg:flex hidden flex-col gap-4 lg:px-8 px-0 lg:border-r border-zinc-200">
       <Image
         src={"/images/virgool_business_cta.webp"}
         width={800}

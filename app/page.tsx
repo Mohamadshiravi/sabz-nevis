@@ -2,6 +2,7 @@ import ADSection from "@/components/module/adSection";
 import DesktopNavbar from "@/components/module/desktopNavbar";
 import Post from "@/components/module/post";
 import HomeBanner from "@/components/template/homeBanner";
+import InfiniteScrollSection from "@/components/template/main/infiniteScrollSection";
 import SugestionsPeople from "@/components/template/main/sugestPeople";
 import TopPosts from "@/components/template/main/topPosts";
 
@@ -20,9 +21,7 @@ export default function Home() {
           <Post border />
           <Post />
           <SugestionsPeople />
-          <Post border />
-          <Post border />
-          <Post border />
+          <InfiniteScrollSection />
         </section>
         <DesktopNavbar />
       </main>
