@@ -22,8 +22,8 @@ export default function ADSection() {
         height={2000}
         alt="ad"
       />
-      <div className="flex px-4">
-        <p className="text-virgoolBlue text-sm pl-4">
+      <div className="flex sm:flex-row flex-col sm:gap-0 gap-3 px-4">
+        <p className="text-virgoolBlue text-sm pl-4 sm:text-right text-center">
           با خرید رپورتاژ آگهی از ویرگول، مطلب شما در ویرگول منتشر می‌شود و
           بک‌لینک فالو ارزشمند آن، اعتبار و ترافیک وب‌سایت‌تان را افزایش می‌دهد
         </p>

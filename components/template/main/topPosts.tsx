@@ -6,14 +6,28 @@ import Image from "next/image";
 
 export default function TopPosts() {
   return (
-    <div className="bg-[#378ef0] p-6 rounded-md">
+    <div className="bg-[#378ef0] sm:p-6 p-3 rounded-md">
       <div className="flex items-center gap-2 text-white vazir-bold">
         <img src="/images/logo.webp" className="w-[35px]" />
         <h3>پست های منتخب</h3>
       </div>
       <div className="grid mt-8">
         <Swiper
-          slidesPerView={3.1}
+          breakpoints={{
+            640: {
+              slidesPerView: 2.3,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 2.2,
+              spaceBetween: 20,
+            },
+            1200: {
+              slidesPerView: 3.1,
+              spaceBetween: 20,
+            },
+          }}
+          slidesPerView={1.3}
           spaceBetween={20}
           className="w-full h-[340px]"
         >

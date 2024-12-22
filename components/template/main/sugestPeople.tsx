@@ -15,7 +15,17 @@ export default function SugestionsPeople() {
       </div>
       <div className="grid mt-6">
         <Swiper
-          slidesPerView={3.5}
+          breakpoints={{
+            600: {
+              slidesPerView: 2.5,
+              spaceBetween: 20,
+            },
+            1200: {
+              slidesPerView: 3.5,
+              spaceBetween: 20,
+            },
+          }}
+          slidesPerView={1.5}
           spaceBetween={20}
           className="w-full h-[270px]"
         >
