@@ -1,0 +1,41 @@
+<svg version="1.1" width="99px" height="99px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 99 99">
+	<style type="text/css">
+		.st0{filter:url(#filter-2);}
+		.st1{fill:#FFFFFF;}
+		.st2{fill:url(#Shape_1_);}
+		.st3{filter:url(#filter-5);}
+	</style>
+	<filter  filterUnits="objectBoundingBox" height="200%" id="filter-5" width="200%" x="-50%" y="-50%">
+		<feOffset  dx="-1" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+		<feGaussianBlur  in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1"></feGaussianBlur>
+		<feColorMatrix  in="shadowBlurOuter1" type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0"></feColorMatrix>
+	</filter>
+	<filter  filterUnits="objectBoundingBox" height="200%" id="filter-2" width="200%" x="-50%" y="-50%">
+		<feOffset  dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+		<feGaussianBlur  in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"></feGaussianBlur>
+		<feColorMatrix  in="shadowBlurOuter1" type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0"></feColorMatrix>
+	</filter>
+	<g id="Rectangle">
+		<g class="st0">
+			<path id="path-1_2_" d="M12,4h75c4.4,0,8,3.6,8,8v75c0,4.4-3.6,8-8,8H12c-4.4,0-8-3.6-8-8V12C4,7.6,7.6,4,12,4z"/>
+		</g>
+		<g>
+			<path id="path-1_1_" class="st1" d="M12,4h75c4.4,0,8,3.6,8,8v75c0,4.4-3.6,8-8,8H12c-4.4,0-8-3.6-8-8V12C4,7.6,7.6,4,12,4z"/>
+		</g>
+	</g>
+	<linearGradient id="Shape_1_" gradientUnits="userSpaceOnUse" x1="-928.9398" y1="1033.8405" x2="-927.9398" y2="1034.1282" gradientTransform="matrix(45.1326 0 0 -61.1617 41952.1562 63292.5312)">
+		<stop  offset="0" style="stop-color:#107ABD"/>
+		<stop  offset="1" style="stop-color:#0658A5"/>
+	</linearGradient>
+	<path id="Shape" class="st2" d="M48.5,83.9c-3.6-2.5-7.1-4.9-10.8-7.4c2.2-3.1,4.4-6.1,6.4-9c-2.2-0.9-4.6-1.6-6.5-2.8
+		c-7.8-4.8-12-11.7-11.3-20.9c0.7-9.6,5.8-16.4,14.8-19.6c15.1-5.4,27.8,5.1,29.9,16.7c0.9,5.1,0.4,10-2.3,14.4
+		c-2.8,4.5-5.8,8.7-8.8,13c-3.5,4.9-7,9.7-10.6,14.5C49,83.2,48.8,83.5,48.5,83.9z"/>
+	<g id="path-2_1_" transform="translate(46.753854, 34.785777) rotate(-150.000000) translate(-46.753854, -34.785777) ">
+		<g class="st3">
+			<path id="path-4_2_" d="M51.5,50.8h-6.4c0-1.8,0.1-9.5,0.1-11.3c-1.2,0.2-2.3,0.6-3.4,0.7c-4.5,0.2-8.1-1.4-10.4-5.3
+				c-2.4-4.1-2.2-8.2,0.5-12c4.6-6.3,12.7-5.6,16.7-1.5c1.8,1.8,3,3.9,3.1,6.5c0.1,2.6,0.1,5.1,0,7.7"/>
+		</g>
+		<path id="path-4_1_" class="st1" d="M53.5,52h-7.3c0-2.1,0.1-10.9,0.1-12.9c-1.3,0.3-2.6,0.7-3.9,0.8c-5.1,0.3-9.2-1.6-11.8-6.1
+			c-2.7-4.7-2.5-9.4,0.6-13.7c5.2-7.3,14.5-6.4,19.1-1.7c2,2,3.4,4.5,3.5,7.4c0.1,2.9,0.1,5.9,0,8.8"/>
+	</g>
+</svg>
