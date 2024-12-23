@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "@/style/globals.css";
 import Header from "@/components/module/header";
+import MobileNavbar from "@/components/module/navbar";
 
 export const metadata: Metadata = {
   title: "وبسایت ویرگول Clone",
@@ -22,6 +23,7 @@ export default function RootLayout({
       <body className={`antialiased vazir-regular text-virgoolText-800`}>
         <Header />
         {children}
+        <MobileNavbar />
       </body>
     </html>
   );

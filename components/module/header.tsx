@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { IoInformationCircleOutline, IoSearch } from "react-icons/io5";
+import RegisterBtn from "../template/header/registerBtn";
 
 export default function Header() {
   const path = usePathname();
@@ -13,7 +14,9 @@ export default function Header() {
       <header
         className={`flex items-center justify-between bg-white md:px-6 px-2 py-2`}
       >
-        <img src="/images/logo.webp" className="w-[50px]" />
+        <Link href={"/"}>
+          <img src="/images/logo.webp" className="w-[50px]" />
+        </Link>
         <div className="rounded-full bg-zinc-100 text-sm items-center gap-3 px-3 py-1 md:flex hidden">
           <IoSearch className="text-xl" />
           <input
@@ -30,12 +33,7 @@ export default function Header() {
           <Link href={"login"} className="rounded-full px-4 py-1.5">
             ورود
           </Link>
-          <Link
-            href={"register"}
-            className="bg-virgoolBlue hover:bg-virgoolBlueHover transition rounded-full px-4 py-1.5 text-white vazir-bold"
-          >
-            ثبت نام
-          </Link>
+          <RegisterBtn />
         </div>
       </header>
     )

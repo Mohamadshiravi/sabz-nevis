@@ -106,3 +106,34 @@ input::-ms-input-placeholder {
   /* Microsoft Edge */
   color: #8e8e8e;
 }
+.placeWhite::placeholder {
+  color: #ffffff;
+}
+
+.open-animate {
+  animation: openAnimate 500ms;
+}
+@keyframes openAnimate {
+  0% {
+    transform: scale(70%);
+  }
+  50% {
+    transform: scale(105%);
+  }
+  100% {
+    transform: scale(100%);
+  }
+}
+
+.fade-animate {
+  animation: fadeAnimate 300ms;
+}
+@keyframes fadeAnimate {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
