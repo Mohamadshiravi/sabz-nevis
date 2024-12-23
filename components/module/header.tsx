@@ -6,8 +6,10 @@ import { IoInformationCircleOutline, IoSearch } from "react-icons/io5";
 
 export default function Header() {
   const path = usePathname();
+  const invalidUrl = /^\/(login|register)$/;
+
   return (
-    path !== "/register" && (
+    !invalidUrl.test(path) && (
       <header
         className={`flex items-center justify-between bg-white md:px-6 px-2 py-2`}
       >
