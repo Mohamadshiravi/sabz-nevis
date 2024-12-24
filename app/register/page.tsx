@@ -1,3 +1,4 @@
+import RegisterForm from "@/components/template/register/registerForm";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 export default function RegisterSection() {
   return (
     <main className="flex lg:flex-row flex-col items-center w-full h-screen">
-      <section className="w-full relative lg:h-full h-[300px] flex items-center justify-center bg-gradient-to-br from-[#054592] to-[#1897d4]">
+      <section className="w-full transition relative lg:h-full h-[300px] flex items-center justify-center bg-gradient-to-br from-[#054592] to-[#1897d4]">
         <Link
           href={"/"}
           className="absolute top-4 right-4  text-[#94deff] text-sm"
@@ -26,7 +27,7 @@ export default function RegisterSection() {
             alt="virgool logo"
             className="w-[100px]"
           />
-          <h2 className="lg:mt-20 mt-6 vazir-bold lg:text-3xl text-xl text-white">
+          <h2 className="lg:mt-20 mt-6 vazir-bold lg:text-3xl text-xl text-white text-center w-full">
             اینجا هر کسی می‌تونه بنویسه!
           </h2>
           <h4 className="mt-3 lg:block hidden vazir-bold text-center lg:text-base text-sm">
@@ -35,33 +36,7 @@ export default function RegisterSection() {
           </h4>
         </div>
       </section>
-      <section className="lg:w-[750px] w-full bg-white h-full relative">
-        <form className="flex flex-col lg:justify-center w-full h-full gap-3 px-8">
-          <h1 className="vazir-black text-xl text-virgoolBlue lg:mt-0 mt-8">
-            ایجاد حساب کاربری
-          </h1>
-          <h3 className="text-virgoolText-600">
-            شماره موبایل خود را وارد کنید
-          </h3>
-          <div className="flex flex-col items-end gap-4">
-            <input
-              type="text"
-              className="InpShadow w-full outline-none border px-4 border-zinc-200 py-3 rounded-full shadow-md"
-              placeholder="شماره موبایل "
-            />
-            <button className="flex text-nowrap lg:w-auto w-full text-sm items-center justify-center gap-4 bg-virgoolBlue hover:bg-virgoolBlueHover transition rounded-full pr-5 pl-3 py-2 text-white">
-              ایجاد حساب کاربری
-              <IoIosArrowBack className="text-lg" />
-            </button>
-          </div>
-        </form>
-        <Link
-          href={"/login"}
-          className="absolute lg:bottom-10 bottom-6 w-full text-center text-sm"
-        >
-          قبلا عضو شده‌اید؟ رفتن به صفحه ورود
-        </Link>
-      </section>
+      <RegisterForm />
     </main>
   );
 }

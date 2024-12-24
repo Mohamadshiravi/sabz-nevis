@@ -53,11 +53,17 @@ export default function LoginSection() {
               ورود به حساب کاربری
               <IoIosArrowBack className="text-lg" />
             </button>
+            <Link
+              href={"/register"}
+              className="w-full text-center text-sm mt-10"
+            >
+              عضو نیستید؟ ثبت نام کنید
+            </Link>
           </div>
         </form>
         <Link
           href={"/register"}
-          className="absolute lg:bottom-10 bottom-6 w-full text-center text-sm"
+          className="absolute bottom-10 lg:block hidden w-full text-center text-sm"
         >
           عضو نیستید؟ ثبت نام کنید
         </Link>
