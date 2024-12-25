@@ -152,3 +152,7 @@ input[type="number"] {
     opacity: 1;
   }
 }
+
+.Toastify__toast {
+  font-family: "vazir-medium" !important;
+}

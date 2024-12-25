@@ -4,10 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { IoInformationCircleOutline, IoSearch } from "react-icons/io5";
 import RegisterBtn from "../template/header/registerBtn";
+import { useState } from "react";
 
 export default function Header() {
   const path = usePathname();
   const invalidUrl = /^\/(login|register)$/;
+
+  const [searchInp, setSearchInp] = useState("جستجو در ویرگول...");
 
   return (
     !invalidUrl.test(path) && (
@@ -22,7 +25,8 @@ export default function Header() {
           <input
             id="search-inp"
             type="text"
-            value="جستجو در ویرگول..."
+            value={searchInp}
+            onChange={(e) => setSearchInp(e.target.value)}
             className="bg-inherit w-[300px] outline-none py-1.5 text-zinc-400 focus:text-zinc-800 transition"
           />
         </div>

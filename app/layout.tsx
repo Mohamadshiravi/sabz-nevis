@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "@/style/globals.css";
 import Header from "@/components/module/header";
 import MobileNavbar from "@/components/module/navbar";
+import { ToastContainer } from "react-toastify";
 
 export const metadata: Metadata = {
   title: "وبسایت ویرگول Clone",
@@ -24,6 +25,7 @@ export default function RootLayout({
         <Header />
         {children}
         <MobileNavbar />
+        <ToastContainer stacked />
       </body>
     </html>
   );

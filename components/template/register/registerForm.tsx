@@ -1,33 +1,38 @@
 "use client";
 
 import Link from "next/link";
-import { useState, ChangeEvent, FormEvent } from "react";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { useState, FormEvent } from "react";
+import { IoIosArrowBack } from "react-icons/io";
+import VerifyCodeForm from "./verifyCodeForm";
+import { SendErrorToast } from "@/utils/toast-functions";
+import axios from "axios";
 
 export default function RegisterForm() {
   const [isCodeSend, setIsCodeSend] = useState(false);
   const [phoneInp, setPhoneInp] = useState("");
-  const [code, setCode] = useState<string[]>([]);
 
-  function handleInputChange(e: ChangeEvent<HTMLInputElement>, index: number) {
-    const codeClone: string[] = code;
-    if (+e.target.value.length === 1) {
-      codeClone[index] = e.target.value;
-      const NextInp = document.getElementById(`codeInp${index + 1}`);
-      NextInp?.focus();
-    } else {
-      codeClone[index] = "";
-      const PrewInp = document.getElementById(`codeInp${index - 1}`);
-      PrewInp?.focus();
-    }
-    setCode(codeClone);
-  }
+  const phoneRegex = /^09[0-9]{9}$/;
 
-  function sendCodeHandler(e: FormEvent) {
+  async function sendCodeHandler(e: FormEvent) {
     e.preventDefault();
 
-    if (+phoneInp.length === 11) {
-      setIsCodeSend(true);
+    if (phoneRegex.test(phoneInp)) {
+      try {
+        const res = await axios.post("/api/auth/register/send", {
+          phone: phoneInp,
+        });
+        if (res.status === 201) {
+          setIsCodeSend(true);
+        }
+      } catch (error: any) {
+        if (error.status === 422) {
+          SendErrorToast("شماره موبایل تکراری است");
+        } else {
+          SendErrorToast("مشکلی در ارسال وجود دارد");
+        }
+      }
+    } else {
+      SendErrorToast("شماره موبایل  خود را درست وارد کنید");
     }
   }
 
@@ -67,39 +72,11 @@ export default function RegisterForm() {
       </Link>
     </section>
   ) : (
-    <section className="lg:w-[3000px] w-full bg-white h-full flex lg:items-center lg:mt-0 mt-8 justify-center">
-      <form className="flex flex-col items-center gap-3 w-[600px]">
-        <h1 className="vazir-black text-xl text-virgoolBlue lg:mt-0 mt-8">
-          کد تائید را وارد کنید
-        </h1>
-        <h3 className="text-virgoolText-600">
-          کد تائید برای شماره موبایل
-          <span className="vazir-bold px-1 underline">{phoneInp}</span> ارسال
-          گردید
-        </h3>
-        <div className="flex flex-row-reverse items-center gap-2 font-sans font-bold">
-          {[...Array(6)].map((_, i) => (
-            <input
-              id={`codeInp${i}`}
-              key={i}
-              maxLength={1}
-              type="tel"
-              className="InpShadow outline-none text-center border border-zinc-200 py-3 rounded-full sm:w-[50px] w-[40px] sm:h-[50px] h-[40px] p-1"
-              onChange={(e) => handleInputChange(e, i)}
-            />
-          ))}
-        </div>
-        <div className="flex flex-col items-center lg:gap-10 gap-4 mt-10">
-          <span className="text-virgoolBlue text-sm">ارسال مجدد کد</span>
-          <button className="flex text-nowrap lg:w-auto w-full text-sm items-center justify-center gap-4 bg-orange-500 hover:bg-orange-600 transition rounded-full px-8 py-2 text-white">
-            تائید و ادامه
-          </button>
-          <button className="flex text-nowrap lg:w-auto w-full text-sm items-center justify-center gap-2 bg-zinc-100 hover:bg-zinc-200 transition rounded-md px-4 py-2 text-virgoolText-600">
-            <IoIosArrowForward className="text-lg" />
-            برگشت به مرحله قبل
-          </button>
-        </div>
-      </form>
-    </section>
+    <VerifyCodeForm
+      phone={phoneInp}
+      back={() => {
+        setIsCodeSend(false);
+      }}
+    />
   );
 }

@@ -2,7 +2,6 @@ import RegisterForm from "@/components/template/register/registerForm";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { IoIosArrowBack } from "react-icons/io";
 
 export const metadata: Metadata = {
   title: "ایجاد حساب کاربری - ویرگول",
