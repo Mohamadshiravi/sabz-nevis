@@ -8,38 +8,36 @@ import { SendErrorToast } from "@/utils/toast-functions";
 import axios from "axios";
 import LoadingBtn from "@/components/module/loadingBtn";
 
-export default function RegisterForm() {
+export default function LoginForm() {
   const [isCodeSend, setIsCodeSend] = useState(false);
-  const [phoneInp, setPhoneInp] = useState("");
+  const [credential, setCredential] = useState("");
 
   const [loading, setLoading] = useState(false);
-
-  const phoneRegex = /^09[0-9]{9}$/;
 
   async function sendCodeHandler(e: FormEvent) {
     e.preventDefault();
 
     setLoading(true);
-
-    if (phoneRegex.test(phoneInp)) {
+    if (credential !== "") {
       try {
-        const res = await axios.post("/api/auth/register/send", {
-          phone: phoneInp,
+        const res = await axios.post("/api/auth/login/send", {
+          credential: credential,
         });
         if (res.status === 201) {
           setLoading(false);
+          setCredential(res.data.phone);
           setIsCodeSend(true);
         }
       } catch (error: any) {
         setLoading(false);
-        if (error.status === 422) {
-          SendErrorToast("شماره موبایل تکراری است");
+        if (error.status === 404) {
+          SendErrorToast("شماره موبایل یا نام کاربری شما پیدا نشد");
         } else {
           SendErrorToast("مشکلی در ارسال وجود دارد");
         }
       }
     } else {
-      SendErrorToast("شماره موبایل  خود را درست وارد کنید");
+      SendErrorToast("نام کاربری یا شماره موبایل خود را وارد کنید");
     }
   }
 
@@ -50,41 +48,45 @@ export default function RegisterForm() {
         className="flex flex-col lg:justify-center w-full h-full gap-3 px-8"
       >
         <h1 className="vazir-black text-xl text-virgoolBlue lg:mt-0 mt-8">
-          ایجاد حساب کاربری
+          ورود به حساب کاربری
         </h1>
-        <h3 className="text-virgoolText-600">شماره موبایل خود را وارد کنید</h3>
+        <h3 className="text-virgoolText-600">
+          شماره موبایل یا نام کاربری خود را وارد کنید
+        </h3>
         <div className="flex flex-col items-end gap-4">
           <input
-            onChange={(e) => setPhoneInp(e.target.value)}
-            value={phoneInp}
-            dir="ltr"
-            type="number"
+            onChange={(e) => {
+              setCredential(e.target.value);
+            }}
+            value={credential}
+            type="text"
             className="InpShadow w-full outline-none border px-4 border-zinc-200 py-3 rounded-full shadow-md"
-            placeholder="شماره موبایل "
+            placeholder="شماره موبایل , نام کاربری"
           />
+
           {!loading ? (
             <button className="flex text-nowrap lg:w-auto w-full text-sm items-center justify-center gap-4 bg-virgoolBlue hover:bg-virgoolBlueHover transition rounded-full pr-5 pl-3 py-2 text-white">
-              ایجاد حساب کاربری
+              ورود به حساب کاربری
               <IoIosArrowBack className="text-lg" />
             </button>
           ) : (
             <LoadingBtn />
           )}
-          <Link href={"/login"} className="w-full text-center text-sm mt-10">
-            قبلا عضو شده‌اید؟ رفتن به صفحه ورود
+          <Link href={"/register"} className="w-full text-center text-sm mt-10">
+            عضو نیستید؟ ثبت نام کنید
           </Link>
         </div>
       </form>
       <Link
-        href={"/login"}
+        href={"/register"}
         className="absolute bottom-10 lg:block hidden w-full text-center text-sm"
       >
-        قبلا عضو شده‌اید؟ رفتن به صفحه ورود
+        عضو نیستید؟ ثبت نام کنید
       </Link>
     </section>
   ) : (
     <VerifyCodeForm
-      phone={phoneInp}
+      phone={credential}
       back={() => {
         setIsCodeSend(false);
       }}

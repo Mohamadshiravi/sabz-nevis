@@ -1,3 +1,4 @@
+import LoginForm from "@/components/template/login/loginForm";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -35,39 +36,7 @@ export default function LoginSection() {
           </h4>
         </div>
       </section>
-      <section className="lg:w-[750px] w-full bg-white h-full relative">
-        <form className="flex flex-col lg:justify-center w-full h-full gap-3 px-8">
-          <h1 className="vazir-black text-xl text-virgoolBlue lg:mt-0 mt-8">
-            ورود به حساب کاربری
-          </h1>
-          <h3 className="text-virgoolText-600">
-            شماره موبایل یا نام کاربری خود را وارد کنید
-          </h3>
-          <div className="flex flex-col items-end gap-4">
-            <input
-              type="text"
-              className="InpShadow w-full outline-none border px-4 border-zinc-200 py-3 rounded-full shadow-md"
-              placeholder="شماره موبایل , نام کاربری"
-            />
-            <button className="flex text-nowrap lg:w-auto w-full text-sm items-center justify-center gap-4 bg-virgoolBlue hover:bg-virgoolBlueHover transition rounded-full pr-5 pl-3 py-2 text-white">
-              ورود به حساب کاربری
-              <IoIosArrowBack className="text-lg" />
-            </button>
-            <Link
-              href={"/register"}
-              className="w-full text-center text-sm mt-10"
-            >
-              عضو نیستید؟ ثبت نام کنید
-            </Link>
-          </div>
-        </form>
-        <Link
-          href={"/register"}
-          className="absolute bottom-10 lg:block hidden w-full text-center text-sm"
-        >
-          عضو نیستید؟ ثبت نام کنید
-        </Link>
-      </section>
+      <LoginForm />
     </main>
   );
 }

@@ -9,3 +9,6 @@ export async function SendErrorToast(body: string) {
 export async function SendWarningToast(body: string) {
   return toast.warning(body, { theme: "colored", position: "top-center" });
 }
+export async function SendSucToast(body: string) {
+  return toast.success(body, { theme: "colored", position: "top-center" });
+}

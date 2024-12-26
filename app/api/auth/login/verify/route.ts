@@ -1,6 +1,5 @@
 import ConnectToDB from "@/DB/connectToDB";
 import otpModel from "@/models/otp";
-import userModel from "@/models/user";
 import { JenerateAccessToken } from "@/utils/TokenControl";
 import { cookies } from "next/headers";
 
@@ -27,9 +26,8 @@ export async function POST(req: Request) {
 
     await otpModel.findOneAndDelete({ _id: isPhoneExist._id });
 
-    //jenerate Token and create user
-    const newUser = await userModel.create({ phone });
-    const token = JenerateAccessToken({ phone: newUser.phone });
+    //jenerate Token
+    const token = JenerateAccessToken({ phone });
 
     cookies().set({
       name: "token",
@@ -38,7 +36,7 @@ export async function POST(req: Request) {
       maxAge: 10 * 24 * 60 * 60 * 1000,
     });
 
-    return Response.json({ message: "userCreated" }, { status: 201 });
+    return Response.json({ message: "user login" }, { status: 201 });
   } catch (error) {
     return Response.json({ message: "server error" }, { status: 500 });
   }

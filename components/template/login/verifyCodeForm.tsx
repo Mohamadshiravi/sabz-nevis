@@ -110,12 +110,12 @@ export default function VerifyCodeForm({ phone, back }: VerifyCodeFormProp) {
     setLoading(true);
 
     try {
-      const res = await axios.post("/api/auth/register/verify", {
+      const res = await axios.post("/api/auth/login/verify", {
         phone,
         code: joinedCode,
       });
       setLoading(false);
-      SendSucToast("اکانت شما با موفقیت ساخته شد");
+      SendSucToast("شما وارد اکانت خود شدید");
       router.push("/");
     } catch (e) {
       setLoading(false);
