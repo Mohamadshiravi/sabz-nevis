@@ -4,8 +4,9 @@ import { useState } from "react";
 import PodcastSection from "../template/main/podcastSection";
 import { GoPaperclip } from "react-icons/go";
 import { IoIosArrowBack } from "react-icons/io";
+import { useTypedSelector } from "@/redux/typedHooks";
 
-export default function DesktopNavbar() {
+export default function Footer() {
   const [ads, setAds] = useState([
     "بلیط هواپیما",
     "بازار خرید تتر",
@@ -26,8 +27,15 @@ export default function DesktopNavbar() {
     "خودشناسی",
     "فیلم سینمایی",
   ]);
+  const userData = useTypedSelector((state) => {
+    return state.user;
+  });
   return (
-    <section className="w-full sm:pt-14 py-4 lg:flex hidden flex-col gap-4 lg:px-8 px-0 lg:border-r border-zinc-200">
+    <section
+      className={`w-full sm:pt-14 py-4 lg:flex hidden flex-col gap-4 ${
+        userData ? "lg:px-6" : "lg:px-8 px-0"
+      } lg:border-r border-zinc-200`}
+    >
       <Image
         src={"/images/virgool_business_cta.webp"}
         width={800}
@@ -35,36 +43,40 @@ export default function DesktopNavbar() {
         alt="busines banner"
         className="rounded-lg"
       />
-      <div className="flex flex-wrap gap-2">
-        {ads.map((e, i) => (
-          <span
-            key={i}
-            className="bg-zinc-50 text-[10px] p-2 hover:bg-zinc-200 transition cursor-pointer rounded-sm  text-center text-virgoolText-600"
-          >
-            {e}
-          </span>
-        ))}
-      </div>
-      <div className="border border-zinc-200 rounded-md grid grid-cols-[6fr_6fr] py-4">
-        <div className="flex items-center justify-center">
-          <Image
-            src={"/images/logo.png"}
-            width={600}
-            height={600}
-            alt="samandehi"
-            className="w-[80px]"
-          />
-        </div>
-        <div className="flex items-center justify-center border-r border-zinc-200">
-          <Image
-            src={"/images/logo2.png"}
-            width={600}
-            height={600}
-            alt="enamad"
-            className="w-[80px]"
-          />
-        </div>
-      </div>
+      {!userData && (
+        <>
+          <div className="flex flex-wrap gap-2">
+            {ads.map((e, i) => (
+              <span
+                key={i}
+                className="bg-zinc-50 text-[10px] p-2 hover:bg-zinc-200 transition cursor-pointer rounded-sm  text-center text-virgoolText-600"
+              >
+                {e}
+              </span>
+            ))}
+          </div>
+          <div className="border border-zinc-200 rounded-md grid grid-cols-[6fr_6fr] py-4">
+            <div className="flex items-center justify-center">
+              <Image
+                src={"/images/logo.png"}
+                width={600}
+                height={600}
+                alt="samandehi"
+                className="w-[80px]"
+              />
+            </div>
+            <div className="flex items-center justify-center border-r border-zinc-200">
+              <Image
+                src={"/images/logo2.png"}
+                width={600}
+                height={600}
+                alt="enamad"
+                className="w-[80px]"
+              />
+            </div>
+          </div>
+        </>
+      )}
       <div className="flex flex-col gap-4 sticky top-4">
         <PodcastSection />
         <div className="flex items-center gap-4">

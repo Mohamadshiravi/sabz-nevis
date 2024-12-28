@@ -36,7 +36,7 @@ export async function POST(req: Request) {
             body: {
               op: "pattern",
               user: "mohamad85",
-              pass: "MTshirav1",
+              pass: process.env.SMS_PANEL_PASS!,
               fromNum: "3000505",
               toNum: isPhoneExist.phone,
               patternCode: "wd0jbf2gn3av97x",

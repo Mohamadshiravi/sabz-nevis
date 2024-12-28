@@ -1,30 +1,33 @@
-import ADSection from "@/components/module/adSection";
-import DesktopNavbar from "@/components/module/desktopNavbar";
-import Post from "@/components/module/post";
+"use client";
+
+import DesktopNavbar from "@/components/module/dekstopNavbar";
+import Footer from "@/components/module/footer";
+import Header from "@/components/module/header";
+import MobileNavbar from "@/components/module/navbar";
 import HomeBanner from "@/components/template/homeBanner";
-import InfiniteScrollSection from "@/components/template/main/infiniteScrollSection";
-import SugestionsPeople from "@/components/template/main/sugestPeople";
-import TopPosts from "@/components/template/main/topPosts";
+import MainSection from "@/components/template/main/main";
+import { useTypedSelector } from "@/redux/typedHooks";
 
 export default function Home() {
+  const userData = useTypedSelector((state) => {
+    return state.user;
+  });
   return (
     <>
-      <HomeBanner />
-      <main className="md:px-20 px-4 grid lg:grid-cols-[8fr_4fr] grid-cols-[1fr] lg:gap-32 gap-10">
-        <section className="w-full sm:py-14 py-8 flex flex-col gap-8">
-          <Post />
-          <ADSection />
-          <Post border />
-          <Post />
-          <TopPosts />
-          <Post border />
-          <Post border />
-          <Post />
-          <SugestionsPeople />
-          <InfiniteScrollSection />
-        </section>
-        <DesktopNavbar />
+      <Header />
+      {!userData && <HomeBanner />}
+      <main
+        className={`${
+          userData
+            ? "lg:px-0 px-4 grid lg:grid-cols-[2fr_7fr_3fr] grid-cols-[1fr] gap-10"
+            : "md:px-20 px-4 grid lg:grid-cols-[8fr_4fr] grid-cols-[1fr] lg:gap-32 gap-10"
+        }`}
+      >
+        {userData && <DesktopNavbar />}
+        <MainSection />
+        <Footer />
       </main>
+      <MobileNavbar />
     </>
   );
 }

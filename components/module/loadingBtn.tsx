@@ -1,7 +1,9 @@
-export default function LoadingBtn() {
+export default function LoadingBtn({ fullWidth }: { fullWidth?: boolean }) {
   return (
     <button
-      className="rounded-full w-[180px] flex items-center justify-center bg-zinc-100"
+      className={`rounded-full ${
+        fullWidth ? "w-full" : "lg:w-[180px] w-full"
+      } flex items-center justify-center bg-zinc-100`}
       disabled
     >
       <img

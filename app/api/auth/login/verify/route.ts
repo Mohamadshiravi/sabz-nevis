@@ -34,6 +34,7 @@ export async function POST(req: Request) {
       value: token,
       httpOnly: true,
       maxAge: 10 * 24 * 60 * 60 * 1000,
+      path: "/",
     });
 
     return Response.json({ message: "user login" }, { status: 201 });

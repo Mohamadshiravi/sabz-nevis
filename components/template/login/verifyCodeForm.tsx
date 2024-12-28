@@ -1,4 +1,6 @@
 import LoadingBtn from "@/components/module/loadingBtn";
+import { fetchUserDataFromServer } from "@/redux/slices/user";
+import { useTypedDispatch } from "@/redux/typedHooks";
 import { SendErrorToast, SendSucToast } from "@/utils/toast-functions";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -52,6 +54,7 @@ export default function VerifyCodeForm({ phone, back }: VerifyCodeFormProp) {
     setCode(codeClone);
   }
 
+  const dispatch = useTypedDispatch();
   return (
     <section className="lg:w-[3000px] w-full bg-white h-full flex lg:items-center lg:mt-0 mt-8 justify-center">
       <form
@@ -103,6 +106,7 @@ export default function VerifyCodeForm({ phone, back }: VerifyCodeFormProp) {
       </form>
     </section>
   );
+
   async function HandlerVerifyCode(e: FormEvent) {
     e.preventDefault();
     const joinedCode = code.join("");
@@ -116,6 +120,7 @@ export default function VerifyCodeForm({ phone, back }: VerifyCodeFormProp) {
       });
       setLoading(false);
       SendSucToast("شما وارد اکانت خود شدید");
+      dispatch(fetchUserDataFromServer());
       router.push("/");
     } catch (e) {
       setLoading(false);

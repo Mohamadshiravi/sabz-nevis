@@ -1,4 +1,4 @@
-import { sign, verify } from "jsonwebtoken";
+import { JwtPayload, sign, verify } from "jsonwebtoken";
 
 export function JenerateAccessToken(payload: { phone: string }) {
   const token = sign({ ...payload }, process.env.PRIVATE_KEY!, {
@@ -9,7 +9,9 @@ export function JenerateAccessToken(payload: { phone: string }) {
 export function VerifyAccessToken(token: string) {
   try {
     const payload = verify(token, process.env.PRIVATE_KEY!);
-    return payload;
+    if (typeof payload === "object") {
+      return payload;
+    }
   } catch (error) {
     return false;
   }
