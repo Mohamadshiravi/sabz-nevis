@@ -36,10 +36,15 @@ export default function DesktopNavbar() {
             <IoBarChartOutline className="text-2xl" />
             <span className="text-nowrap">امار بازدید</span>
           </li>
-          <li className="flex items-center gap-3 text-base hover:text-virgoolBlue transition">
+          <Link
+            href={"/me/lists"}
+            className={`${
+              path === "/me/lists" && "text-virgoolBlue"
+            } flex items-center gap-3 text-base hover:text-virgoolBlue transition`}
+          >
             <GoBookmark className="text-2xl" />
             <span className="text-nowrap">لیست ها</span>
-          </li>
+          </Link>
           <li className="flex items-center gap-3 text-base hover:text-virgoolBlue transition">
             <FiSettings className="text-2xl" />
             <span className="text-nowrap">حساب کاربری</span>

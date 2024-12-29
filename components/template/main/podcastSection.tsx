@@ -7,6 +7,7 @@ import "swiper/css";
 import Image from "next/image";
 import { IoIosArrowBack } from "react-icons/io";
 import { MdPlayArrow } from "react-icons/md";
+import Link from "next/link";
 
 export default function PodcastSection() {
   const [podcasts, setPodcats] = useState([
@@ -28,7 +29,7 @@ export default function PodcastSection() {
   ]);
 
   return (
-    <div className="w-full flex flex-col gap-4">
+    <Link href={"/podcasts"} className="w-full flex flex-col gap-4">
       <div className="flex items-center gap-4">
         <span className="bg-zinc-100 p-2 rounded-full text-xl text-zinc-400">
           <FaMicrophone />
@@ -67,30 +68,80 @@ export default function PodcastSection() {
           </button>
         </div>
         <div className="flex flex-col gap-3 py-3">
-          {Array.from({ length: 4 }).map((e, i) => (
-            <div key={i} className="flex items-center justify-between">
-              <div className="flex gap-2">
-                <Image
-                  src={"/podcasts/psychology.webp"}
-                  width={100}
-                  height={100}
-                  alt="podcast"
-                  className="w-[45px] h-[45px] object-cover rounded-sm"
-                />
-                <div className="flex flex-col justify-between py-1">
-                  <span className="text-xs vazir-bold">
-                    اپیزود هشتم : تلقین
-                  </span>
-                  <span className="text-[10px] text-zinc-500">44 : 54</span>
-                </div>
+          <div className="flex items-center justify-between">
+            <div className="flex gap-2">
+              <Image
+                src={"/podcasts/9914925a-3298-4ab3-a70a-251f481ddf1a.webp"}
+                width={100}
+                height={100}
+                alt="podcast"
+                className="w-[45px] h-[45px] object-cover rounded-sm"
+              />
+              <div className="flex flex-col justify-between py-1">
+                <span className="text-xs vazir-bold">اپیزود اول</span>
+                <span className="text-[10px] text-zinc-500">44 : 54</span>
               </div>
-              <button className="bg-virgoolBlue p-1 rounded-full text-white text-2xl">
-                <MdPlayArrow />
-              </button>
             </div>
-          ))}
+            <button className="bg-virgoolBlue p-1 rounded-full text-white text-2xl">
+              <MdPlayArrow />
+            </button>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex gap-2">
+              <Image
+                src={"/podcasts/9914925a-3298-4ab3-a70a-251f481ddf1a.webp"}
+                width={100}
+                height={100}
+                alt="podcast"
+                className="w-[45px] h-[45px] object-cover rounded-sm"
+              />
+              <div className="flex flex-col justify-between py-1">
+                <span className="text-xs vazir-bold">اپیزود دوم</span>
+                <span className="text-[10px] text-zinc-500">44 : 54</span>
+              </div>
+            </div>
+            <button className="bg-virgoolBlue p-1 rounded-full text-white text-2xl">
+              <MdPlayArrow />
+            </button>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex gap-2">
+              <Image
+                src={"/podcasts/9914925a-3298-4ab3-a70a-251f481ddf1a.webp"}
+                width={100}
+                height={100}
+                alt="podcast"
+                className="w-[45px] h-[45px] object-cover rounded-sm"
+              />
+              <div className="flex flex-col justify-between py-1">
+                <span className="text-xs vazir-bold">اپیزود سوم</span>
+                <span className="text-[10px] text-zinc-500">44 : 54</span>
+              </div>
+            </div>
+            <button className="bg-virgoolBlue p-1 rounded-full text-white text-2xl">
+              <MdPlayArrow />
+            </button>
+          </div>
+          <div className="flex items-center justify-between">
+            <div className="flex gap-2">
+              <Image
+                src={"/podcasts/9914925a-3298-4ab3-a70a-251f481ddf1a.webp"}
+                width={100}
+                height={100}
+                alt="podcast"
+                className="w-[45px] h-[45px] object-cover rounded-sm"
+              />
+              <div className="flex flex-col justify-between py-1">
+                <span className="text-xs vazir-bold">اپیزود چهارم</span>
+                <span className="text-[10px] text-zinc-500">44 : 54</span>
+              </div>
+            </div>
+            <button className="bg-virgoolBlue p-1 rounded-full text-white text-2xl">
+              <MdPlayArrow />
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

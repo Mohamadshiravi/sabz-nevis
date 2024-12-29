@@ -6,7 +6,7 @@ import { GoPaperclip } from "react-icons/go";
 import { IoIosArrowBack } from "react-icons/io";
 import { useTypedSelector } from "@/redux/typedHooks";
 
-export default function Footer() {
+export default function Footer({ isSimple }: { isSimple?: boolean }) {
   const [ads, setAds] = useState([
     "بلیط هواپیما",
     "بازار خرید تتر",
@@ -36,7 +36,7 @@ export default function Footer() {
     setLoading(false);
   }, []);
   return (
-    <section
+    <footer
       className={`w-full sm:pt-14 py-4 lg:flex hidden flex-col gap-4 ${
         userData ? "lg:px-6" : "lg:px-8 px-0"
       } lg:border-r border-zinc-200`}
@@ -48,7 +48,7 @@ export default function Footer() {
         alt="busines banner"
         className="rounded-lg"
       />
-      {!loading && !userData && (
+      {!loading && !userData && !isSimple && (
         <>
           <div className="flex flex-wrap gap-2">
             {ads.map((e, i) => (
@@ -83,7 +83,7 @@ export default function Footer() {
         </>
       )}
       <div className="flex flex-col gap-4 sticky top-4">
-        <PodcastSection />
+        {!isSimple && <PodcastSection />}
         <div className="flex items-center gap-4">
           <span className="bg-zinc-100 p-2 rounded-full text-xl text-zinc-400">
             <GoPaperclip />
@@ -105,6 +105,6 @@ export default function Footer() {
           <IoIosArrowBack className="text-sm" />
         </button>
       </div>
-    </section>
+    </footer>
   );
 }

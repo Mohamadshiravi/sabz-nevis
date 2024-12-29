@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { FaHeadphones } from "react-icons/fa";
 import { IoIosArrowBack } from "react-icons/io";
+import { MdWarningAmber } from "react-icons/md";
 
 export default function MainSection() {
   const [podcasts, setPodcasts] = useState([
@@ -47,12 +48,18 @@ export default function MainSection() {
 
   return (
     <section className="w-full py-14">
-      <div className="flex items-center justify-between w-full">
+      <div className="w-full flex items-center gap-4 bg-zinc-200 text-red-800 bg-red-100 px-3 py-1.5 rounded-md vazir-medium">
+        <MdWarningAmber className="text-2xl" />
+        <h3 className="sm:text-lg text-base">
+          قابلیت پادکست پیاده سازی نشده است
+        </h3>
+      </div>
+      <div className="flex items-center justify-between w-full mt-8">
         <div className="flex items-center gap-4">
           <span className="bg-zinc-100 p-3 rounded-full text-xl">
             <FaHeadphones />
           </span>
-          <p className="vazir-bold sm:text-3xl text-2xl">پادکست‌ها</p>
+          <h1 className="vazir-bold sm:text-3xl text-2xl">پادکست‌ها</h1>
         </div>
         <Link
           href={"/"}
