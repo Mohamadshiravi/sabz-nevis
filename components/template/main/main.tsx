@@ -1,15 +1,8 @@
-import ADSection from "@/components/module/adSection";
-import Post from "@/components/module/post";
-import TopPosts from "./topPosts";
-import SugestionsPeople from "./sugestPeople";
-import InfiniteScrollSection from "./infiniteScrollSection";
 import { AiOutlinePlus } from "react-icons/ai";
-import { useTypedSelector } from "@/redux/typedHooks";
+import { UserModelType } from "@/models/user";
+import MainSectionPosts from "./mainSectionPosts";
 
-export default function MainSection() {
-  const userData = useTypedSelector((state) => {
-    return state.user;
-  });
+export default function MainSection({ userData }: { userData: UserModelType }) {
   return (
     <section className="w-full sm:py-14 py-8 flex flex-col gap-8">
       {userData && (
@@ -30,16 +23,7 @@ export default function MainSection() {
           </div>
         </div>
       )}
-      <Post />
-      <ADSection />
-      <Post border />
-      <Post />
-      <TopPosts />
-      <Post border />
-      <Post border />
-      <Post />
-      <SugestionsPeople />
-      <InfiniteScrollSection />
+      <MainSectionPosts />
     </section>
   );
 }

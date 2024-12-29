@@ -11,9 +11,16 @@ import { MdNotifications } from "react-icons/md";
 
 export default function Header() {
   const [searchInp, setSearchInp] = useState("جستجو در ویرگول...");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    dispatch(fetchUserDataFromServer());
+    FetchUserData();
+    async function FetchUserData() {
+      const res = await dispatch(fetchUserDataFromServer());
+      if (res) {
+        setLoading(false);
+      }
+    }
   }, []);
 
   const dispatch = useTypedDispatch();
@@ -41,28 +48,32 @@ export default function Header() {
         />
       </div>
       <div className="flex gap-1 items-center text-sm">
-        <button className="rounded-full bg-zinc-100 ml-1 text-2xl h-[40px] w-[40px] flex items-center justify-center">
-          <IoInformationCircleOutline />
-        </button>
-        {!userData ? (
+        {!loading && (
           <>
-            <Link href={"login"} className="rounded-full px-4 py-1.5">
-              ورود
-            </Link>
-            <RegisterBtn />
-          </>
-        ) : (
-          <>
-            <button className="rounded-full ml-6 bg-zinc-100 text-2xl ml-3 h-[40px] w-[40px] flex items-center justify-center">
-              <MdNotifications />
+            <button className="rounded-full bg-zinc-100 ml-1 text-2xl h-[40px] w-[40px] flex items-center justify-center">
+              <IoInformationCircleOutline />
             </button>
-            <div className="flex items-center bg-zinc-100 h-[40px] py-1 pl-0.5 gap-2 rounded-full">
-              <IoIosArrowDown className="mr-3 text-xs" />
-              <img
-                src="/images/avatar-default.jpg"
-                className="rounded-full w-[35px] aspect-square"
-              />
-            </div>
+            {!userData ? (
+              <>
+                <Link href={"login"} className="rounded-full px-4 py-1.5">
+                  ورود
+                </Link>
+                <RegisterBtn />
+              </>
+            ) : (
+              <>
+                <button className="rounded-full ml-6 bg-zinc-100 text-2xl ml-3 h-[40px] w-[40px] flex items-center justify-center">
+                  <MdNotifications />
+                </button>
+                <div className="flex items-center bg-zinc-100 h-[40px] py-1 pl-0.5 gap-2 rounded-full">
+                  <IoIosArrowDown className="mr-3 text-xs" />
+                  <img
+                    src="/images/avatar-default.jpg"
+                    className="rounded-full w-[35px] aspect-square"
+                  />
+                </div>
+              </>
+            )}
           </>
         )}
       </div>

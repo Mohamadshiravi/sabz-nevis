@@ -55,6 +55,7 @@ export default function LoginForm() {
         </h3>
         <div className="flex flex-col items-end gap-4">
           <input
+            dir="ltr"
             onChange={(e) => {
               setCredential(e.target.value);
             }}

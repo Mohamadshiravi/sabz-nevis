@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PodcastSection from "../template/main/podcastSection";
 import { GoPaperclip } from "react-icons/go";
 import { IoIosArrowBack } from "react-icons/io";
@@ -27,9 +27,14 @@ export default function Footer() {
     "خودشناسی",
     "فیلم سینمایی",
   ]);
+  const [loading, setLoading] = useState(true);
   const userData = useTypedSelector((state) => {
     return state.user;
   });
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
   return (
     <section
       className={`w-full sm:pt-14 py-4 lg:flex hidden flex-col gap-4 ${
@@ -43,7 +48,7 @@ export default function Footer() {
         alt="busines banner"
         className="rounded-lg"
       />
-      {!userData && (
+      {!loading && !userData && (
         <>
           <div className="flex flex-wrap gap-2">
             {ads.map((e, i) => (
