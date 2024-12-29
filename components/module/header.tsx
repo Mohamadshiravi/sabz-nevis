@@ -48,7 +48,7 @@ export default function Header() {
         />
       </div>
       <div className="flex gap-1 items-center text-sm">
-        {!loading && (
+        {!loading ? (
           <>
             <button className="rounded-full bg-zinc-100 ml-1 text-2xl h-[40px] w-[40px] flex items-center justify-center">
               <IoInformationCircleOutline />
@@ -75,6 +75,12 @@ export default function Header() {
               </>
             )}
           </>
+        ) : (
+          <div className="flex items-center">
+            <button className="rounded-full ml-2 bg-zinc-100 text-2xl h-[40px] w-[40px] flex items-center justify-center"></button>
+            <button className="rounded-full ml-6 bg-zinc-100 text-2xl h-[40px] w-[40px] flex items-center justify-center"></button>
+            <button className="rounded-full bg-zinc-100 text-2xl h-[40px] w-[80px] flex items-center justify-center"></button>
+          </div>
         )}
       </div>
     </header>

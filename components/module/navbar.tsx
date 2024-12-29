@@ -1,6 +1,7 @@
 "use client";
 
 import { useTypedSelector } from "@/redux/typedHooks";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AiOutlinePlus } from "react-icons/ai";
 import { FaHeadphones } from "react-icons/fa";
@@ -12,14 +13,21 @@ export default function MobileNavbar() {
   const userData = useTypedSelector((state) => {
     return state.user;
   });
+
+  const path = usePathname();
   return (
     <nav className="z-30 fixed lg:hidden flex bottom-0 border-t border-zinc-200 left-0 w-full bg-white items-center justify-between py-3 px-8 gap-4">
       <button className="w-[30px] h-[30px] overflow-hidden rounded-full">
         <img src="/images/avatar-default.jpg" className="w-full h-full" />
       </button>
-      <button>
-        <FaHeadphones className="text-xl text-virgoolText-600" />
-      </button>
+      <Link
+        href={"/podcasts"}
+        className={`${
+          path === "/podcasts" ? "text-virgoolBlue" : "text-virgoolText-600"
+        }`}
+      >
+        <FaHeadphones className="text-2xl transition" />
+      </Link>
       {!userData ? (
         <button>
           <RiApps2Fill className="text-xl text-virgoolText-600" />
@@ -32,9 +40,14 @@ export default function MobileNavbar() {
       <button>
         <IoSearch className="text-xl text-virgoolText-600" />
       </button>
-      <button>
-        <TiHome className="text-2xl  text-virgoolBlue" />
-      </button>
+      <Link
+        href={"/"}
+        className={`${
+          path === "/" ? "text-virgoolBlue" : "text-virgoolText-600"
+        }`}
+      >
+        <TiHome className="text-2xl transition" />
+      </Link>
     </nav>
   );
 }
