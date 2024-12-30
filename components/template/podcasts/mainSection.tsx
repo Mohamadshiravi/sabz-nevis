@@ -48,7 +48,7 @@ export default function MainSection() {
 
   return (
     <section className="w-full py-14">
-      <div className="w-full flex items-center gap-4 bg-zinc-200 text-red-800 bg-red-100 px-3 py-1.5 rounded-md vazir-medium">
+      <div className="w-full flex items-center gap-4 bg-red-100 text-red-800 bg-red-100 px-3 py-1.5 rounded-md vazir-medium">
         <MdWarningAmber className="text-2xl" />
         <h3 className="sm:text-lg text-base">
           قابلیت پادکست پیاده سازی نشده است

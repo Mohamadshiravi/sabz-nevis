@@ -5,7 +5,7 @@ import MobileNavbar from "@/components/module/navbar";
 import ListsMainSection from "@/components/template/me/listsMainSection";
 import ConnectToDB from "@/DB/connectToDB";
 import userModel from "@/models/user";
-import { VerifyAccessToken } from "@/utils/TokenControl";
+import { VerifyAccessToken } from "@/utils/auth/tokenControl";
 import { cookies } from "next/headers";
 
 export default async function ListsPage() {

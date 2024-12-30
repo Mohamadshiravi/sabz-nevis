@@ -4,11 +4,13 @@ import Link from "next/link";
 import { useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import RegisterModal from "./registerModal";
+import VerifyCodeInModal from "./verifyCodeModal";
 
 export default function RegisterBtn() {
   const [isDeskModalOpen, setIsDeskModalOpen] = useState(true);
 
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  const [isVerifyCodeModalOpen, setIsVerifyCodeModalOpen] = useState(false);
 
   const [inp, setInp] = useState("");
   return (
@@ -58,11 +60,32 @@ export default function RegisterBtn() {
         </div>
       </div>
       {isRegisterModalOpen && (
-        <RegisterModal value={inp} CloseModal={CloseRegisterModal} />
+        <RegisterModal
+          value={inp}
+          RealTimeInput={RealTimeInput}
+          CloseModal={() => {
+            setIsRegisterModalOpen(false);
+          }}
+          OpenVerifyModal={() => {
+            setIsVerifyCodeModalOpen(true);
+          }}
+        />
+      )}
+      {isVerifyCodeModalOpen && (
+        <VerifyCodeInModal
+          CloseModal={() => {
+            setIsVerifyCodeModalOpen(false);
+          }}
+          phone={inp}
+          back={() => {
+            setIsVerifyCodeModalOpen(false);
+            setIsRegisterModalOpen(true);
+          }}
+        />
       )}
     </>
   );
-  function CloseRegisterModal() {
-    setIsRegisterModalOpen(false);
+  function RealTimeInput(value: string) {
+    setInp(value);
   }
 }

@@ -6,7 +6,7 @@ import HomeBanner from "@/components/template/homeBanner";
 import MainSection from "@/components/template/main/main";
 import ConnectToDB from "@/DB/connectToDB";
 import userModel from "@/models/user";
-import { VerifyAccessToken } from "@/utils/TokenControl";
+import { VerifyAccessToken } from "@/utils/auth/tokenControl";
 import { cookies } from "next/headers";
 
 export default async function Home() {

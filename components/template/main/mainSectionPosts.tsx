@@ -17,7 +17,7 @@ export default function MainSectionPosts() {
   return loading ? (
     <div className="flex flex-col gap-8">
       {Array.from({ length: 8 }).map((e, i) => (
-        <PostLoading />
+        <PostLoading key={i} />
       ))}
     </div>
   ) : (

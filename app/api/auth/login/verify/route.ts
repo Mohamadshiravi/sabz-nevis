@@ -1,6 +1,6 @@
 import ConnectToDB from "@/DB/connectToDB";
 import otpModel from "@/models/otp";
-import { JenerateAccessToken } from "@/utils/TokenControl";
+import { JenerateAccessToken } from "@/utils/auth/tokenControl";
 import { cookies } from "next/headers";
 
 export async function POST(req: Request) {

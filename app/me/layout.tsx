@@ -1,6 +1,6 @@
 import ConnectToDB from "@/DB/connectToDB";
 import userModel from "@/models/user";
-import { VerifyAccessToken } from "@/utils/TokenControl";
+import { VerifyAccessToken } from "@/utils/auth/tokenControl";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
