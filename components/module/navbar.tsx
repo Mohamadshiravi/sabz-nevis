@@ -17,9 +17,12 @@ export default function MobileNavbar() {
   const path = usePathname();
   return (
     <nav className="z-30 fixed lg:hidden flex bottom-0 border-t border-zinc-200 left-0 w-full bg-white items-center justify-between py-3 px-8 gap-4">
-      <button className="w-[30px] h-[30px] overflow-hidden rounded-full">
+      <Link
+        href={"/me/settings"}
+        className={`w-[32px] h-[32px] rounded-full overflow-hidden`}
+      >
         <img src="/images/avatar-default.jpg" className="w-full h-full" />
-      </button>
+      </Link>
       <Link
         href={"/podcasts"}
         className={`${

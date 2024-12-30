@@ -156,3 +156,8 @@ input[type="number"] {
 .Toastify__toast {
   font-family: "vazir-medium" !important;
 }
+
+.no-scrollbar::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}

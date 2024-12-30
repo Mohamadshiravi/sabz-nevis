@@ -45,10 +45,15 @@ export default function DesktopNavbar() {
             <GoBookmark className="text-2xl" />
             <span className="text-nowrap">لیست ها</span>
           </Link>
-          <li className="flex items-center gap-3 text-base hover:text-virgoolBlue transition">
+          <Link
+            href={"/me/settings"}
+            className={`${
+              path === "/me/settings" && "text-virgoolBlue"
+            } flex items-center gap-3 text-base hover:text-virgoolBlue transition`}
+          >
             <FiSettings className="text-2xl" />
             <span className="text-nowrap">حساب کاربری</span>
-          </li>
+          </Link>
         </ul>
         <button className="bg-virgoolBlue text-nowrap w-full rounded-full px-8 text-sm text-white py-1.5 vazir-bold">
           نوشتن پست
