@@ -1,15 +1,41 @@
-export default function LoadingBtn({ fullWidth }: { fullWidth?: boolean }) {
+import { ReactNode } from "react";
+
+type loadingBtnProps = {
+  fullWidth?: boolean;
+  children: ReactNode;
+  icon?: ReactNode;
+  loading: boolean;
+};
+
+export default function LoadingBtn({
+  fullWidth,
+  children,
+  loading,
+  icon,
+}: loadingBtnProps) {
   return (
     <button
+      type="submit"
       className={`rounded-full ${
         fullWidth ? "w-full" : "lg:w-[180px] w-full"
-      } flex items-center justify-center bg-zinc-100`}
-      disabled
+      } ${
+        !loading
+          ? "bg-virgoolBlue hover:bg-virgoolBlueHover"
+          : "bg-zinc-200 cursor-not-allowed"
+      } flex items-center py-1.5 overflow-hidden h-[35px] transition justify-center text-sm text-white vazir-medium`}
+      disabled={loading}
     >
-      <img
-        src="/images/Circles-menu-3.gif"
-        className="w-[35px] mix-blend-multiply"
-      />
+      {loading ? (
+        <img
+          src="/images/Circles-menu-3.gif"
+          className="w-[35px] mix-blend-multiply"
+        />
+      ) : (
+        <div className="flex items-center gap-2">
+          {children}
+          {icon}
+        </div>
+      )}
     </button>
   );
 }

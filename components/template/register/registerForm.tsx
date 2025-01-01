@@ -62,14 +62,12 @@ export default function RegisterForm() {
             className="InpShadow w-full outline-none border px-4 border-zinc-200 py-3 rounded-full shadow-md"
             placeholder="شماره موبایل "
           />
-          {!loading ? (
-            <button className="flex text-nowrap lg:w-auto w-full text-sm items-center justify-center gap-4 bg-virgoolBlue hover:bg-virgoolBlueHover transition rounded-full pr-5 pl-3 py-2 text-white">
-              ایجاد حساب کاربری
-              <IoIosArrowBack className="text-lg" />
-            </button>
-          ) : (
-            <LoadingBtn />
-          )}
+          <LoadingBtn
+            loading={loading}
+            icon={<IoIosArrowBack className="text-lg" />}
+          >
+            ایجاد حساب کاربری
+          </LoadingBtn>
           <Link href={"/login"} className="w-full text-center text-sm mt-10">
             قبلا عضو شده‌اید؟ رفتن به صفحه ورود
           </Link>

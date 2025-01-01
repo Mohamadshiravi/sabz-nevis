@@ -50,6 +50,7 @@ export default function RegisterModal({
         }
       }
     } else {
+      setLoading(false);
       SendErrorToast("شماره موبایل  خود را درست وارد کنید");
     }
   }
