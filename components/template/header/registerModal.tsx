@@ -75,14 +75,10 @@ export default function RegisterModal({
           className="outline-none w-full border-b border-zinc-300 py-2 mt-2"
           placeholder="شماره موبایل خود را وارد کنید"
         />
-        {!loading ? (
-          <button className="flex text-nowrap vazir-bold w-full mt-2 text-sm items-center justify-center gap-4 bg-virgoolBlue hover:bg-virgoolBlueHover transition rounded-full pr-5 pl-3 py-2 text-white">
-            ایجاد حساب کاربری
-            <IoIosArrowBack className="text-lg" />
-          </button>
-        ) : (
-          <LoadingBtn fullWidth />
-        )}
+
+        <LoadingBtn fullWidth loading={loading}>
+          ایجاد حساب کاربری
+        </LoadingBtn>
       </form>
     </VirgoolModal>
   );

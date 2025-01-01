@@ -90,14 +90,9 @@ export default function VerifyCodeInModal({
               تا ارسال مجدد کد : {formatTime(seconds)}
             </span>
           )}
-          {!loading ? (
-            <button className="flex text-nowrap lg:w-auto w-full text-sm items-center justify-center gap-4 bg-virgoolBlue hover:bg-virgoolBlueHover transition rounded-full px-8 py-2 text-white">
-              تائید و ادامه
-            </button>
-          ) : (
-            <LoadingBtn fullWidth />
-          )}
-
+          <LoadingBtn fullWidth loading={loading}>
+            تائید و ادامه
+          </LoadingBtn>
           <button
             onClick={back}
             className="flex text-nowrap lg:w-auto w-full text-sm items-center justify-center gap-2 bg-zinc-100 hover:bg-zinc-200 transition rounded-md px-4 py-2 text-virgoolText-600"
