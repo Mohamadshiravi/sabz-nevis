@@ -64,15 +64,7 @@ export default function LoginForm() {
             className="InpShadow w-full outline-none border px-4 border-zinc-200 py-3 rounded-full shadow-md"
             placeholder="شماره موبایل , نام کاربری"
           />
-
-          {!loading ? (
-            <button className="flex text-nowrap lg:w-auto w-full text-sm items-center justify-center gap-4 bg-virgoolBlue hover:bg-virgoolBlueHover transition rounded-full pr-5 pl-3 py-2 text-white">
-              ورود به حساب کاربری
-              <IoIosArrowBack className="text-lg" />
-            </button>
-          ) : (
-            <LoadingBtn />
-          )}
+          <LoadingBtn loading={loading}>ورود به حساب کاربری</LoadingBtn>
           <Link href={"/register"} className="w-full text-center text-sm mt-10">
             عضو نیستید؟ ثبت نام کنید
           </Link>
