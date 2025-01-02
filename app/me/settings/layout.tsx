@@ -2,6 +2,7 @@ import DesktopNavbar from "@/components/module/dekstopNavbar";
 import Footer from "@/components/module/footer";
 import Header from "@/components/module/header";
 import MobileNavbar from "@/components/module/navbar";
+import SettingsNavbar from "@/components/template/settings/settingsNavbar";
 import ConnectToDB from "@/DB/connectToDB";
 import userModel from "@/models/user";
 import { VerifyAccessToken } from "@/utils/auth/tokenControl";
@@ -34,22 +35,9 @@ export default async function SettingLayout({
         className={`lg:px-0 px-4 grid lg:grid-cols-[2fr_7fr_3fr] grid-cols-[1fr] gap-6`}
       >
         <DesktopNavbar />
-        <section className="w-full">
+        <section className="w-full overflow-hidden">
           <h1 className="mt-20 vazir-bold text-4xl">تنظیمات</h1>
-          <div className="no-scrollbar sm:w-full w-[350px] overflow-x-scroll overflow-y-hidden flex items-center gap-3 border-b border-zinc-200 mt-14">
-            <div className="pb-2 px-2 text-nowrap relative text-virgoolText-800 vazir-bold after:content-[''] after:absolute after:w-full after:bottom-[-1px] after:left-0 after:h-[2px] after:bg-virgoolText-800">
-              درباره شما
-            </div>
-            <div className="pb-2 text-nowrap vazir-medium px-2 text-virgoolText-600">
-              حساب کاربری
-            </div>
-            <div className="pb-2 text-nowrap vazir-medium px-2 text-virgoolText-600">
-              اطلاعیه ها
-            </div>
-            <div className="pb-2 text-nowrap vazir-medium px-2 text-virgoolText-600">
-              تنظیمات پیشرفته
-            </div>
-          </div>
+          <SettingsNavbar />
           {children}
         </section>
         <Footer isSimple />

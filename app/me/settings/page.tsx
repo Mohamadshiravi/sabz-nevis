@@ -1,3 +1,4 @@
+import DatePickerField from "@/components/template/settings/datepickerFiled";
 import Image from "next/image";
 import { FaEdit } from "react-icons/fa";
 import { MdPhotoCamera } from "react-icons/md";
@@ -7,7 +8,7 @@ export default function SettingsMain() {
     <div className="flex flex-col gap-10 pt-10 lg:pb-10 pb-20">
       <div className="flex items-center justify-between w-full">
         <div className="flex flex-col gap-2">
-          <h3 className="vazir-bold">نام نمایشی</h3>
+          <h3 className="vazir-medium">نام نمایشی</h3>
           <h4 className="text-virgoolText-600 text-sm pl-2">
             این نام در پروفایل شما نمایش داده می‌شود
           </h4>
@@ -16,7 +17,7 @@ export default function SettingsMain() {
       </div>
       <div className="flex items-center justify-between w-full">
         <div className="flex flex-col gap-2">
-          <h3 className="vazir-bold">درباره شما</h3>
+          <h3 className="vazir-medium">درباره شما</h3>
           <h4 className="text-virgoolText-600 text-sm pl-2">
             بیوگرافی شما در صفحه پروفایل نمایش داده می شود. حداکثر ۲۰۰ کاراکتر
           </h4>
@@ -25,7 +26,7 @@ export default function SettingsMain() {
       </div>
       <div className="flex items-center justify-between w-full">
         <div className="flex flex-col gap-2">
-          <h3 className="vazir-bold">عکس پروفایل</h3>
+          <h3 className="vazir-medium">عکس پروفایل</h3>
           <h4 className="text-virgoolText-600 text-sm pl-2">
             عکس شما در صفحه پروفایل و پست‌ها نمایش داده می‌شود.
           </h4>
@@ -46,7 +47,7 @@ export default function SettingsMain() {
       </div>
       <div className="flex items-center justify-between w-full">
         <div className="flex flex-col gap-2">
-          <h3 className="vazir-bold">جنسیت</h3>
+          <h3 className="vazir-medium">جنسیت</h3>
         </div>
         <div className="flex items-center gap-3">
           <label className="flex items-center gap-2">
@@ -63,18 +64,10 @@ export default function SettingsMain() {
           </label>
         </div>
       </div>
+      <DatePickerField />
       <div className="flex items-center justify-between w-full">
         <div className="flex flex-col gap-2">
-          <h3 className="vazir-bold">تاریخ تولد</h3>
-          <h4 className="text-virgoolText-600 text-sm pl-2">
-            تاریخ تولد در پروفایل نمایش داده نمی‌شود.
-          </h4>
-        </div>
-        <FaEdit className="text-xl" />
-      </div>
-      <div className="flex items-center justify-between w-full">
-        <div className="flex flex-col gap-2">
-          <h3 className="vazir-bold">پروفایل اکس (x.com)</h3>
+          <h3 className="vazir-medium">پروفایل اکس (x.com)</h3>
           <h4 className="text-virgoolText-600 text-sm pl-2">
             نام کاربری شما در اکس
           </h4>
@@ -85,7 +78,7 @@ export default function SettingsMain() {
       </div>
       <div className="flex items-center justify-between w-full">
         <div className="flex flex-col gap-2">
-          <h3 className="vazir-bold">پروفایل لینکدین</h3>
+          <h3 className="vazir-medium">پروفایل لینکدین</h3>
           <h4 className="text-virgoolText-600 text-sm pl-2">
             نام کاربری شما در لینکدین
           </h4>

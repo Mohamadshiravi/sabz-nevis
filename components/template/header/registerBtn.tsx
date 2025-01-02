@@ -5,12 +5,15 @@ import { useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import RegisterModal from "./registerModal";
 import VerifyCodeInModal from "./verifyCodeModal";
+import AddDisplayNameModal from "./addDisplayNameModal";
 
 export default function RegisterBtn() {
   const [isDeskModalOpen, setIsDeskModalOpen] = useState(true);
 
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isVerifyCodeModalOpen, setIsVerifyCodeModalOpen] = useState(false);
+  const [isAddDisplayNameModalOpen, setIsAddDisplayNameModalOpen] =
+    useState(false);
 
   const [inp, setInp] = useState("");
   return (
@@ -80,6 +83,16 @@ export default function RegisterBtn() {
           back={() => {
             setIsVerifyCodeModalOpen(false);
             setIsRegisterModalOpen(true);
+          }}
+          OpenDisplaynameModal={() => {
+            setIsAddDisplayNameModalOpen(true);
+          }}
+        />
+      )}
+      {isAddDisplayNameModalOpen && (
+        <AddDisplayNameModal
+          CloseModal={() => {
+            setIsAddDisplayNameModalOpen(false);
           }}
         />
       )}

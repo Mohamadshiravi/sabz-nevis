@@ -4,6 +4,7 @@ import { fetchUserDataFromServer } from "@/redux/slices/user";
 import { useTypedDispatch } from "@/redux/typedHooks";
 import { SendErrorToast, SendSucToast } from "@/utils/toast-functions";
 import axios from "axios";
+import { revalidatePath } from "next/cache";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 
@@ -11,11 +12,13 @@ type VerifyCodeInModalProp = {
   phone: string;
   back: () => void;
   CloseModal: () => void;
+  OpenDisplaynameModal: () => void;
 };
 export default function VerifyCodeInModal({
   phone,
   back,
   CloseModal,
+  OpenDisplaynameModal,
 }: VerifyCodeInModalProp) {
   const [code, setCode] = useState<string[]>([]);
   const [seconds, setSeconds] = useState(120);
@@ -117,7 +120,8 @@ export default function VerifyCodeInModal({
       });
       setLoading(false);
       SendSucToast("اکانت شما با موفقیت ساخته شد");
-      location.reload();
+      CloseModal();
+      OpenDisplaynameModal();
     } catch (e) {
       setLoading(false);
       SendErrorToast("کد اشتباه است یا زمان ان تمام شده است");

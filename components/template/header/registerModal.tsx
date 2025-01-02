@@ -58,7 +58,7 @@ export default function RegisterModal({
     <VirgoolModal CloseModal={CloseModal}>
       <form
         onSubmit={sendCodeHandler}
-        className={`transition sm:px-20 px-8 py-16 flex flex-col gap-1 items-center w-full`}
+        className={`transition sm:px-20 px-8 py-16 flex flex-col gap-2 items-center w-full`}
       >
         <h3 className="text-lg vazir-bold text-virgoolBlue">
           ایجاد حساب کاربری
@@ -72,7 +72,7 @@ export default function RegisterModal({
           }}
           value={phoneInp}
           type="text"
-          className="outline-none w-full border-b border-zinc-300 py-2 mt-2"
+          className="outline-none w-full border-b border-zinc-300 py-2 mt-4"
           placeholder="شماره موبایل خود را وارد کنید"
         />
 
