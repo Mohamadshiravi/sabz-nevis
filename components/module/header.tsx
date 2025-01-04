@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { IoInformationCircleOutline, IoSearch } from "react-icons/io5";
 import RegisterBtn from "../template/header/registerBtn";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
 import { fetchUserDataFromServer } from "@/redux/slices/user";
 import { IoIosArrowDown } from "react-icons/io";
@@ -13,14 +13,19 @@ export default function Header() {
   const [searchInp, setSearchInp] = useState("جستجو در ویرگول...");
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    FetchUserData();
-    async function FetchUserData() {
+  const FetchUserData = async () => {
+    if (userData.data === null) {
       const res = await dispatch(fetchUserDataFromServer());
-      if (res) {
+      if (res.payload) {
         setLoading(false);
       }
+    } else {
+      setLoading(false);
     }
+  };
+
+  useEffect(() => {
+    FetchUserData();
   }, []);
 
   const dispatch = useTypedDispatch();

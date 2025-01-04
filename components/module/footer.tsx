@@ -38,7 +38,7 @@ export default function Footer({ isSimple }: { isSimple?: boolean }) {
   return (
     <footer
       className={`w-full sm:pt-14 py-4 lg:flex hidden flex-col gap-4 ${
-        userData ? "lg:px-6" : "lg:px-8 px-0"
+        userData.data ? "lg:px-6" : "lg:px-8 px-0"
       } lg:border-r border-zinc-200`}
     >
       <Image
@@ -48,7 +48,7 @@ export default function Footer({ isSimple }: { isSimple?: boolean }) {
         alt="busines banner"
         className="rounded-lg"
       />
-      {!loading && !userData && !isSimple && (
+      {!loading && !userData.data && !isSimple && (
         <>
           <div className="flex flex-wrap gap-2">
             {ads.map((e, i) => (

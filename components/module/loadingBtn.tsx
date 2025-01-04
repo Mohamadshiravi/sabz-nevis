@@ -5,6 +5,7 @@ type loadingBtnProps = {
   children: ReactNode;
   icon?: ReactNode;
   loading: boolean;
+  width?: string;
 };
 
 export default function LoadingBtn({
@@ -12,12 +13,13 @@ export default function LoadingBtn({
   children,
   loading,
   icon,
+  width,
 }: loadingBtnProps) {
   return (
     <button
       type="submit"
       className={`rounded-full ${
-        fullWidth ? "w-full" : "lg:w-[180px] w-full"
+        fullWidth ? "w-full" : `${width ? `${width}` : "lg:w-[180px] w-full"}`
       } ${
         !loading
           ? "bg-virgoolBlue hover:bg-virgoolBlueHover"

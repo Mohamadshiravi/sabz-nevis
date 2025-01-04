@@ -31,7 +31,7 @@ export default function MobileNavbar() {
       >
         <FaHeadphones className="text-2xl transition" />
       </Link>
-      {!userData ? (
+      {!userData.data ? (
         <button>
           <RiApps2Fill className="text-xl text-virgoolText-600" />
         </button>
