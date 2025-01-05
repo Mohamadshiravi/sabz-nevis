@@ -4,7 +4,7 @@ import LoadingBtn from "@/components/module/loadingBtn";
 import VirgoolModal from "@/components/module/virgoolModal";
 import { updateUserDataToServer } from "@/redux/slices/user";
 import { useTypedDispatch } from "@/redux/typedHooks";
-import { SendErrorToast, SendSucToast } from "@/utils/toast-functions";
+import { SendErrorToast, SendSucToast } from "@/utils/toastFunctions";
 import { FormEvent, useEffect, useState } from "react";
 
 export default function LinkedInFiled({ linkedin }: { linkedin?: string }) {

@@ -2,20 +2,16 @@ import LoadingBtn from "@/components/module/loadingBtn";
 import VirgoolModal from "@/components/module/virgoolModal";
 import { updateUserDataToServer } from "@/redux/slices/user";
 import { useTypedDispatch } from "@/redux/typedHooks";
-import { SendErrorToast, SendSucToast } from "@/utils/toast-functions";
+import { SendErrorToast, SendSucToast } from "@/utils/toastFunctions";
 import { FormEvent, useEffect, useState } from "react";
 import { FaEdit } from "react-icons/fa";
 
-export default function UsernameFiled({
-  username,
-}: {
-  username: string | undefined;
-}) {
+export default function UsernameFiled({ username }: { username?: string }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [value, setValue] = useState("");
 
-  const usernameRegex = /^[a-zA-Z0-9_]+$/;
+  const regex = /^[a-zA-Z0-9_]+$/;
 
   useEffect(() => {
     setValue(username || "");
@@ -25,7 +21,7 @@ export default function UsernameFiled({
     e.preventDefault();
     setLoading(true);
 
-    if (value !== username && value !== "" && usernameRegex.test(value)) {
+    if (value !== username && value !== "" && regex.test(value)) {
       const res = await dispatch(updateUserDataToServer({ username: value }));
       if (res.payload) {
         SendSucToast("نام کاربری شما تغییر کرد");
@@ -61,7 +57,7 @@ export default function UsernameFiled({
               نام کاربری
             </h3>
             <input
-              placeholder="نام کاربری"
+              placeholder="نام کاربری خود را وارد کنید"
               onChange={(e) => setValue(e.target.value)}
               value={value}
               type="text"

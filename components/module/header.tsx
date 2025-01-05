@@ -16,10 +16,6 @@ export default function Header() {
   const FetchUserData = async () => {
     if (userData.data === null) {
       const res = await dispatch(fetchUserDataFromServer());
-      if (res.payload) {
-        setLoading(false);
-      }
-    } else {
       setLoading(false);
     }
   };
@@ -58,7 +54,7 @@ export default function Header() {
             <button className="rounded-full bg-zinc-100 ml-1 text-2xl h-[40px] w-[40px] flex items-center justify-center">
               <IoInformationCircleOutline />
             </button>
-            {!userData ? (
+            {!userData.data ? (
               <>
                 <Link href={"login"} className="rounded-full px-4 py-1.5">
                   ورود

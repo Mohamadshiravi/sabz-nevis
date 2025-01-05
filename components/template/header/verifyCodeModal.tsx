@@ -1,10 +1,8 @@
 import LoadingBtn from "@/components/module/loadingBtn";
 import VirgoolModal from "@/components/module/virgoolModal";
-import { fetchUserDataFromServer } from "@/redux/slices/user";
 import { useTypedDispatch } from "@/redux/typedHooks";
-import { SendErrorToast, SendSucToast } from "@/utils/toast-functions";
+import { SendErrorToast, SendSucToast } from "@/utils/toastFunctions";
 import axios from "axios";
-import { revalidatePath } from "next/cache";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 

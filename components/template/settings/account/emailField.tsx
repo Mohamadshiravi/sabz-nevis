@@ -6,36 +6,33 @@ import { SendErrorToast, SendSucToast } from "@/utils/toastFunctions";
 import { FormEvent, useEffect, useState } from "react";
 import { FaEdit } from "react-icons/fa";
 
-export default function AboutField({ about }: { about?: string }) {
+export default function EmailField({ email }: { email?: string }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [value, setValue] = useState<string>("");
   const [loading, setLoading] = useState(false);
+  const [value, setValue] = useState("");
+
+  const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   useEffect(() => {
-    setValue(about || "");
+    setValue(email || "");
   }, []);
 
   async function UpdateHandler(e: FormEvent) {
     e.preventDefault();
     setLoading(true);
 
-    if (value !== about && value !== "") {
-      if (value?.length! < 200) {
-        const res = await dispatch(updateUserDataToServer({ about: value }));
-        if (res.payload) {
-          SendSucToast("درباره  شما تغییر کرد");
-          setLoading(false);
-          setIsModalOpen(false);
-        } else {
-          SendErrorToast("مشکلی پیش امد");
-          setLoading(false);
-        }
-      } else {
+    if (value !== email && value !== "" && regex.test(value)) {
+      const res = await dispatch(updateUserDataToServer({ email: value }));
+      if (res.payload) {
+        SendSucToast(" ایمیل شما تغییر کرد");
         setLoading(false);
-        SendErrorToast("درباره من شما بیشتر از 200 کرکتر شد");
+        setIsModalOpen(false);
+      } else {
+        SendErrorToast("مشکلی پیش امد");
+        setLoading(false);
       }
     } else {
-      SendErrorToast("یک درباره جدید و حدئقل چند کرکتر وارد کنید");
+      SendErrorToast("یک ایمیل معتبر و غیر تکراری وارد کنید");
       setLoading(false);
     }
   }
@@ -44,18 +41,12 @@ export default function AboutField({ about }: { about?: string }) {
   return (
     <>
       <div
-        onClick={() => {
-          setIsModalOpen(true);
-        }}
+        onClick={() => setIsModalOpen(true)}
         className="flex items-center justify-between w-full cursor-pointer"
       >
-        <div className="flex flex-col gap-2">
-          <h3 className="vazir-medium">درباره شما</h3>
-          <h4 className="text-virgoolText-600 text-sm pl-2">
-            بیوگرافی شما در صفحه پروفایل نمایش داده می شود. حداکثر ۲۰۰ کاراکتر
-          </h4>
-        </div>
+        <h3 className="vazir-medium">ایمیل</h3>
         <div className="flex items-center gap-2">
+          <span>{email || "ثبت نشده"}</span>
           <FaEdit className="text-xl" />
         </div>
       </div>
@@ -63,13 +54,14 @@ export default function AboutField({ about }: { about?: string }) {
         <VirgoolModal CloseModal={() => setIsModalOpen(false)}>
           <form onSubmit={UpdateHandler} className="w-full bg-white p-4">
             <h3 className="vazir-bold text-lg border-b border-zinc-200 py-2">
-              درباره شما
+              ایمیل
             </h3>
-            <textarea
-              placeholder="درباره خود بنویسید"
+            <input
+              placeholder=" ایمیل خود را وارد کنید"
               onChange={(e) => setValue(e.target.value)}
               value={value}
-              className="border-b border-zinc-300 w-full px-2 py-1 outline-none mt-10 max-h-[300px] min-h-[100px]"
+              type="text"
+              className="border-b border-zinc-300 w-full px-2 py-1 outline-none mt-10"
             />
             <div className="flex items-center justify-end gap-3 mt-10">
               <button

@@ -1,9 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import "@/style/globals.css";
-import Header from "@/components/module/header";
-import MobileNavbar from "@/components/module/navbar";
 import { ToastContainer } from "react-toastify";
 import ReduxProvider from "@/redux/provider";
+import GetTheme from "@/components/module/getTheme/getTheme";
 
 export const metadata: Metadata = {
   title: "وبسایت ویرگول Clone",
@@ -22,8 +21,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fa-IR" dir="rtl">
-      <body className={`antialiased vazir-regular text-virgoolText-800`}>
+      <body
+        className={`antialiased vazir-regular text-virgoolText-800 bg-white`}
+      >
         <ReduxProvider>
+          <GetTheme />
           {children}
           <ToastContainer stacked />
         </ReduxProvider>

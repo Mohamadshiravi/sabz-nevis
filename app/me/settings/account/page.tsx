@@ -1,7 +1,12 @@
 "use client";
 
+import BlockContactField from "@/components/template/settings/account/blockContactField";
+import EmailField from "@/components/template/settings/account/emailField";
+import PhoneField from "@/components/template/settings/account/phoneField";
 import UsernameFiled from "@/components/template/settings/account/usernameField";
 import { useTypedSelector } from "@/redux/typedHooks";
+import ShowSwal from "@/utils/modalFunctions";
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { FaEdit } from "react-icons/fa";
 
@@ -31,21 +36,8 @@ export default function SettingsAccount() {
       ) : (
         <>
           <UsernameFiled username={userData?.username} />
-          <div className="flex items-center justify-between w-full">
-            <h3 className="vazir-medium">ایمیل</h3>
-            <div className="flex items-center gap-2">
-              <span>{userData?.email || "ثبت نشده"}</span>
-              <FaEdit className="text-xl" />
-            </div>
-          </div>
-          <div className="flex items-center justify-between w-full">
-            <h3 className="vazir-medium">شماره موبایل</h3>
-            <div className="flex items-center gap-2">
-              <span>{userData?.phone}</span>
-              <FaEdit className="text-xl" />
-            </div>
-          </div>
-
+          <EmailField email={userData?.email} />
+          <PhoneField phone={userData?.phone} />
           <hr />
 
           <div className="flex items-center justify-between w-full">
@@ -59,14 +51,7 @@ export default function SettingsAccount() {
 
           <hr />
 
-          <div className="flex items-center justify-between w-full">
-            <div className="flex flex-col gap-2">
-              <h3 className="vazir-medium">مدیریت کاربران بلاک شده</h3>
-              <h4 className="text-virgoolText-600 text-sm pl-2">
-                مشاهده لیست افرادی که بلاک کرده‌اید
-              </h4>
-            </div>
-          </div>
+          <BlockContactField />
           <div className="flex sm:flex-row flex-col gap-2 items-center justify-between w-full">
             <div className="flex flex-col gap-2">
               <h3 className="vazir-medium">حذف حساب کاربری</h3>
@@ -74,7 +59,10 @@ export default function SettingsAccount() {
                 با حذف حساب کاربری، تمام اطلاعات شما از سرورهای ما حذف می‌شود
               </h4>
             </div>
-            <button className="text-sm vazir-medium hover:bg-zinc-800 hover:text-white transition px-4 py-1 border-2 border-zinc-800 rounded-full">
+            <button
+              onClick={DeleteAccountHandler}
+              className="text-sm vazir-medium hover:bg-zinc-800 hover:text-white transition px-4 py-1 border-2 border-zinc-800 rounded-full"
+            >
               حذف حساب کاربری
             </button>
           </div>
@@ -82,4 +70,16 @@ export default function SettingsAccount() {
       )}
     </div>
   );
+  async function DeleteAccountHandler() {
+    const isOk = await ShowSwal(
+      "warning",
+      "ایا از حذف ااکانت خود مطمعن هستید؟",
+      "منصرف شدم",
+      "بله"
+    );
+    if (isOk) {
+      await axios.delete("/api/auth/delete");
+      location.reload();
+    }
+  }
 }

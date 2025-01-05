@@ -3,12 +3,14 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 interface userState {
+  theme: "dark" | "light" | null;
   loading: boolean;
   data: UserModelType | null;
   error: null | string;
 }
 
 const initialState: userState = {
+  theme: null,
   data: null,
   loading: false,
   error: null,
@@ -37,7 +39,29 @@ export const updateUserDataToServer = createAsyncThunk(
 const slice = createSlice({
   name: "users",
   initialState,
-  reducers: {},
+  reducers: {
+    changeTheme: (state, action) => {
+      localStorage.theme = action.payload;
+      const theme = localStorage.getItem("theme");
+      if (theme === "light" || theme === null) {
+        document.documentElement.className = "light";
+        state.theme = "light";
+      } else {
+        document.documentElement.className = "dark";
+        state.theme = "dark";
+      }
+    },
+    getTheme: (state) => {
+      const theme = localStorage.getItem("theme");
+      if (theme === "light" || theme === null) {
+        document.documentElement.className = "light";
+        state.theme = "light";
+      } else {
+        document.documentElement.className = "dark";
+        state.theme = "dark";
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchUserDataFromServer.fulfilled, (state, action) => {
       if (action.payload.user) {
@@ -58,3 +82,4 @@ const slice = createSlice({
 });
 
 export default slice.reducer;
+export const { changeTheme, getTheme } = slice.actions;

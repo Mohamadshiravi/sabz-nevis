@@ -4,7 +4,7 @@ import LoadingBtn from "@/components/module/loadingBtn";
 import VirgoolModal from "@/components/module/virgoolModal";
 import { updateUserDataToServer } from "@/redux/slices/user";
 import { useTypedDispatch } from "@/redux/typedHooks";
-import { SendErrorToast, SendSucToast } from "@/utils/toast-functions";
+import { SendErrorToast, SendSucToast } from "@/utils/toastFunctions";
 import { FormEvent, useEffect, useState } from "react";
 
 export default function DatePickerField({ birthDay }: { birthDay?: string }) {
@@ -53,7 +53,7 @@ export default function DatePickerField({ birthDay }: { birthDay?: string }) {
           </h4>
         </div>
         <span className="text-xs border border-zinc-200 px-4 py-1 rounded-md outline-none">
-          {birthDay}
+          {birthDay || "تاریخ تولد خود را وارد کنید"}
         </span>
       </div>
       {isModalOpen && (

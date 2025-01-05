@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+.swal-text {
+  font-size: 20px !important;
+  font-family: "vazir-bold" !important;
+}
+.swal-footer {
+  font-family: "moraba-bold" !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.swal-button--confirm {
+  transition: all 0.2s;
+  background-color: #107abe;
+}
+.swal-button--confirm:hover {
+  background-color: #0e6aa6;
+}
+
 @font-face {
   font-family: "moraba-regular";
   src: url("../public/font/moraba/Morabba-Regular.woff2");

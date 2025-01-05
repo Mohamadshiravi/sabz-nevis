@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState, FormEvent } from "react";
 import { IoIosArrowBack } from "react-icons/io";
 import VerifyCodeForm from "./verifyCodeForm";
-import { SendErrorToast } from "@/utils/toast-functions";
+import { SendErrorToast } from "@/utils/toastFunctions";
 import axios from "axios";
 import LoadingBtn from "@/components/module/loadingBtn";
 

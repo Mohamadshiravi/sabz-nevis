@@ -1,6 +1,6 @@
 import { FormEvent, useEffect, useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
-import { SendErrorToast } from "@/utils/toast-functions";
+import { SendErrorToast } from "@/utils/toastFunctions";
 import axios from "axios";
 import LoadingBtn from "@/components/module/loadingBtn";
 import VirgoolModal from "@/components/module/virgoolModal";

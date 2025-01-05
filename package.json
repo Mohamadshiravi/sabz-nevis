@@ -23,6 +23,7 @@
     "react-toastify": "^11.0.2",
     "redux": "^5.0.1",
     "request": "^2.88.2",
+    "sweetalert": "^2.1.2",
     "swiper": "^11.1.15"
   },
   "devDependencies": {

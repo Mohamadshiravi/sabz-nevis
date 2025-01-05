@@ -1,6 +1,6 @@
 export default function podcatsLoading() {
   return (
-    <section className="w-full py-14 animate-pulse">
+    <section className="w-full py-14">
       <div className="bg-zinc-100 h-[40px] w-full"></div>
       <div className="flex items-center justify-between mt-8">
         <div className="bg-zinc-100 h-[50px] w-[200px]"></div>
