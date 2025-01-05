@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 export type UserModelType = {
+  loading: boolean;
   _id: string;
   phone: string;
   displayName?: string;
@@ -10,7 +11,8 @@ export type UserModelType = {
   username?: string;
   email?: string;
   password?: string;
-  loading: boolean;
+  xProfile: string;
+  linkedin: string;
 };
 
 const schema = new mongoose.Schema<UserModelType>({
@@ -43,6 +45,14 @@ const schema = new mongoose.Schema<UserModelType>({
     required: false,
   },
   password: {
+    type: String,
+    required: false,
+  },
+  xProfile: {
+    type: String,
+    required: false,
+  },
+  linkedin: {
     type: String,
     required: false,
   },

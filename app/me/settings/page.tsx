@@ -3,13 +3,27 @@
 import AboutField from "@/components/template/settings/aboutField";
 import DatePickerField from "@/components/template/settings/datepickerFiled";
 import DisplayNameField from "@/components/template/settings/displayNameField";
+import LinkedInFiled from "@/components/template/settings/linkedinField";
+import XProfileField from "@/components/template/settings/xProfileField";
 import { updateUserDataToServer } from "@/redux/slices/user";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { MdPhotoCamera } from "react-icons/md";
 
 export default function SettingsMain() {
-  const { data: userData, loading } = useTypedSelector((state) => state.user);
+  const [loading, setLoading] = useState(true);
+  const { data: userData, loading: reduxLoading } = useTypedSelector(
+    (state) => state.user
+  );
+
+  useEffect(() => {
+    if (reduxLoading) {
+      setLoading(true);
+    } else {
+      setLoading(false);
+    }
+  });
 
   async function ChangeGenderHandler(value: string) {
     dispatch(updateUserDataToServer({ gender: value }));
@@ -62,7 +76,7 @@ export default function SettingsMain() {
               <label className="flex items-center gap-2 cursor-pointer">
                 <span>مرد</span>
                 <input
-                  onClick={(e) => ChangeGenderHandler("مرد")}
+                  onChange={(e) => ChangeGenderHandler("مرد")}
                   type="radio"
                   checked={userData?.gender === "مرد" ? true : false}
                 />
@@ -70,7 +84,7 @@ export default function SettingsMain() {
               <label className="flex items-center gap-2 cursor-pointer">
                 <span>زن</span>
                 <input
-                  onClick={(e) => ChangeGenderHandler("زن")}
+                  onChange={(e) => ChangeGenderHandler("زن")}
                   type="radio"
                   checked={userData?.gender === "زن" ? true : false}
                 />
@@ -78,36 +92,16 @@ export default function SettingsMain() {
               <label className="flex items-center gap-2 cursor-pointer">
                 <span>سایر</span>
                 <input
-                  onClick={(e) => ChangeGenderHandler("سایر")}
+                  onChange={(e) => ChangeGenderHandler("سایر")}
                   type="radio"
                   checked={userData?.gender === "سایر" ? true : false}
                 />
               </label>
             </div>
           </div>
-          <DatePickerField />
-          <div className="flex items-center justify-between w-full">
-            <div className="flex flex-col gap-2">
-              <h3 className="vazir-medium">پروفایل اکس (x.com)</h3>
-              <h4 className="text-virgoolText-600 text-sm pl-2">
-                نام کاربری شما در اکس
-              </h4>
-            </div>
-            <button className="text-sm vazir-medium hover:bg-zinc-800 hover:text-white transition px-4 py-1 border-2 border-zinc-800 rounded-full">
-              افزودن
-            </button>
-          </div>
-          <div className="flex items-center justify-between w-full">
-            <div className="flex flex-col gap-2">
-              <h3 className="vazir-medium">پروفایل لینکدین</h3>
-              <h4 className="text-virgoolText-600 text-sm pl-2">
-                نام کاربری شما در لینکدین
-              </h4>
-            </div>
-            <button className="text-sm vazir-medium hover:bg-zinc-800 hover:text-white transition px-4 py-1 border-2 border-zinc-800 rounded-full">
-              افزودن
-            </button>
-          </div>
+          <DatePickerField birthDay={userData?.birthDay} />
+          <XProfileField xProfile={userData?.xProfile} />
+          <LinkedInFiled linkedin={userData?.linkedin} />
         </>
       )}
     </div>

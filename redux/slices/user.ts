@@ -48,6 +48,7 @@ const slice = createSlice({
       }
     });
     builder.addCase(fetchUserDataFromServer.pending, (state) => {
+      state.error = null;
       state.loading = true;
     });
     builder.addCase(updateUserDataToServer.fulfilled, (state, action) => {

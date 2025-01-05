@@ -17,6 +17,8 @@ export async function POST(req: Request) {
     username,
     email,
     password,
+    xProfile,
+    linkedin,
   } = await req.json();
 
   try {
@@ -32,6 +34,8 @@ export async function POST(req: Request) {
         username,
         email,
         password,
+        xProfile,
+        linkedin,
       }
     );
 
