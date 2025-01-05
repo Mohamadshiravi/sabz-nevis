@@ -18,7 +18,7 @@ export default function PostLoading() {
           </div>
         </div>
 
-        <div className="sm:w-[120px] sm:h-[120px] w-[90px] h-[90px] rounded-sm bg-zinc-100 animate-pulse" />
+        <div className="sm:w-[150px] sm:h-[120px] w-[110px] h-[90px] rounded-sm bg-zinc-100 animate-pulse" />
       </div>
       <div className="w-full flex justify-between mt-8">
         <div className="bg-zinc-100 h-[20px] lg:w-[150px] w-[100px] animate-pulse"></div>
