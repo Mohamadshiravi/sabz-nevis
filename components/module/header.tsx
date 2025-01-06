@@ -15,7 +15,9 @@ export default function Header() {
 
   const FetchUserData = async () => {
     if (userData.data === null) {
-      const res = await dispatch(fetchUserDataFromServer());
+      await dispatch(fetchUserDataFromServer());
+      setLoading(false);
+    } else {
       setLoading(false);
     }
   };

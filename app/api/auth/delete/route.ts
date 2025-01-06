@@ -8,12 +8,12 @@ export async function DELETE() {
     const token = cookies().get("token")?.value;
 
     if (!token) {
-      return false;
+      return Response.json({ message: "error" }, { status: 401 });
     }
 
     const isTokenValid = VerifyAccessToken(token);
     if (!isTokenValid) {
-      return false;
+      return Response.json({ message: "error" }, { status: 401 });
     }
 
     await ConnectToDB();
