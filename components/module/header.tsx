@@ -35,25 +35,25 @@ export default function Header() {
     <header
       className={`${
         userData ? "lg:sticky top-0 left-0" : "relative"
-      } flex items-center justify-between bg-white md:px-6 px-2 py-2 border-b border-zinc-200 z-40`}
+      } flex items-center justify-between bg-white dark:bg-darkColor-800 md:px-6 px-2 py-2 border-b border-zinc-200 dark:border-zinc-800 z-40`}
     >
       <Link href={"/"}>
         <img src="/images/logo.webp" className="w-[50px]" />
       </Link>
-      <div className="rounded-full bg-zinc-100 text-sm items-center gap-3 px-3 py-1 md:flex hidden">
+      <div className="rounded-full bg-zinc-100 dark:bg-darkColor-700 text-sm items-center gap-3 px-3 py-1 md:flex hidden">
         <IoSearch className="text-xl" />
         <input
           id="search-inp"
           type="text"
           value={searchInp}
           onChange={(e) => setSearchInp(e.target.value)}
-          className="bg-inherit w-[300px] outline-none py-1.5 text-zinc-400 focus:text-zinc-800 transition"
+          className="bg-inherit w-[300px] outline-none py-1.5 text-zinc-400 focus:text-zinc-800"
         />
       </div>
       <div className="flex gap-1 items-center text-sm">
         {!loading ? (
           <>
-            <button className="rounded-full bg-zinc-100 ml-1 text-2xl h-[40px] w-[40px] flex items-center justify-center">
+            <button className="rounded-full bg-zinc-100 dark:bg-darkColor-700 ml-1 text-2xl h-[40px] w-[40px] flex items-center justify-center">
               <IoInformationCircleOutline />
             </button>
             {!userData.data ? (
@@ -65,10 +65,10 @@ export default function Header() {
               </>
             ) : (
               <>
-                <button className="rounded-full ml-6 bg-zinc-100 text-2xl ml-3 h-[40px] w-[40px] flex items-center justify-center">
+                <button className="rounded-full ml-6 bg-zinc-100 dark:bg-darkColor-700 text-2xl ml-3 h-[40px] w-[40px] flex items-center justify-center">
                   <MdNotifications />
                 </button>
-                <div className="flex items-center bg-zinc-100 h-[40px] py-1 pl-0.5 gap-2 rounded-full">
+                <div className="flex items-center bg-zinc-100 dark:bg-darkColor-700 h-[40px] py-1 pl-0.5 gap-2 rounded-full">
                   <IoIosArrowDown className="mr-3 text-xs" />
                   <img
                     src="/images/avatar-default.jpg"

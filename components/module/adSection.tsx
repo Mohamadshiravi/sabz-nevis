@@ -1,8 +1,13 @@
+import { useTypedSelector } from "@/redux/typedHooks";
 import Image from "next/image";
 
 export default function ADSection() {
+  const userData = useTypedSelector((state) => state.user);
   return (
-    <div id="fullShadow" className="flex flex-col gap-4 py-4 rounded-sm">
+    <div
+      id={`${userData.theme === "light" ? "fullShadow" : "noId"}`}
+      className="flex flex-col gap-4 py-4 rounded-sm dark:border dark:border-zinc-800"
+    >
       <div className="flex items-center gap-2 px-4">
         <span className="rounded-lg bg-zinc-100 p-2">
           <img src="/images/logo.webp" className="w-[33px]" />

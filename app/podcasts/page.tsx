@@ -1,5 +1,6 @@
 "use client";
 
+import PrimaryBtn from "@/components/module/primaryBtn";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -56,14 +57,14 @@ export default function PodcastPage() {
       </div>
       <div className="flex items-center justify-between w-full mt-8">
         <div className="flex items-center gap-4">
-          <span className="bg-zinc-100 p-3 rounded-full text-xl">
+          <span className="bg-zinc-100 dark:bg-darkColor-700 p-3 rounded-full text-xl">
             <FaHeadphones />
           </span>
           <h1 className="vazir-bold sm:text-3xl text-2xl">پادکست‌ها</h1>
         </div>
         <Link
           href={"/"}
-          className="flex items-center bg-zinc-200 text-virgoolText-600 px-5 py-1.5 rounded-full gap-2 text-sm vazir-medium"
+          className="flex items-center bg-zinc-200 dark:bg-darkColor-700 text-virgoolText-600 dark:text-virgoolText-500 px-5 py-1.5 rounded-full gap-2 text-sm vazir-medium"
         >
           بازگشت
           <IoIosArrowBack />
@@ -72,7 +73,7 @@ export default function PodcastPage() {
       <h3 className="mt-10 text-virgoolText-500 vazir-medium w-full text-left">
         تعداد : 30
       </h3>
-      <div className="grid md:grid-cols-[6fr_6fr] grid-cols-[1fr] gap-8 mt-6 pt-4 border-t border-zinc-200">
+      <div className="grid md:grid-cols-[6fr_6fr] grid-cols-[1fr] gap-8 mt-6 pt-4 border-t border-zinc-200 dark:border-zinc-800">
         {podcasts.map((e, i) => (
           <div key={i} className="flex items-center gap-2">
             <Image
@@ -91,13 +92,8 @@ export default function PodcastPage() {
           </div>
         ))}
       </div>
-      <div className="flex mt-20 mb-8">
-        <button
-          onClick={LoadMore}
-          className="m-auto text-sm vazir-medium hover:bg-zinc-800 hover:text-white transition px-4 py-1 border-2 border-zinc-800 rounded-full"
-        >
-          بارگذاری موارد بیشتر
-        </button>
+      <div className="flex mt-20 mb-8 items-center justify-center">
+        <PrimaryBtn onPress={LoadMore}>بارگذاری موارد بیشتر</PrimaryBtn>
       </div>
     </section>
   );

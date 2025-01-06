@@ -33,7 +33,7 @@ export default function TopPosts() {
         >
           {Array.from({ length: 8 }).map((e, i) => (
             <SwiperSlide key={i}>
-              <div className="w-full h-full bg-white rounded-md overflow-hidden flex flex-col">
+              <div className="w-full h-full bg-white dark:bg-darkColor-800 rounded-md overflow-hidden flex flex-col">
                 <Image
                   src={"/images/milky-way-mountains-5120x5120-15475.jpg"}
                   width={800}
@@ -46,7 +46,7 @@ export default function TopPosts() {
                     تأثیر هوش مصنوعی بر زندگی روزمره: فرصت‌ها و تهدیدها تأثیر
                     هوش مصنوعی بر زندگی روزمره: فرصت‌ها و تهدیدها
                   </h4>
-                  <div className="flex flex-col gap-3 mt-3 pt-4 border-t border-zinc-200">
+                  <div className="flex flex-col gap-3 mt-3 pt-4 border-t border-zinc-200 dark:border-zinc-800">
                     <div className="flex items-center gap-4">
                       <Image
                         src={"/images/photo_2024-12-15_16-52-24.jpg"}
@@ -59,7 +59,9 @@ export default function TopPosts() {
                         i_mohamad
                       </span>
                     </div>
-                    <span className="text-xs">خواندن ۳ دقیقه</span>
+                    <span className="text-xs text-virgoolText-600">
+                      خواندن ۳ دقیقه
+                    </span>
                   </div>
                 </div>
               </div>

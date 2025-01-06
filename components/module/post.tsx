@@ -8,14 +8,18 @@ type PostProps = {
 export default function Post({ border }: PostProps) {
   return (
     <div
-      className={`flex flex-col ${border && "border-b border-zinc-200 pb-6"} `}
+      className={`flex flex-col ${
+        border && "border-b border-zinc-200 dark:border-b-zinc-800 pb-6"
+      } `}
     >
       <div className="items-center gap-1 text-virgoolText-600 sm:hidden flex">
         <img
           src="/images/photo_2024-12-15_16-52-24.jpg"
           className="w-[24px] rounded-full ml-3"
         />
-        <span className="text-sm text-zinc-600 text-xs">Sadra SG</span>
+        <span className="text-sm text-zinc-100 dark:text-white text-xs">
+          Sadra SG
+        </span>
         <GoDotFill className="text-[4px]" />
         <span className="text-xs">17 دقیقه پیش</span>
       </div>
@@ -26,7 +30,9 @@ export default function Post({ border }: PostProps) {
               src="/images/photo_2024-12-15_16-52-24.jpg"
               className="w-[24px] rounded-full ml-3"
             />
-            <span className="text-sm text-zinc-600 text-xs">Sadra SG</span>
+            <span className="text-sm text-zinc-600 dark:text-white text-xs">
+              Sadra SG
+            </span>
             <GoDotFill className="text-[4px]" />
             <span className="text-xs">17 دقیقه پیش</span>
           </div>
@@ -51,7 +57,7 @@ export default function Post({ border }: PostProps) {
       </div>
       <div className="w-full flex justify-between mt-8">
         <div className="flex items-center gap-3">
-          <span className="text-virgoolText-800 text-xs bg-zinc-200 sm:px-8 px-3 py-1 rounded-sm">
+          <span className="text-virgoolText-800 dark:text-virgoolText-400 text-xs bg-zinc-200 dark:bg-darkColor-600 sm:px-8 px-3 py-1 rounded-sm">
             عمومی
           </span>
           <span className="sm:text-xs text-[10px] text-virgoolText-500">

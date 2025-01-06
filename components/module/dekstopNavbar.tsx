@@ -11,7 +11,7 @@ import { TiHome } from "react-icons/ti";
 export default function DesktopNavbar() {
   const path = usePathname();
   return (
-    <div className="w-full lg:block hidden border-l border-zinc-200 bg-white">
+    <div className="w-full lg:block hidden border-l border-zinc-200 dark:bg-darkColor-800 dark:border-zinc-800 bg-white">
       <nav className="flex-col flex justify-between h-screen pb-24 pt-14 px-8 fixed top-16">
         <ul className="flex flex-col gap-8">
           <Link

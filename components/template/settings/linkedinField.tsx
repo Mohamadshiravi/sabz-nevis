@@ -1,6 +1,7 @@
 "use client";
 
 import LoadingBtn from "@/components/module/loadingBtn";
+import PrimaryBtn from "@/components/module/primaryBtn";
 import VirgoolModal from "@/components/module/virgoolModal";
 import { updateUserDataToServer } from "@/redux/slices/user";
 import { useTypedDispatch } from "@/redux/typedHooks";
@@ -50,14 +51,12 @@ export default function LinkedInFiled({ linkedin }: { linkedin?: string }) {
             نام کاربری شما در لینکدین
           </h4>
         </div>
-        <button className="text-sm vazir-medium hover:bg-zinc-800 hover:text-white transition px-4 py-1 border-2 border-zinc-800 rounded-full">
-          {linkedin || "افزودن"}
-        </button>
+        <PrimaryBtn>{linkedin || "افزودن"}</PrimaryBtn>
       </div>
       {isModalOpen && (
         <VirgoolModal CloseModal={() => setIsModalOpen(false)}>
-          <form onSubmit={UpdateHandler} className="w-full bg-white p-4">
-            <h3 className="vazir-bold text-lg border-b border-zinc-200 py-2">
+          <form onSubmit={UpdateHandler} className="w-full p-4">
+            <h3 className="vazir-bold text-lg border-b border-zinc-200 dark:border-zinc-800 py-2">
               پروفایل لینکدین
             </h3>
             <input
@@ -65,15 +64,12 @@ export default function LinkedInFiled({ linkedin }: { linkedin?: string }) {
               placeholder=" نام کاربری شما در لینکدین"
               onChange={(e) => setValue(e.target.value)}
               value={value}
-              className="border-b border-zinc-300 w-full px-2 py-1 outline-none mt-10"
+              className="border-b bg-inherit border-zinc-300 dark:border-zinc-700 w-full px-2 py-1 outline-none mt-10"
             />
             <div className="flex items-center justify-end gap-3 mt-10">
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="text-sm vazir-medium hover:bg-zinc-800 hover:text-white transition w-[110px] py-1.5 border-2 border-zinc-800 rounded-full"
-              >
+              <PrimaryBtn onPress={() => setIsModalOpen(false)}>
                 منصرف شدم
-              </button>
+              </PrimaryBtn>
               <LoadingBtn loading={loading} width="w-[90px]">
                 ذخیره
               </LoadingBtn>

@@ -103,8 +103,8 @@
   overflow: hidden;
 }
 #fullShadow {
-  box-shadow: 2px 2px 6px rgba(121, 121, 121, 0.2),
-    -2px -2px 6px rgba(121, 121, 121, 0.2);
+  box-shadow: 2px 2px 6px rgba(57, 57, 57, 0.2),
+    -2px -2px 6px rgba(57, 57, 57, 0.2);
 }
 .InpShadow {
   box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.05),

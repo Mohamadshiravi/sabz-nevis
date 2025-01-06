@@ -1,5 +1,6 @@
 "use client";
 
+import PrimaryBtn from "@/components/module/primaryBtn";
 import BlockContactField from "@/components/template/settings/account/blockContactField";
 import EmailField from "@/components/template/settings/account/emailField";
 import PhoneField from "@/components/template/settings/account/phoneField";
@@ -28,9 +29,8 @@ export default function SettingsAccount() {
       {loading ? (
         Array.from({ length: 8 }).map((e, i) => (
           <div key={i} className="flex items-center justify-between">
-            <div className="bg-zinc-100 w-[90px] h-[35px]"></div>
-
-            <div className="bg-zinc-100 w-[150px] h-[30px]"></div>
+            <div className="bg-zinc-100 dark:bg-zinc-800 w-[90px] h-[35px]"></div>
+            <div className="bg-zinc-100 dark:bg-zinc-800 w-[150px] h-[30px]"></div>
           </div>
         ))
       ) : (
@@ -38,7 +38,7 @@ export default function SettingsAccount() {
           <UsernameFiled username={userData?.username} />
           <EmailField email={userData?.email} />
           <PhoneField phone={userData?.phone} />
-          <hr />
+          <hr className="border-1 border-zinc-200 dark:border-zinc-800" />
 
           <div className="flex items-center justify-between w-full">
             <h3 className="vazir-medium">تغییر رمز عبور</h3>
@@ -49,7 +49,7 @@ export default function SettingsAccount() {
             <FaEdit className="text-xl" />
           </div>
 
-          <hr />
+          <hr className="border-1 border-zinc-200 dark:border-zinc-800" />
 
           <BlockContactField />
           <div className="flex sm:flex-row flex-col gap-2 items-center justify-between w-full">
@@ -59,12 +59,9 @@ export default function SettingsAccount() {
                 با حذف حساب کاربری، تمام اطلاعات شما از سرورهای ما حذف می‌شود
               </h4>
             </div>
-            <button
-              onClick={DeleteAccountHandler}
-              className="text-sm vazir-medium hover:bg-zinc-800 hover:text-white transition px-4 py-1 border-2 border-zinc-800 rounded-full"
-            >
+            <PrimaryBtn onPress={DeleteAccountHandler}>
               حذف حساب کاربری
-            </button>
+            </PrimaryBtn>
           </div>
         </>
       )}

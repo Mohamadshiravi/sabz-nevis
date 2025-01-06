@@ -1,5 +1,6 @@
 "use client";
 
+import PrimaryBtn from "@/components/module/primaryBtn";
 import { changeTheme } from "@/redux/slices/user";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
 import { IoMoonSharp } from "react-icons/io5";
@@ -18,11 +19,9 @@ export default function SettingsAdvanced() {
             دریافت نسخه پشتیبان از محتوا
           </h4>
         </div>
-        <button className="text-xs vazir-medium hover:bg-zinc-800 hover:text-white transition px-4 py-1 border-2 border-zinc-800 rounded-full">
-          download.zip
-        </button>
+        <PrimaryBtn>download.zip</PrimaryBtn>
       </div>
-      <hr />
+      <hr className="border-1 border-zinc-200 dark:border-zinc-800" />
 
       <h3 className="vazir-bold">تنظیمات حالت شب</h3>
       <div className="flex sm:flex-row flex-col gap-3 items-center justify-between w-full">
@@ -32,15 +31,15 @@ export default function SettingsAdvanced() {
             حالت خودکار از ساعت ۰۰:۰۰ تا ۶:۰۰ فعال می‌شود.
           </h4>
         </div>
-        <div className="flex items-center border border-zinc-400 text-xl rounded-full overflow-hidden">
+        <div className="flex items-center border border-zinc-400 dark:border-zinc-700 text-xl rounded-full overflow-hidden">
           <button
             onClick={() => {
               dispatch(changeTheme("dark"));
             }}
-            className={`px-4 py-2 border-l border-zinc-400 ${
+            className={`px-4 py-2 border-l border-zinc-400 dark:border-zinc-700 ${
               userData.theme === "dark"
                 ? "bg-virgoolBlue text-white"
-                : "border-r border-zinc-400"
+                : "border-r"
             }`}
           >
             <IoMoonSharp />
@@ -54,7 +53,7 @@ export default function SettingsAdvanced() {
             }}
             className={`px-4 py-2 ${
               userData.theme === "dark"
-                ? "border-r border-zinc-400"
+                ? "border-r border-zinc-400 dark:border-zinc-700"
                 : "bg-virgoolBlue text-white"
             }`}
           >
@@ -68,9 +67,11 @@ export default function SettingsAdvanced() {
             نمایش دکمه خاموش/روشن در منوی پروفایل کاربری
           </h4>
         </div>
-        <div className="flex items-center border border-zinc-400 text-sm rounded-full vazir-medium overflow-hidden">
-          <button className="px-4 py-2 border-l border-zinc-400">خیر</button>
-          <button className="px-4 py-2 border-r border-zinc-400 bg-virgoolBlue text-white">
+        <div className="flex items-center border border-zinc-400 dark:border-zinc-700 text-sm rounded-full vazir-medium overflow-hidden">
+          <button className="px-4 py-2 border-l border-zinc-400 dark:border-zinc-700">
+            خیر
+          </button>
+          <button className="px-4 py-2 border-r border-zinc-400 dark:border-zinc-700 bg-virgoolBlue text-white">
             بله
           </button>
         </div>

@@ -31,7 +31,7 @@ export default function SugestionsPeople() {
         >
           {Array.from({ length: 8 }).map((e, i) => (
             <SwiperSlide key={i}>
-              <div className="border p-4 border-zinc-200 w-full h-full justify-between bg-white rounded-md flex flex-col items-center">
+              <div className="border dark:bg-darkColor-800 dark:border-zinc-800 p-4 border-zinc-200 w-full h-full justify-between bg-white rounded-md flex flex-col items-center">
                 <div className="flex flex-col items-center gap-3 w-full">
                   <Image
                     src={"/images/milky-way-mountains-5120x5120-15475.jpg"}

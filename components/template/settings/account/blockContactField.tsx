@@ -19,8 +19,8 @@ export default function BlockContactField() {
       </div>
       {isModalOpen && (
         <VirgoolModal CloseModal={() => setIsModalOpen(false)}>
-          <form className="w-full bg-white p-4">
-            <h3 className="vazir-bold text-lg border-b border-zinc-200 py-2">
+          <form className="w-full p-4">
+            <h3 className="vazir-bold text-lg border-b border-zinc-200 dark:border-zinc-800 py-2">
               مدیریت کاربران بلاک شده
             </h3>
             <h4 className="mt-4">شما هیچ کاربری را بلاک نکرده‌اید.</h4>

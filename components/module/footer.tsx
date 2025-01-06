@@ -39,7 +39,7 @@ export default function Footer({ isSimple }: { isSimple?: boolean }) {
     <footer
       className={`w-full sm:pt-14 py-4 lg:flex hidden flex-col gap-4 ${
         userData.data ? "lg:px-6" : "lg:px-8 px-0"
-      } lg:border-r border-zinc-200`}
+      } lg:border-r border-zinc-200 dark:border-zinc-800`}
     >
       <Image
         src={"/images/virgool_business_cta.webp"}
@@ -85,7 +85,7 @@ export default function Footer({ isSimple }: { isSimple?: boolean }) {
       <div className="flex flex-col gap-4 sticky top-4">
         {!isSimple && <PodcastSection />}
         <div className="flex items-center gap-4">
-          <span className="bg-zinc-100 p-2 rounded-full text-xl text-zinc-400">
+          <span className="bg-zinc-100 dark:bg-darkColor-700 p-2 rounded-full text-xl text-zinc-400">
             <GoPaperclip />
           </span>
           <p className="vazir-bold text-sm">موضوعات پیشنهادی</p>
@@ -94,7 +94,7 @@ export default function Footer({ isSimple }: { isSimple?: boolean }) {
           {categorys.map((e, i) => (
             <span
               key={i}
-              className="text-xs px-2 py-1 rounded-md transition cursor-pointer text-center text-virgoolText-800 border border-virgoolText-800"
+              className="text-xs px-2 py-1 rounded-md transition cursor-pointer text-center text-virgoolText-800 dark:text-virgoolText-500 border border-virgoolText-800 dark:border-virgoolText-500"
             >
               {e}
             </span>

@@ -31,7 +31,7 @@ export default function PodcastSection() {
   return (
     <Link href={"/podcasts"} className="w-full flex flex-col gap-4">
       <div className="flex items-center gap-4">
-        <span className="bg-zinc-100 p-2 rounded-full text-xl text-zinc-400">
+        <span className="bg-zinc-100 dark:bg-darkColor-700 p-2 rounded-full text-xl text-zinc-400">
           <FaMicrophone />
         </span>
         <p className="vazir-bold text-sm">پست‌های صوتی انتخابی برای شما</p>
@@ -50,7 +50,7 @@ export default function PodcastSection() {
                   width={600}
                   height={600}
                   alt={e.name}
-                  className="w-[120px]"
+                  className="w-full h-full object-cover"
                 />
                 <div className="w-full h-full bg-gradient-to-b from-black/0 to-black/70 z-[1] absolute top-0 left-0"></div>
                 <span className="absolute bottom-3 right-2 z-[2] vazir-bold text-sm">
@@ -60,7 +60,7 @@ export default function PodcastSection() {
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className="flex items-center justify-between border-b border-zinc-200 mt-3 py-3">
+        <div className="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-700 mt-3 py-3">
           <span className="vazir-bold">پادکست رفتار</span>
           <button className="flex gap-2 items-center text-virgoolBlue text-xs">
             مشاهده همه قسمت‌ها

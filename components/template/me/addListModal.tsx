@@ -1,3 +1,4 @@
+import PrimaryBtn from "@/components/module/primaryBtn";
 import VirgoolModal from "@/components/module/virgoolModal";
 import { useState } from "react";
 
@@ -13,27 +14,22 @@ export default function AddListModal({
         <h3 className="vazir-bold text-2xl">ایجاد لیست جدید</h3>
         <input
           type="text"
-          className="outline-none w-full border-b text-sm border-zinc-300 py-2 mt-10"
+          className="outline-none w-full border-b text-sm border-zinc-300 dark:border-zinc-700 py-2 mt-10 bg-inherit"
           placeholder="نام لیست خود را وارد کنید"
         />
         <input
           type="text"
-          className="outline-none w-full border-b text-sm border-zinc-300 py-2"
+          className="outline-none w-full border-b text-sm border-zinc-300 dark:border-zinc-700 py-2 bg-inherit"
           placeholder="توضیحات ..."
         />
-        <div className="flex items-center gap-2 text-sm mt-2">
-          <input id="locked" type="checkbox" />
+        <div className="flex items-center gap-2 text-sm mt-2 dark:text-virgoolText-400">
+          <input id="locked" type="checkbox" className="bg-zinc-800" />
           <label htmlFor="locked">
             این لیست توسط سایر افراد قابل دیدن نباشد
           </label>
         </div>
         <div className="flex items-center gap-3 mt-10">
-          <button
-            onClick={CloseModal}
-            className="text-sm vazir-medium hover:bg-zinc-800 hover:text-white transition px-4 py-1 border-2 border-zinc-800 rounded-full"
-          >
-            منصرف شدم
-          </button>
+          <PrimaryBtn onPress={CloseModal}>منصرف شدم</PrimaryBtn>
           <button
             disabled={!isValueValid}
             className={`${
