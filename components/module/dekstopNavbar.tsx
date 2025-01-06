@@ -9,6 +9,7 @@ import { IoBarChartOutline } from "react-icons/io5";
 import { TiHome } from "react-icons/ti";
 
 export default function DesktopNavbar() {
+  const regex = /^\/me\/settings(\/.*)?$/;
   const path = usePathname();
   return (
     <div className="w-full lg:block hidden border-l border-zinc-200 dark:bg-darkColor-800 dark:border-zinc-800 bg-white">
@@ -47,9 +48,8 @@ export default function DesktopNavbar() {
           </Link>
           <Link
             href={"/me/settings"}
-            className={`${
-              path === "/me/settings" && "text-virgoolBlue"
-            } flex items-center gap-3 text-base hover:text-virgoolBlue transition`}
+            className={`${regex.test(path) && "text-virgoolBlue"}
+             flex items-center gap-3 text-base hover:text-virgoolBlue transition`}
           >
             <FiSettings className="text-2xl" />
             <span className="text-nowrap">حساب کاربری</span>

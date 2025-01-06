@@ -8,6 +8,7 @@ import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
 import { fetchUserDataFromServer } from "@/redux/slices/user";
 import { IoIosArrowDown } from "react-icons/io";
 import { MdNotifications } from "react-icons/md";
+import HeaderProfileBtn from "./headerProfileBtn";
 
 export default function Header() {
   const [searchInp, setSearchInp] = useState("جستجو در ویرگول...");
@@ -68,13 +69,7 @@ export default function Header() {
                 <button className="rounded-full ml-6 bg-zinc-100 dark:bg-darkColor-700 text-2xl ml-3 h-[40px] w-[40px] flex items-center justify-center">
                   <MdNotifications />
                 </button>
-                <div className="flex items-center bg-zinc-100 dark:bg-darkColor-700 h-[40px] py-1 pl-0.5 gap-2 rounded-full">
-                  <IoIosArrowDown className="mr-3 text-xs" />
-                  <img
-                    src="/images/avatar-default.jpg"
-                    className="rounded-full w-[35px] aspect-square"
-                  />
-                </div>
+                <HeaderProfileBtn />
               </>
             )}
           </>

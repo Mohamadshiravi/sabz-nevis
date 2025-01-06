@@ -1,0 +1,108 @@
+import { changeTheme } from "@/redux/slices/user";
+import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
+import { useState } from "react";
+import { IoIosArrowDown } from "react-icons/io";
+import { IoMoonSharp } from "react-icons/io5";
+import { MdSunny } from "react-icons/md";
+
+export default function HeaderProfileBtn() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuMount, setIsMenuMount] = useState(false);
+
+  const userData = useTypedSelector((state) => state.user);
+  const dispatch = useTypedDispatch();
+
+  function ChangeThemeHandler() {
+    const theme = userData.theme === "dark" ? "light" : "dark";
+    dispatch(changeTheme(theme));
+  }
+
+  function AnimateToggleModal() {
+    if (isMenuMount) {
+      setIsMenuOpen(false);
+      setTimeout(() => {
+        setIsMenuMount(false);
+      }, 200);
+    } else {
+      setIsMenuMount(true);
+      setTimeout(() => {
+        setIsMenuOpen(true);
+      }, 20);
+    }
+  }
+
+  return (
+    <>
+      {isMenuOpen && (
+        <section
+          onClick={AnimateToggleModal}
+          className="fixed top-0 left-0 w-full h-screen"
+        ></section>
+      )}
+      <div className="relative h-[40px]">
+        <button
+          onClick={AnimateToggleModal}
+          className="flex items-center bg-zinc-100 cursor-pointer dark:bg-darkColor-700 h-full py-1 pl-0.5 gap-2 rounded-full"
+        >
+          <IoIosArrowDown className="mr-3 text-xs" />
+          <img
+            src="/images/avatar-default.jpg"
+            className="rounded-full w-[35px] aspect-square"
+          />
+        </button>
+        {isMenuMount && (
+          <div
+            className={`${
+              isMenuOpen ? "opacity-1" : "opacity-0"
+            } absolute shadow-lg border border-zinc-200 dark:border-zinc-800 transition top-[51px] left-0 w-[240px] dark:bg-darkColor-800 bg-white rounded-md vazir-medium`}
+          >
+            <div className="flex justify-between items-center p-4">
+              <div className="flex flex-col gap-2 vazir-regular">
+                <span className="dark:text-virgoolText-500 text-virgoolText-600">
+                  محمد شیروی
+                </span>
+                <button className="text-virgoolBlue">مشاهده پروفایل</button>
+              </div>
+              <img
+                src="/images/avatar-default.jpg"
+                className="rounded-full w-[35px] h-[35px]"
+              />
+            </div>
+            <div className="p-4 flex flex-col items-start gap-4 dark:text-virgoolText-400 text-virgoolText-600 border-t border-zinc-200 dark:border-zinc-800">
+              <button className="text-virgoolBlue">نوشتن پست جدید</button>
+              <button>تنظیمات حساب کاربری</button>
+              <button>پست ها و پیش نویس ها</button>
+              <button>مشاهده امار</button>
+              <button className="text-virgoolBlue">افزایش بازدید</button>
+              <button>علاقه مندی ها من</button>
+              <button>پست های مورد علاقه</button>
+              <button>لیست ها</button>
+            </div>
+            <div className="p-4 flex flex-col items-start gap-4 dark:text-virgoolText-400 text-virgoolText-600 border-t border-zinc-200 dark:border-zinc-800">
+              <button>انتشارات</button>
+            </div>
+            <div className="p-4 flex flex-col items-start gap-4 dark:text-virgoolText-400 text-virgoolText-600 border-t border-zinc-200 dark:border-zinc-800">
+              <button>خروج</button>
+            </div>
+            <button
+              onClick={ChangeThemeHandler}
+              className="p-4 flex w-full items-center justify-between gap-4 dark:text-virgoolText-400 text-virgoolText-600 border-t border-zinc-200 dark:border-zinc-800"
+            >
+              {userData.theme === "dark" ? (
+                <>
+                  <button>حالت شب</button>
+                  <IoMoonSharp className="text-xl" />
+                </>
+              ) : (
+                <>
+                  <button>حالت روز</button>
+                  <MdSunny className="text-xl" />
+                </>
+              )}
+            </button>
+          </div>
+        )}
+      </div>
+    </>
+  );
+}
