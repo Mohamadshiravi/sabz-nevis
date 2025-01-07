@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="fa-IR" dir="rtl">
       <body
-        className={`antialiased vazir-regular text-virgoolText-800 bg-white dark:bg-darkColor-800 dark:text-white`}
+        className={`antialiased select-none vazir-regular text-virgoolText-800 bg-white dark:bg-darkColor-800 dark:text-white`}
       >
         <ReduxProvider>
           <GetTheme />

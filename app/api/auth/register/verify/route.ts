@@ -28,7 +28,8 @@ export async function POST(req: Request) {
     await otpModel.findOneAndDelete({ _id: isPhoneExist._id });
 
     //jenerate Token and create user
-    const newUser = await userModel.create({ phone });
+    const username = `m_${Date.now()}`;
+    const newUser = await userModel.create({ phone, username });
     const token = JenerateAccessToken({ phone: newUser.phone });
 
     cookies().set({
