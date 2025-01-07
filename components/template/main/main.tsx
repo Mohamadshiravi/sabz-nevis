@@ -1,11 +1,10 @@
 import { AiOutlinePlus } from "react-icons/ai";
 import MainSectionPosts from "./mainSectionPosts";
 
-export default function MainSection({
-  isUserLogedIn,
-}: {
-  isUserLogedIn: boolean;
-}) {
+type MainSectionProps = {
+  isUserLogedIn: false | { phone: string };
+};
+export default function MainSection({ isUserLogedIn }: MainSectionProps) {
   return (
     <section className="w-full sm:py-14 py-8 flex flex-col gap-8">
       {isUserLogedIn && (
