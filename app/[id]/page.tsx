@@ -4,6 +4,7 @@ import PrimaryBtn from "@/components/module/primaryBtn";
 import ProfileNavbar from "@/components/template/profile/profileNavbar";
 import ConnectToDB from "@/DB/connectToDB";
 import userModel from "@/models/user";
+import IsUserLogedIn from "@/utils/auth/authUserInComponnent";
 import { VerifyAccessToken } from "@/utils/auth/tokenControl";
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
@@ -26,18 +27,13 @@ export default async function MainProfileSction({
     notFound();
   }
 
-  let isUserLogedIn = null;
+  let isUserLogedIn = await IsUserLogedIn();
   let isUserHere = null;
-  const token = cookies().get("token")?.value;
-  if (token) {
-    const isTokenValid = VerifyAccessToken(token);
-    if (isTokenValid) {
-      isUserLogedIn = true;
-      if (isTokenValid.phone === isAnyUserExist.phone) {
-        isUserHere = true;
-      }
-    }
+
+  if (isUserLogedIn && isUserLogedIn.phone === isAnyUserExist.phone) {
+    isUserHere = true;
   }
+
   return (
     <>
       <section className="border-b-2 border-zinc-200 dark:border-b-zinc-700">

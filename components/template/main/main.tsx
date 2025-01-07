@@ -1,11 +1,14 @@
 import { AiOutlinePlus } from "react-icons/ai";
-import { UserModelType } from "@/models/user";
 import MainSectionPosts from "./mainSectionPosts";
 
-export default function MainSection({ userData }: { userData: UserModelType }) {
+export default function MainSection({
+  isUserLogedIn,
+}: {
+  isUserLogedIn: boolean;
+}) {
   return (
     <section className="w-full sm:py-14 py-8 flex flex-col gap-8">
-      {userData && (
+      {isUserLogedIn && (
         <div className="flex items-center gap-5 border-b-2 border-zinc-300 dark:border-zinc-700 text-sm">
           <AiOutlinePlus className="text-xl mb-2" />
 

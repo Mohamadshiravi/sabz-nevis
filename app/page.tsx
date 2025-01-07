@@ -4,22 +4,10 @@ import Header from "@/components/module/header";
 import MobileNavbar from "@/components/module/navbar";
 import HomeBanner from "@/components/template/homeBanner";
 import MainSection from "@/components/template/main/main";
-import ConnectToDB from "@/DB/connectToDB";
-import userModel from "@/models/user";
-import { VerifyAccessToken } from "@/utils/auth/tokenControl";
-import { cookies } from "next/headers";
+import IsUserLogedIn from "@/utils/auth/authUserInComponnent";
 
 export default async function Home() {
-  let userData = null;
-  const token = cookies().get("token")?.value;
-  if (token) {
-    const isTokenValid = VerifyAccessToken(token);
-    if (isTokenValid) {
-      await ConnectToDB();
-      userData = await userModel.findOne({ phone: isTokenValid.phone }, "-__v");
-    }
-  }
-
+  const userData = await IsUserLogedIn();
   return (
     <>
       <Header />
@@ -32,7 +20,7 @@ export default async function Home() {
         }`}
       >
         {userData && <DesktopNavbar />}
-        <MainSection userData={userData} />
+        <MainSection isUserLogedIn={userData} />
         <Footer />
       </main>
       <MobileNavbar />

@@ -4,6 +4,7 @@ import Header from "@/components/module/header";
 import MobileNavbar from "@/components/module/navbar";
 import ConnectToDB from "@/DB/connectToDB";
 import userModel from "@/models/user";
+import IsUserLogedIn from "@/utils/auth/authUserInComponnent";
 import { VerifyAccessToken } from "@/utils/auth/tokenControl";
 import { cookies } from "next/headers";
 import { ReactNode } from "react";
@@ -13,15 +14,7 @@ export default async function PodcastLayout({
 }: {
   children: ReactNode;
 }) {
-  let userData = null;
-  const token = cookies().get("token")?.value;
-  if (token) {
-    const isTokenValid = VerifyAccessToken(token);
-    if (isTokenValid) {
-      await ConnectToDB();
-      userData = await userModel.findOne({ phone: isTokenValid.phone }, "-__v");
-    }
-  }
+  const userData = await IsUserLogedIn();
   return (
     <>
       <Header />

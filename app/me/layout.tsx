@@ -1,7 +1,4 @@
-import ConnectToDB from "@/DB/connectToDB";
-import userModel from "@/models/user";
-import { VerifyAccessToken } from "@/utils/auth/tokenControl";
-import { cookies } from "next/headers";
+import IsUserLogedIn from "@/utils/auth/authUserInComponnent";
 import { redirect } from "next/navigation";
 
 export default async function UserLayout({
@@ -9,18 +6,8 @@ export default async function UserLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const token = cookies().get("token")?.value;
-  if (!token) {
-    redirect("/login");
-  }
-  const isTokenValid = VerifyAccessToken(token);
-  if (!isTokenValid) {
-    redirect("/login");
-  }
-
-  await ConnectToDB();
-  const isUser = await userModel.findOne({ phone: isTokenValid.phone });
-  if (!isUser) {
+  const user = await IsUserLogedIn();
+  if (!user) {
     redirect("/login");
   }
 

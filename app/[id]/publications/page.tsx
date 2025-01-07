@@ -1,11 +1,8 @@
-import Header from "@/components/module/header";
-import MobileNavbar from "@/components/module/navbar";
 import PrimaryBtn from "@/components/module/primaryBtn";
 import ProfileNavbar from "@/components/template/profile/profileNavbar";
 import ConnectToDB from "@/DB/connectToDB";
 import userModel from "@/models/user";
-import { VerifyAccessToken } from "@/utils/auth/tokenControl";
-import { cookies } from "next/headers";
+import IsUserLogedIn from "@/utils/auth/authUserInComponnent";
 import { notFound } from "next/navigation";
 import { BsThreeDots } from "react-icons/bs";
 import { FaPlus, FaRss } from "react-icons/fa";
@@ -26,17 +23,11 @@ export default async function MainProfileSction({
     notFound();
   }
 
-  let isUserLogedIn = null;
+  let isUserLogedIn = await IsUserLogedIn();
   let isUserHere = null;
-  const token = cookies().get("token")?.value;
-  if (token) {
-    const isTokenValid = VerifyAccessToken(token);
-    if (isTokenValid) {
-      isUserLogedIn = true;
-      if (isTokenValid.phone === isAnyUserExist.phone) {
-        isUserHere = true;
-      }
-    }
+
+  if (isUserLogedIn && isUserLogedIn.phone === isAnyUserExist.phone) {
+    isUserHere = true;
   }
   return (
     <>
