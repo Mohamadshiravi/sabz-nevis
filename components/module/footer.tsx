@@ -54,13 +54,13 @@ export default function Footer({ isSimple }: { isSimple?: boolean }) {
             {ads.map((e, i) => (
               <span
                 key={i}
-                className="bg-zinc-50 text-[10px] p-2 hover:bg-zinc-200 transition cursor-pointer rounded-sm  text-center text-virgoolText-600"
+                className="bg-zinc-50 dark:bg-zinc-800 text-[10px] p-2 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition cursor-pointer rounded-sm  text-center text-virgoolText-600 dark:text-virgooltext-400"
               >
                 {e}
               </span>
             ))}
           </div>
-          <div className="border border-zinc-200 rounded-md grid grid-cols-[6fr_6fr] py-4">
+          <div className="border border-zinc-200 dark:border-zinc-800 rounded-md grid grid-cols-[6fr_6fr] py-4">
             <div className="flex items-center justify-center">
               <Image
                 src={"/images/logo.png"}
@@ -70,7 +70,7 @@ export default function Footer({ isSimple }: { isSimple?: boolean }) {
                 className="w-[80px]"
               />
             </div>
-            <div className="flex items-center justify-center border-r border-zinc-200">
+            <div className="flex items-center justify-center border-r border-zinc-200 dark:border-zinc-800">
               <Image
                 src={"/images/logo2.png"}
                 width={600}

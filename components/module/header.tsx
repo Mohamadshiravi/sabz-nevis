@@ -3,10 +3,9 @@
 import Link from "next/link";
 import { IoInformationCircleOutline, IoSearch } from "react-icons/io5";
 import RegisterBtn from "../template/header/registerBtn";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
 import { fetchUserDataFromServer } from "@/redux/slices/user";
-import { IoIosArrowDown } from "react-icons/io";
 import { MdNotifications } from "react-icons/md";
 import HeaderProfileBtn from "./headerProfileBtn";
 
