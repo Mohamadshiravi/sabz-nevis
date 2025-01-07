@@ -72,7 +72,7 @@ export default function RegisterModal({
           }}
           value={phoneInp}
           type="text"
-          className="outline-none w-full border-b border-zinc-300 py-2 mt-4"
+          className="outline-none w-full border-b bg-inherit border-zinc-300 py-2 mt-4"
           placeholder="شماره موبایل خود را وارد کنید"
         />
 

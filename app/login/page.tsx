@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function LoginSection() {
   return (
-    <main className="flex lg:flex-row flex-col items-center w-full h-screen">
+    <main className="flex lg:flex-row flex-col items-center w-full h-screen text-virgoolText-800">
       <section className="relative w-full lg:h-full h-[300px] flex items-center justify-center bg-gradient-to-br from-[#054592] to-[#1897d4]">
         <Link
           href={"/"}
