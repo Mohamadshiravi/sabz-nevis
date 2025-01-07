@@ -1,5 +1,6 @@
 import { changeTheme } from "@/redux/slices/user";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
+import Link from "next/link";
 import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoMoonSharp } from "react-icons/io5";
@@ -56,12 +57,18 @@ export default function HeaderProfileBtn() {
               isMenuOpen ? "opacity-1" : "opacity-0"
             } absolute shadow-lg border border-zinc-200 dark:border-zinc-800 transition top-[51px] left-0 w-[240px] dark:bg-darkColor-800 bg-white rounded-md vazir-medium`}
           >
+            <span className="w-[13px] h-[13px] bg-white absolute border-t border-l border-zinc-200 transition dark:border-zinc-800 dark:bg-darkColor-800 rotate-45 top-[-7px] left-6"></span>
             <div className="flex justify-between items-center p-4">
               <div className="flex flex-col gap-2 vazir-regular">
                 <span className="dark:text-virgoolText-500 text-virgoolText-600">
                   محمد شیروی
                 </span>
-                <button className="text-virgoolBlue">مشاهده پروفایل</button>
+                <Link
+                  href={`@${userData.data?.username}`}
+                  className="text-virgoolBlue"
+                >
+                  مشاهده پروفایل
+                </Link>
               </div>
               <img
                 src="/images/avatar-default.jpg"
