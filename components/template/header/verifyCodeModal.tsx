@@ -78,7 +78,7 @@ export default function VerifyCodeInModal({
               key={i}
               maxLength={1}
               type="tel"
-              className="InpShadow outline-none text-center border border-zinc-200 py-3 rounded-full sm:w-[50px] w-[40px] sm:h-[50px] h-[40px] p-1"
+              className="InpShadow outline-none text-center bg-inherit border border-zinc-200 dark:border-zinc-700 py-3 rounded-full sm:w-[50px] w-[40px] sm:h-[50px] h-[40px] p-1"
               onChange={(e) => handleInputChange(e, i)}
             />
           ))}
@@ -96,7 +96,7 @@ export default function VerifyCodeInModal({
           </LoadingBtn>
           <button
             onClick={back}
-            className="flex text-nowrap lg:w-auto w-full text-sm items-center justify-center gap-2 bg-zinc-100 hover:bg-zinc-200 transition rounded-md px-4 py-2 text-virgoolText-600"
+            className="flex text-nowrap lg:w-auto w-full text-sm items-center justify-center gap-2 bg-zinc-100 dark:bg-zinc-800 dark:hover:bg-zinc-700 hover:bg-zinc-200 transition rounded-md px-4 py-2 text-virgoolText-600"
           >
             <IoIosArrowForward className="text-lg" />
             برگشت به مرحله قبل

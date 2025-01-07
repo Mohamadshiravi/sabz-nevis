@@ -50,13 +50,13 @@ export default function AddDisplayNameModal({
           width={1000}
           height={1000}
           alt="guest"
-          className="w-[200px] rounded-full"
+          className="w-[200px] rounded-full object-cover"
         />
         <input
           value={displayName}
           onChange={(e) => setDisplayName(e.target.value)}
           type="text"
-          className="InpShadow mt-10 w-full outline-none border px-4 border-zinc-200 py-3 rounded-full shadow-md"
+          className="InpShadow mt-10 w-full outline-none bg-inherit border px-4 border-zinc-200 dark:border-zinc-700 py-3 rounded-full shadow-md"
           placeholder="نام و نام خانوادگی "
         />
         <div className="flex items-center gap-4 justify-between w-full">
