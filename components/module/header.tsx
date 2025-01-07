@@ -79,9 +79,9 @@ export default function Header({ isTransparent }: { isTransparent?: boolean }) {
           </>
         ) : (
           <div className="flex items-center">
-            <button className="rounded-full ml-2 bg-zinc-100 text-2xl h-[40px] w-[40px] flex items-center justify-center"></button>
-            <button className="rounded-full ml-6 bg-zinc-100 text-2xl h-[40px] w-[40px] flex items-center justify-center"></button>
-            <button className="rounded-full bg-zinc-100 text-2xl h-[40px] w-[80px] flex items-center justify-center"></button>
+            <button className="rounded-full ml-2 bg-zinc-100 dark:bg-zinc-800 text-2xl h-[40px] w-[40px] flex items-center justify-center"></button>
+            <button className="rounded-full ml-6 bg-zinc-100 dark:bg-zinc-800 text-2xl h-[40px] w-[40px] flex items-center justify-center"></button>
+            <button className="rounded-full bg-zinc-100 dark:bg-zinc-800 text-2xl h-[40px] w-[80px] flex items-center justify-center"></button>
           </div>
         )}
       </div>
