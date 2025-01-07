@@ -64,7 +64,7 @@ export default function HeaderProfileBtn() {
                   محمد شیروی
                 </span>
                 <Link
-                  href={`@${userData.data?.username}`}
+                  href={`/@${userData.data?.username}`}
                   className="text-virgoolBlue"
                 >
                   مشاهده پروفایل

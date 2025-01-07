@@ -31,11 +31,11 @@ export default async function MainProfileSction({
       {isUserHere ? (
         <>
           <h4>
-            شما هنوز پستی در ویرگول ننوشته‌اید. همین حالا اقدام به نوشتن اولین
-            پست خود کنید.
+            شما هنوز انتشاراتی در ویرگول نساخته اید. همین حالا اقدام به ساخت
+            اولین انتشارات خود کنید.
           </h4>
           <PrimaryBtn>
-            نوشتن پست
+            ساخت انتشارات
             <IoIosArrowBack />
           </PrimaryBtn>
         </>
@@ -44,8 +44,8 @@ export default async function MainProfileSction({
           <span className="vazir-bold px-1">
             {theUserProfile.displayName || "این کاربر"}
           </span>{" "}
-          هنوز پستی در ویرگول ننوشته بعد از انتشار اولین پست، آن را در اینجا
-          نمایش می‌دهیم.
+          هنوز انتشاراتی در ویرگول نساخته بعد از ساخت اولین انتشارات آن را در
+          اینجا نمایش می‌دهیم.
         </h4>
       )}
     </div>

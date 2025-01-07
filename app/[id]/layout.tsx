@@ -1,10 +1,12 @@
 import Header from "@/components/module/header";
 import MobileNavbar from "@/components/module/navbar";
 import PrimaryBtn from "@/components/module/primaryBtn";
+import ProfileNavbar from "@/components/template/profile/profileNavbar";
 import ConnectToDB from "@/DB/connectToDB";
 import userModel from "@/models/user";
 import { VerifyAccessToken } from "@/utils/auth/tokenControl";
 import { cookies } from "next/headers";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ReactNode } from "react";
 import { BsThreeDots } from "react-icons/bs";
@@ -101,15 +103,13 @@ export default async function UserProfilePage({
               </button>
             </div>
           </section>
-          <div className="flex items-center justify-center gap-6 mt-4 text-sm text-virgoolText-600 dark:text-virgoolText-400 vazir-light">
-            <button className="py-2 relative text-black dark:text-white vazir-regular after:content-[''] after:absolute after:w-full after:bottom-[-1px] after:left-0 after:h-[1.5px] after:bg-virgoolText-800 dark:after:bg-white">
-              پست ها
-            </button>
-            <button className="py-2">لیست ها</button>
-            <button className="py-2">انتشارات</button>
-          </div>
+          <ProfileNavbar
+            username={JSON.parse(
+              JSON.stringify(isAnyUserExist.username || null)
+            )}
+          />
         </section>
-        <section>{children}</section>
+        <section className="pt-12 pb-24">{children}</section>
       </main>
       <MobileNavbar />
     </>
