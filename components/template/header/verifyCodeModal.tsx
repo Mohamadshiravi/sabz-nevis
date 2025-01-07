@@ -62,7 +62,7 @@ export default function VerifyCodeInModal({
     <VirgoolModal CloseModal={CloseModal}>
       <form
         onSubmit={HandlerVerifyCode}
-        className={`bg-white flex flex-col sm:px-20 px-8 gap-2 py-16 items-center`}
+        className={`flex flex-col sm:px-20 px-8 gap-2 py-16 items-center`}
       >
         <h1 className="vazir-black text-xl text-virgoolBlue lg:mt-0 mt-8">
           کد تائید را وارد کنید
