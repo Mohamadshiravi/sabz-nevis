@@ -16,6 +16,7 @@ export default function HeaderProfileBtn() {
   function ChangeThemeHandler() {
     const theme = userData.theme === "dark" ? "light" : "dark";
     dispatch(changeTheme(theme));
+    AnimateToggleModal();
   }
 
   function AnimateToggleModal() {
