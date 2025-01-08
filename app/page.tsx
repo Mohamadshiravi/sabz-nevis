@@ -16,7 +16,10 @@ export default async function Home() {
     const isTokenValid = VerifyAccessToken(token);
     if (isTokenValid) {
       await ConnectToDB();
-      userData = await userModel.findOne({ phone: isTokenValid.phone }, "-__v");
+      userData = await userModel.findOne(
+        { phone: isTokenValid.phone },
+        "phone -_id"
+      );
     }
   }
 
@@ -32,7 +35,7 @@ export default async function Home() {
         }`}
       >
         {userData && <DesktopNavbar />}
-        <MainSection isUserLogedIn={userData} />
+        <MainSection userData={userData} />
         <Footer />
       </main>
       <MobileNavbar />

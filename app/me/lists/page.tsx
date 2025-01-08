@@ -15,7 +15,10 @@ export default async function ListsPage() {
     const isTokenValid = VerifyAccessToken(token);
     if (isTokenValid) {
       await ConnectToDB();
-      userData = await userModel.findOne({ phone: isTokenValid.phone }, "-__v");
+      userData = await userModel.findOne(
+        { phone: isTokenValid.phone },
+        "phone -_id"
+      );
     }
   }
   return (
