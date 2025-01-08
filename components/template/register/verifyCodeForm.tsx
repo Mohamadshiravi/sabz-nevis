@@ -1,7 +1,7 @@
 import LoadingBtn from "@/components/module/loadingBtn";
 import { fetchUserDataFromServer } from "@/redux/slices/user";
 import { useTypedDispatch } from "@/redux/typedHooks";
-import { SendErrorToast, SendSucToast } from "@/utils/toastFunctions";
+import { SendErrorToast, SendSucToast } from "@/utils/toast-functions";
 import axios from "axios";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";

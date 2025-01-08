@@ -5,7 +5,7 @@ import PrimaryBtn from "@/components/module/primaryBtn";
 import VirgoolModal from "@/components/module/virgoolModal";
 import { updateUserDataToServer } from "@/redux/slices/user";
 import { useTypedDispatch } from "@/redux/typedHooks";
-import { SendErrorToast, SendSucToast } from "@/utils/toastFunctions";
+import { SendErrorToast, SendSucToast } from "@/utils/toast-functions";
 import { FormEvent, useEffect, useState } from "react";
 
 export default function XProfileField({ xProfile }: { xProfile?: string }) {

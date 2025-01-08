@@ -1,5 +1,5 @@
 import LoadingBtn from "@/components/module/loadingBtn";
-import { SendErrorToast, SendSucToast } from "@/utils/toastFunctions";
+import { SendErrorToast, SendSucToast } from "@/utils/toast-functions";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";

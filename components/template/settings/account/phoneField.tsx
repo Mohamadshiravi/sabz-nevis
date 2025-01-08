@@ -5,7 +5,7 @@ import PrimaryBtn from "@/components/module/primaryBtn";
 import VirgoolModal from "@/components/module/virgoolModal";
 import { fetchUserDataFromServer } from "@/redux/slices/user";
 import { useTypedDispatch } from "@/redux/typedHooks";
-import { SendErrorToast, SendSucToast } from "@/utils/toastFunctions";
+import { SendErrorToast, SendSucToast } from "@/utils/toast-functions";
 import axios from "axios";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { FaEdit } from "react-icons/fa";
