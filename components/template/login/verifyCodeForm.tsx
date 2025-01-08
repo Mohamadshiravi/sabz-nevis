@@ -18,8 +18,6 @@ export default function VerifyCodeForm({ phone, back }: VerifyCodeFormProp) {
 
   const [loading, setLoading] = useState(false);
 
-  const router = useRouter();
-
   useEffect(() => {
     if (seconds > 0) {
       const interval = setInterval(() => {
@@ -115,7 +113,7 @@ export default function VerifyCodeForm({ phone, back }: VerifyCodeFormProp) {
       setLoading(false);
       SendSucToast("شما وارد اکانت خود شدید");
       dispatch(fetchUserDataFromServer());
-      router.push("/");
+      location.href = "/";
     } catch (e) {
       setLoading(false);
       SendErrorToast("کد اشتباه است یا زمان ان تمام شده است");

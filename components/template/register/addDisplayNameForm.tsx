@@ -10,8 +10,6 @@ export default function AddDisplayNameForm() {
   const [displayName, setDisplayName] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const router = useRouter();
-
   async function setDisplayNameHandler(e: FormEvent) {
     e.preventDefault();
     setLoading(true);
@@ -22,7 +20,7 @@ export default function AddDisplayNameForm() {
         if (res.status === 200) {
           SendSucToast("اطلاعات شما با موفقیت وارد شد");
           setLoading(false);
-          router.push("/");
+          location.href = "/";
         }
       } else {
         setLoading(false);
