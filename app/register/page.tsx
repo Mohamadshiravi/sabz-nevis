@@ -13,7 +13,7 @@ export default function RegisterSection() {
     <main className="flex lg:flex-row flex-col items-center w-full h-screen text-virgoolText-800 bg-white">
       <section className="w-full transition relative lg:h-full h-[300px] flex items-center justify-center bg-gradient-to-br from-[#054592] to-[#1897d4]">
         <Link
-          href={"/"}
+          href={"/home"}
           className="absolute top-4 right-4  text-[#94deff] text-sm"
         >
           صفحه اصلی

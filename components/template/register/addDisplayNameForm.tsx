@@ -52,7 +52,7 @@ export default function AddDisplayNameForm() {
         />
         <div className="flex items-center gap-4 justify-between w-full">
           <Link
-            href={"/"}
+            href={"/home"}
             className="border-2 text-center w-full hover:bg-zinc-800 transition hover:text-white border-zinc-800 text-sm px-5 py-1.5 rounded-full vazir-medium"
           >
             رد کردن این مرحله

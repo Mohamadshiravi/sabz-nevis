@@ -63,7 +63,7 @@ export default function PodcastPage() {
           <h1 className="vazir-bold sm:text-3xl text-2xl">پادکست‌ها</h1>
         </div>
         <Link
-          href={"/"}
+          href={"/home"}
           className="flex items-center bg-zinc-200 dark:bg-darkColor-700 text-virgoolText-600 dark:text-virgoolText-500 px-5 py-1.5 rounded-full gap-2 text-sm vazir-medium"
         >
           بازگشت

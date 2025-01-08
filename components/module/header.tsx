@@ -41,7 +41,7 @@ export default function Header({ isTransparent }: { isTransparent?: boolean }) {
           : "bg-transparent"
       } z-40`}
     >
-      <Link href={"/"}>
+      <Link href={"/home"}>
         <img src="/images/logo.webp" className="w-[50px]" />
       </Link>
       <div className="rounded-full bg-zinc-100 dark:bg-darkColor-700 text-sm items-center gap-3 px-3 py-1 md:flex hidden">

@@ -44,7 +44,7 @@ export default function MobileNavbar() {
         <IoSearch className="text-xl text-virgoolText-600" />
       </button>
       <Link
-        href={"/"}
+        href={"/home"}
         className={`${
           path === "/" ? "text-virgoolBlue" : "text-virgoolText-600"
         }`}

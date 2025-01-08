@@ -85,7 +85,10 @@ export default function VerifyCodeForm({ phone, back }: VerifyCodeFormProp) {
             </div>
             <div className="flex flex-col items-center lg:gap-10 gap-4 mt-10">
               {seconds === 0 ? (
-                <button className="text-virgoolBlue text-sm">
+                <button
+                  onClick={SendCodeAgain}
+                  className="text-virgoolBlue text-sm"
+                >
                   ارسال مجدد کد
                 </button>
               ) : (
@@ -127,6 +130,24 @@ export default function VerifyCodeForm({ phone, back }: VerifyCodeFormProp) {
     } catch (e) {
       setLoading(false);
       SendErrorToast("کد اشتباه است یا زمان ان تمام شده است");
+    }
+  }
+  async function SendCodeAgain(e: FormEvent) {
+    e.preventDefault();
+
+    setLoading(true);
+    try {
+      const res = await axios.post("/api/auth/register/send", {
+        phone,
+      });
+      if (res.status === 201) {
+        setSeconds(120);
+        setLoading(false);
+        SendSucToast("کد مجددا برای شما ارسال شد");
+      }
+    } catch (e) {
+      setLoading(false);
+      SendErrorToast("مشکلی در ارسال وجود دارد");
     }
   }
 }
