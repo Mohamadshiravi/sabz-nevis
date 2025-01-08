@@ -3,7 +3,6 @@ import { SendErrorToast, SendSucToast } from "@/utils/toast-functions";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 
 export default function AddDisplayNameForm() {

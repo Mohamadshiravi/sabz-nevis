@@ -16,9 +16,9 @@ export default function DesktopNavbar() {
       <nav className="flex-col flex justify-between h-screen pb-24 pt-14 px-8 fixed top-16">
         <ul className="flex flex-col gap-8">
           <Link
-            href={"/"}
+            href={"/home"}
             className={`${
-              path === "/" && "text-virgoolBlue"
+              path === "/home" && "text-virgoolBlue"
             } flex items-center gap-3 text-base hover:text-virgoolBlue transition`}
           >
             <TiHome className="text-2xl" />

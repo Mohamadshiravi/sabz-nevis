@@ -3,7 +3,6 @@ import { fetchUserDataFromServer } from "@/redux/slices/user";
 import { useTypedDispatch } from "@/redux/typedHooks";
 import { SendErrorToast, SendSucToast } from "@/utils/toast-functions";
 import axios from "axios";
-import { useRouter } from "next/navigation";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 
@@ -112,7 +111,6 @@ export default function VerifyCodeForm({ phone, back }: VerifyCodeFormProp) {
       });
       setLoading(false);
       SendSucToast("شما وارد اکانت خود شدید");
-      dispatch(fetchUserDataFromServer());
       location.href = "/";
     } catch (e) {
       setLoading(false);
