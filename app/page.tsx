@@ -6,27 +6,17 @@ import HomeBanner from "@/components/template/homeBanner";
 import MainSection from "@/components/template/main/main";
 import ConnectToDB from "@/DB/connectToDB";
 import userModel from "@/models/user";
-import IsUserLogedIn from "@/utils/auth/authUserInComponnent";
 import { VerifyAccessToken } from "@/utils/auth/tokenControl";
 import { cookies } from "next/headers";
 
 export default async function Home() {
   let userData = null;
-
   const token = cookies().get("token")?.value;
   if (token) {
     const isTokenValid = VerifyAccessToken(token);
     if (isTokenValid) {
       await ConnectToDB();
-      const isUserExist = await userModel.findOne(
-        {
-          phone: isTokenValid.phone,
-        },
-        "-_id phone"
-      );
-      if (isUserExist) {
-        userData = isUserExist;
-      }
+      userData = await userModel.findOne({ phone: isTokenValid.phone }, "-__v");
     }
   }
 
