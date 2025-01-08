@@ -12,7 +12,7 @@ interface userState {
 const initialState: userState = {
   theme: null,
   data: null,
-  loading: false,
+  loading: true,
   error: null,
 };
 

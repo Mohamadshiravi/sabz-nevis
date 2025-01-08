@@ -46,7 +46,7 @@ export default function AddDisplayNameModal({
         className="flex flex-col items-center gap-3 w-full sm:px-20 px-8 py-10"
       >
         <Image
-          src={"/images/guest-avatar.avif"}
+          src={"/images/guest-avatar.webp"}
           width={1000}
           height={1000}
           alt="guest"

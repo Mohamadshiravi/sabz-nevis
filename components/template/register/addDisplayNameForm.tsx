@@ -40,7 +40,7 @@ export default function AddDisplayNameForm() {
         className="flex flex-col items-center gap-3 sm:w-[500px] sm:px-0 px-4 w-full"
       >
         <Image
-          src={"/images/guest-avatar.avif"}
+          src={"/images/guest-avatar.webp"}
           width={1000}
           height={1000}
           alt="guest"

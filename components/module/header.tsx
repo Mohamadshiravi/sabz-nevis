@@ -38,7 +38,7 @@ export default function Header({ isTransparent }: { isTransparent?: boolean }) {
       } flex items-center justify-between md:px-6 px-2 py-2 ${
         !isTransparent
           ? "border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-darkColor-800"
-          : "bg-inherit"
+          : "bg-transparent"
       } z-40`}
     >
       <Link href={"/"}>
