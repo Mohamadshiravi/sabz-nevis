@@ -1,8 +1,7 @@
 "use client";
 
 import PrimaryBtn from "@/components/module/primaryBtn";
-import { fetchUserDataFromServer } from "@/redux/slices/user";
-import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
+import { useTypedSelector } from "@/redux/typedHooks";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
@@ -15,18 +14,20 @@ export default function MainProfileSction({
   const [loading, setLoading] = useState(true);
   const [isUserHere, setIsUserHere] = useState(false);
   const userData = useTypedSelector((state) => state.user);
-  const dispatch = useTypedDispatch();
 
   useEffect(() => {
-    FetchCurrentUser();
-  }, []);
+    if (userData.data !== null) {
+      FetchCurrentUser();
+    } else {
+      setLoading(false);
+    }
+  }, [userData.data]);
 
   async function FetchCurrentUser() {
     setLoading(true);
-    const res = await dispatch(fetchUserDataFromServer());
     const currentUser = await axios.get(`/api/users/${params.id.slice(3)}`);
 
-    if (currentUser.data.user.phone === res.payload.user.phone) {
+    if (currentUser.data.user.phone === userData.data?.phone) {
       setIsUserHere(true);
     }
 

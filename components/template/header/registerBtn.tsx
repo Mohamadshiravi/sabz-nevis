@@ -20,7 +20,7 @@ export default function RegisterBtn() {
     <>
       <div className="relative">
         <Link
-          href={"register"}
+          href={"/register"}
           className="bg-virgoolBlue hover:bg-virgoolBlueHover transition rounded-full px-4 py-1.5 text-white vazir-bold"
         >
           ثبت نام

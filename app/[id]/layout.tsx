@@ -1,5 +1,6 @@
 import Header from "@/components/module/header";
 import MobileNavbar from "@/components/module/navbar";
+import FollowBtn from "@/components/template/profile/followBtn";
 import ProfileNavbar from "@/components/template/profile/profileNavbar";
 import ConnectToDB from "@/DB/connectToDB";
 import userModel from "@/models/user";
@@ -27,7 +28,7 @@ export default async function UserProfilePage({
   }
 
   let isUserLogedIn = await IsUserLogedIn();
-  let isUserHere = null;
+  let isUserHere = false;
 
   if (isUserLogedIn && isUserLogedIn.phone === isAnyUserExist.phone) {
     isUserHere = true;
@@ -58,16 +59,7 @@ export default async function UserProfilePage({
                 دنبال میکند
               </h4>
             </div>
-            {!isUserHere ? (
-              <button className="text-sm flex items-center gap-4 mt-4 px-16 py-1.5 transition vazir-bold bg-virgoolBlue hover:bg-virgoolBlueHover rounded-full text-white">
-                دنبال کنید
-                <FaPlus />
-              </button>
-            ) : (
-              <button className="text-sm mt-4 vazir-bold hover:bg-zinc-700 hover:text-white transition px-16 py-1.5 border-2 border-zinc-700 text-zinc-700 dark:border-zinc-300 dark:text-zinc-300 dark:hover:bg-zinc-300 dark:hover:text-zinc-800 rounded-full">
-                تنظیمات حساب کاربری
-              </button>
-            )}
+            <FollowBtn isUserHere={isUserHere} />
             <div className="flex items-center justify-center gap-3 mt-2">
               {!isUserHere && isUserLogedIn && (
                 <div className="relative">

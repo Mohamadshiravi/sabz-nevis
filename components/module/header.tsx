@@ -62,7 +62,7 @@ export default function Header({ isTransparent }: { isTransparent?: boolean }) {
             </button>
             {!userData.data ? (
               <>
-                <Link href={"login"} className="rounded-full px-4 py-1.5">
+                <Link href={"/login"} className="rounded-full px-4 py-1.5">
                   ورود
                 </Link>
                 <RegisterBtn />
