@@ -2,18 +2,17 @@ import DesktopNavbar from "@/components/module/dekstopNavbar";
 import Footer from "@/components/module/footer";
 import Header from "@/components/module/header";
 import MobileNavbar from "@/components/module/navbar";
+import HomeBanner from "@/components/template/homeBanner";
+import MainSection from "@/components/template/main/main";
 import IsUserAuthentication from "@/utils/auth/authUser";
-import { ReactNode } from "react";
 
-export default async function PodcastLayout({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default async function Home() {
   const userData = await IsUserAuthentication();
+
   return (
     <>
       <Header />
+      {!userData && <HomeBanner />}
       <main
         className={`${
           userData
@@ -22,8 +21,8 @@ export default async function PodcastLayout({
         }`}
       >
         {userData && <DesktopNavbar />}
-        {children}
-        <Footer isSimple />
+        <MainSection userData={userData} />
+        <Footer />
       </main>
       <MobileNavbar />
     </>

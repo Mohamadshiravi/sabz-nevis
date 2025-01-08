@@ -17,9 +17,7 @@ export default function Post({ border }: PostProps) {
           src="/images/photo_2024-12-15_16-52-24.jpg"
           className="w-[24px] rounded-full ml-3"
         />
-        <span className="text-sm text-zinc-100 dark:text-white text-xs">
-          Sadra SG
-        </span>
+        <span className="text-sm text-white text-xs">Sadra SG</span>
         <GoDotFill className="text-[4px]" />
         <span className="text-xs">17 دقیقه پیش</span>
       </div>

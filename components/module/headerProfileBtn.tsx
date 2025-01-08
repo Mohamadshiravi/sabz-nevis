@@ -1,5 +1,7 @@
 import { changeTheme } from "@/redux/slices/user";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
+import ShowSwal from "@/utils/modalFunctions";
+import axios from "axios";
 import Link from "next/link";
 import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
@@ -62,7 +64,7 @@ export default function HeaderProfileBtn() {
             <div className="flex justify-between items-center p-4">
               <div className="flex flex-col gap-2 vazir-regular">
                 <span className="dark:text-virgoolText-500 text-virgoolText-600">
-                  محمد شیروی
+                  {userData.data?.displayName || userData.data?.username}
                 </span>
                 <Link
                   href={`/@${userData.data?.username}`}
@@ -78,32 +80,35 @@ export default function HeaderProfileBtn() {
             </div>
             <div className="p-4 flex flex-col items-start gap-4 dark:text-virgoolText-400 text-virgoolText-600 border-t border-zinc-200 dark:border-zinc-800">
               <button className="text-virgoolBlue">نوشتن پست جدید</button>
-              <button>تنظیمات حساب کاربری</button>
+              <Link href={"/me/settings"}>تنظیمات حساب کاربری</Link>
               <button>پست ها و پیش نویس ها</button>
               <button>مشاهده امار</button>
               <button className="text-virgoolBlue">افزایش بازدید</button>
               <button>علاقه مندی ها من</button>
               <button>پست های مورد علاقه</button>
-              <button>لیست ها</button>
+              <Link href={"/me/lists"}>لیست ها</Link>
             </div>
             <div className="p-4 flex flex-col items-start gap-4 dark:text-virgoolText-400 text-virgoolText-600 border-t border-zinc-200 dark:border-zinc-800">
               <button>انتشارات</button>
             </div>
-            <div className="p-4 flex flex-col items-start gap-4 dark:text-virgoolText-400 text-virgoolText-600 border-t border-zinc-200 dark:border-zinc-800">
-              <button>خروج</button>
-            </div>
+            <button
+              onClick={LogOutHandler}
+              className="p-4 flex flex-col w-full items-start gap-4 dark:text-virgoolText-400 text-virgoolText-600 border-t border-zinc-200 dark:border-zinc-800"
+            >
+              خروج
+            </button>
             <button
               onClick={ChangeThemeHandler}
               className="p-4 flex w-full items-center justify-between gap-4 dark:text-virgoolText-400 text-virgoolText-600 border-t border-zinc-200 dark:border-zinc-800"
             >
               {userData.theme === "dark" ? (
                 <>
-                  <button>حالت شب</button>
+                  <span>حالت شب</span>
                   <IoMoonSharp className="text-xl" />
                 </>
               ) : (
                 <>
-                  <button>حالت روز</button>
+                  <span>حالت روز</span>
                   <MdSunny className="text-xl" />
                 </>
               )}
@@ -113,4 +118,16 @@ export default function HeaderProfileBtn() {
       </div>
     </>
   );
+  async function LogOutHandler() {
+    const isOk = await ShowSwal(
+      "warning",
+      "ایا میخاهید از اکانت خود خارج شوید ؟",
+      "خیر",
+      "بله"
+    );
+    if (isOk) {
+      const res = await axios.get("/api/auth/logout");
+      location.reload();
+    }
+  }
 }

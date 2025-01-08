@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 import { VerifyAccessToken } from "./tokenControl";
 import ConnectToDB from "@/DB/connectToDB";
-import userModel, { UserModelType } from "@/models/user";
+import userModel from "@/models/user";
 
 export default async function IsUserAuthentication() {
   try {
@@ -17,7 +17,10 @@ export default async function IsUserAuthentication() {
     }
 
     await ConnectToDB();
-    const user = await userModel.findOne({ phone: isTokenValid.phone }, "-__v");
+    const user = await userModel.findOne(
+      { phone: isTokenValid.phone },
+      "phone"
+    );
     if (!user) {
       return false;
     }

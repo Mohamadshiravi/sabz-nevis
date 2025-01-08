@@ -3,24 +3,10 @@ import Footer from "@/components/module/footer";
 import Header from "@/components/module/header";
 import MobileNavbar from "@/components/module/navbar";
 import ListsMainSection from "@/components/template/me/listsMainSection";
-import ConnectToDB from "@/DB/connectToDB";
-import userModel from "@/models/user";
-import { VerifyAccessToken } from "@/utils/auth/tokenControl";
-import { cookies } from "next/headers";
+import IsUserAuthentication from "@/utils/auth/authUser";
 
 export default async function ListsPage() {
-  let userData = null;
-  const token = cookies().get("token")?.value;
-  if (token) {
-    const isTokenValid = VerifyAccessToken(token);
-    if (isTokenValid) {
-      await ConnectToDB();
-      userData = await userModel.findOne(
-        { phone: isTokenValid.phone },
-        "phone -_id"
-      );
-    }
-  }
+  const userData = await IsUserAuthentication();
   return (
     <>
       <Header />

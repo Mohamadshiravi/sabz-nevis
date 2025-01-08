@@ -4,8 +4,7 @@ import FollowBtn from "@/components/template/profile/followBtn";
 import ProfileNavbar from "@/components/template/profile/profileNavbar";
 import ConnectToDB from "@/DB/connectToDB";
 import userModel from "@/models/user";
-import { VerifyAccessToken } from "@/utils/auth/tokenControl";
-import { cookies } from "next/headers";
+import IsUserAuthentication from "@/utils/auth/authUser";
 import { notFound } from "next/navigation";
 import { ReactNode } from "react";
 import { BsThreeDots } from "react-icons/bs";
@@ -28,18 +27,7 @@ export default async function UserProfilePage({
     notFound();
   }
 
-  let isUserLogedIn = null;
-  const token = cookies().get("token")?.value;
-  if (token) {
-    const isTokenValid = VerifyAccessToken(token);
-    if (isTokenValid) {
-      await ConnectToDB();
-      isUserLogedIn = await userModel.findOne(
-        { phone: isTokenValid.phone },
-        "phone -_id"
-      );
-    }
-  }
+  const isUserLogedIn = await IsUserAuthentication();
   let isUserHere = false;
 
   if (isUserLogedIn && isUserLogedIn.phone === isAnyUserExist.phone) {
