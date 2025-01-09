@@ -11,7 +11,7 @@ export default function ProfileNavbar({ username }: { username: string }) {
         href={`/@${username}`}
         className={`py-2 relative ${
           path === `/@${username}` &&
-          "text-black dark:text-white vazir-regular after:content-[''] after:absolute after:w-full after:bottom-[-1px] after:left-0 after:h-[1.5px] after:bg-virgoolText-800 dark:after:bg-white"
+          "text-black dark:text-white vazir-regular after:content-[''] after:absolute after:w-full after:bottom-[-2px] after:left-0 after:h-[2px] after:bg-virgoolText-800 dark:after:bg-white"
         }`}
       >
         پست ها
@@ -20,7 +20,7 @@ export default function ProfileNavbar({ username }: { username: string }) {
         href={`/@${username}/lists`}
         className={`py-2 relative ${
           path === `/@${username}/lists` &&
-          "text-black dark:text-white vazir-regular after:content-[''] after:absolute after:w-full after:bottom-[-1px] after:left-0 after:h-[1.5px] after:bg-virgoolText-800 dark:after:bg-white"
+          "text-black dark:text-white vazir-regular after:content-[''] after:absolute after:w-full after:bottom-[-2px] after:left-0 after:h-[2px] after:bg-virgoolText-800 dark:after:bg-white"
         }`}
       >
         لیست ها
@@ -29,7 +29,7 @@ export default function ProfileNavbar({ username }: { username: string }) {
         href={`/@${username}/publications`}
         className={`py-2 relative ${
           path === `/@${username}/publications` &&
-          "text-black dark:text-white vazir-regular after:content-[''] after:absolute after:w-full after:bottom-[-1px] after:left-0 after:h-[1.5px] after:bg-virgoolText-800 dark:after:bg-white"
+          "text-black dark:text-white vazir-regular after:content-[''] after:absolute after:w-full after:bottom-[-2px] after:left-0 after:h-[2px] after:bg-virgoolText-800 dark:after:bg-white"
         }`}
       >
         انتشارات

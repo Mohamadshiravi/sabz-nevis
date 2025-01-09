@@ -36,10 +36,10 @@ export default function SettingsAdvanced() {
             onClick={() => {
               dispatch(changeTheme("dark"));
             }}
-            className={`px-4 py-2 border-l border-zinc-400 dark:border-zinc-700 ${
-              userData.theme === "dark"
-                ? "bg-virgoolBlue text-white"
-                : "border-r"
+            className={`px-4 py-2 ${
+              userData.theme !== "dark"
+                ? "border-l border-zinc-400 dark:border-zinc-700"
+                : "bg-virgoolBlue text-white"
             }`}
           >
             <IoMoonSharp />
