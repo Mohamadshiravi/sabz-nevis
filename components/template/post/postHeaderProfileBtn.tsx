@@ -1,3 +1,5 @@
+"use client";
+
 import { changeTheme } from "@/redux/slices/user";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
 import ShowSwal from "@/utils/modalFunctions";
@@ -8,7 +10,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { IoMoonSharp } from "react-icons/io5";
 import { MdSunny } from "react-icons/md";
 
-export default function HeaderProfileBtn() {
+export default function PostHeaderProfileBtn() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMenuMount, setIsMenuMount] = useState(false);
 
@@ -48,7 +50,6 @@ export default function HeaderProfileBtn() {
           onClick={AnimateToggleModal}
           className="flex items-center bg-zinc-100 cursor-pointer dark:bg-darkColor-700 h-full py-1 pl-0.5 gap-2 rounded-full"
         >
-          <IoIosArrowDown className="mr-3 text-xs" />
           <img
             src="/images/avatar-default.jpg"
             className="rounded-full w-[35px] aspect-square"
@@ -58,7 +59,7 @@ export default function HeaderProfileBtn() {
           <div
             className={`${
               isMenuOpen ? "opacity-1" : "opacity-0"
-            } absolute shadow-lg border border-zinc-200 dark:border-zinc-800 transition top-[51px] left-0 w-[240px] dark:bg-darkColor-800 bg-white rounded-md vazir-medium`}
+            } absolute shadow-lg border border-zinc-200 dark:border-zinc-800 transition top-[51px] -left-3 w-[240px] dark:bg-darkColor-800 bg-white rounded-md vazir-medium`}
           >
             <span className="w-[13px] h-[13px] bg-white absolute border-t border-l border-zinc-200 transition dark:border-zinc-800 dark:bg-darkColor-800 rotate-45 top-[-7px] left-6"></span>
             <div className="flex justify-between items-center p-4">
@@ -79,9 +80,6 @@ export default function HeaderProfileBtn() {
               />
             </div>
             <div className="p-4 flex flex-col items-start gap-4 dark:text-virgoolText-400 text-virgoolText-600 border-t border-zinc-200 dark:border-zinc-800">
-              <Link href={"/post/create"} className="text-virgoolBlue">
-                نوشتن پست جدید
-              </Link>
               <Link href={"/me/settings"}>تنظیمات حساب کاربری</Link>
               <button>پست ها و پیش نویس ها</button>
               <button>مشاهده امار</button>
