@@ -21,7 +21,9 @@ export default function MobileNavbar() {
   return (
     <nav className="z-40 fixed lg:hidden flex bottom-0 border-t border-zinc-200 left-0 w-full bg-white dark:bg-darkColor-800 dark:border-zinc-800 items-center justify-between py-3 px-8 gap-4">
       <Link
-        href={`/@${userData.data?.username}`}
+        href={
+          userData.data?.username ? `/@${userData.data?.username}` : `/login`
+        }
         className={`${
           path === `/@${userData.data?.username}` ||
           path === `/@${userData.data?.username}/lists`
