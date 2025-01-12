@@ -15,12 +15,6 @@ export default function HeaderProfileBtn() {
   const userData = useTypedSelector((state) => state.user);
   const dispatch = useTypedDispatch();
 
-  function ChangeThemeHandler() {
-    const theme = userData.theme === "dark" ? "light" : "dark";
-    dispatch(changeTheme(theme));
-    AnimateToggleModal();
-  }
-
   function AnimateToggleModal() {
     if (isMenuMount) {
       setIsMenuOpen(false);
@@ -43,7 +37,7 @@ export default function HeaderProfileBtn() {
           className="fixed top-0 left-0 w-full h-screen"
         ></section>
       )}
-      <div className="relative h-[40px]">
+      <div className="relative h-[40px] z-[40]">
         <button
           onClick={AnimateToggleModal}
           className="flex items-center bg-zinc-100 cursor-pointer dark:bg-darkColor-700 h-full py-1 pl-0.5 gap-2 rounded-full"
@@ -85,35 +79,16 @@ export default function HeaderProfileBtn() {
               <Link href={"/me/settings"}>تنظیمات حساب کاربری</Link>
               <button>پست ها و پیش نویس ها</button>
               <button>مشاهده امار</button>
-              <button className="text-myGreen-600">افزایش بازدید</button>
-              <button>علاقه مندی ها من</button>
-              <button>پست های مورد علاقه</button>
+              <button>موضوع های مورد علاقه</button>
+              <button>پست های لایک شده</button>
               <Link href={"/me/lists"}>لیست ها</Link>
             </div>
-            <div className="p-4 flex flex-col items-start gap-4 dark:text-virgoolText-400 text-virgoolText-600 border-t border-zinc-200 dark:border-zinc-800">
-              <button>انتشارات</button>
-            </div>
+
             <button
               onClick={LogOutHandler}
               className="p-4 flex flex-col w-full items-start gap-4 dark:text-virgoolText-400 text-virgoolText-600 border-t border-zinc-200 dark:border-zinc-800"
             >
               خروج
-            </button>
-            <button
-              onClick={ChangeThemeHandler}
-              className="p-4 flex w-full items-center justify-between gap-4 dark:text-virgoolText-400 text-virgoolText-600 border-t border-zinc-200 dark:border-zinc-800"
-            >
-              {userData.theme === "dark" ? (
-                <>
-                  <span>حالت شب</span>
-                  <IoMoonSharp className="text-xl" />
-                </>
-              ) : (
-                <>
-                  <span>حالت روز</span>
-                  <MdSunny className="text-xl" />
-                </>
-              )}
             </button>
           </div>
         )}

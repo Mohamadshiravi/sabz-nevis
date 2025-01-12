@@ -58,7 +58,7 @@ export default function VerifyCodeForm({ phone, back }: VerifyCodeFormProp) {
   return (
     <>
       {!isCodeVerified ? (
-        <section className="lg:w-[3000px] w-full bg-white h-full flex lg:items-center lg:mt-0 mt-8 justify-center">
+        <section className="lg:w-[3000px] w-full bg-white h-full flex lg:items-center lg:mt-0 pt-8 justify-center">
           <form
             onSubmit={HandlerVerifyCode}
             className="flex flex-col items-center gap-3 w-[600px]"

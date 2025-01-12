@@ -25,7 +25,7 @@ export default function RegisterSection() {
               width={600}
               height={600}
               alt="virgool logo"
-              className="w-[70px]"
+              className="sm:w-[70px] w-[50px]"
             />
           </div>
           <h2 className="lg:mt-20 mt-6 vazir-bold lg:text-3xl text-xl text-white text-center w-full">

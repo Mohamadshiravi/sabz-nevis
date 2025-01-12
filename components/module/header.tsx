@@ -1,12 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { IoInformationCircleOutline, IoSearch } from "react-icons/io5";
+import {
+  IoInformationCircleOutline,
+  IoMoonSharp,
+  IoSearch,
+} from "react-icons/io5";
 import RegisterBtn from "../template/header/registerBtn";
 import { useEffect, useState } from "react";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
-import { fetchUserDataFromServer } from "@/redux/slices/user";
-import { MdNotifications } from "react-icons/md";
+import { changeTheme, fetchUserDataFromServer } from "@/redux/slices/user";
+import { MdNotifications, MdSunny } from "react-icons/md";
 import HeaderProfileBtn from "./headerProfileBtn";
 import Image from "next/image";
 
@@ -31,6 +35,11 @@ export default function Header({ isTransparent }: { isTransparent?: boolean }) {
   const userData = useTypedSelector((state) => {
     return state.user;
   });
+
+  function ChangeThemeHandler() {
+    const theme = userData.theme === "dark" ? "light" : "dark";
+    dispatch(changeTheme(theme));
+  }
 
   return (
     <header
@@ -72,9 +81,23 @@ export default function Header({ isTransparent }: { isTransparent?: boolean }) {
                 <RegisterBtn />
               </>
             ) : (
-              <>
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={ChangeThemeHandler}
+                  className="p-2.5 flex bg-zinc-100 dark:bg-zinc-800 rounded-full items-center justify-between gap-4 dark:text-virgoolText-400 text-virgoolText-600"
+                >
+                  {userData.theme === "dark" ? (
+                    <>
+                      <IoMoonSharp className="text-xl" />
+                    </>
+                  ) : (
+                    <>
+                      <MdSunny className="text-xl" />
+                    </>
+                  )}
+                </button>
                 <HeaderProfileBtn />
-              </>
+              </div>
             )}
           </>
         ) : (
