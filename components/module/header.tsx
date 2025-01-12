@@ -8,9 +8,10 @@ import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
 import { fetchUserDataFromServer } from "@/redux/slices/user";
 import { MdNotifications } from "react-icons/md";
 import HeaderProfileBtn from "./headerProfileBtn";
+import Image from "next/image";
 
 export default function Header({ isTransparent }: { isTransparent?: boolean }) {
-  const [searchInp, setSearchInp] = useState("جستجو در ویرگول...");
+  const [searchInp, setSearchInp] = useState("جستجو در سبز نویس...");
   const [loading, setLoading] = useState(true);
 
   const FetchUserData = async () => {
@@ -34,7 +35,7 @@ export default function Header({ isTransparent }: { isTransparent?: boolean }) {
   return (
     <header
       className={`${
-        userData ? "lg:sticky top-0 left-0" : "relative"
+        userData.data ? "lg:sticky top-0 left-0" : "relative"
       } flex items-center justify-between md:px-6 px-2 py-2 ${
         !isTransparent
           ? "border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-darkColor-800"
@@ -42,7 +43,13 @@ export default function Header({ isTransparent }: { isTransparent?: boolean }) {
       } z-40`}
     >
       <Link href={"/home"}>
-        <img src="/images/logo.webp" className="w-[50px]" />
+        <Image
+          src="/images/sabz-logo.png"
+          width={1000}
+          height={1000}
+          alt="logo"
+          className="sm:w-[45px] w-[40px]"
+        />
       </Link>
       <div className="rounded-full bg-zinc-100 dark:bg-darkColor-700 text-sm items-center gap-3 px-3 py-1 md:flex hidden">
         <IoSearch className="text-xl" />
@@ -57,9 +64,6 @@ export default function Header({ isTransparent }: { isTransparent?: boolean }) {
       <div className="flex gap-1 items-center text-sm">
         {!loading ? (
           <>
-            <button className="rounded-full bg-zinc-100 dark:bg-darkColor-700 ml-1 text-2xl h-[40px] w-[40px] flex items-center justify-center">
-              <IoInformationCircleOutline />
-            </button>
             {!userData.data ? (
               <>
                 <Link href={"/login"} className="rounded-full px-4 py-1.5">
@@ -69,18 +73,13 @@ export default function Header({ isTransparent }: { isTransparent?: boolean }) {
               </>
             ) : (
               <>
-                <button className="rounded-full bg-zinc-100 dark:bg-darkColor-700 text-2xl md:ml-3 ml-1 h-[40px] w-[40px] flex items-center justify-center">
-                  <MdNotifications />
-                </button>
                 <HeaderProfileBtn />
               </>
             )}
           </>
         ) : (
           <div className="flex items-center">
-            <button className="rounded-full ml-2 bg-zinc-100 dark:bg-zinc-800 text-2xl h-[40px] w-[40px] flex items-center justify-center"></button>
-            <button className="rounded-full ml-6 bg-zinc-100 dark:bg-zinc-800 text-2xl h-[40px] w-[40px] flex items-center justify-center"></button>
-            <button className="rounded-full bg-zinc-100 dark:bg-zinc-800 text-2xl h-[40px] w-[80px] flex items-center justify-center"></button>
+            <button className="rounded-full ml-2 bg-zinc-100 dark:bg-zinc-800 text-2xl h-[40px] w-[150px] flex items-center justify-center"></button>
           </div>
         )}
       </div>

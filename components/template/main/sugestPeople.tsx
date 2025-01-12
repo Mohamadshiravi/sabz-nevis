@@ -48,7 +48,7 @@ export default function SugestionsPeople() {
                     محمد شیروی
                   </h3>
                 </div>
-                <button className="flex w-full text-nowrap text-sm items-center justify-center gap-4 bg-virgoolBlue hover:bg-virgoolBlueHover transition rounded-full pr-5 pl-3 py-2 text-white vazir-bold">
+                <button className="flex w-full text-nowrap text-sm items-center justify-center gap-4 bg-myGreen-600 hover:bg-myGreen-700 transition rounded-full pr-5 pl-3 py-2 text-white vazir-bold">
                   دنبال کنید
                   <FiPlus className="text-lg" />
                 </button>

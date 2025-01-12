@@ -28,16 +28,6 @@ export default function SettingsNavbar() {
         حساب کاربری
       </Link>
       <Link
-        href={"/me/settings/notifications"}
-        className={`${
-          path === "/me/settings/notifications"
-            ? "text-virgoolText-800 dark:text-white vazir-bold after:content-[''] after:absolute after:w-full after:bottom-[-1px] after:left-0 after:h-[2px] after:bg-virgoolText-800 dark:after:bg-white"
-            : "text-virgoolText-600 dark:text-zinc-200 dark:hover:text-white hover:text-virgoolText-800 vazir-medium"
-        } pb-2 px-2 text-nowrap relative transition`}
-      >
-        اطلاعیه ها
-      </Link>
-      <Link
         href={"/me/settings/advanced"}
         className={`${
           path === "/me/settings/advanced"
@@ -45,7 +35,7 @@ export default function SettingsNavbar() {
             : "text-virgoolText-600 dark:text-zinc-200 dark:hover:text-white hover:text-virgoolText-800 vazir-medium"
         } pb-2 px-2 text-nowrap relative transition`}
       >
-        تنظیمات پیشرفته
+        شخصی سازی
       </Link>
     </div>
   );

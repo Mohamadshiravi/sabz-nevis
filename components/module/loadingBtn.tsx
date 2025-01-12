@@ -22,7 +22,7 @@ export default function LoadingBtn({
         fullWidth ? "w-full" : `${width ? `${width}` : "lg:w-[180px] w-full"}`
       } ${
         !loading
-          ? "bg-virgoolBlue hover:bg-virgoolBlueHover"
+          ? "bg-myGreen-600 hover:bg-myGreen-700"
           : "bg-zinc-200 cursor-not-allowed"
       } flex items-center py-1.5 overflow-hidden h-[35px] transition justify-center text-sm text-white vazir-medium`}
       disabled={loading}

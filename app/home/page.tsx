@@ -16,7 +16,7 @@ export default async function Home() {
           </div>
           <div className="pb-2 px-2 text-virgoolText-600 dark:text-virgoolText-500 flex items-center gap-2">
             دوستان
-            <span className="text-white bg-virgoolBlue text-[10px] px-2 py-[2px] rounded-sm">
+            <span className="text-white bg-myGreen-600 text-[10px] px-2 py-[2px] rounded-sm">
               جدید
             </span>
           </div>

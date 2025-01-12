@@ -6,9 +6,11 @@ import Image from "next/image";
 
 export default function TopPosts() {
   return (
-    <div className="bg-[#378ef0] sm:p-6 p-3 rounded-md">
-      <div className="flex items-center gap-2 text-white vazir-bold">
-        <img src="/images/logo.webp" className="w-[35px]" />
+    <div className="bg-emerald-600 sm:p-6 p-3 rounded-md">
+      <div className="flex items-center gap-4 text-white vazir-bold">
+        <div className="bg-white p-2 rounded-md shadow-lg">
+          <img src="/images/sabz-logo.png" className="w-[30px]" />
+        </div>
         <h3>پست های منتخب</h3>
       </div>
       <div className="grid mt-8">

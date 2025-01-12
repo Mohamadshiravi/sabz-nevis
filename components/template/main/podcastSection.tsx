@@ -62,7 +62,7 @@ export default function PodcastSection() {
         </Swiper>
         <div className="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-700 mt-3 py-3">
           <span className="vazir-bold">پادکست رفتار</span>
-          <button className="flex gap-2 items-center text-virgoolBlue text-xs">
+          <button className="flex gap-2 items-center text-myGreen-600 text-xs">
             مشاهده همه قسمت‌ها
             <IoIosArrowBack className="text-sm" />
           </button>
@@ -82,7 +82,7 @@ export default function PodcastSection() {
                 <span className="text-[10px] text-zinc-500">44 : 54</span>
               </div>
             </div>
-            <button className="bg-virgoolBlue p-1 rounded-full text-white text-2xl">
+            <button className="bg-myGreen-600 p-1 rounded-full text-white text-2xl">
               <MdPlayArrow />
             </button>
           </div>
@@ -100,7 +100,7 @@ export default function PodcastSection() {
                 <span className="text-[10px] text-zinc-500">44 : 54</span>
               </div>
             </div>
-            <button className="bg-virgoolBlue p-1 rounded-full text-white text-2xl">
+            <button className="bg-myGreen-600 p-1 rounded-full text-white text-2xl">
               <MdPlayArrow />
             </button>
           </div>
@@ -118,7 +118,7 @@ export default function PodcastSection() {
                 <span className="text-[10px] text-zinc-500">44 : 54</span>
               </div>
             </div>
-            <button className="bg-virgoolBlue p-1 rounded-full text-white text-2xl">
+            <button className="bg-myGreen-600 p-1 rounded-full text-white text-2xl">
               <MdPlayArrow />
             </button>
           </div>
@@ -136,7 +136,7 @@ export default function PodcastSection() {
                 <span className="text-[10px] text-zinc-500">44 : 54</span>
               </div>
             </div>
-            <button className="bg-virgoolBlue p-1 rounded-full text-white text-2xl">
+            <button className="bg-myGreen-600 p-1 rounded-full text-white text-2xl">
               <MdPlayArrow />
             </button>
           </div>

@@ -47,7 +47,7 @@ export default function LoginForm() {
         onSubmit={sendCodeHandler}
         className="flex flex-col lg:justify-center w-full h-full gap-3 px-8"
       >
-        <h1 className="vazir-black text-xl text-virgoolBlue lg:mt-0 mt-8">
+        <h1 className="vazir-black text-xl text-myGreen-600 lg:mt-0 mt-8">
           ورود به حساب کاربری
         </h1>
         <h3 className="text-virgoolText-600">
@@ -64,7 +64,12 @@ export default function LoginForm() {
             className="InpShadow w-full outline-none border px-4 border-zinc-200 py-3 rounded-full shadow-md"
             placeholder="شماره موبایل , نام کاربری"
           />
-          <LoadingBtn loading={loading}>ورود به حساب کاربری</LoadingBtn>
+          <LoadingBtn
+            icon={<IoIosArrowBack className="text-lg" />}
+            loading={loading}
+          >
+            ورود به حساب کاربری
+          </LoadingBtn>
           <Link href={"/register"} className="w-full text-center text-sm mt-10">
             عضو نیستید؟ ثبت نام کنید
           </Link>

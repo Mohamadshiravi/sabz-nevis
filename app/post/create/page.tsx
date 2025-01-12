@@ -15,7 +15,7 @@ export default function CreatePostPage() {
           <Link href={"/home"}>
             <img src="/images/logo.webp" className="w-[50px]" />
           </Link>
-          <button className="border sm:block hidden border-virgoolBlue text-virgoolBlue px-2 py-2 text-[11px] rounded-sm hover:text-virgoolBlueHover hover:border-virgoolBlueHover transition">
+          <button className="border sm:block hidden border-myGreen-600 text-myGreen-600 px-2 py-2 text-[11px] rounded-sm hover:text-myGreen-600Hover hover:border-myGreen-600Hover transition">
             رفتن به پیش نویس ها
           </button>
         </div>

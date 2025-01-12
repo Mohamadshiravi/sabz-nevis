@@ -68,7 +68,7 @@ export default function HeaderProfileBtn() {
                 </span>
                 <Link
                   href={`/@${userData.data?.username}`}
-                  className="text-virgoolBlue"
+                  className="text-myGreen-600"
                 >
                   مشاهده پروفایل
                 </Link>
@@ -79,13 +79,13 @@ export default function HeaderProfileBtn() {
               />
             </div>
             <div className="p-4 flex flex-col items-start gap-4 dark:text-virgoolText-400 text-virgoolText-600 border-t border-zinc-200 dark:border-zinc-800">
-              <Link href={"/post/create"} className="text-virgoolBlue">
+              <Link href={"/post/create"} className="text-myGreen-600">
                 نوشتن پست جدید
               </Link>
               <Link href={"/me/settings"}>تنظیمات حساب کاربری</Link>
               <button>پست ها و پیش نویس ها</button>
               <button>مشاهده امار</button>
-              <button className="text-virgoolBlue">افزایش بازدید</button>
+              <button className="text-myGreen-600">افزایش بازدید</button>
               <button>علاقه مندی ها من</button>
               <button>پست های مورد علاقه</button>
               <Link href={"/me/lists"}>لیست ها</Link>

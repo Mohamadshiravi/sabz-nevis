@@ -14,7 +14,7 @@ export default function ListsMainSection() {
 
           <button
             onClick={(e) => setIsAddListModalOpen(true)}
-            className="flex items-center bg-virgoolBlue hover:bg-virgoolBlueHover transition text-white px-5 py-1.5 text-sm rounded-full gap-2 vazir-bold"
+            className="flex items-center bg-myGreen-600 hover:bg-myGreen-700 transition text-white px-5 py-1.5 text-sm rounded-full gap-2 vazir-bold"
           >
             ساخت لیست جدید
           </button>

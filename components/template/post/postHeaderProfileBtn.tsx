@@ -69,7 +69,7 @@ export default function PostHeaderProfileBtn() {
                 </span>
                 <Link
                   href={`/@${userData.data?.username}`}
-                  className="text-virgoolBlue"
+                  className="text-myGreen-600"
                 >
                   مشاهده پروفایل
                 </Link>
@@ -83,7 +83,7 @@ export default function PostHeaderProfileBtn() {
               <Link href={"/me/settings"}>تنظیمات حساب کاربری</Link>
               <button>پست ها و پیش نویس ها</button>
               <button>مشاهده امار</button>
-              <button className="text-virgoolBlue">افزایش بازدید</button>
+              <button className="text-myGreen-600">افزایش بازدید</button>
               <button>علاقه مندی ها من</button>
               <button>پست های مورد علاقه</button>
               <Link href={"/me/lists"}>لیست ها</Link>

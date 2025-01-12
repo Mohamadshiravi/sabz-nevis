@@ -9,8 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        virgoolBlue: "#107abe",
-        virgoolBlueHover: "#0e6aa6",
+        myGreen: {
+          600: "#059669",
+          700: "#047857",
+        },
         virgoolText: {
           200: "#fafafa",
           400: "#a2a2a2",

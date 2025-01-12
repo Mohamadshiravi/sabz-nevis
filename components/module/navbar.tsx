@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AiOutlinePlus } from "react-icons/ai";
 import { FaHeadphones } from "react-icons/fa";
+import { FiSettings } from "react-icons/fi";
 import { IoSearch } from "react-icons/io5";
 import { RiApps2Fill } from "react-icons/ri";
 import { TiHome } from "react-icons/ti";
@@ -15,14 +16,16 @@ export default function MobileNavbar() {
   });
 
   const regex = /^\/me\/settings(\/.*)?$/;
+
   const path = usePathname();
   return (
     <nav className="z-40 fixed lg:hidden flex bottom-0 border-t border-zinc-200 left-0 w-full bg-white dark:bg-darkColor-800 dark:border-zinc-800 items-center justify-between py-3 px-8 gap-4">
       <Link
-        href={"/me/settings"}
+        href={`/@${userData.data?.username}`}
         className={`${
-          regex.test(path)
-            ? "border-2 border-virgoolBlue"
+          path === `/@${userData.data?.username}` ||
+          path === `/@${userData.data?.username}/lists`
+            ? "border-2 border-myGreen-600"
             : "border border-zinc-200"
         } w-[32px] h-[32px] rounded-full overflow-hidden`}
       >
@@ -32,19 +35,19 @@ export default function MobileNavbar() {
         />
       </Link>
       <Link
-        href={"/podcasts"}
+        href={"/me/settings"}
         className={`${
-          path === "/podcasts" ? "text-virgoolBlue" : "text-virgoolText-600"
+          regex.test(path) ? "text-myGreen-600" : "text-virgoolText-600"
         }`}
       >
-        <FaHeadphones className="text-2xl transition" />
+        <FiSettings className="text-2xl transition" />
       </Link>
       {!userData.data ? (
         <button>
           <RiApps2Fill className="text-xl text-virgoolText-600" />
         </button>
       ) : (
-        <button className="bg-virgoolBlue px-5 py-1 rounded-full">
+        <button className="bg-myGreen-600 px-5 py-1 rounded-full">
           <AiOutlinePlus className="text-2xl text-white" />
         </button>
       )}
@@ -54,7 +57,7 @@ export default function MobileNavbar() {
       <Link
         href={"/home"}
         className={`${
-          path === "/home" ? "text-virgoolBlue" : "text-virgoolText-600"
+          path === "/home" ? "text-myGreen-600" : "text-virgoolText-600"
         }`}
       >
         <TiHome className="text-2xl transition" />

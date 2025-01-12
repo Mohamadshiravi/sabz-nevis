@@ -63,7 +63,7 @@ export default function VerifyCodeForm({ phone, back }: VerifyCodeFormProp) {
             onSubmit={HandlerVerifyCode}
             className="flex flex-col items-center gap-3 w-[600px]"
           >
-            <h1 className="vazir-black text-xl text-virgoolBlue lg:mt-0 mt-8">
+            <h1 className="vazir-black text-xl text-myGreen-600 lg:mt-0 mt-8">
               کد تائید را وارد کنید
             </h1>
             <h3 className="text-virgoolText-600">
@@ -87,12 +87,12 @@ export default function VerifyCodeForm({ phone, back }: VerifyCodeFormProp) {
               {seconds === 0 ? (
                 <button
                   onClick={SendCodeAgain}
-                  className="text-virgoolBlue text-sm"
+                  className="text-myGreen-600 text-sm"
                 >
                   ارسال مجدد کد
                 </button>
               ) : (
-                <span className="text-virgoolBlue text-sm">
+                <span className="text-myGreen-600 text-sm">
                   تا ارسال مجدد کد : {formatTime(seconds)}
                 </span>
               )}

@@ -34,7 +34,7 @@ export default function AddListModal({
             disabled={!isValueValid}
             className={`${
               isValueValid ? "opacity-100" : "opacity-40"
-            } flex items-center bg-virgoolBlue hover:bg-virgoolBlueHover transition text-white px-5 py-1.5 text-sm rounded-full gap-2 vazir-bold`}
+            } flex items-center bg-myGreen-600 hover:bg-myGreen-700 transition text-white px-5 py-1.5 text-sm rounded-full gap-2 vazir-bold`}
           >
             ایجاد لیست جدید
           </button>

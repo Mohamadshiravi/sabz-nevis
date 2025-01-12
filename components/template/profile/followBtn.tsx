@@ -13,7 +13,7 @@ export default function FollowBtn({ isUserHere }: { isUserHere: boolean }) {
 
   return !loading ? (
     !isUserHere ? (
-      <button className="text-sm flex items-center gap-4 mt-4 px-16 py-1.5 transition vazir-bold bg-virgoolBlue hover:bg-virgoolBlueHover rounded-full text-white">
+      <button className="text-sm flex items-center gap-4 mt-4 px-16 py-1.5 transition vazir-bold bg-myGreen-600 hover:bg-myGreen-700 rounded-full text-white">
         دنبال کنید
         <FaPlus />
       </button>

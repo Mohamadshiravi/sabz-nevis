@@ -1,6 +1,5 @@
 "use client";
 
-import PrimaryBtn from "@/components/module/primaryBtn";
 import { changeTheme } from "@/redux/slices/user";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
 import { IoMoonSharp } from "react-icons/io5";
@@ -12,18 +11,6 @@ export default function SettingsAdvanced() {
   const userData = useTypedSelector((state) => state.user);
   return (
     <div className="flex flex-col gap-10 pt-10 lg:pb-10 pb-20">
-      <div className="flex items-center justify-between w-full">
-        <div className="flex flex-col gap-2">
-          <h3 className="vazir-medium">نسخه پشتیبان</h3>
-          <h4 className="text-virgoolText-600 text-sm pl-2">
-            دریافت نسخه پشتیبان از محتوا
-          </h4>
-        </div>
-        <PrimaryBtn>download.zip</PrimaryBtn>
-      </div>
-      <hr className="border-1 border-zinc-200 dark:border-zinc-800" />
-
-      <h3 className="vazir-bold">تنظیمات حالت شب</h3>
       <div className="flex sm:flex-row flex-col gap-3 items-center justify-between w-full">
         <div className="flex flex-col gap-2">
           <h3 className="vazir-medium">حالت شب</h3>
@@ -39,7 +26,7 @@ export default function SettingsAdvanced() {
             className={`px-4 py-2 ${
               userData.theme !== "dark"
                 ? "border-l border-zinc-400 dark:border-zinc-700"
-                : "bg-virgoolBlue text-white"
+                : "bg-myGreen-600 text-white"
             }`}
           >
             <IoMoonSharp />
@@ -54,7 +41,7 @@ export default function SettingsAdvanced() {
             className={`px-4 py-2 ${
               userData.theme === "dark"
                 ? "border-r border-zinc-400 dark:border-zinc-700"
-                : "bg-virgoolBlue text-white"
+                : "bg-myGreen-600 text-white"
             }`}
           >
             <MdSunny />
@@ -71,7 +58,7 @@ export default function SettingsAdvanced() {
           <button className="px-4 py-2 border-l border-zinc-400 dark:border-zinc-700">
             خیر
           </button>
-          <button className="px-4 py-2 border-r border-zinc-400 dark:border-zinc-700 bg-virgoolBlue text-white">
+          <button className="px-4 py-2 border-r border-zinc-400 dark:border-zinc-700 bg-myGreen-600 text-white">
             بله
           </button>
         </div>

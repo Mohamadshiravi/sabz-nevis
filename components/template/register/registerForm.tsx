@@ -49,7 +49,7 @@ export default function RegisterForm() {
         onSubmit={sendCodeHandler}
         className="flex flex-col lg:justify-center w-full h-full gap-3 px-8"
       >
-        <h1 className="vazir-black text-xl text-virgoolBlue lg:mt-0 mt-8">
+        <h1 className="vazir-black text-xl text-myGreen-600 lg:mt-0 mt-8">
           ایجاد حساب کاربری
         </h1>
         <h3 className="text-virgoolText-600">شماره موبایل خود را وارد کنید</h3>

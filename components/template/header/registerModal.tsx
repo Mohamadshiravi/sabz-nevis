@@ -60,7 +60,7 @@ export default function RegisterModal({
         onSubmit={sendCodeHandler}
         className={`transition sm:px-20 px-8 py-16 flex flex-col gap-2 items-center w-full`}
       >
-        <h3 className="text-lg vazir-bold text-virgoolBlue">
+        <h3 className="text-lg vazir-bold text-myGreen-600">
           ایجاد حساب کاربری
         </h3>
         <h4 className="text-virgoolText-600">شماره موبایل خود را وارد کنید</h4>
