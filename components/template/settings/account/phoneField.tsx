@@ -2,7 +2,7 @@
 
 import LoadingBtn from "@/components/module/loadingBtn";
 import PrimaryBtn from "@/components/module/primaryBtn";
-import VirgoolModal from "@/components/module/virgoolModal";
+import SabzModal from "@/components/module/sabzModal";
 import { fetchUserDataFromServer } from "@/redux/slices/user";
 import { useTypedDispatch } from "@/redux/typedHooks";
 import { SendErrorToast, SendSucToast } from "@/utils/toast-functions";
@@ -71,7 +71,7 @@ export default function PhoneField({ phone }: { phone?: string }) {
         </div>
       </div>
       {isRegisterModalOpen && (
-        <VirgoolModal CloseModal={() => setIsRegisterModalOpen(false)}>
+        <SabzModal CloseModal={() => setIsRegisterModalOpen(false)}>
           <form onSubmit={sendCodeHandler} className="w-full p-4">
             <h3 className="vazir-bold text-lg border-b border-zinc-200 dark:border-zinc-800 py-2">
               ایمیل
@@ -93,10 +93,10 @@ export default function PhoneField({ phone }: { phone?: string }) {
               </LoadingBtn>
             </div>
           </form>
-        </VirgoolModal>
+        </SabzModal>
       )}
       {isVerifyCodeModalOpen && (
-        <VirgoolModal CloseModal={() => setIsVerifyCodeModalOpen(false)}>
+        <SabzModal CloseModal={() => setIsVerifyCodeModalOpen(false)}>
           <form
             onSubmit={HandlerVerifyCode}
             className={`bg-white flex flex-col sm:px-20 px-8 gap-2 py-16 items-center`}
@@ -104,7 +104,7 @@ export default function PhoneField({ phone }: { phone?: string }) {
             <h1 className="vazir-black text-xl text-myGreen-600 lg:mt-0 mt-8">
               کد تائید را وارد کنید
             </h1>
-            <h3 className="text-virgoolText-600">
+            <h3 className="text-myText-600">
               کد تائید برای شماره موبایل
               <span className="vazir-bold px-1 underline">{phoneInp}</span>
               ارسال گردید
@@ -139,14 +139,14 @@ export default function PhoneField({ phone }: { phone?: string }) {
                   setIsRegisterModalOpen(true);
                   setIsVerifyCodeModalOpen(false);
                 }}
-                className="flex text-nowrap lg:w-auto w-full text-sm items-center justify-center gap-2 bg-zinc-100 hover:bg-zinc-200 transition rounded-md px-4 py-2 text-virgoolText-600"
+                className="flex text-nowrap lg:w-auto w-full text-sm items-center justify-center gap-2 bg-zinc-100 hover:bg-zinc-200 transition rounded-md px-4 py-2 text-myText-600"
               >
                 <IoIosArrowForward className="text-lg" />
                 برگشت به مرحله قبل
               </button>
             </div>
           </form>
-        </VirgoolModal>
+        </SabzModal>
       )}
     </>
   );

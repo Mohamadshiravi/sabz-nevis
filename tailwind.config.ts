@@ -13,7 +13,7 @@ const config: Config = {
           600: "#059669",
           700: "#047857",
         },
-        virgoolText: {
+        myText: {
           200: "#fafafa",
           400: "#a2a2a2",
           500: "#8e8e8e",

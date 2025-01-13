@@ -1,6 +1,6 @@
 "use client";
 
-import VirgoolTextEditor from "@/components/module/virgoolTextEditor";
+import SabzTextEditor from "@/components/module/sabzTextEditor";
 import PostHeaderProfileBtn from "@/components/template/post/postHeaderProfileBtn";
 import Link from "next/link";
 import { CiSettings } from "react-icons/ci";
@@ -33,7 +33,7 @@ export default function CreatePostPage() {
         </div>
       </header>
       <main className="lg:w-[1024px] lg:m-auto w-full lg:px-28 px-4">
-        <VirgoolTextEditor />
+        <SabzTextEditor />
       </main>
     </>
   );

@@ -4,13 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "ایجاد حساب کاربری - ویرگول",
-  description: "این وبسایت صرفا یک کپی از وبسایت ویرگول برای نمونه کار است",
+  title: "ایجاد حساب کاربری - سبز نویس",
 };
 
 export default function RegisterSection() {
   return (
-    <main className="flex lg:flex-row flex-col items-center w-full h-screen text-virgoolText-800 bg-white">
+    <main className="flex lg:flex-row flex-col items-center w-full h-screen text-myText-800 bg-white">
       <section className="w-full transition relative lg:h-full h-[300px] flex items-center justify-center bg-gradient-to-tl from-[#00b09b] to-[#96c93d]">
         <Link
           href={"/home"}
@@ -24,7 +23,7 @@ export default function RegisterSection() {
               src={"/images/sabz-logo.png"}
               width={600}
               height={600}
-              alt="virgool logo"
+              alt="sabz-nevis logo"
               className="sm:w-[70px] w-[50px]"
             />
           </div>

@@ -70,7 +70,7 @@ export default function Footer({ isSimple }: { isSimple?: boolean }) {
             {categorys.map((e, i) => (
               <span
                 key={i}
-                className="text-xs px-2 py-1 rounded-md transition cursor-pointer text-center text-virgoolText-800 dark:text-virgoolText-500 border border-virgoolText-800 dark:border-virgoolText-500"
+                className="text-xs px-2 py-1 rounded-md transition cursor-pointer text-center text-myText-800 dark:text-myText-500 border border-myText-800 dark:border-myText-500"
               >
                 {e}
               </span>

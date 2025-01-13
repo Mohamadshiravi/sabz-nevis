@@ -50,7 +50,7 @@ export default function LoginForm() {
         <h1 className="vazir-black text-xl text-myGreen-600 lg:mt-0 mt-8">
           ورود به حساب کاربری
         </h1>
-        <h3 className="text-virgoolText-600">
+        <h3 className="text-myText-600">
           شماره موبایل یا نام کاربری خود را وارد کنید
         </h3>
         <div className="flex flex-col items-end gap-4">

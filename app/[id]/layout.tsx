@@ -35,7 +35,7 @@ export default async function UserProfilePage({
   }
   return (
     <>
-      <main className="bg-virgoolText-200 dark:bg-darkColor-700">
+      <main className="bg-myText-200 dark:bg-darkColor-700">
         <Header isTransparent />
         <section className="border-b-2 border-zinc-200 dark:border-b-zinc-700">
           <section className="flex flex-col items-center mt-4 gap-2">
@@ -46,10 +46,10 @@ export default async function UserProfilePage({
             <h1 className="vazir-black text-xl">
               {isAnyUserExist.displayName || isAnyUserExist.username}
             </h1>
-            <h3 className="text-sm dark:text-virgoolText-400 px-4 overflow-hidden w-full text-center md:w-[400px] w-full">
+            <h3 className="text-sm dark:text-myText-400 px-4 overflow-hidden w-full text-center md:w-[400px] w-full">
               {isAnyUserExist.about}
             </h3>
-            <div className="flex items-center mt-3 gap-10 text-sm text-virgoolText-600 dark:text-virgoolText-400">
+            <div className="flex items-center mt-3 gap-10 text-sm text-myText-600 dark:text-myText-400">
               <h4>
                 توسط <span className="text-black dark:text-white">0</span> نفر
                 دنبال میشود
@@ -74,7 +74,7 @@ export default async function UserProfilePage({
                   >
                     <BsThreeDots />
                   </label>
-                  <div className="after:content-[''] after:w-[10px] after:h-[10px] after:absolute after:-top-1 after:left-[90px] after:border-t after:border-l after:bg-white after:rotate-45 w-[200px] hidden peer-checked:block rounded-sm z-10 top-10 -left-16 shadow-lg absolute bg-white text-sm text-virgoolText-600">
+                  <div className="after:content-[''] after:w-[10px] after:h-[10px] after:absolute after:-top-1 after:left-[90px] after:border-t after:border-l after:bg-white after:rotate-45 w-[200px] hidden peer-checked:block rounded-sm z-10 top-10 -left-16 shadow-lg absolute bg-white text-sm text-myText-600">
                     <button className="py-4 px-6">بلاک کاربر</button>
                   </div>
                 </div>
@@ -106,6 +106,6 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   );
 
   return {
-    title: `${isAnyUserExist.displayName || `پروفایل کاربر`} - ویرگول`,
+    title: `${isAnyUserExist.displayName || `پروفایل کاربر`} - سبزنویس`,
   };
 }

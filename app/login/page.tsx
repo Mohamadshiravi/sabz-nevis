@@ -2,16 +2,14 @@ import LoginForm from "@/components/template/login/loginForm";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { IoIosArrowBack } from "react-icons/io";
 
 export const metadata: Metadata = {
-  title: "ورود به حساب کاربری - ویرگول",
-  description: "این وبسایت صرفا یک کپی از وبسایت ویرگول برای نمونه کار است",
+  title: "ورود به حساب کاربری - سبز نویس",
 };
 
 export default function LoginSection() {
   return (
-    <main className="flex lg:flex-row flex-col items-center w-full h-screen text-virgoolText-800">
+    <main className="flex lg:flex-row flex-col items-center w-full h-screen text-myText-800">
       <section className="relative w-full lg:h-full h-[300px] flex items-center justify-center bg-gradient-to-tl from-[#00b09b] to-[#96c93d]">
         <Link
           href={"/home"}
@@ -25,7 +23,7 @@ export default function LoginSection() {
               src={"/images/sabz-logo.png"}
               width={600}
               height={600}
-              alt="virgool logo"
+              alt="sabz-nevis logo"
               className="sm:w-[70px] w-[50px]"
             />
           </div>

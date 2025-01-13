@@ -84,7 +84,7 @@ export default function Header({ isTransparent }: { isTransparent?: boolean }) {
               <div className="flex items-center gap-3">
                 <button
                   onClick={ChangeThemeHandler}
-                  className="p-2.5 flex bg-zinc-100 dark:bg-zinc-800 rounded-full items-center justify-between gap-4 dark:text-virgoolText-400 text-virgoolText-600"
+                  className="p-2.5 flex bg-zinc-100 dark:bg-zinc-800 rounded-full items-center justify-between gap-4 dark:text-myText-400 text-myText-600"
                 >
                   {userData.theme === "dark" ? (
                     <>

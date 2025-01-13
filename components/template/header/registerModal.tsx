@@ -3,7 +3,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import { SendErrorToast } from "@/utils/toast-functions";
 import axios from "axios";
 import LoadingBtn from "@/components/module/loadingBtn";
-import VirgoolModal from "@/components/module/virgoolModal";
+import SabzModal from "@/components/module/sabzModal";
 
 type RegisterModalProps = {
   value: string;
@@ -55,7 +55,7 @@ export default function RegisterModal({
     }
   }
   return (
-    <VirgoolModal CloseModal={CloseModal}>
+    <SabzModal CloseModal={CloseModal}>
       <form
         onSubmit={sendCodeHandler}
         className={`transition sm:px-20 px-8 py-16 flex flex-col gap-2 items-center w-full`}
@@ -63,7 +63,7 @@ export default function RegisterModal({
         <h3 className="text-lg vazir-bold text-myGreen-600">
           ایجاد حساب کاربری
         </h3>
-        <h4 className="text-virgoolText-600">شماره موبایل خود را وارد کنید</h4>
+        <h4 className="text-myText-600">شماره موبایل خود را وارد کنید</h4>
         <input
           dir="ltr"
           onChange={(e) => {
@@ -80,6 +80,6 @@ export default function RegisterModal({
           ایجاد حساب کاربری
         </LoadingBtn>
       </form>
-    </VirgoolModal>
+    </SabzModal>
   );
 }

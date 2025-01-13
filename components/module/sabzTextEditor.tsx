@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { FaPlus } from "react-icons/fa";
 
-export default function VirgoolTextEditor() {
+export default function SabzTextEditor() {
   const [body, setBody] = useState("");
   const [headerInp, setHeaderInp] = useState("");
   const [text, setText] = useState("");

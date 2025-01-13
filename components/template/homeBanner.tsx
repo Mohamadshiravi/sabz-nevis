@@ -9,7 +9,7 @@ export default function HomeBanner() {
           <div className="flex items-center gap-8">
             <Image
               src={"/images/sabz-logo.png"}
-              alt="virgool-logo"
+              alt="sabz-nevis-logo"
               width={800}
               height={800}
               className="w-[100px] sm:hidden block"
@@ -32,7 +32,7 @@ export default function HomeBanner() {
         <div className="flex flex-col items-center gap-4 justify-between">
           <Image
             src={"/images/sabz-logo.png"}
-            alt="virgool-logo"
+            alt="sabz-nevis-logo"
             width={800}
             height={800}
             className="w-[140px] sm:block hidden"

@@ -5,10 +5,10 @@ import ReduxProvider from "@/redux/provider";
 import GetTheme from "@/components/module/getTheme/getTheme";
 
 export const metadata: Metadata = {
-  title: "وبسایت ویرگول Clone",
-  description: "این وبسایت صرفا یک کپی از وبسایت ویرگول برای نمونه کار است",
+  title: "سبز نویس | هر چی میخوای بنویس",
+  description: "سبز نویس یک وبسایت برای نوشتن وبلاگ های خودتون",
   icons: {
-    icon: "/images/logo.webp",
+    icon: "/images/sabz-logo.png",
   },
 };
 
@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="fa-IR" dir="rtl">
       <body
-        className={`antialiased select-none vazir-regular text-virgoolText-800 bg-white dark:bg-darkColor-800 dark:text-white`}
+        className={`antialiased select-none vazir-regular text-myText-800 bg-white dark:bg-darkColor-800 dark:text-white`}
       >
         <ReduxProvider>
           <GetTheme />

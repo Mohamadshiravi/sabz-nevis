@@ -1,5 +1,5 @@
 import LoadingBtn from "@/components/module/loadingBtn";
-import VirgoolModal from "@/components/module/virgoolModal";
+import SabzModal from "@/components/module/sabzModal";
 import { useTypedDispatch } from "@/redux/typedHooks";
 import { SendErrorToast, SendSucToast } from "@/utils/toast-functions";
 import axios from "axios";
@@ -59,7 +59,7 @@ export default function VerifyCodeInModal({
     setCode(codeClone);
   }
   return (
-    <VirgoolModal CloseModal={CloseModal}>
+    <SabzModal CloseModal={CloseModal}>
       <form
         onSubmit={HandlerVerifyCode}
         className={`flex flex-col sm:px-20 px-8 gap-2 py-16 items-center`}
@@ -67,7 +67,7 @@ export default function VerifyCodeInModal({
         <h1 className="vazir-black text-xl text-myGreen-600 lg:mt-0 mt-8">
           کد تائید را وارد کنید
         </h1>
-        <h3 className="text-virgoolText-600">
+        <h3 className="text-myText-600">
           کد تائید برای شماره موبایل
           <span className="vazir-bold px-1 underline">{phone}</span> ارسال گردید
         </h3>
@@ -96,14 +96,14 @@ export default function VerifyCodeInModal({
           </LoadingBtn>
           <button
             onClick={back}
-            className="flex text-nowrap lg:w-auto w-full text-sm items-center justify-center gap-2 bg-zinc-100 dark:bg-zinc-800 dark:hover:bg-zinc-700 hover:bg-zinc-200 transition rounded-md px-4 py-2 text-virgoolText-600"
+            className="flex text-nowrap lg:w-auto w-full text-sm items-center justify-center gap-2 bg-zinc-100 dark:bg-zinc-800 dark:hover:bg-zinc-700 hover:bg-zinc-200 transition rounded-md px-4 py-2 text-myText-600"
           >
             <IoIosArrowForward className="text-lg" />
             برگشت به مرحله قبل
           </button>
         </div>
       </form>
-    </VirgoolModal>
+    </SabzModal>
   );
   async function HandlerVerifyCode(e: FormEvent) {
     e.preventDefault();

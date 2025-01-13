@@ -1,7 +1,7 @@
 "use client";
 
 import LoadingBtn from "@/components/module/loadingBtn";
-import VirgoolModal from "@/components/module/virgoolModal";
+import SabzModal from "@/components/module/sabzModal";
 import { SendErrorToast, SendSucToast } from "@/utils/toast-functions";
 import axios from "axios";
 import Image from "next/image";
@@ -40,7 +40,7 @@ export default function AddDisplayNameModal({
     }
   }
   return (
-    <VirgoolModal CloseModal={CloseModal}>
+    <SabzModal CloseModal={CloseModal}>
       <form
         onSubmit={setDisplayNameHandler}
         className="flex flex-col items-center gap-3 w-full sm:px-20 px-8 py-10"
@@ -71,6 +71,6 @@ export default function AddDisplayNameModal({
           </LoadingBtn>
         </div>
       </form>
-    </VirgoolModal>
+    </SabzModal>
   );
 }

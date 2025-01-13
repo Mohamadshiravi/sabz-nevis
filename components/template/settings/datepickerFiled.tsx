@@ -2,7 +2,7 @@
 
 import LoadingBtn from "@/components/module/loadingBtn";
 import PrimaryBtn from "@/components/module/primaryBtn";
-import VirgoolModal from "@/components/module/virgoolModal";
+import SabzModal from "@/components/module/sabzModal";
 import { updateUserDataToServer } from "@/redux/slices/user";
 import { useTypedDispatch } from "@/redux/typedHooks";
 import { SendErrorToast, SendSucToast } from "@/utils/toast-functions";
@@ -49,7 +49,7 @@ export default function DatePickerField({ birthDay }: { birthDay?: string }) {
       >
         <div className="flex flex-col gap-2">
           <h3 className="vazir-medium">تاریخ تولد</h3>
-          <h4 className="text-virgoolText-600 text-sm pl-2">
+          <h4 className="text-myText-600 text-sm pl-2">
             تاریخ تولد در پروفایل نمایش داده نمی‌شود.
           </h4>
         </div>
@@ -58,7 +58,7 @@ export default function DatePickerField({ birthDay }: { birthDay?: string }) {
         </span>
       </div>
       {isModalOpen && (
-        <VirgoolModal CloseModal={() => setIsModalOpen(false)}>
+        <SabzModal CloseModal={() => setIsModalOpen(false)}>
           <form onSubmit={UpdateHandler} className="w-full p-4">
             <h3 className="vazir-bold text-lg border-b border-zinc-200 dark:border-zinc-800 py-2">
               تاریخ تولد
@@ -79,7 +79,7 @@ export default function DatePickerField({ birthDay }: { birthDay?: string }) {
               </LoadingBtn>
             </div>
           </form>
-        </VirgoolModal>
+        </SabzModal>
       )}
     </>
   );

@@ -39,14 +39,14 @@ export default function MobileNavbar() {
       <Link
         href={"/me/settings"}
         className={`${
-          regex.test(path) ? "text-myGreen-600" : "text-virgoolText-600"
+          regex.test(path) ? "text-myGreen-600" : "text-myText-600"
         }`}
       >
         <FiSettings className="text-2xl transition" />
       </Link>
       {!userData.data ? (
         <button>
-          <RiApps2Fill className="text-xl text-virgoolText-600" />
+          <RiApps2Fill className="text-xl text-myText-600" />
         </button>
       ) : (
         <button className="bg-myGreen-600 px-5 py-1 rounded-full">
@@ -54,12 +54,12 @@ export default function MobileNavbar() {
         </button>
       )}
       <button>
-        <IoSearch className="text-xl text-virgoolText-600" />
+        <IoSearch className="text-xl text-myText-600" />
       </button>
       <Link
         href={"/home"}
         className={`${
-          path === "/home" ? "text-myGreen-600" : "text-virgoolText-600"
+          path === "/home" ? "text-myGreen-600" : "text-myText-600"
         }`}
       >
         <TiHome className="text-2xl transition" />

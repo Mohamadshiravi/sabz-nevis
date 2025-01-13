@@ -50,7 +50,7 @@ export default function SettingsMain() {
           <div className="flex items-center justify-between w-full">
             <div className="flex flex-col gap-2">
               <h3 className="vazir-medium">عکس پروفایل</h3>
-              <h4 className="text-virgoolText-600 text-sm pl-2">
+              <h4 className="text-myText-600 text-sm pl-2">
                 عکس شما در صفحه پروفایل و پست‌ها نمایش داده می‌شود.
               </h4>
             </div>

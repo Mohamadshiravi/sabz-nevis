@@ -24,7 +24,7 @@ export default function PostLoading() {
       </div>
       <div className="w-full flex justify-between mt-8">
         <div className="bg-zinc-100 dark:bg-zinc-800 h-[20px] lg:w-[150px] w-[100px] animate-pulse"></div>
-        <div className="flex items-center sm:gap-16 gap-6 text-2xl text-virgoolText-600">
+        <div className="flex items-center sm:gap-16 gap-6 text-2xl text-myText-600">
           <button className="bg-zinc-100 w-[30px] h-[15px] dark:bg-zinc-800 animate-pulse"></button>
           <button className="bg-zinc-100 w-[30px] h-[15px] dark:bg-zinc-800 animate-pulse"></button>
           <button className="bg-zinc-100 w-[30px] h-[15px] dark:bg-zinc-800 animate-pulse"></button>

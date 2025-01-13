@@ -55,7 +55,7 @@ export default function SettingsAccount() {
           <div className="flex sm:flex-row flex-col gap-2 items-center justify-between w-full">
             <div className="flex flex-col gap-2">
               <h3 className="vazir-medium">حذف حساب کاربری</h3>
-              <h4 className="text-virgoolText-600 text-sm pl-2">
+              <h4 className="text-myText-600 text-sm pl-2">
                 با حذف حساب کاربری، تمام اطلاعات شما از سرورهای ما حذف می‌شود
               </h4>
             </div>

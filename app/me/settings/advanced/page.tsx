@@ -14,7 +14,7 @@ export default function SettingsAdvanced() {
       <div className="flex sm:flex-row flex-col gap-3 items-center justify-between w-full">
         <div className="flex flex-col gap-2">
           <h3 className="vazir-medium">حالت شب</h3>
-          <h4 className="text-virgoolText-600 text-sm pl-2">
+          <h4 className="text-myText-600 text-sm pl-2">
             حالت خودکار از ساعت ۰۰:۰۰ تا ۶:۰۰ فعال می‌شود.
           </h4>
         </div>
@@ -50,7 +50,7 @@ export default function SettingsAdvanced() {
       </div>
       <div className="flex sm:flex-row flex-col gap-3 items-center justify-between w-full">
         <div className="flex flex-col gap-2">
-          <h4 className="text-virgoolText-600 text-sm pl-2">
+          <h4 className="text-myText-600 text-sm pl-2">
             نمایش دکمه خاموش/روشن در منوی پروفایل کاربری
           </h4>
         </div>

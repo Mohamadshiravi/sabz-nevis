@@ -2,12 +2,9 @@
 
 import { ReactNode, useEffect, useState } from "react";
 
-type VirgoolModalProps = { children: ReactNode; CloseModal: () => void };
+type SabzModalProps = { children: ReactNode; CloseModal: () => void };
 
-export default function VirgoolModal({
-  children,
-  CloseModal,
-}: VirgoolModalProps) {
+export default function SabzModal({ children, CloseModal }: SabzModalProps) {
   const [isModalOpen, setIsModalOpen] = useState(true);
 
   function AnimateCloseModal() {

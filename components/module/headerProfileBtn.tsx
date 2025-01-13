@@ -57,7 +57,7 @@ export default function HeaderProfileBtn() {
             <span className="w-[13px] h-[13px] bg-white absolute border-t border-l border-zinc-200 transition dark:border-zinc-800 dark:bg-darkColor-800 rotate-45 top-[-7px] left-6"></span>
             <div className="flex justify-between items-center p-4">
               <div className="flex flex-col gap-2 vazir-regular">
-                <span className="dark:text-virgoolText-500 text-virgoolText-600">
+                <span className="dark:text-myText-500 text-myText-600">
                   {userData.data?.displayName || userData.data?.username}
                 </span>
                 <Link
@@ -72,7 +72,7 @@ export default function HeaderProfileBtn() {
                 className="rounded-full w-[35px] h-[35px]"
               />
             </div>
-            <div className="p-4 flex flex-col items-start gap-4 dark:text-virgoolText-400 text-virgoolText-600 border-t border-zinc-200 dark:border-zinc-800">
+            <div className="p-4 flex flex-col items-start gap-4 dark:text-myText-400 text-myText-600 border-t border-zinc-200 dark:border-zinc-800">
               <Link href={"/post/create"} className="text-myGreen-600">
                 نوشتن پست جدید
               </Link>
@@ -86,7 +86,7 @@ export default function HeaderProfileBtn() {
 
             <button
               onClick={LogOutHandler}
-              className="p-4 flex flex-col w-full items-start gap-4 dark:text-virgoolText-400 text-virgoolText-600 border-t border-zinc-200 dark:border-zinc-800"
+              className="p-4 flex flex-col w-full items-start gap-4 dark:text-myText-400 text-myText-600 border-t border-zinc-200 dark:border-zinc-800"
             >
               خروج
             </button>

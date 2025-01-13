@@ -44,7 +44,7 @@ export default function TopPosts() {
                   className="h-[190px] object-cover"
                 />
                 <div className="p-4 flex flex-col">
-                  <h4 className="twoLineText text-virgoolText-600 text-sm vazir-bold">
+                  <h4 className="twoLineText text-myText-600 text-sm vazir-bold">
                     تأثیر هوش مصنوعی بر زندگی روزمره: فرصت‌ها و تهدیدها تأثیر
                     هوش مصنوعی بر زندگی روزمره: فرصت‌ها و تهدیدها
                   </h4>
@@ -61,7 +61,7 @@ export default function TopPosts() {
                         i_mohamad
                       </span>
                     </div>
-                    <span className="text-xs text-virgoolText-600">
+                    <span className="text-xs text-myText-600">
                       خواندن ۳ دقیقه
                     </span>
                   </div>

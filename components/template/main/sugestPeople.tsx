@@ -41,7 +41,7 @@ export default function SugestionsPeople() {
                     className="w-[90px] object-cover rounded-full"
                   />
 
-                  <h4 className="text-virgoolText-600 text-sm w-full text-center truncate w-full">
+                  <h4 className="text-myText-600 text-sm w-full text-center truncate w-full">
                     i_mohamad_85
                   </h4>
                   <h3 className="vazir-bold text-lg mt-2 w-full truncate text-center">

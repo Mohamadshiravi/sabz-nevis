@@ -66,7 +66,7 @@ export default function VerifyCodeForm({ phone, back }: VerifyCodeFormProp) {
             <h1 className="vazir-black text-xl text-myGreen-600 lg:mt-0 mt-8">
               کد تائید را وارد کنید
             </h1>
-            <h3 className="text-virgoolText-600">
+            <h3 className="text-myText-600">
               کد تائید برای شماره موبایل
               <span className="vazir-bold px-1 underline">{phone}</span> ارسال
               گردید
@@ -99,7 +99,7 @@ export default function VerifyCodeForm({ phone, back }: VerifyCodeFormProp) {
               <LoadingBtn loading={loading}>تائید و ادامه</LoadingBtn>
               <button
                 onClick={back}
-                className="flex text-nowrap lg:w-auto w-full text-sm items-center justify-center gap-2 bg-zinc-100 hover:bg-zinc-200 transition rounded-md px-4 py-2 text-virgoolText-600"
+                className="flex text-nowrap lg:w-auto w-full text-sm items-center justify-center gap-2 bg-zinc-100 hover:bg-zinc-200 transition rounded-md px-4 py-2 text-myText-600"
               >
                 <IoIosArrowForward className="text-lg" />
                 برگشت به مرحله قبل
