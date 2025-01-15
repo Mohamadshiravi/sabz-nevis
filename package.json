@@ -11,6 +11,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
     "@tiptap/core": "^2.11.2",
+    "@tiptap/extension-link": "^2.11.2",
     "@tiptap/extension-placeholder": "^2.11.2",
     "@tiptap/react": "^2.11.2",
     "@tiptap/starter-kit": "^2.11.2",

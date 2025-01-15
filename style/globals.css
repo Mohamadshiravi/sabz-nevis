@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+a {
+  color: #059669;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+a:hover {
+  color: #047857;
+}
+
+h2 {
+  font-size: 25px;
+}
+h3 {
+  font-size: 20px;
+}
+
 br {
   margin-top: 100px;
 }
