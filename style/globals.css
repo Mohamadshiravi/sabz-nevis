@@ -2,6 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+br {
+  margin-top: 100px;
+}
+
+.is-editor-empty {
+  position: relative;
+}
+.is-editor-empty::before {
+  position: absolute;
+  right: 0px;
+  top: -4px;
+  content: attr(data-placeholder);
+  color: #a0a0a0;
+  direction: rtl;
+  text-align: right;
+  margin-right: 50px;
+  pointer-events: none;
+  height: 0;
+}
+
+input {
+  caret-color: rgb(255, 255, 255); /* تغییر رنگ نشانگر به قرمز */
+}
 .swal-text {
   font-size: 20px !important;
   font-family: "vazir-bold" !important;
@@ -14,10 +37,10 @@
 }
 .swal-button--confirm {
   transition: all 0.2s;
-  background-color: #107abe;
+  background-color: #059669 !important;
 }
 .swal-button--confirm:hover {
-  background-color: #0e6aa6;
+  background-color: #047857 !important;
 }
 
 @font-face {

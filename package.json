@@ -10,6 +10,10 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
+    "@tiptap/core": "^2.11.2",
+    "@tiptap/extension-placeholder": "^2.11.2",
+    "@tiptap/react": "^2.11.2",
+    "@tiptap/starter-kit": "^2.11.2",
     "@types/jsonwebtoken": "^9.0.7",
     "axios": "^1.7.9",
     "jsonwebtoken": "^9.0.2",

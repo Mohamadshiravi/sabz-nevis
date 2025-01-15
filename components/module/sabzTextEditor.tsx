@@ -1,120 +1,124 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { FaPlus } from "react-icons/fa";
+import { HiDotsHorizontal } from "react-icons/hi";
+import { IoLink } from "react-icons/io5";
+import { MdInsertPhoto } from "react-icons/md";
+import { useEditor, EditorContent } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
+import Placeholder from "@tiptap/extension-placeholder";
 
 export default function SabzTextEditor() {
-  const [body, setBody] = useState("");
   const [headerInp, setHeaderInp] = useState("");
-  const [text, setText] = useState("");
-  const [isToolbarVisible, setIsToolbarVisible] = useState(true);
-
-  const persianRegex = /[\u0600-\u06FF]/;
-  const englishRegex = /[A-Za-z]/;
-
-  const headerInpRef = useRef<HTMLInputElement>(null);
-  const textAreaRef = useRef<HTMLTextAreaElement>(null);
+  const [body, setbody] = useState("");
 
   useEffect(() => {
-    console.log(body);
+    if (body === "" || body === "<p></p>") {
+      setIsToolbarVisible(true);
+    }
   }, [body]);
 
-  useEffect(() => {
-    if (headerInpRef.current) {
-      if (persianRegex.test(headerInp)) {
-        const header = `<h1 dir='rtl'>${headerInp}</h1>`;
-        setBody(header);
-      } else if (englishRegex.test(headerInp)) {
-        const header = `<h1 dir='ltr'>${headerInp}</h1>`;
-        setBody(header);
-      }
-    }
-    if (headerInp === "") {
-      setBody("");
-    }
-  }, [headerInp]);
+  const [isToolbarVisible, setIsToolbarVisible] = useState(true);
+  const [isToolbarOpen, setIsToolBarOpen] = useState(false);
 
-  useEffect(() => {
-    if (textAreaRef.current) {
-      console.log(textAreaRef.current.scrollHeight);
+  const editor = useEditor({
+    extensions: [
+      StarterKit.configure({
+        paragraph: {
+          HTMLAttributes: {
+            dir: "auto",
+          },
+        },
+      }),
+      Placeholder.configure({
+        placeholder: "هر چی دوست داری بنویس ...",
+        emptyEditorClass: "is-editor-empty",
+      }),
+    ],
+    content: "",
+    onUpdate: ({ editor }) => {
+      const content = editor.getHTML();
+      setbody(content);
+      console.log(content);
 
-      if (
-        text.split("\n").length === 1 &&
-        textAreaRef.current.scrollHeight <= 70
-      ) {
-        textAreaRef.current.style.height = "30px";
-      } else {
-        textAreaRef.current.style.height = "auto";
-        textAreaRef.current.style.height = `${textAreaRef.current.scrollHeight}px`;
-      }
-    }
-  }, [text]);
-
-  function WriteBodyText(event: React.ChangeEvent<HTMLTextAreaElement>) {
-    const inputText = event.target.value;
-    setText(inputText);
-
-    // تقسیم متن به پاراگراف‌ها بر اساس Enter
-    const paragraphs = inputText.split("\n");
-
-    const formattedBody = paragraphs.map((paragraph) => {
-      if (paragraph === "") {
-        setIsToolbarVisible(true);
-        return "<br />";
-      } else {
+      if (content.trim()) {
         setIsToolbarVisible(false);
-        return `<p>${paragraph}</p>`;
+        setIsToolBarOpen(false);
       }
-    });
-
-    setBody(formattedBody.join(""));
-  }
+    },
+    immediatelyRender: false,
+    editorProps: {
+      attributes: {
+        class: "outline-none leading-loose",
+      },
+    },
+  });
 
   return (
     <section className="mt-10">
       <input
         autoComplete="false"
-        ref={headerInpRef}
         onChange={(e) => {
           setHeaderInp(e.target.value);
         }}
-        dir="auto"
         value={headerInp}
         placeholder="عنوان را اینجا وارد کنید"
         className="text-3xl vazir-bold lg:pr-10 bg-inherit w-full outline-none"
       />
-      <div className="flex items-end gap-3 mt-16 relative">
-        <div
-          className={`${
-            isToolbarVisible ? "flex" : "hidden"
-          } flex items-center gap-3 absolute bottom-0`}
-        >
-          <button
-            className={`border flex dark:border-zinc-500 text-sm dark:text-zinc-500 w-[35px] h-[35px] items-center justify-center rounded-full`}
-          >
-            <FaPlus />
-          </button>
-          <label
-            htmlFor="textEditorInp"
-            className={`${
-              body === "" || body === "<br />" ? "block" : "hidden"
-            } text-[#8e8e8e] cursor-text`}
-          >
-            هر چی دوست داری بنویس ...
-          </label>
-        </div>
-        <textarea
-          id="textEditorInp"
-          autoComplete="false"
-          ref={textAreaRef}
-          value={text}
-          onChange={(e) => {
-            WriteBodyText(e);
-          }}
-          className="w-full bg-inherit outline-none overflow-hidden resize-none leading-loose
-"
-          style={{ height: "30px" }}
+      <section className="relative mt-16">
+        <EditorContent
+          editor={editor}
+          onKeyDown={(e) => e.key === "Enter" && setIsToolbarVisible(true)}
         />
-      </div>
+        <div className="flex items-end gap-3 mt-1 absolute bottom-0">
+          <div
+            className={`${
+              isToolbarVisible ? "flex" : "hidden"
+            } flex items-center gap-3 w-full`}
+          >
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setIsToolBarOpen((p) => !p)}
+                className={`border flex dark:border-zinc-500 z-[4] text-sm dark:text-zinc-500 w-[35px] h-[35px] items-center justify-center rounded-full`}
+              >
+                <FaPlus
+                  className={`${isToolbarOpen && "rotate-45"} transition`}
+                />
+              </button>
+
+              <button
+                className={`${
+                  isToolbarOpen
+                    ? "translate-x-[-45px] opacity-100"
+                    : "translate-x-0 opacity-0"
+                } absolute transition z-[3] border-2 border-zinc-500 bg-white rounded-full w-[35px] h-[35px] flex items-center justify-center text-zinc-700 text-xl shadow-lg`}
+              >
+                <MdInsertPhoto />
+              </button>
+              <button
+                className={`${
+                  isToolbarOpen
+                    ? "translate-x-[-90px] opacity-100"
+                    : "translate-x-0 opacity-0"
+                } absolute duration-300 transition z-[2] border-2 border-zinc-500 bg-white rounded-full w-[35px] h-[35px] flex items-center justify-center text-zinc-700 text-xl shadow-lg`}
+              >
+                <IoLink onClick={AddLinkHandler} />
+              </button>
+              <button
+                className={`${
+                  isToolbarOpen
+                    ? "translate-x-[-135px] opacity-100"
+                    : "translate-x-0 opacity-0"
+                } absolute duration-500 transition z-[1] border-2 border-zinc-500 bg-white rounded-full w-[35px] h-[35px] flex items-center justify-center text-zinc-700 text-xl shadow-lg`}
+              >
+                <HiDotsHorizontal />
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
   );
+  function HandleContentChange() {}
+  function AddLinkHandler() {}
 }
