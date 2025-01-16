@@ -37,6 +37,9 @@ export default function SabzTextEditor() {
     extensions: [
       Link.configure({
         openOnClick: true,
+        HTMLAttributes: {
+          class: "linkStyle",
+        },
       }),
       Heading.configure({
         levels: [1, 2, 3],

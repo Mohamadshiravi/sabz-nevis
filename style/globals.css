@@ -2,16 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-a {
+.linkStyle {
   color: #059669;
   text-decoration: underline;
   cursor: pointer;
-  transition: all 0.3s;
 }
-a:hover {
+.linkStyle:hover {
   color: #047857;
 }
-
 h2 {
   font-size: 25px;
 }
@@ -39,9 +37,6 @@ br {
   height: 0;
 }
 
-input {
-  caret-color: rgb(255, 255, 255); /* تغییر رنگ نشانگر به قرمز */
-}
 .swal-text {
   font-size: 20px !important;
   font-family: "vazir-bold" !important;
