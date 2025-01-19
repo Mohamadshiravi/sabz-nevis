@@ -19,7 +19,7 @@ export default function AddDisplayNameForm() {
         if (res.status === 200) {
           SendSucToast("اطلاعات شما با موفقیت وارد شد");
           setLoading(false);
-          location.href = "/";
+          location.href = "/home";
         }
       } else {
         setLoading(false);

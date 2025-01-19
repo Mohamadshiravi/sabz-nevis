@@ -49,9 +49,12 @@ export default function MobileNavbar() {
           <RiApps2Fill className="text-xl text-myText-600" />
         </button>
       ) : (
-        <button className="bg-myGreen-600 px-5 py-1 rounded-full">
+        <Link
+          href={"/post/create"}
+          className="bg-myGreen-600 px-5 py-1 rounded-full"
+        >
           <AiOutlinePlus className="text-2xl text-white" />
-        </button>
+        </Link>
       )}
       <button>
         <IoSearch className="text-xl text-myText-600" />

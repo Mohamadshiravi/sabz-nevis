@@ -59,9 +59,12 @@ export default function DesktopNavbar() {
             <span className="text-nowrap">تنظیمات</span>
           </Link>
         </ul>
-        <button className="bg-myGreen-600 text-nowrap w-full rounded-full px-8 text-sm text-white py-1.5 vazir-bold">
+        <Link
+          href={"/post/create"}
+          className="bg-myGreen-600 text-nowrap w-full rounded-full px-8 text-sm text-white py-1.5 vazir-bold"
+        >
           نوشتن پست
-        </button>
+        </Link>
       </nav>
     </div>
   );

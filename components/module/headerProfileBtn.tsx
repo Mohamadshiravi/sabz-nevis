@@ -1,19 +1,23 @@
 import { changeTheme } from "@/redux/slices/user";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
-import ShowSwal from "@/utils/modalFunctions";
 import axios from "axios";
 import Link from "next/link";
 import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoMoonSharp } from "react-icons/io5";
 import { MdSunny } from "react-icons/md";
+import SabzModal from "./sabzModal";
+import LoadingBtn from "./loadingBtn";
+import PrimaryBtn from "./primaryBtn";
+import { SendErrorToast } from "@/utils/toast-functions";
 
 export default function HeaderProfileBtn() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMenuMount, setIsMenuMount] = useState(false);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const userData = useTypedSelector((state) => state.user);
-  const dispatch = useTypedDispatch();
 
   function AnimateToggleModal() {
     if (isMenuMount) {
@@ -85,7 +89,7 @@ export default function HeaderProfileBtn() {
             </div>
 
             <button
-              onClick={LogOutHandler}
+              onClick={() => setIsModalOpen(true)}
               className="p-4 flex flex-col w-full items-start gap-4 dark:text-myText-400 text-myText-600 border-t border-zinc-200 dark:border-zinc-800"
             >
               خروج
@@ -93,18 +97,38 @@ export default function HeaderProfileBtn() {
           </div>
         )}
       </div>
+      {isModalOpen && (
+        <SabzModal
+          CloseModal={() => {
+            setIsModalOpen(false);
+          }}
+        >
+          <form onSubmit={LogOutHandler} className="w-full p-6">
+            <h3 className="border-b border-zinc-200 dark:border-zinc-800 pb-6 text-center">
+              ایا میخاهید از اکانت خود خارج شوید ؟
+            </h3>
+            <div className="flex items-center justify-center gap-4 mt-28">
+              <LoadingBtn width={"w-[150px]"} loading={false}>
+                بله
+              </LoadingBtn>
+              <PrimaryBtn
+                onPress={() => setIsModalOpen(false)}
+                width="w-[150px]"
+              >
+                منصرف شدم
+              </PrimaryBtn>
+            </div>
+          </form>
+        </SabzModal>
+      )}
     </>
   );
   async function LogOutHandler() {
-    const isOk = await ShowSwal(
-      "warning",
-      "ایا میخاهید از اکانت خود خارج شوید ؟",
-      "خیر",
-      "بله"
-    );
-    if (isOk) {
+    try {
       const res = await axios.get("/api/auth/logout");
       location.reload();
+    } catch (error) {
+      SendErrorToast("مشکلی پیش امد");
     }
   }
 }

@@ -51,7 +51,6 @@ export default function VerifyCodeForm({ phone, back }: VerifyCodeFormProp) {
     setCode(codeClone);
   }
 
-  const dispatch = useTypedDispatch();
   return (
     <section className="lg:w-[3000px] w-full bg-white h-full flex lg:items-center lg:mt-0 pt-8 justify-center">
       <form
@@ -116,7 +115,7 @@ export default function VerifyCodeForm({ phone, back }: VerifyCodeFormProp) {
       });
       setLoading(false);
       SendSucToast("شما وارد اکانت خود شدید");
-      location.href = "/";
+      location.href = "/home";
     } catch (e) {
       setLoading(false);
       SendErrorToast("کد اشتباه است یا زمان ان تمام شده است");

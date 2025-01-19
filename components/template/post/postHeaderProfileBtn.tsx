@@ -1,8 +1,12 @@
 "use client";
 
+import LoadingBtn from "@/components/module/loadingBtn";
+import PrimaryBtn from "@/components/module/primaryBtn";
+import SabzModal from "@/components/module/sabzModal";
 import { changeTheme } from "@/redux/slices/user";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
 import ShowSwal from "@/utils/modalFunctions";
+import { SendErrorToast } from "@/utils/toast-functions";
 import axios from "axios";
 import Link from "next/link";
 import { useState } from "react";
@@ -13,6 +17,8 @@ import { MdSunny } from "react-icons/md";
 export default function PostHeaderProfileBtn() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMenuMount, setIsMenuMount] = useState(false);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const userData = useTypedSelector((state) => state.user);
   const dispatch = useTypedDispatch();
@@ -44,7 +50,7 @@ export default function PostHeaderProfileBtn() {
           className="fixed top-0 left-0 w-full h-screen"
         ></section>
       )}
-      <section className="flex items-center gap-2">
+      <section className="flex sm:flex-row flex-col items-center sm:gap-2 gap-1 text-sm">
         <button
           onClick={ChangeThemeHandler}
           className="p-2.5 flex bg-zinc-100 dark:bg-zinc-800 rounded-full items-center justify-between gap-4 dark:text-myText-400 text-myText-600"
@@ -106,7 +112,9 @@ export default function PostHeaderProfileBtn() {
               </div>
 
               <button
-                onClick={LogOutHandler}
+                onClick={() => {
+                  setIsModalOpen(true);
+                }}
                 className="p-4 flex flex-col w-full items-start gap-4 dark:text-myText-400 text-myText-600 border-t border-zinc-200 dark:border-zinc-800"
               >
                 خروج
@@ -115,18 +123,38 @@ export default function PostHeaderProfileBtn() {
           )}
         </div>
       </section>
+      {isModalOpen && (
+        <SabzModal
+          CloseModal={() => {
+            setIsModalOpen(false);
+          }}
+        >
+          <form onSubmit={LogOutHandler} className="w-full p-6">
+            <h3 className="border-b border-zinc-200 dark:border-zinc-800 pb-6 text-center">
+              ایا میخاهید از اکانت خود خارج شوید ؟
+            </h3>
+            <div className="flex items-center justify-center gap-4 mt-28">
+              <LoadingBtn width={"w-[150px]"} loading={false}>
+                بله
+              </LoadingBtn>
+              <PrimaryBtn
+                onPress={() => setIsModalOpen(false)}
+                width="w-[150px]"
+              >
+                منصرف شدم
+              </PrimaryBtn>
+            </div>
+          </form>
+        </SabzModal>
+      )}
     </>
   );
   async function LogOutHandler() {
-    const isOk = await ShowSwal(
-      "warning",
-      "ایا میخاهید از اکانت خود خارج شوید ؟",
-      "خیر",
-      "بله"
-    );
-    if (isOk) {
+    try {
       const res = await axios.get("/api/auth/logout");
       location.reload();
+    } catch (error) {
+      SendErrorToast("مشکلی پیش امد");
     }
   }
 }
