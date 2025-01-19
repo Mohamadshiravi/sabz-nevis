@@ -5,7 +5,6 @@ import PrimaryBtn from "@/components/module/primaryBtn";
 import SabzModal from "@/components/module/sabzModal";
 import { changeTheme } from "@/redux/slices/user";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
-import ShowSwal from "@/utils/modalFunctions";
 import { SendErrorToast } from "@/utils/toast-functions";
 import axios from "axios";
 import Link from "next/link";
