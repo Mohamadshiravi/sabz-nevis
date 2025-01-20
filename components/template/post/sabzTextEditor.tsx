@@ -32,13 +32,11 @@ import { SendErrorToast } from "@/utils/toast-functions";
 export default function SabzTextEditor({
   setBody: setOutBody,
   setTitle,
-  prewBody,
-  prewTitle,
+  postID,
 }: {
-  prewBody: string;
-  prewTitle: string;
   setBody: (value: string) => void;
   setTitle: (value: string) => void;
+  postID: string;
 }) {
   const [headerInp, setHeaderInp] = useState("");
   const [body, setBody] = useState("");
@@ -70,11 +68,6 @@ export default function SabzTextEditor({
   useEffect(() => {
     setTitle(headerInp);
   }, [headerInp]);
-
-  useEffect(() => {
-    setOutBody(prewBody);
-    setHeaderInp(prewTitle);
-  }, []);
 
   const [isToolbarVisible, setIsToolbarVisible] = useState(true);
   const [isToolbarOpen, setIsToolBarOpen] = useState(false);
@@ -142,7 +135,7 @@ export default function SabzTextEditor({
         },
       }),
     ],
-    content: prewBody,
+    content: "",
     onUpdate: ({ editor }) => {
       const content = editor.getHTML();
       setBody(content);
@@ -176,7 +169,7 @@ export default function SabzTextEditor({
           <BubbleMenu editor={editor} tippyOptions={{ duration: 100 }}>
             <div className="flex">
               <div className="flex items-center gap-2 border border-zinc-200 dark:border-zinc-800 shadow-sm bg-white dark:bg-zinc-900 p-1 rounded-md">
-                <div className="flex lg:flex-row flex-col items-center gap-2 pl-1">
+                <div className="flex lg:flex-row flex-col items-center gap-2">
                   <label
                     title="Change Text Color"
                     className={`bg-white curosr-pointer hover:bg-zinc-100 dark:bg-zinc-900 dark:hover:bg-zinc-800 text-zinc-600 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-white shadow-none transition rounded-sm dark:shadow-lg w-[33px] h-[33px] flex items-center justify-center`}
@@ -225,6 +218,8 @@ export default function SabzTextEditor({
                   >
                     <FaCode />
                   </button>
+                </div>
+                <div className="flex lg:flex-row flex-col items-center gap-2">
                   <button
                     onClick={() => {
                       editor.chain().focus().toggleBulletList().run();
@@ -262,8 +257,9 @@ export default function SabzTextEditor({
                     <FaBold />
                   </button>
                 </div>
-                <div className="border-r dark:border-zinc-700 border-zinc-200 h-[28px]"></div>
-                <div className="flex items-center gap-2">
+
+                <div className="flex items-center gap-2 lg:flex-row flex-col">
+                  <div className="border-r lg:block hidden dark:border-zinc-700 border-zinc-200 h-[28px]"></div>
                   <button
                     title="add hyperlink"
                     onClick={AddHyperLinkHandler}
@@ -275,9 +271,7 @@ export default function SabzTextEditor({
                   >
                     <FaLink />
                   </button>
-                </div>
-                <div className="border-r dark:border-zinc-700 border-zinc-200 h-[28px]"></div>
-                <div className="flex items-center gap-2 lg:flex-row flex-col">
+                  <div className="border-r lg:block hidden dark:border-zinc-700 border-zinc-200 h-[28px]"></div>
                   <button
                     title="add heading h3"
                     onClick={() => {
@@ -377,6 +371,7 @@ export default function SabzTextEditor({
         formData.append("img", event.target.files[0]);
 
         const res = await axios.post("/api/post/photo", formData);
+        console.log(res.data);
 
         if (res.data.path) {
           editor?.chain().focus().setImage({ src: res.data.path }).run();

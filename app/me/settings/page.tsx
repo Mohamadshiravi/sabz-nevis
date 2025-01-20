@@ -4,6 +4,7 @@ import AboutField from "@/components/template/settings/aboutField";
 import DatePickerField from "@/components/template/settings/datepickerFiled";
 import DisplayNameField from "@/components/template/settings/displayNameField";
 import LinkedInFiled from "@/components/template/settings/linkedinField";
+import UploadProfilePhoto from "@/components/template/settings/uploadProfilePhoto";
 import XProfileField from "@/components/template/settings/xProfileField";
 import { updateUserDataToServer } from "@/redux/slices/user";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
@@ -47,27 +48,7 @@ export default function SettingsMain() {
         <>
           <DisplayNameField displayName={userData?.displayName} />
           <AboutField about={userData?.about} />
-          <div className="flex items-center justify-between w-full">
-            <div className="flex flex-col gap-2">
-              <h3 className="vazir-medium">عکس پروفایل</h3>
-              <h4 className="text-myText-600 text-sm pl-2">
-                عکس شما در صفحه پروفایل و پست‌ها نمایش داده می‌شود.
-              </h4>
-            </div>
-            <label className="relative w-[60px] h-[60px] group">
-              <input type="file" className="w-0 h-0 absolute top-[1000px]" />
-              <Image
-                width={600}
-                height={600}
-                alt="test"
-                src={"/images/avatar-default.jpg"}
-                className="w-full h-full object-cover rounded-full"
-              />
-              <div className="bg-black/40 group-hover:opacity-100 transition duration-300 opacity-0 cursor-pointer rounded-full w-full h-full absolute top-0 left-0 flex items-center justify-center">
-                <MdPhotoCamera className="text-zinc-300 text-xl" />
-              </div>
-            </label>
-          </div>
+          <UploadProfilePhoto avatar={userData?.avatar} />
           <div className="flex items-center justify-between w-full">
             <div className="flex flex-col gap-2">
               <h3 className="vazir-medium">جنسیت</h3>

@@ -1,4 +1,4 @@
-import postModel from "@/models/post";
+import userModel from "@/models/user";
 import IsUserAuthentication from "@/utils/auth/authUser";
 import ImageKit from "imagekit";
 
@@ -22,21 +22,29 @@ export async function POST(req: Request) {
       return Response.json({ error: "no file send" }, { status: 400 });
     }
 
+    const oldUserData = await userModel.findOne({ _id: isUserAuth._id });
+    if (oldUserData.avatar) {
+      await imagekit.deleteFile(oldUserData.fileID);
+    }
+
     const bufferedPhoto = Buffer.from(await img.arrayBuffer());
 
     const response = await imagekit.upload({
       file: bufferedPhoto,
-      fileName: `img-${Date.now()}`,
-      folder: "/uploads/postImages",
+      fileName: `avatar-${Date.now()}`,
+      folder: "/uploads/avatar",
     });
 
-    await postModel.findOneAndUpdate(
+    await userModel.findOneAndUpdate(
       { _id: isUserAuth._id },
       { avatar: response.url, fileID: response.fileId }
     );
 
-    return Response.json({ message: "image uploaded", path: response.url });
+    const user = await userModel.findOne({ _id: isUserAuth._id });
+
+    return Response.json({ message: "user avatar updated", user });
   } catch (error) {
+    console.log(error);
     return Response.json({ error: "server error" }, { status: 500 });
   }
 }

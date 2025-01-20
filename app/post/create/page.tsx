@@ -1,6 +1,8 @@
 "use client";
 
 import PostHeaderProfileBtn from "@/components/template/post/postHeaderProfileBtn";
+import { fetchUserDataFromServer } from "@/redux/slices/user";
+import { useTypedDispatch } from "@/redux/typedHooks";
 import { SendErrorToast, SendSucToast } from "@/utils/toast-functions";
 import axios from "axios";
 import dynamic from "next/dynamic";
@@ -30,15 +32,17 @@ export default function CreatePostPage() {
   const [title, setTitle] = useState("");
   const [body, setbody] = useState("");
 
-  const [prewTitle, setPrewTitle] = useState("");
-  const [prewBody, setPrewBody] = useState("");
-
   const [draftLoading, setDraftLoading] = useState(false);
   const [loading, setLoading] = useState(false);
-
   const [postID, setPostID] = useState("");
 
   const router = useRouter();
+
+  const FetchUserData = async () => {
+    await dispatch(fetchUserDataFromServer());
+  };
+
+  const dispatch = useTypedDispatch();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -50,28 +54,8 @@ export default function CreatePostPage() {
   }, [body, title]);
 
   useEffect(() => {
-    const savedPostId = localStorage.getItem("postID");
-
-    if (savedPostId) {
-      FetchDraftPost(savedPostId);
-    }
-    return () => {
-      localStorage.removeItem("postID");
-    };
+    FetchUserData();
   }, []);
-
-  async function FetchDraftPost(id: string) {
-    try {
-      const res = await axios.get(`/api/post/${id}`);
-      setPostID(res.data.post._id);
-      setPrewBody(res.data.post.body);
-      setPrewTitle(res.data.post.title);
-    } catch (error: any) {
-      if (error.status === 404) {
-        localStorage.removeItem("postID");
-      }
-    }
-  }
 
   return (
     <>
@@ -120,8 +104,7 @@ export default function CreatePostPage() {
       </header>
       <main className="lg:w-[1024px] lg:m-auto w-full lg:px-28 px-4">
         <SabzTextEditor
-          prewBody={prewBody}
-          prewTitle={prewTitle}
+          postID={postID}
           setBody={(value: string) => {
             setbody(value);
           }}
@@ -143,7 +126,6 @@ export default function CreatePostPage() {
       });
 
       setPostID(res.data.id);
-      localStorage.setItem("postID", res.data.id);
 
       setDraftLoading(false);
     } catch (error) {
@@ -160,7 +142,6 @@ export default function CreatePostPage() {
         });
         SendSucToast("پست با موفقیت منتشر شد");
         router.push("/home");
-        localStorage.removeItem("postID");
         setLoading(false);
       } catch (error) {
         SendErrorToast("پست شما انتشار نیافت اتصال خود را بررسی کنید !");

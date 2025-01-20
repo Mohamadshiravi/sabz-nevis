@@ -5,6 +5,7 @@ import ProfileNavbar from "@/components/template/profile/profileNavbar";
 import ConnectToDB from "@/DB/connectToDB";
 import userModel from "@/models/user";
 import IsUserAuthentication from "@/utils/auth/authUser";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { ReactNode } from "react";
 import { BsThreeDots } from "react-icons/bs";
@@ -21,7 +22,7 @@ export default async function UserProfilePage({
   const decodedUserId = decodeURIComponent(params.id).slice(1);
   const isAnyUserExist = await userModel.findOne(
     { username: decodedUserId },
-    "phone displayName username about -_id"
+    "phone displayName username about avatar -_id"
   );
   if (!isAnyUserExist) {
     notFound();
@@ -39,8 +40,11 @@ export default async function UserProfilePage({
         <Header isTransparent />
         <section className="border-b-2 border-zinc-200 dark:border-b-zinc-700">
           <section className="flex flex-col items-center mt-4 gap-2">
-            <img
-              src="/images/guest-avatar.webp"
+            <Image
+              width={800}
+              height={800}
+              alt={isAnyUserExist.username}
+              src={isAnyUserExist.avatar || "/images/guest-avatar.webp"}
               className="rounded-full w-[90px] aspect-square object-cover"
             />
             <h1 className="vazir-black text-xl">

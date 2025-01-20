@@ -38,15 +38,11 @@
   font-weight: bold;
 }
 
-h2 {
+.tiptap h2 {
   font-size: 25px;
 }
-h3 {
+.tiptap h3 {
   font-size: 20px;
-}
-
-br {
-  margin-top: 100px;
 }
 
 .is-editor-empty {

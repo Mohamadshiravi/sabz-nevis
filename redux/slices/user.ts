@@ -36,6 +36,14 @@ export const updateUserDataToServer = createAsyncThunk(
   }
 );
 
+export const addAvatarToServer = createAsyncThunk(
+  "users/addAvatarToServer",
+  async (payload: any) => {
+    const res = await axios.post("/api/auth/me/update/avatar", payload);
+    return res.data;
+  }
+);
+
 const slice = createSlice({
   name: "users",
   initialState,
@@ -76,6 +84,9 @@ const slice = createSlice({
       state.loading = true;
     });
     builder.addCase(updateUserDataToServer.fulfilled, (state, action) => {
+      state.data = action.payload.user;
+    });
+    builder.addCase(addAvatarToServer.fulfilled, (state, action) => {
       state.data = action.payload.user;
     });
   },

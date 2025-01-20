@@ -53,7 +53,7 @@ export default function MainProfileSction({
                   شما هنوز پستی در سبزنویس ننوشته‌اید. همین حالا اقدام به نوشتن
                   اولین پست خود کنید.
                 </h4>
-                <PrimaryBtn>
+                <PrimaryBtn width="w-[200px]">
                   نوشتن پست
                   <IoIosArrowBack />
                 </PrimaryBtn>

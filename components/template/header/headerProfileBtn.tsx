@@ -1,15 +1,16 @@
-import { changeTheme } from "@/redux/slices/user";
+import { changeTheme, fetchUserDataFromServer } from "@/redux/slices/user";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
 import axios from "axios";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoMoonSharp } from "react-icons/io5";
 import { MdSunny } from "react-icons/md";
-import SabzModal from "./sabzModal";
-import LoadingBtn from "./loadingBtn";
-import PrimaryBtn from "./primaryBtn";
+import SabzModal from "../../module/sabzModal";
+import LoadingBtn from "../../module/loadingBtn";
+import PrimaryBtn from "../../module/primaryBtn";
 import { SendErrorToast } from "@/utils/toast-functions";
+import Image from "next/image";
 
 export default function HeaderProfileBtn() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,7 +18,9 @@ export default function HeaderProfileBtn() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const userData = useTypedSelector((state) => state.user);
+  const userData = useTypedSelector((state) => {
+    return state.user;
+  });
 
   function AnimateToggleModal() {
     if (isMenuMount) {
@@ -47,9 +50,12 @@ export default function HeaderProfileBtn() {
           className="flex items-center bg-zinc-100 cursor-pointer dark:bg-darkColor-700 h-full py-1 pl-0.5 gap-2 rounded-full"
         >
           <IoIosArrowDown className="mr-3 text-xs" />
-          <img
-            src="/images/avatar-default.jpg"
-            className="rounded-full w-[35px] aspect-square"
+          <Image
+            src={userData.data?.avatar || "/images/avatar-default.jpg"}
+            className="rounded-full w-[35px] aspect-square object-cover"
+            width={400}
+            height={400}
+            alt={userData.data?.username || "avatar"}
           />
         </button>
         {isMenuMount && (
@@ -71,9 +77,12 @@ export default function HeaderProfileBtn() {
                   مشاهده پروفایل
                 </Link>
               </div>
-              <img
-                src="/images/avatar-default.jpg"
-                className="rounded-full w-[35px] h-[35px]"
+              <Image
+                src={userData.data?.avatar || "/images/avatar-default.jpg"}
+                className="rounded-full w-[35px] aspect-square object-cover"
+                width={400}
+                height={400}
+                alt={userData.data?.username || "avatar"}
               />
             </div>
             <div className="p-4 flex flex-col items-start gap-4 dark:text-myText-400 text-myText-600 border-t border-zinc-200 dark:border-zinc-800">

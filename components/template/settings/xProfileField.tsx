@@ -43,7 +43,7 @@ export default function XProfileField({ xProfile }: { xProfile?: string }) {
     <>
       <div
         onClick={() => setIsModalOpen(true)}
-        className="flex items-center justify-between w-full cursor-pointer"
+        className="flex sm:flex-row flex-col gap-3 items-center justify-between w-full cursor-pointer"
       >
         <div className="flex flex-col gap-2">
           <h3 className="vazir-medium">پروفایل اکس (x.com)</h3>
@@ -51,7 +51,9 @@ export default function XProfileField({ xProfile }: { xProfile?: string }) {
             نام کاربری شما در اکس
           </h4>
         </div>
-        <PrimaryBtn>{xProfile || "افزودن"}</PrimaryBtn>
+        <PrimaryBtn width="sm:w-[150px] w-full">
+          {xProfile || "افزودن"}
+        </PrimaryBtn>
       </div>
       {isModalOpen && (
         <SabzModal CloseModal={() => setIsModalOpen(false)}>

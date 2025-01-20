@@ -7,9 +7,9 @@ import { changeTheme } from "@/redux/slices/user";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
 import { SendErrorToast } from "@/utils/toast-functions";
 import axios from "axios";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { IoIosArrowDown } from "react-icons/io";
 import { IoMoonSharp } from "react-icons/io5";
 import { MdSunny } from "react-icons/md";
 
@@ -69,9 +69,12 @@ export default function PostHeaderProfileBtn() {
             onClick={AnimateToggleModal}
             className="flex items-center bg-zinc-100 cursor-pointer dark:bg-darkColor-700 h-full py-1 pl-0.5 gap-2 rounded-full"
           >
-            <img
-              src="/images/avatar-default.jpg"
-              className="rounded-full w-[35px] aspect-square"
+            <Image
+              src={userData.data?.avatar || "/images/avatar-default.jpg"}
+              className="rounded-full w-[35px] aspect-square object-cover"
+              width={400}
+              height={400}
+              alt={userData.data?.username || "avatar"}
             />
           </button>
           {isMenuMount && (
@@ -93,9 +96,12 @@ export default function PostHeaderProfileBtn() {
                     مشاهده پروفایل
                   </Link>
                 </div>
-                <img
-                  src="/images/avatar-default.jpg"
-                  className="rounded-full w-[35px] h-[35px]"
+                <Image
+                  src={userData.data?.avatar || "/images/avatar-default.jpg"}
+                  className="rounded-full w-[35px] aspect-square object-cover"
+                  width={400}
+                  height={400}
+                  alt={userData.data?.username || "avatar"}
                 />
               </div>
               <div className="p-4 flex flex-col items-start gap-4 dark:text-myText-400 text-myText-600 border-t border-zinc-200 dark:border-zinc-800">

@@ -7,6 +7,7 @@ export type PostModelType = {
   user: mongoose.Types.ObjectId;
   likes: number;
   status: string;
+  imagesID: string[];
 };
 
 const schema = new mongoose.Schema<PostModelType>({
@@ -32,6 +33,10 @@ const schema = new mongoose.Schema<PostModelType>({
   status: {
     type: String,
     required: true,
+  },
+  imagesID: {
+    type: [String],
+    required: false,
   },
 });
 

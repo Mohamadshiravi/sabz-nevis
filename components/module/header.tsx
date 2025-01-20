@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
 import { changeTheme, fetchUserDataFromServer } from "@/redux/slices/user";
 import { MdNotifications, MdSunny } from "react-icons/md";
-import HeaderProfileBtn from "./headerProfileBtn";
+import HeaderProfileBtn from "../template/header/headerProfileBtn";
 import Image from "next/image";
 
 export default function Header({ isTransparent }: { isTransparent?: boolean }) {

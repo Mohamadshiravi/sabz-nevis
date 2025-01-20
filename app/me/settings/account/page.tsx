@@ -56,7 +56,7 @@ export default function SettingsAccount() {
           <hr className="border-1 border-zinc-200 dark:border-zinc-800" />
 
           <BlockContactField />
-          <div className="flex sm:flex-row flex-col gap-2 items-center justify-between w-full">
+          <div className="flex sm:flex-row flex-col gap-3 items-center justify-between w-full">
             <div className="flex flex-col gap-2">
               <h3 className="vazir-medium">حذف حساب کاربری</h3>
               <h4 className="text-myText-600 text-sm pl-2">
@@ -64,6 +64,7 @@ export default function SettingsAccount() {
               </h4>
             </div>
             <PrimaryBtn
+              width="sm:w-[150px] w-full"
               onPress={() => {
                 setIsModalOpen(true);
               }}

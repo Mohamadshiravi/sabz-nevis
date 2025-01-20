@@ -1,8 +1,6 @@
-"use client";
-
 import List from "@/components/module/me/list";
 
-export default async function ListsProfileSction({
+export default function ListsProfileSction({
   params,
 }: {
   params: { id: string };
