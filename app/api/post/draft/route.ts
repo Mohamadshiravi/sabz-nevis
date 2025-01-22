@@ -10,7 +10,16 @@ export async function POST(req: Request) {
   try {
     const { title, body, postID } = await req.json();
 
-    console.log(postID);
+    const currentPost = await postModel
+      .findOne({ _id: postID }, "-_id user")
+      .populate("user", "phone");
+
+    if (currentPost.user.phone !== isUserAuth.phone) {
+      return Response.json(
+        { message: "you dont have Access" },
+        { status: 403 }
+      );
+    }
 
     if (!postID) {
       const newPost = await postModel.create({
@@ -19,7 +28,6 @@ export async function POST(req: Request) {
         status: "draft",
         user: isUserAuth._id,
       });
-      console.log(newPost);
       return Response.json(
         { message: "post created", id: newPost._id },
         { status: 201 }
@@ -35,8 +43,6 @@ export async function POST(req: Request) {
       return Response.json({ message: "post updated", id: updatedPost._id });
     }
   } catch (error) {
-    console.log(error);
-
     return Response.json({ message: "server error" }, { status: 500 });
   }
 }

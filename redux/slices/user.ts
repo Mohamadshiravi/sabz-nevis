@@ -17,7 +17,7 @@ const initialState: userState = {
 };
 
 export const fetchUserDataFromServer = createAsyncThunk(
-  "users/fetchUserDataFromServer",
+  "user/fetchUserDataFromServer",
   async () => {
     const res = await axios.get("/api/auth/me");
     if (res.status === 200) {
@@ -29,7 +29,7 @@ export const fetchUserDataFromServer = createAsyncThunk(
 );
 
 export const updateUserDataToServer = createAsyncThunk(
-  "users/updateUserDataToServer",
+  "user/updateUserDataToServer",
   async (payload: any) => {
     const res = await axios.post("/api/auth/me/update", payload);
     return res.data;
@@ -37,7 +37,7 @@ export const updateUserDataToServer = createAsyncThunk(
 );
 
 export const addAvatarToServer = createAsyncThunk(
-  "users/addAvatarToServer",
+  "user/addAvatarToServer",
   async (payload: any) => {
     const res = await axios.post("/api/auth/me/update/avatar", payload);
     return res.data;
@@ -45,7 +45,7 @@ export const addAvatarToServer = createAsyncThunk(
 );
 
 const slice = createSlice({
-  name: "users",
+  name: "user",
   initialState,
   reducers: {
     changeTheme: (state, action) => {

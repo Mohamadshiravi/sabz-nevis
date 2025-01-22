@@ -1,3 +1,5 @@
+"use client";
+
 import { useTypedSelector } from "@/redux/typedHooks";
 import Image from "next/image";
 

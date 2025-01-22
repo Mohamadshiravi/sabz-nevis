@@ -137,7 +137,6 @@ export default function VerifyCodeForm({ phone, back }: VerifyCodeFormProp) {
         SendSucToast("کد مجددا برای شما ارسال شد");
       }
     } catch (e) {
-      console.log(e);
       setLoading(false);
       SendErrorToast("مشکلی در ارسال وجود دارد");
     }

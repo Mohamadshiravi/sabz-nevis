@@ -24,7 +24,6 @@ export default function LinkedInFiled({ linkedin }: { linkedin?: string }) {
     if (value !== linkedin && value !== "") {
       const res = await dispatch(updateUserDataToServer({ linkedin: value }));
       if (res.payload) {
-        console.log(res.payload);
         SendSucToast(" پروفایل لینکدین شما تغییر کرد");
         setLoading(false);
         setIsModalOpen(false);

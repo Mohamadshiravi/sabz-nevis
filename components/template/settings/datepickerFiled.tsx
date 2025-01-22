@@ -26,7 +26,6 @@ export default function DatePickerField({ birthDay }: { birthDay?: string }) {
     if (value !== birthDay && value !== "" && regex.test(value)) {
       const res = await dispatch(updateUserDataToServer({ birthDay: value }));
       if (res.payload) {
-        console.log(res.payload);
         SendSucToast("تاریخ تولد شما تغییر کرد");
         setLoading(false);
         setIsModalOpen(false);

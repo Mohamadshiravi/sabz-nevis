@@ -7,7 +7,7 @@ export type UserModelType = {
   about?: string;
   gender?: string;
   birthDay?: string;
-  username?: string;
+  username: string;
   email?: string;
   password?: string;
   xProfile?: string;

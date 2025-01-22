@@ -29,15 +29,21 @@ import { useTypedSelector } from "@/redux/typedHooks";
 import axios from "axios";
 import { SendErrorToast } from "@/utils/toast-functions";
 
+type SabzTextEditorProps = {
+  setBody: (value: string) => void;
+  setTitle: (value: string) => void;
+  postID: string;
+  savedBody: string;
+  savedTitle: string;
+};
+
 export default function SabzTextEditor({
   setBody: setOutBody,
   setTitle,
   postID,
-}: {
-  setBody: (value: string) => void;
-  setTitle: (value: string) => void;
-  postID: string;
-}) {
+  savedBody,
+  savedTitle,
+}: SabzTextEditorProps) {
   const [headerInp, setHeaderInp] = useState("");
   const [body, setBody] = useState("");
 
@@ -46,6 +52,10 @@ export default function SabzTextEditor({
   const [photoloading, setPhotoLoading] = useState(false);
 
   const userData = useTypedSelector((state) => state);
+
+  useEffect(() => {
+    setHeaderInp(savedTitle);
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -62,7 +72,9 @@ export default function SabzTextEditor({
       setIsToolbarVisible(true);
     }
 
-    setOutBody(body);
+    if (body !== "") {
+      setOutBody(body);
+    }
   }, [body]);
 
   useEffect(() => {
@@ -98,7 +110,6 @@ export default function SabzTextEditor({
       }),
       BulletList.configure({
         HTMLAttributes: {
-          dir: "auto",
           class: "listStyle",
         },
       }),
@@ -135,9 +146,10 @@ export default function SabzTextEditor({
         },
       }),
     ],
-    content: "",
+    content: savedBody,
     onUpdate: ({ editor }) => {
       const content = editor.getHTML();
+
       setBody(content);
 
       if (content.trim()) {
@@ -305,7 +317,13 @@ export default function SabzTextEditor({
         )}
         <EditorContent
           editor={editor}
-          onKeyDown={(e) => e.key === "Enter" && setIsToolbarVisible(true)}
+          onKeyDown={(e) => {
+            e.key === "Enter" && setIsToolbarVisible(true);
+
+            if (e.key === "Enter") {
+              editor?.chain().focus().unsetColor().run(); // بازنشانی رنگ
+            }
+          }}
         />
 
         {photoloading && (
@@ -369,12 +387,14 @@ export default function SabzTextEditor({
         setPhotoLoading(true);
         const formData = new FormData();
         formData.append("img", event.target.files[0]);
+        formData.append("postId", postID);
 
         const res = await axios.post("/api/post/photo", formData);
-        console.log(res.data);
 
         if (res.data.path) {
           editor?.chain().focus().setImage({ src: res.data.path }).run();
+          setIsToolBarOpen(false);
+          setIsToolbarVisible(false);
           setPhotoLoading(false);
         } else {
           SendErrorToast("مشکلی در اپلود تصویر");

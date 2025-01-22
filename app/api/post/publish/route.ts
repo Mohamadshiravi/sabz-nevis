@@ -8,13 +8,22 @@ export async function POST(req: Request) {
   }
 
   try {
-    const { postID } = await req.json();
+    const { postID, cover, desc, readingTime, category } = await req.json();
+
+    const currentPost = await postModel
+      .findOne({ _id: postID }, "-_id user")
+      .populate("user", "phone");
+
+    if (currentPost.user.phone !== isUserAuth.phone) {
+      return Response.json(
+        { message: "you dont have Access" },
+        { status: 403 }
+      );
+    }
 
     const updatedPost = await postModel.findOneAndUpdate(
       { _id: postID },
-      {
-        status: "completed",
-      }
+      { status: "completed", postID, cover, desc, readingTime, category }
     );
     return Response.json({ message: "post published", id: updatedPost._id });
   } catch (error) {

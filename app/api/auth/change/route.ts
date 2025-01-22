@@ -45,7 +45,6 @@ export async function POST(req: Request) {
         oldPhone = verifyToken.phone;
       }
     }
-    console.log(oldPhone);
 
     await userModel.findOneAndUpdate({ phone: oldPhone }, { phone });
     const token = JenerateAccessToken({ phone });

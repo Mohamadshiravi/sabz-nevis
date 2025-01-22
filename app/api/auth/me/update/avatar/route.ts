@@ -44,7 +44,6 @@ export async function POST(req: Request) {
 
     return Response.json({ message: "user avatar updated", user });
   } catch (error) {
-    console.log(error);
     return Response.json({ error: "server error" }, { status: 500 });
   }
 }

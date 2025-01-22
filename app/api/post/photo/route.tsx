@@ -17,9 +17,21 @@ export async function POST(req: Request) {
   try {
     const formdata = await req.formData();
     const img = formdata.get("img") as Blob;
+    const postId = formdata.get("postId");
 
-    if (!img) {
-      return Response.json({ error: "no file send" }, { status: 400 });
+    const currentPost = await postModel
+      .findOne({ _id: postId }, "-_id user")
+      .populate("user", "phone");
+
+    if (currentPost.user.phone !== isUserAuth.phone) {
+      return Response.json(
+        { message: "you dont have Access" },
+        { status: 403 }
+      );
+    }
+
+    if (!img && !postId) {
+      return Response.json({ error: "data is incorect" }, { status: 400 });
     }
 
     const bufferedPhoto = Buffer.from(await img.arrayBuffer());
@@ -27,12 +39,14 @@ export async function POST(req: Request) {
     const response = await imagekit.upload({
       file: bufferedPhoto,
       fileName: `img-${Date.now()}`,
-      folder: "/uploads/postImages",
+      folder: "/uploads/posts",
     });
 
     await postModel.findOneAndUpdate(
-      { _id: isUserAuth._id },
-      { avatar: response.url, fileID: response.fileId }
+      { _id: postId },
+      {
+        $push: { imagesID: response.fileId, imagesUrl: response.url },
+      }
     );
 
     return Response.json({ message: "image uploaded", path: response.url });

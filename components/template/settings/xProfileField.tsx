@@ -24,7 +24,6 @@ export default function XProfileField({ xProfile }: { xProfile?: string }) {
     if (value !== xProfile && value !== "") {
       const res = await dispatch(updateUserDataToServer({ xProfile: value }));
       if (res.payload) {
-        console.log(res.payload);
         SendSucToast(" پروفایل X شما تغییر کرد");
         setLoading(false);
         setIsModalOpen(false);

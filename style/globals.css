@@ -22,7 +22,7 @@
 .listStyle li {
   position: relative;
   margin-bottom: 0.75rem;
-  padding-left: 25px;
+  padding-right: 25px;
   font-weight: 500;
   font-size: 1rem;
 }
@@ -30,7 +30,7 @@
 .listStyle li::before {
   content: "•";
   position: absolute;
-  left: 0;
+  right: 0;
   top: 60%;
   transform: translateY(-50%);
   color: #10b981;
