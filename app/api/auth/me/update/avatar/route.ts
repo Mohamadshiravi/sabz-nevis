@@ -22,10 +22,12 @@ export async function POST(req: Request) {
       return Response.json({ error: "no file send" }, { status: 400 });
     }
 
-    const oldUserData = await userModel.findOne({ _id: isUserAuth._id });
-    if (oldUserData.avatar) {
-      await imagekit.deleteFile(oldUserData.fileID);
-    }
+    try {
+      const oldUserData = await userModel.findOne({ _id: isUserAuth._id });
+      if (oldUserData.avatar) {
+        await imagekit.deleteFile(oldUserData.fileID);
+      }
+    } catch (error) {}
 
     const bufferedPhoto = Buffer.from(await img.arrayBuffer());
 
@@ -44,6 +46,8 @@ export async function POST(req: Request) {
 
     return Response.json({ message: "user avatar updated", user });
   } catch (error) {
+    console.log(error);
+
     return Response.json({ error: "server error" }, { status: 500 });
   }
 }

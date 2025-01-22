@@ -19,6 +19,7 @@
     "@tiptap/starter-kit": "^2.11.2",
     "@types/jsonwebtoken": "^9.0.7",
     "axios": "^1.7.9",
+    "date-fns": "^4.1.0",
     "imagekit": "^6.0.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.9.2",

@@ -10,17 +10,6 @@ export async function POST(req: Request) {
   try {
     const { title, body, postID } = await req.json();
 
-    const currentPost = await postModel
-      .findOne({ _id: postID }, "-_id user")
-      .populate("user", "phone");
-
-    if (currentPost.user.phone !== isUserAuth.phone) {
-      return Response.json(
-        { message: "you dont have Access" },
-        { status: 403 }
-      );
-    }
-
     if (!postID) {
       const newPost = await postModel.create({
         title,
@@ -33,14 +22,30 @@ export async function POST(req: Request) {
         { status: 201 }
       );
     } else {
-      const updatedPost = await postModel.findOneAndUpdate(
+      const currentPost = await postModel
+        .findOne({ _id: postID }, "-_id user")
+        .populate("user", "phone");
+
+      if (currentPost.user.phone !== isUserAuth.phone) {
+        return Response.json(
+          { message: "you dont have Access" },
+          { status: 403 }
+        );
+      }
+
+      await postModel.findOneAndUpdate(
         { _id: postID },
         {
           title,
           body,
         }
       );
-      return Response.json({ message: "post updated", id: updatedPost._id });
+      const post = await postModel.findOne({ _id: postID }, "_id imagesUrl");
+      return Response.json({
+        message: "post updated",
+        id: post._id,
+        images: post.imagesUrl,
+      });
     }
   } catch (error) {
     return Response.json({ message: "server error" }, { status: 500 });

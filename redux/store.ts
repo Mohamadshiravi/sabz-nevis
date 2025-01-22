@@ -8,9 +8,9 @@ const store = configureStore({
     posts: postReducer,
   },
 });
-// store.subscribe(() => {
-//   console.log("store=>", store.getState());
-// });
+store.subscribe(() => {
+  console.log("store=>", store.getState());
+});
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;

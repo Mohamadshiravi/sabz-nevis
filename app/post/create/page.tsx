@@ -35,6 +35,7 @@ export default function CreatePostPage() {
 
   const [draftLoading, setDraftLoading] = useState(false);
   const [postID, setPostID] = useState("");
+  const [imagesUrl, setImagesUrl] = useState<null | ""[]>(null);
 
   const [savedPost, setSavedPost] = useState<null | PostModelType>(null);
 
@@ -80,6 +81,7 @@ export default function CreatePostPage() {
 
       setbody(res.data.post.body);
       setTitle(res.data.post.title);
+      setImagesUrl(res.data.post.imagesUrl);
     } catch (error) {}
   }
 
@@ -160,8 +162,9 @@ export default function CreatePostPage() {
       </main>
       {isModalOpen && (
         <PublishModal
+          key={savedPost ? savedPost._id : "initial"}
           postId={postID}
-          images={savedPost?.imagesUrl}
+          images={imagesUrl}
           CloseModal={() => setIsModalOpen(false)}
         />
       )}
@@ -179,6 +182,7 @@ export default function CreatePostPage() {
 
       localStorage.setItem("postId", res.data.id);
       setPostID(res.data.id);
+      setImagesUrl(res.data.images);
 
       setDraftLoading(false);
     } catch (error) {

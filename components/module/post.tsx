@@ -1,7 +1,8 @@
 import { PostModelType } from "@/models/post";
 import Image from "next/image";
-import { useEffect } from "react";
 import { GoBookmark, GoComment, GoDotFill, GoHeart } from "react-icons/go";
+import { format, formatDistanceToNow } from "date-fns";
+import { faIR } from "date-fns/locale";
 
 type PostProps = {
   border?: boolean;
@@ -9,6 +10,17 @@ type PostProps = {
 };
 
 export default function Post({ border, data }: PostProps) {
+  const formattedDate = data?.createdAt
+    ? format(new Date(data.createdAt), "yyyy/MM/dd", { locale: faIR }) // فرمت تاریخ: ۱۴۰۲/۰۷/۱۵
+    : "";
+
+  // یا نمایش زمان نسبی (مثلاً "۲ ساعت پیش")
+  const relativeDate = data?.createdAt
+    ? formatDistanceToNow(new Date(data.createdAt), {
+        addSuffix: true,
+        locale: faIR,
+      })
+    : "";
   return (
     <div
       className={`flex flex-col ${
@@ -23,13 +35,13 @@ export default function Post({ border, data }: PostProps) {
           src={data?.user.avatar || "/images/avatar-default.jpg"}
           className="w-[24px] rounded-full ml-3"
         />
-        <span className="text-sm text-white text-xs">
+        <span className="text-sm text-xs text-zinc-800 dark:text-white">
           {data?.user.displayName
             ? data?.user.displayName
             : data?.user.username}
         </span>
         <GoDotFill className="text-[4px]" />
-        <span className="text-xs">17 دقیقه پیش</span>
+        <span className="text-xs">{relativeDate}</span>
       </div>
       <div className="flex justify-between mt-3">
         <div className="flex flex-col sm:gap-3 gap-2 sm:pl-10 pl-4">
@@ -41,22 +53,17 @@ export default function Post({ border, data }: PostProps) {
               src={data?.user.avatar || "/images/avatar-default.jpg"}
               className="w-[24px] rounded-full ml-3"
             />
-            <span className="text-sm text-white text-xs">
+            <span className="text-sm text-xs text-zinc-800 dark:text-white">
               {data?.user.displayName
                 ? data?.user.displayName
                 : data?.user.username}
             </span>
             <GoDotFill className="text-[4px]" />
-            <span className="text-xs">17 دقیقه پیش</span>
+            <span className="text-xs">{relativeDate}</span>
           </div>
           <h2 className="text-lg vazir-bold">{data?.title}</h2>
           <p className="twoLineText sm:text-sm text-xs text-myText-600">
-            تو این دوره زمونه به ما مردا کم ظلم نشده؛از نا عدالتی ها تا طرد
-            شدنمون از جامعه.بیشتر زنا از مردا بخاطر کارای اجدادمون متنفرن.بعضی
-            نام فک م…شدنمون از جامعه.بیشتر زنا از مردا بخاطر کارای اجدادمون
-            متنفرن.بعضی نام فک م… شدنمون از جامعه.بیشتر زنا از مردا بخاطر کارای
-            اجدادمون متنفرن.بعضی نام فک م… شدنمون از جامعه.بیشتر زنا از مردا
-            بخاطر کارای اجدادمون متنفرن.بعضی نام فک م…
+            {data?.desc}
           </p>
         </div>
 
