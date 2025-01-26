@@ -8,9 +8,7 @@ import UploadProfilePhoto from "@/components/template/settings/uploadProfilePhot
 import XProfileField from "@/components/template/settings/xProfileField";
 import { updateUserDataToServer } from "@/redux/slices/user";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
-import Image from "next/image";
 import { useEffect, useState } from "react";
-import { MdPhotoCamera } from "react-icons/md";
 
 export default function SettingsMain() {
   const [loading, setLoading] = useState(true);

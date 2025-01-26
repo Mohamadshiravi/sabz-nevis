@@ -73,10 +73,13 @@ export default function AboutField({ about }: { about?: string }) {
               className="border-b border-zinc-300 bg-inherit dark:border-zinc-700 w-full px-2 py-1 outline-none mt-10 max-h-[300px] min-h-[100px]"
             />
             <div className="flex items-center justify-end gap-3 mt-10">
-              <PrimaryBtn onPress={() => setIsModalOpen(false)}>
+              <PrimaryBtn
+                width="w-[110px]"
+                onPress={() => setIsModalOpen(false)}
+              >
                 منصرف شدم
               </PrimaryBtn>
-              <LoadingBtn loading={loading} width="w-[90px]">
+              <LoadingBtn loading={loading} width="w-[110px]">
                 ذخیره
               </LoadingBtn>
             </div>

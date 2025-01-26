@@ -85,10 +85,13 @@ export default function PhoneField({ phone }: { phone?: string }) {
               className="border-b border-zinc-300 bg-inherit dark:border-zinc-700 w-full px-2 py-1 outline-none mt-10"
             />
             <div className="flex items-center justify-end gap-3 mt-10">
-              <PrimaryBtn onPress={() => setIsRegisterModalOpen(false)}>
+              <PrimaryBtn
+                onPress={() => setIsRegisterModalOpen(false)}
+                width="w-[110px]"
+              >
                 منصرف شدم
               </PrimaryBtn>
-              <LoadingBtn loading={loading} width="w-[90px]">
+              <LoadingBtn loading={loading} width="w-[110px]">
                 ذخیره
               </LoadingBtn>
             </div>

@@ -15,11 +15,11 @@ export default async function UserProfilePage({
   params,
   children,
 }: {
-  params: { id: string };
+  params: { username: string };
   children: ReactNode;
 }) {
   await ConnectToDB();
-  const decodedUserId = decodeURIComponent(params.id).slice(1);
+  const decodedUserId = decodeURIComponent(params.username).slice(1);
   const isAnyUserExist = await userModel.findOne(
     { username: decodedUserId },
     "phone displayName username about avatar -_id"
@@ -101,9 +101,13 @@ export default async function UserProfilePage({
     </>
   );
 }
-export async function generateMetadata({ params }: { params: { id: string } }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: { username: string };
+}) {
   await ConnectToDB();
-  const decodedUserId = decodeURIComponent(params.id).slice(1);
+  const decodedUserId = decodeURIComponent(params.username).slice(1);
   const isAnyUserExist = await userModel.findOne(
     { username: decodedUserId },
     "displayName username -_id"

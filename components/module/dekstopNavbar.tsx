@@ -29,7 +29,7 @@ export default function DesktopNavbar() {
             <span className="text-nowrap">صفحه اصلی</span>
           </Link>
           <Link
-            href={`/@${username}`}
+            href={`/@${username}/profile`}
             className={`${
               path === "/podcasts" && "text-myGreen-600"
             } flex items-center gap-3 text-base hover:text-myGreen-600 transition`}

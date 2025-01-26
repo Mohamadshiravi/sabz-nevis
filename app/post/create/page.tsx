@@ -1,7 +1,7 @@
 "use client";
 
-import PostHeaderProfileBtn from "@/components/template/post/postHeaderProfileBtn";
-import PublishModal from "@/components/template/post/publishModal";
+import PostHeaderProfileBtn from "@/components/template/createPost/postHeaderProfileBtn";
+import PublishModal from "@/components/template/createPost/publishModal";
 import { PostModelType } from "@/models/post";
 import { fetchUserDataFromServer } from "@/redux/slices/user";
 import { useTypedDispatch } from "@/redux/typedHooks";
@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
 
 const SabzTextEditor = dynamic(
-  () => import("@/components/template/post/sabzTextEditor"),
+  () => import("@/components/template/createPost/sabzTextEditor"),
   {
     loading: () => (
       <div className="mt-10 mb-20 w-full flex flex-col">

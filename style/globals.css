@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+.renderHtmlDiv p {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+.renderHtmlDiv pre code {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
 .tiptap pre {
   position: relative;
 }
@@ -153,21 +166,22 @@
 }
 
 input::placeholder {
-  color: #8e8e8e;
+  color: #a3a3a3;
   text-align: right;
+  transition: all 0.3s;
+}
+input:focus::placeholder {
+  color: #585858;
+}
+textarea::placeholder {
+  text-align: right;
+  transition: all 0.3s;
+  color: #a0a0a0;
+}
+textarea:focus::placeholder {
+  color: #585858;
 }
 
-input:-ms-input-placeholder {
-  /* Internet Explorer 10-11 */
-  color: #8e8e8e;
-  text-align: right;
-}
-
-input::-ms-input-placeholder {
-  /* Microsoft Edge */
-  color: #8e8e8e;
-  text-align: right;
-}
 .placeWhite::placeholder {
   color: #ffffff;
 }

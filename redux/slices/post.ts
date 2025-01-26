@@ -26,6 +26,28 @@ export const fetchPostFromServer = createAsyncThunk(
   }
 );
 
+export const AddCommentToProduct = createAsyncThunk(
+  "posts/AddCommentToProduct",
+  async (payload: {
+    id: string;
+    name: string;
+    body: string;
+    avatar: string;
+  }) => {
+    const res = await axios.post("/api/post/comment", {
+      postId: payload.id,
+      name: payload.name,
+      body: payload.body,
+      avatar: payload.avatar,
+    });
+    if (res.status === 201) {
+      return res.data;
+    } else {
+      return null;
+    }
+  }
+);
+
 const slice = createSlice({
   name: "posts",
   initialState,
@@ -40,6 +62,9 @@ const slice = createSlice({
     builder.addCase(fetchPostFromServer.pending, (state) => {
       state.error = null;
       state.loading = true;
+    });
+    builder.addCase(AddCommentToProduct.fulfilled, (state, action) => {
+      return state;
     });
   },
 });

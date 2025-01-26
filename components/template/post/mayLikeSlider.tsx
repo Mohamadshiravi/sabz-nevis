@@ -5,16 +5,13 @@ import "swiper/css";
 import Image from "next/image";
 import ColPost from "@/components/module/colPost";
 
-export default function TopPosts() {
+export default function MayLikeSlider() {
   return (
-    <div className="bg-emerald-600 sm:p-6 p-3 rounded-md">
-      <div className="flex items-center gap-4 text-white vazir-bold">
-        <div className="bg-white p-2 rounded-md shadow-lg">
-          <img src="/images/sabz-logo.png" className="w-[30px]" />
-        </div>
-        <h3>پست های منتخب</h3>
+    <div className="sm:p-6 p-3 rounded-md mt-4 border-b border-zinc-200 dark:border-zinc-800">
+      <div className="flex items-center justify-center gap-4 vazir-medium">
+        <h3>شاید ازین پست ها خوشتان بیاید</h3>
       </div>
-      <div className="grid mt-8">
+      <div className="grid mt-6">
         <Swiper
           breakpoints={{
             640: {

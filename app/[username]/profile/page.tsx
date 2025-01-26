@@ -10,7 +10,7 @@ import { IoIosArrowBack } from "react-icons/io";
 export default function MainProfileSction({
   params,
 }: {
-  params: { id: string };
+  params: { username: string };
 }) {
   const [loading, setLoading] = useState(true);
   const [isUserHere, setIsUserHere] = useState(false);
@@ -26,7 +26,9 @@ export default function MainProfileSction({
 
   async function FetchCurrentUser() {
     setLoading(true);
-    const currentUser = await axios.get(`/api/users/${params.id.slice(3)}`);
+    const currentUser = await axios.get(
+      `/api/users/${params.username.slice(3)}`
+    );
 
     if (currentUser.data.user.phone === userData.data?.phone) {
       setIsUserHere(true);

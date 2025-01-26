@@ -3,7 +3,7 @@ import List from "@/components/module/me/list";
 export default function ListsProfileSction({
   params,
 }: {
-  params: { id: string };
+  params: { username: string };
 }) {
   return (
     <>
