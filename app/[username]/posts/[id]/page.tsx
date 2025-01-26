@@ -29,7 +29,14 @@ export default async function userPosts({ params }: userPostsProps) {
   const post = await postModel
     .findOne({ _id: params.id }, "-imagesID -status -__v -updatedAt -desc")
     .populate("user", "avatar displayName username about")
-    .populate("comments", "-__v -post");
+    .populate({
+      path: "comments",
+      select: "-__v",
+      populate: {
+        path: "replies",
+        select: "-__v -post -replyTo -updatedAt -replies",
+      },
+    });
 
   if (!post) {
     notFound();
@@ -119,13 +126,7 @@ export default async function userPosts({ params }: userPostsProps) {
               </span>
               <span className="vazir-medium">نظرات</span>
             </div>
-            <AddCommentSection
-              id={JSON.parse(JSON.stringify(post._id))}
-              avatar={JSON.parse(JSON.stringify(post.user.avatar))}
-              name={JSON.parse(
-                JSON.stringify(post.user.displayName || post.user.username)
-              )}
-            />
+            <AddCommentSection id={JSON.parse(JSON.stringify(post._id))} />
             <Comments comments={JSON.parse(JSON.stringify(post.comments))} />
           </div>
         </section>

@@ -26,19 +26,23 @@ export const fetchPostFromServer = createAsyncThunk(
   }
 );
 
-export const AddCommentToProduct = createAsyncThunk(
-  "posts/AddCommentToProduct",
+export const AddCommentToPost = createAsyncThunk(
+  "posts/AddCommentToPost",
   async (payload: {
     id: string;
     name: string;
     body: string;
     avatar: string;
+    replyTo?: string;
   }) => {
+    console.log(payload);
+
     const res = await axios.post("/api/post/comment", {
       postId: payload.id,
       name: payload.name,
       body: payload.body,
       avatar: payload.avatar,
+      replyTo: payload.replyTo || null,
     });
     if (res.status === 201) {
       return res.data;
@@ -63,7 +67,7 @@ const slice = createSlice({
       state.error = null;
       state.loading = true;
     });
-    builder.addCase(AddCommentToProduct.fulfilled, (state, action) => {
+    builder.addCase(AddCommentToPost.fulfilled, (state, action) => {
       return state;
     });
   },

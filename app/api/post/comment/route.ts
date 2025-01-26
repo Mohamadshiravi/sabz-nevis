@@ -9,22 +9,40 @@ export async function POST(req: Request) {
   }
 
   try {
-    const { postId, name, body, avatar } = await req.json();
+    const { postId, name, body, avatar, replyTo } = await req.json();
 
-    const comments = await commentModel.create({
-      post: postId,
-      name,
-      body,
-      avatar,
-      status: "queued",
-    });
+    if (replyTo) {
+      const reply = await commentModel.create({
+        post: postId,
+        name,
+        body,
+        avatar,
+        status: "queued",
+        replyTo,
+      });
 
-    await postModel.findOneAndUpdate(
-      { _id: postId },
-      {
-        $push: { comments: comments._id },
-      }
-    );
+      await commentModel.findOneAndUpdate(
+        { _id: replyTo },
+        {
+          $push: { replies: reply._id },
+        }
+      );
+    } else {
+      const comments = await commentModel.create({
+        post: postId,
+        name,
+        body,
+        avatar,
+        status: "queued",
+      });
+
+      await postModel.findOneAndUpdate(
+        { _id: postId },
+        {
+          $push: { comments: comments._id },
+        }
+      );
+    }
 
     return Response.json({ message: "comment added" }, { status: 201 });
   } catch (error) {

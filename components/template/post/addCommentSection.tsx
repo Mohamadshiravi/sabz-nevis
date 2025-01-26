@@ -2,23 +2,17 @@
 
 import LoadingBtn from "@/components/module/loadingBtn";
 import PrimaryBtn from "@/components/module/primaryBtn";
-import { AddCommentToProduct } from "@/redux/slices/post";
-import { useTypedDispatch } from "@/redux/typedHooks";
+import { AddCommentToPost } from "@/redux/slices/post";
+import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
 import { SendErrorToast, SendSucToast } from "@/utils/toast-functions";
 import Image from "next/image";
 import { ChangeEvent, useState } from "react";
 
 type AddCommentSectionProps = {
-  avatar: string;
-  name: string;
   id: string;
 };
 
-export default function AddCommentSection({
-  avatar,
-  name,
-  id,
-}: AddCommentSectionProps) {
+export default function AddCommentSection({ id }: AddCommentSectionProps) {
   const preText = [
     "ای کاش",
     "از مطلب شما بسیار لذت بردم اما",
@@ -27,13 +21,15 @@ export default function AddCommentSection({
     "اگر این پست",
   ];
 
+  const { username, displayName, avatar } =
+    useTypedSelector((state) => state.user).data || {};
+
   const [input, setInput] = useState("");
   const [isOpen, setIsOpen] = useState(true);
-
-  console.log(name);
+  const [loading, setLoading] = useState(false);
 
   const dispatch = useTypedDispatch();
-  return (
+  return username ? (
     <form
       id="commentSection"
       onSubmit={AddCommentHandler}
@@ -42,10 +38,10 @@ export default function AddCommentSection({
     >
       <div className="flex items-center gap-4">
         <Image
-          src={avatar}
+          src={avatar || ""}
           width={200}
           height={200}
-          alt={name}
+          alt={username!}
           className="rounded-full w-[30px] h-[30px] object-cover"
         />
         <div className="relative overflow-hidden w-full cursor-text">
@@ -54,7 +50,7 @@ export default function AddCommentSection({
               isOpen ? "translate-y-0" : "translate-y-[25px]"
             }`}
           >
-            {name}
+            {username}
           </span>
           <span
             className={`block transition duration-300 text-myText-600 text-sm ${
@@ -98,7 +94,7 @@ export default function AddCommentSection({
             </PrimaryBtn>
             <LoadingBtn
               isDisable={input === "" ? true : false}
-              loading={false}
+              loading={loading}
               width="w-[130px]"
             >
               ارسال نظر
@@ -107,20 +103,32 @@ export default function AddCommentSection({
         </div>
       )}
     </form>
+  ) : (
+    <div className="bg-myGreen-600/10 my-8 py-3 px-4 rounded-sm text-emerald-800">
+      برای نوشتن نظر ابتدا وارد اکانت خود شوید
+    </div>
   );
   async function AddCommentHandler(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
 
+    setLoading(true);
+
     const res = await dispatch(
-      AddCommentToProduct({ id, name, body: input, avatar })
+      AddCommentToPost({
+        id,
+        name: displayName || username!,
+        body: input,
+        avatar: avatar || "",
+      })
     );
-    console.log(res);
 
     if (res.payload) {
+      setLoading(false);
       SendSucToast("کامنت شما ثبت شد و پس از تایید نمایش داده میشود");
       setInput("");
       setIsOpen(false);
     } else {
+      setLoading(false);
       SendErrorToast("مشکلی در ثبت کامنت وجود دارد");
     }
   }

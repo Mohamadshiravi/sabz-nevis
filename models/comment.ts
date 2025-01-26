@@ -3,12 +3,16 @@ import { PostModelType } from "./post";
 import { postModel } from "./index";
 
 export type CommentModelType = {
+  _id: string;
   avatar: string;
   name: string;
   body: string;
   post: mongoose.Types.ObjectId | PostModelType;
   createdAt: Date;
   status: "queued" | "accepted";
+  likes: mongoose.Types.ObjectId[];
+  replyTo: mongoose.Types.ObjectId;
+  replies: CommentModelType[];
 };
 
 const schema = new mongoose.Schema<CommentModelType>(
@@ -33,6 +37,16 @@ const schema = new mongoose.Schema<CommentModelType>(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Post",
       required: true,
+    },
+    likes: {
+      type: [{ type: mongoose.Types.ObjectId, ref: "Comment" }],
+    },
+    replyTo: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Comment",
+    },
+    replies: {
+      type: [{ type: mongoose.Types.ObjectId, ref: "Comment" }],
     },
   },
   {

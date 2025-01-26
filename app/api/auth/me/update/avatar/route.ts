@@ -37,12 +37,11 @@ export async function POST(req: Request) {
       folder: "/uploads/avatar",
     });
 
-    await userModel.findOneAndUpdate(
+    const user = await userModel.findOneAndUpdate(
       { _id: isUserAuth._id },
-      { avatar: response.url, fileID: response.fileId }
+      { avatar: response.url, fileID: response.fileId },
+      { new: true }
     );
-
-    const user = await userModel.findOne({ _id: isUserAuth._id });
 
     return Response.json({ message: "user avatar updated", user });
   } catch (error) {

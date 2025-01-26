@@ -78,7 +78,7 @@ export default function PublishModal({
       <section
         className={`${
           isModalOpen ? "opacity-100" : "opacity-0"
-        } fade-animate transition duration-300 w-full h-screen bg-white/30 dark:bg-black/10
+        } fade-animate transition duration-300 w-full h-[100dvh] bg-white/30 dark:bg-black/10
          backdrop-blur-md fixed top-0 left-0 z-40 flex items-center justify-center md:py-0 pb-3 pt-[300px] md:overflow-hidden overflow-y-scroll`}
       >
         <button

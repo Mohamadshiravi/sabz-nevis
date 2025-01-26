@@ -156,6 +156,15 @@ export default function SabzTextEditor({
         setIsToolbarVisible(false);
         setIsToolBarOpen(false);
       }
+
+      const { state } = editor;
+      const { selection } = state;
+      const { $from } = selection;
+
+      // بررسی آیا کاربر به خط جدید رفته است
+      if ($from.parentOffset === 0 && $from.nodeBefore === null) {
+        setIsToolbarVisible(true);
+      }
     },
     immediatelyRender: false,
     editorProps: {
@@ -318,8 +327,6 @@ export default function SabzTextEditor({
         <EditorContent
           editor={editor}
           onKeyDown={(e) => {
-            e.key === "Enter" && setIsToolbarVisible(true);
-
             if (e.key === "Enter") {
               editor?.chain().focus().unsetColor().run(); // بازنشانی رنگ
             }

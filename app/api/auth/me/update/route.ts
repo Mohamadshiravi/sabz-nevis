@@ -23,7 +23,7 @@ export async function POST(req: Request) {
 
   try {
     await ConnectToDB();
-    const oldUser = await userModel.findOneAndUpdate(
+    const user = await userModel.findOneAndUpdate(
       { phone: isUserAuth.phone },
       {
         phone,
@@ -36,10 +36,9 @@ export async function POST(req: Request) {
         password,
         xProfile,
         linkedin,
-      }
+      },
+      { new: true }
     );
-
-    const user = await userModel.findOne({ _id: oldUser._id });
 
     return new Response(JSON.stringify({ message: "user updated", user }), {
       status: 200,

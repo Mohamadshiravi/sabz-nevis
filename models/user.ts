@@ -12,7 +12,7 @@ export type UserModelType = {
   password?: string;
   xProfile?: string;
   linkedin?: string;
-  avatar?: string;
+  avatar: string;
   fileID: string;
 };
 
@@ -59,7 +59,7 @@ const schema = new mongoose.Schema<UserModelType>({
   },
   avatar: {
     type: String,
-    required: false,
+    default: "/images/avatar-default.jpg",
   },
   fileID: {
     type: String,
