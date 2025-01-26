@@ -1,6 +1,7 @@
 "use client";
 
 import { useTypedSelector } from "@/redux/typedHooks";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AiOutlinePlus } from "react-icons/ai";
@@ -22,17 +23,22 @@ export default function MobileNavbar() {
     <nav className="z-40 fixed lg:hidden flex bottom-0 border-t border-zinc-200 left-0 w-full bg-white dark:bg-darkColor-800 dark:border-zinc-800 items-center justify-between py-3 px-8 gap-4">
       <Link
         href={
-          userData.data?.username ? `/@${userData.data?.username}` : `/login`
+          userData.data?.username
+            ? `/@${userData.data?.username}/profile`
+            : `/login`
         }
         className={`${
-          path === `/@${userData.data?.username}` ||
-          path === `/@${userData.data?.username}/lists`
+          path === `/@${userData.data?.username}/profile` ||
+          path === `/@${userData.data?.username}/profile/lists`
             ? "border-2 border-myGreen-600"
             : "border border-zinc-200"
         } w-[32px] h-[32px] rounded-full overflow-hidden`}
       >
-        <img
-          src="/images/avatar-default.jpg"
+        <Image
+          width={400}
+          height={400}
+          alt={userData.data?.username!}
+          src={userData.data?.avatar || "/images/avatar-default.jpg"}
           className="w-full h-full rounded-full"
         />
       </Link>

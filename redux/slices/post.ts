@@ -35,8 +35,6 @@ export const AddCommentToPost = createAsyncThunk(
     avatar: string;
     replyTo?: string;
   }) => {
-    console.log(payload);
-
     const res = await axios.post("/api/post/comment", {
       postId: payload.id,
       name: payload.name,
