@@ -15,8 +15,6 @@ import { FaReply } from "react-icons/fa";
 import { GoHeart, GoHeartFill } from "react-icons/go";
 
 export default function Comment({ data }: { data: CommentModelType }) {
-  console.log(data);
-
   const {
     _id: userId,
     username,

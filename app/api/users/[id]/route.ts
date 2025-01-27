@@ -8,7 +8,10 @@ export async function GET(
   try {
     await ConnectToDB();
 
-    const user = await userModel.findOne({ username: params.id }, "phone");
+    const user = await userModel.findOne(
+      { username: params.id },
+      "phone displayName"
+    );
 
     return Response.json({ user });
   } catch (error) {

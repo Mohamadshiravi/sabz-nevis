@@ -2,7 +2,7 @@ import DesktopNavbar from "@/components/module/dekstopNavbar";
 import Footer from "@/components/module/footer";
 import Header from "@/components/module/header";
 import MobileNavbar from "@/components/module/navbar";
-import HomeBanner from "@/components/template/homeBanner";
+import HomeBanner from "@/components/template/main/homeBanner";
 import IsUserAuthentication from "@/utils/auth/authUser";
 import { ReactNode } from "react";
 

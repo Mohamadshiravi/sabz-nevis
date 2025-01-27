@@ -14,6 +14,7 @@ import UserDetailsSectionCol from "@/components/template/post/userDetailsSection
 import ConnectToDB from "@/DB/connectToDB";
 import AddCommentSection from "@/components/template/post/addCommentSection";
 import Comments from "@/components/template/post/comments";
+import { Suspense } from "react";
 
 type userPostsProps = {
   params: { id: string };
@@ -118,7 +119,10 @@ export default async function userPosts({ params }: userPostsProps) {
             username={JSON.parse(JSON.stringify(post.user.username))}
             isUserHere={JSON.parse(JSON.stringify(isUserHere))}
           />
-          <MayLikeSlider />
+          <MayLikeSlider
+            category={JSON.parse(JSON.stringify(post.category))}
+            current={JSON.parse(JSON.stringify(post._id))}
+          />
           <div className="sm:py-8">
             <div className="flex items-center gap-3 justify-center">
               <span className="bg-myGreen-600 text-white rounded-full flex items-center justify-center w-[40px] h-[40px] text-xl">

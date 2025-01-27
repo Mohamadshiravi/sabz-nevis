@@ -32,9 +32,6 @@ export default function Footer({ isSimple }: { isSimple?: boolean }) {
       } lg:border-r border-zinc-200 dark:border-zinc-800`}
     >
       <section className="flex flex-col gap-4 sticky top-20">
-        <div className="w-full h-[160px] rounded-md bg-emerald-600 flex items-center justify-center text-white vazir-bold text-2xl">
-          محل تبلیغات شما
-        </div>
         {!loading && !userData.data && !isSimple && (
           <>
             <div className="border border-zinc-200 dark:border-zinc-800 rounded-md grid grid-cols-[6fr_6fr] py-4">

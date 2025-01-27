@@ -6,7 +6,7 @@ export default async function Home() {
   const userData = await IsUserAuthentication();
 
   return (
-    <section className="w-full sm:py-14 py-8 flex flex-col gap-8">
+    <section className="w-full sm:py-14 pt-8 pb-20 flex flex-col gap-8">
       {userData && (
         <div className="flex items-center gap-5 border-b-2 border-zinc-300 dark:border-zinc-700 text-sm">
           <AiOutlinePlus className="text-xl mb-2" />

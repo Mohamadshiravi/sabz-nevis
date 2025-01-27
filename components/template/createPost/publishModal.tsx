@@ -39,10 +39,6 @@ export default function PublishModal({
     "فیلم سینمایی",
   ]);
 
-  useEffect(() => {
-    console.log(images);
-  }, [images]);
-
   function AnimateCloseModal() {
     setIsModalOpen(false);
     setTimeout(() => {

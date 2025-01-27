@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { IoIosArrowBack } from "react-icons/io";
 
 export default function HomeBanner() {
@@ -37,10 +38,13 @@ export default function HomeBanner() {
             height={800}
             className="w-[140px] sm:block hidden"
           />
-          <button className="flex text-nowrap text-xs items-center gap-3 bg-myGreen-600 hover:bg-myGreen-700 transition rounded-full pr-5 pl-3 py-1.5 text-white vazir-bold">
+          <Link
+            href={"/register"}
+            className="flex text-nowrap text-xs items-center gap-3 bg-myGreen-600 hover:bg-myGreen-700 transition rounded-full pr-5 pl-3 py-1.5 text-white vazir-bold"
+          >
             شروع به نوشتن
             <IoIosArrowBack className="text-sm" />
-          </button>
+          </Link>
         </div>
       </div>
     </section>

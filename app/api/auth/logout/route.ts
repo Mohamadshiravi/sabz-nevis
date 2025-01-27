@@ -1,9 +1,14 @@
-import { cookies } from "next/headers";
-
 export async function GET() {
   try {
-    cookies().delete("token");
-    return Response.json({ message: "token deleted" });
+    return Response.json(
+      { message: "You logedout" },
+      {
+        status: 200,
+        headers: {
+          "Set-Cookie": `token='';path=/;maxAge=${0};`,
+        },
+      }
+    );
   } catch (error) {
     return Response.json({ message: "error" }, { status: 500 });
   }

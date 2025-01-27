@@ -30,16 +30,15 @@ export default function MainSectionPosts() {
     </div>
   ) : (
     <>
-      <Post data={posts && posts[0]} />
-      <ADSection />
+      <Post border data={posts && posts[0]} />
       <Post border data={posts && posts[1]} />
-      <Post data={posts && posts[2]} />
       <TopPosts />
-      <Post border />
-      <Post border />
-      <Post />
+      <Post border data={posts && posts[2]} />
+      <Post border data={posts && posts[3]} />
       <SugestionsPeople />
-      <InfiniteScrollSection />
+      {posts?.slice(4).map((e, i) => (
+        <Post key={i} border data={e} />
+      ))}
     </>
   );
 }

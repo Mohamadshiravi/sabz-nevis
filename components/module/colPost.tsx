@@ -1,13 +1,15 @@
 import Image from "next/image";
+import Link from "next/link";
 
 type ColPostProps = {
   cover: string;
   title: string;
   avatar: string;
   username: string;
-  readingTime: number;
+  readingTime: string;
   displayName: string;
   id: string;
+  bordered?: boolean;
 };
 
 export default function ColPost({
@@ -18,9 +20,14 @@ export default function ColPost({
   readingTime,
   displayName,
   id,
+  bordered,
 }: ColPostProps) {
   return (
-    <div className="w-full h-full bg-white dark:bg-darkColor-800 rounded-md overflow-hidden flex flex-col">
+    <div
+      className={`${
+        bordered && "border border-zinc-200 dark:border-zinc-800"
+      } w-full h-full bg-white dark:bg-darkColor-800 rounded-md overflow-hidden flex flex-col`}
+    >
       <Image
         src={cover}
         width={800}
@@ -29,11 +36,17 @@ export default function ColPost({
         className="h-[190px] object-cover"
       />
       <div className="p-4 flex flex-col">
-        <h4 className="twoLineText text-myText-600 text-sm vazir-bold">
+        <Link
+          href={`/@${username}/posts/${id}`}
+          className="twoLineText text-myText-600 text-sm vazir-bold"
+        >
           {title}
-        </h4>
+        </Link>
         <div className="flex flex-col gap-3 mt-3 pt-4 border-t border-zinc-200 dark:border-zinc-800">
-          <div className="flex items-center gap-4">
+          <Link
+            href={`/@${username}/profile`}
+            className="flex items-center gap-4"
+          >
             <Image
               src={avatar}
               width={100}
@@ -44,7 +57,7 @@ export default function ColPost({
             <span className="text-xs block w-full truncate">
               {displayName || username}
             </span>
-          </div>
+          </Link>
           <span className="text-xs text-myText-600">
             خواندن {readingTime} دقیقه
           </span>

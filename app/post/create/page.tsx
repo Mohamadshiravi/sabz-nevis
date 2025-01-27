@@ -51,8 +51,6 @@ export default function CreatePostPage() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      console.log(savedPost?.body, body);
-
       if (body !== "" && body !== savedPost?.body) {
         DraftPostHandler();
       }

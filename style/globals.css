@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.renderHtmlDiv img {
+  margin: 15px 0px;
+}
+
 .renderHtmlDiv p {
   white-space: pre-wrap;
   word-wrap: break-word;
