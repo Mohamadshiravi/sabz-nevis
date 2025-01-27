@@ -39,6 +39,7 @@ export default function RegisterForm() {
         }
       }
     } else {
+      setLoading(false);
       SendErrorToast("شماره موبایل  خود را درست وارد کنید");
     }
   }

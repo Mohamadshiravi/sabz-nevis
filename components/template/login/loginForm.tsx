@@ -37,6 +37,7 @@ export default function LoginForm() {
         }
       }
     } else {
+      setLoading(false);
       SendErrorToast("نام کاربری یا شماره موبایل خود را وارد کنید");
     }
   }

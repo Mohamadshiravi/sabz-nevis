@@ -39,7 +39,7 @@ export default function MobileNavbar() {
           height={400}
           alt={userData.data?.username!}
           src={userData.data?.avatar || "/images/avatar-default.jpg"}
-          className="w-full h-full rounded-full"
+          className="w-full h-full rounded-full object-cover"
         />
       </Link>
       <Link
