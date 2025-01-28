@@ -52,7 +52,7 @@ export default function ColPost({
               width={100}
               height={100}
               alt={"user avatar"}
-              className="w-[20px] object-cover rounded-full"
+              className="w-[20px] h-[20px] object-cover rounded-full"
             />
             <span className="text-xs block w-full truncate">
               {displayName || username}

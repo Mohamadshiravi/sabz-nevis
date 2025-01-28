@@ -1,10 +1,9 @@
 "use client";
 
-import ADSection from "@/components/module/adSection";
 import Post from "@/components/module/post";
 import TopPosts from "./topPosts";
 import SugestionsPeople from "./sugestPeople";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import PostLoading from "@/components/module/skeletonLoadings/post";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
 import { fetchPostFromServer } from "@/redux/slices/post";
@@ -13,14 +12,12 @@ export default function MainSectionPosts() {
   const dispatch = useTypedDispatch();
 
   useEffect(() => {
-    FetchPosts();
+    console.log("get posts");
+    dispatch(fetchPostFromServer());
   }, []);
 
   const { loading, data: posts } = useTypedSelector((state) => state.posts);
 
-  async function FetchPosts() {
-    await dispatch(fetchPostFromServer());
-  }
   return loading ? (
     <div className="flex flex-col gap-8">
       {Array.from({ length: 8 }).map((e, i) => (
