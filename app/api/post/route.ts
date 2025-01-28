@@ -13,6 +13,8 @@ export async function GET(req: Request) {
 
     return Response.json({ message: "all post", posts });
   } catch (error) {
+    console.log(error);
+
     return Response.json({ message: "server error" }, { status: 500 });
   }
 }
