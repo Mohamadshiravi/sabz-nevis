@@ -9,8 +9,6 @@ export default function Comments({
 }: {
   comments: CommentModelType[];
 }) {
-  console.log("comments", comments);
-
   return (
     <div className="mt-10 flex flex-col gap-3">
       {comments.map((e, i) => (

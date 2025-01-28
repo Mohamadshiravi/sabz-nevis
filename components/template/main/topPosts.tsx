@@ -21,8 +21,6 @@ export default function TopPosts() {
     try {
       const res = await axios.get(`/api/post/filter?filter=top`);
 
-      console.log(res);
-
       setPosts(res.data.posts);
       setLoading(false);
     } catch (error) {

@@ -17,8 +17,6 @@ const initialState: likedPostState = {
 export const fetchLikedPosts = createAsyncThunk(
   "likedposts/fetchLikedPosts",
   async () => {
-    console.log("moz");
-
     const res = await axios.get("/api/post/like");
     if (res.status === 200) {
       return res.data;

@@ -32,8 +32,6 @@ export default function MayLikeSlider({
         (e: PostModelType) => e._id !== current
       );
 
-      console.log(filteredPosts);
-
       setPosts(filteredPosts);
       setLoading(false);
     } catch (error) {

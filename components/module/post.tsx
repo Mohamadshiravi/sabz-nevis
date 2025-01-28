@@ -21,7 +21,7 @@ import { unLikePostFromLikedPost } from "@/redux/slices/likedPost";
 
 type PostProps = {
   border?: boolean;
-  data: PostModelType;
+  data: PostModelType | null;
   isLikedPost?: boolean;
 };
 
@@ -158,7 +158,7 @@ export default function Post({ border, data, isLikedPost }: PostProps) {
     </div>
   );
   async function LikePostHandler() {
-    if (!loading) {
+    if (!loading && data) {
       setLoading(true);
       const res = await dispatch(likePost(data?._id));
       if (res.payload) {
@@ -171,7 +171,7 @@ export default function Post({ border, data, isLikedPost }: PostProps) {
     }
   }
   async function UnLikePostHandler() {
-    if (!loading) {
+    if (!loading && data) {
       setLoading(true);
       const res = await dispatch(unLikePost(data?._id));
       if (res.payload) {
@@ -184,7 +184,7 @@ export default function Post({ border, data, isLikedPost }: PostProps) {
     }
   }
   async function UnLikePostFromLikedPostHandler() {
-    if (!loading) {
+    if (!loading && data) {
       setLoading(true);
       const res = await dispatch(unLikePostFromLikedPost(data?._id));
       if (res.payload) {

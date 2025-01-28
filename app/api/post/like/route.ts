@@ -22,7 +22,6 @@ export async function POST(req: Request) {
 
     return Response.json({ message: "post liked", post }, { status: 200 });
   } catch (error) {
-    console.log(error);
     return Response.json({ error: "server error" }, { status: 500 });
   }
 }
@@ -42,11 +41,8 @@ export async function GET(req: Request) {
       )
       .populate("user", "avatar displayName username");
 
-    console.log(posts);
-
     return Response.json({ message: "liked post", posts }, { status: 200 });
   } catch (error) {
-    console.log(error);
     return Response.json({ error: "server error" }, { status: 500 });
   }
 }

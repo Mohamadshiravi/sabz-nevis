@@ -22,7 +22,6 @@ export async function POST(req: Request) {
 
     return Response.json({ error: "post unliked", post }, { status: 200 });
   } catch (error) {
-    console.log(error);
     return Response.json({ error: "server error" }, { status: 500 });
   }
 }

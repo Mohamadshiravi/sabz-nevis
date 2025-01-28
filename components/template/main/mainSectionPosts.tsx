@@ -4,7 +4,6 @@ import ADSection from "@/components/module/adSection";
 import Post from "@/components/module/post";
 import TopPosts from "./topPosts";
 import SugestionsPeople from "./sugestPeople";
-import InfiniteScrollSection from "./infiniteScrollSection";
 import { useEffect, useState } from "react";
 import PostLoading from "@/components/module/skeletonLoadings/post";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
