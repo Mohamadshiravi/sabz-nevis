@@ -1,5 +1,5 @@
 import ConnectToDB from "@/DB/connectToDB";
-import postModel from "@/models/post";
+import { postModel } from "@/models/index";
 
 export const revalidate = 0;
 

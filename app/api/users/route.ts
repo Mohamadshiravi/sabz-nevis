@@ -1,5 +1,5 @@
 import ConnectToDB from "@/DB/connectToDB";
-import userModel from "@/models/user";
+import { userModel } from "@/models";
 import IsUserAuthentication from "@/utils/auth/authUser";
 
 export async function GET(req: Request) {

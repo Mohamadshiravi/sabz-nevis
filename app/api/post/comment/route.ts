@@ -1,5 +1,4 @@
-import commentModel from "@/models/comment";
-import postModel from "@/models/post";
+import { postModel, commentModel } from "@/models/index";
 import IsUserAuthentication from "@/utils/auth/authUser";
 
 export const revalidate = 0;

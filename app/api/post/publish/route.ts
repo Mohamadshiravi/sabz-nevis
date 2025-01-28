@@ -1,4 +1,4 @@
-import postModel from "@/models/post";
+import { postModel } from "@/models/index";
 import IsUserAuthentication from "@/utils/auth/authUser";
 
 export async function POST(req: Request) {

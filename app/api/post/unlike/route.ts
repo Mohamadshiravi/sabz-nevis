@@ -1,4 +1,4 @@
-import { postModel } from "@/models";
+import { postModel } from "@/models/index";
 import IsUserAuthentication from "@/utils/auth/authUser";
 
 export const revalidate = 0;
