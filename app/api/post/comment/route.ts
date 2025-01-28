@@ -9,14 +9,13 @@ export async function POST(req: Request) {
   }
 
   try {
-    const { postId, name, body, avatar, replyTo } = await req.json();
+    const { postId, body, replyTo } = await req.json();
 
     if (replyTo) {
       const reply = await commentModel.create({
         post: postId,
-        name,
+        user: isUserAuth._id,
         body,
-        avatar,
         status: "queued",
         replyTo,
       });
@@ -30,9 +29,8 @@ export async function POST(req: Request) {
     } else {
       const comments = await commentModel.create({
         post: postId,
-        name,
+        user: isUserAuth._id,
         body,
-        avatar,
         status: "queued",
       });
 

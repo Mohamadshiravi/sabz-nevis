@@ -19,7 +19,7 @@ export default function TopPosts() {
   async function FetchTopPost() {
     setLoading(true);
     try {
-      const res = await axios.get(`/api/post?filter=top`);
+      const res = await axios.get(`/api/post/filter?filter=top`);
 
       console.log(res);
 

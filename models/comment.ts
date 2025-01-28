@@ -1,13 +1,13 @@
 import mongoose from "mongoose";
 import { PostModelType } from "./post";
-import { postModel } from "./index";
+import { postModel, userModel } from "./index";
+import { UserModelType } from "./user";
 
 export type CommentModelType = {
   _id: string;
-  avatar: string;
-  name: string;
+  user: UserModelType;
   body: string;
-  post: mongoose.Types.ObjectId | PostModelType;
+  post: PostModelType;
   createdAt: Date;
   status: "queued" | "accepted";
   likes: mongoose.Types.ObjectId[];
@@ -17,12 +17,9 @@ export type CommentModelType = {
 
 const schema = new mongoose.Schema<CommentModelType>(
   {
-    avatar: {
-      type: String,
-      required: true,
-    },
-    name: {
-      type: String,
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
       required: true,
     },
     body: {

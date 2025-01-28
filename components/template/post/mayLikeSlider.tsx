@@ -25,7 +25,7 @@ export default function MayLikeSlider({
     setLoading(true);
     try {
       const res = await axios.get(
-        `/api/post?filter=mightLike&category=${category}`
+        `/api/post/filter?filter=mightLike&category=${category}`
       );
 
       const filteredPosts = res.data.posts.filter(

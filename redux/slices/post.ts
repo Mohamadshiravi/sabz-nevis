@@ -28,18 +28,10 @@ export const fetchPostFromServer = createAsyncThunk(
 
 export const AddCommentToPost = createAsyncThunk(
   "posts/AddCommentToPost",
-  async (payload: {
-    id: string;
-    name: string;
-    body: string;
-    avatar: string;
-    replyTo?: string;
-  }) => {
+  async (payload: { id: string; body: string; replyTo?: string }) => {
     const res = await axios.post("/api/post/comment", {
       postId: payload.id,
-      name: payload.name,
       body: payload.body,
-      avatar: payload.avatar,
       replyTo: payload.replyTo || null,
     });
     if (res.status === 201) {

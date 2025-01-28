@@ -21,7 +21,7 @@ export default function AddCommentSection({ id }: AddCommentSectionProps) {
     "اگر این پست",
   ];
 
-  const { username, displayName, avatar } =
+  const { _id, username, avatar } =
     useTypedSelector((state) => state.user).data || {};
 
   const [input, setInput] = useState("");
@@ -116,9 +116,7 @@ export default function AddCommentSection({ id }: AddCommentSectionProps) {
     const res = await dispatch(
       AddCommentToPost({
         id,
-        name: displayName || username!,
         body: input,
-        avatar: avatar || "",
       })
     );
 

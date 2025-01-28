@@ -53,7 +53,9 @@ export default function MainProfileSction({
 
   async function FetchUserPosts(id: string) {
     try {
-      const res = await axios.get(`/api/post?filter=userPost&user=${id}`);
+      const res = await axios.get(
+        `/api/post/filter?filter=userPost&user=${id}`
+      );
       setUserPosts(res.data.posts);
       setLoading(false);
     } catch (error) {

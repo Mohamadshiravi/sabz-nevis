@@ -31,9 +31,6 @@ export default function SettingsAdvanced() {
           >
             <IoMoonSharp />
           </button>
-          <button className="px-4 py-2">
-            <MdOutlineAccessTime />
-          </button>
           <button
             onClick={() => {
               dispatch(changeTheme("light"));
@@ -45,21 +42,6 @@ export default function SettingsAdvanced() {
             }`}
           >
             <MdSunny />
-          </button>
-        </div>
-      </div>
-      <div className="flex sm:flex-row flex-col gap-3 items-center justify-between w-full">
-        <div className="flex flex-col gap-2">
-          <h4 className="text-myText-600 text-sm pl-2">
-            نمایش دکمه خاموش/روشن در منوی پروفایل کاربری
-          </h4>
-        </div>
-        <div className="flex items-center border border-zinc-400 dark:border-zinc-700 text-sm rounded-full vazir-medium overflow-hidden">
-          <button className="px-4 py-2 border-l border-zinc-400 dark:border-zinc-700">
-            خیر
-          </button>
-          <button className="px-4 py-2 border-r border-zinc-400 dark:border-zinc-700 bg-myGreen-600 text-white">
-            بله
           </button>
         </div>
       </div>

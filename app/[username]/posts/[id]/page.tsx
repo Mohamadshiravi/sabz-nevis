@@ -33,10 +33,20 @@ export default async function userPosts({ params }: userPostsProps) {
     .populate({
       path: "comments",
       select: "-__v",
-      populate: {
-        path: "replies",
-        select: "-__v -post -replyTo -updatedAt -replies",
-      },
+      populate: [
+        {
+          path: "replies",
+          select: "-__v -post -replyTo -updatedAt -replies",
+          populate: {
+            path: "user",
+            select: "username displayName avatar",
+          },
+        },
+        {
+          path: "user",
+          select: "username displayName avatar",
+        },
+      ],
     });
 
   if (!post) {
