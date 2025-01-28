@@ -60,7 +60,7 @@ export default function Header({ isTransparent }: { isTransparent?: boolean }) {
           className="sm:w-[45px] w-[40px]"
         />
       </Link>
-      <div className="rounded-full bg-zinc-100 dark:bg-darkColor-700 text-sm items-center gap-3 px-3 py-1 md:flex hidden">
+      <div className="rounded-full bg-zinc-200 dark:bg-darkColor-700 text-sm items-center gap-3 px-3 py-1 md:flex hidden">
         <IoSearch className="text-xl" />
         <input
           id="search-inp"
@@ -84,7 +84,7 @@ export default function Header({ isTransparent }: { isTransparent?: boolean }) {
               <div className="flex items-center gap-3">
                 <button
                   onClick={ChangeThemeHandler}
-                  className="p-2.5 flex bg-zinc-100 dark:bg-zinc-800 rounded-full items-center justify-between gap-4 dark:text-myText-400 text-myText-600"
+                  className="p-2.5 flex bg-zinc-200 dark:bg-zinc-800 rounded-full items-center justify-between gap-4 dark:text-myText-400 text-myText-600"
                 >
                   {userData.theme === "dark" ? (
                     <>
@@ -102,7 +102,7 @@ export default function Header({ isTransparent }: { isTransparent?: boolean }) {
           </>
         ) : (
           <div className="flex items-center">
-            <button className="rounded-full ml-2 bg-zinc-100 dark:bg-zinc-800 text-2xl h-[40px] w-[150px] flex items-center justify-center"></button>
+            <button className="rounded-full ml-2 bg-zinc-200 dark:bg-zinc-800 text-2xl h-[40px] w-[150px] flex items-center justify-center"></button>
           </div>
         )}
       </div>

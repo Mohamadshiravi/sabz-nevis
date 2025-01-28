@@ -44,6 +44,21 @@ export const addAvatarToServer = createAsyncThunk(
   }
 );
 
+export const followUser = createAsyncThunk(
+  "user/followUser",
+  async (id: string) => {
+    const res = await axios.post("/api/user/follow", { id });
+    return res.data;
+  }
+);
+export const UnfollowUser = createAsyncThunk(
+  "user/UnfollowUser",
+  async (id: string) => {
+    const res = await axios.post("/api/user/unfollow", { id });
+    return res.data;
+  }
+);
+
 const slice = createSlice({
   name: "user",
   initialState,
@@ -87,6 +102,12 @@ const slice = createSlice({
       state.data = action.payload.user;
     });
     builder.addCase(addAvatarToServer.fulfilled, (state, action) => {
+      state.data = action.payload.user;
+    });
+    builder.addCase(followUser.fulfilled, (state, action) => {
+      state.data = action.payload.user;
+    });
+    builder.addCase(UnfollowUser.fulfilled, (state, action) => {
       state.data = action.payload.user;
     });
   },

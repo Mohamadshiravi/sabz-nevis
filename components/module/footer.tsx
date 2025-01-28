@@ -58,7 +58,7 @@ export default function Footer({ isSimple }: { isSimple?: boolean }) {
         )}
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-4">
-            <span className="bg-zinc-100 dark:bg-darkColor-700 p-2 rounded-full text-xl text-zinc-400">
+            <span className="bg-zinc-200 dark:bg-darkColor-700 p-2 rounded-full text-xl text-zinc-400">
               <GoPaperclip />
             </span>
             <p className="vazir-bold text-sm">موضوعات پیشنهادی</p>

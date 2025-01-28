@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./slices/user";
 import postReducer from "./slices/post";
+import likedPostReducer from "./slices/likedPost";
 
 const store = configureStore({
   reducer: {
     user: userReducer,
     posts: postReducer,
+    likedPosts: likedPostReducer,
   },
 });
 store.subscribe(() => {

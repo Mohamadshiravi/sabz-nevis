@@ -32,7 +32,7 @@ export default function ColPost({
         src={cover}
         width={800}
         height={800}
-        alt={title}
+        alt={"post cover"}
         className="h-[190px] object-cover"
       />
       <div className="p-4 flex flex-col">
@@ -51,7 +51,7 @@ export default function ColPost({
               src={avatar}
               width={100}
               height={100}
-              alt={username}
+              alt={"user avatar"}
               className="w-[20px] object-cover rounded-full"
             />
             <span className="text-xs block w-full truncate">

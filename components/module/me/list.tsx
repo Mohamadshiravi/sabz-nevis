@@ -3,7 +3,7 @@ import PrimaryBtn from "../primaryBtn";
 
 export default function List() {
   return (
-    <div className="flex w-full justify-between sm:flex-row flex-col bg-zinc-100 dark:bg-darkColor-700 border border-zinc-200 dark:border-zinc-700 rounded-md overflow-hidden">
+    <div className="flex w-full justify-between sm:flex-row flex-col bg-zinc-200 dark:bg-darkColor-700 border border-zinc-200 dark:border-zinc-700 rounded-md overflow-hidden">
       <div className="px-4 flex flex-col justify-between">
         <h3 className="vazir-bold sm:text-2xl text-xl mt-4">
           پست های ذخیره شده

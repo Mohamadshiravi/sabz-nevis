@@ -114,7 +114,7 @@ export default function CreatePostPage() {
                   ? setIsModalOpen(true)
                   : SendErrorToast("لطفا یک عنوان بنویسید");
               }}
-              className={`dark:hover:text-zinc-300 hover:text-zinc-500 flex items-center gap-2 text-sm transition bg-zinc-100 dark:bg-zinc-800 px-3 py-2 rounded-md`}
+              className={`dark:hover:text-zinc-300 hover:text-zinc-500 flex items-center gap-2 text-sm transition bg-zinc-200 dark:bg-zinc-800 px-3 py-2 rounded-md`}
             >
               انتشار نوشته
               <IoIosArrowBack />

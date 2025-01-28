@@ -2,11 +2,12 @@ import DesktopNavbar from "@/components/module/dekstopNavbar";
 import Footer from "@/components/module/footer";
 import Header from "@/components/module/header";
 import MobileNavbar from "@/components/module/navbar";
-import ListsMainSection from "@/components/template/me/lists/listsMainSection";
+import LikedPostMainSection from "@/components/template/me/likes/likedPostMainSection";
 import IsUserAuthentication from "@/utils/auth/authUser";
 
 export default async function ListsPage() {
   const userData = await IsUserAuthentication();
+
   return (
     <>
       <Header />
@@ -18,7 +19,7 @@ export default async function ListsPage() {
         }`}
       >
         <DesktopNavbar />
-        <ListsMainSection />
+        <LikedPostMainSection />
         <Footer isSimple />
       </main>
       <MobileNavbar />

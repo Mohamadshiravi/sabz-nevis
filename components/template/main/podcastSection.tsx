@@ -31,7 +31,7 @@ export default function PodcastSection() {
   return (
     <Link href={"/podcasts"} className="w-full flex flex-col gap-4">
       <div className="flex items-center gap-4">
-        <span className="bg-zinc-100 dark:bg-darkColor-700 p-2 rounded-full text-xl text-zinc-400">
+        <span className="bg-zinc-200 dark:bg-darkColor-700 p-2 rounded-full text-xl text-zinc-400">
           <FaMicrophone />
         </span>
         <p className="vazir-bold text-sm">پست‌های صوتی انتخابی برای شما</p>

@@ -11,7 +11,7 @@ export default function ADSection() {
       className="flex flex-col gap-4 py-4 rounded-sm dark:border dark:border-zinc-800"
     >
       <div className="flex items-center gap-2 px-4">
-        <span className="rounded-lg bg-zinc-100 p-2">
+        <span className="rounded-lg bg-zinc-200 p-2">
           <Image
             width={800}
             height={800}

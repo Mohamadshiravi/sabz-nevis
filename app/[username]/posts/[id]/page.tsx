@@ -29,7 +29,7 @@ export default async function userPosts({ params }: userPostsProps) {
 
   const post = await postModel
     .findOne({ _id: params.id }, "-imagesID -status -__v -updatedAt -desc")
-    .populate("user", "avatar displayName username about")
+    .populate("user", "avatar displayName username about followers")
     .populate({
       path: "comments",
       select: "-__v",
@@ -78,7 +78,7 @@ export default async function userPosts({ params }: userPostsProps) {
               src={post.user.avatar}
               width={400}
               height={400}
-              alt={post.user.username}
+              alt={"user avatar"}
               className="rounded-full w-[50px] h-[50px] object-cover"
             />
             <div className="flex flex-col justify-between h-full">
@@ -120,6 +120,7 @@ export default async function userPosts({ params }: userPostsProps) {
             </div>
           </div>
           <UserDetailsSection
+            followers={JSON.parse(JSON.stringify(post.user.followers))}
             id={JSON.parse(JSON.stringify(post.user._id))}
             avatar={JSON.parse(JSON.stringify(post.user.avatar))}
             displayName={JSON.parse(
@@ -133,7 +134,7 @@ export default async function userPosts({ params }: userPostsProps) {
             category={JSON.parse(JSON.stringify(post.category))}
             current={JSON.parse(JSON.stringify(post._id))}
           />
-          <div className="sm:py-8">
+          <div className="sm:py-8 sm:mt-0 mt-8">
             <div className="flex items-center gap-3 justify-center">
               <span className="bg-myGreen-600 text-white rounded-full flex items-center justify-center w-[40px] h-[40px] text-xl">
                 <GoComment />

@@ -52,7 +52,7 @@ export default function PostHeaderProfileBtn() {
       <section className="flex sm:flex-row flex-col items-center sm:gap-2 gap-1 text-sm">
         <button
           onClick={ChangeThemeHandler}
-          className="p-2.5 flex bg-zinc-100 dark:bg-zinc-800 rounded-full items-center justify-between gap-4 dark:text-myText-400 text-myText-600"
+          className="p-2.5 flex bg-zinc-200 dark:bg-zinc-800 rounded-full items-center justify-between gap-4 dark:text-myText-400 text-myText-600"
         >
           {userData.theme === "dark" ? (
             <>
@@ -67,14 +67,14 @@ export default function PostHeaderProfileBtn() {
         <div className="relative h-[40px] z-[40]">
           <button
             onClick={AnimateToggleModal}
-            className="flex items-center bg-zinc-100 cursor-pointer dark:bg-darkColor-700 h-full py-1 pl-0.5 gap-2 rounded-full"
+            className="flex items-center bg-zinc-200 cursor-pointer dark:bg-darkColor-700 h-full py-1 pl-0.5 gap-2 rounded-full"
           >
             <Image
               src={userData.data?.avatar || "/images/avatar-default.jpg"}
               className="rounded-full w-[35px] aspect-square object-cover"
               width={400}
               height={400}
-              alt={userData.data?.username || "avatar"}
+              alt={"user avatar"}
             />
           </button>
           {isMenuMount && (
@@ -101,7 +101,7 @@ export default function PostHeaderProfileBtn() {
                   className="rounded-full w-[35px] aspect-square object-cover"
                   width={400}
                   height={400}
-                  alt={userData.data?.username || "avatar"}
+                  alt={"user avatar"}
                 />
               </div>
               <div className="p-4 flex flex-col items-start gap-4 dark:text-myText-400 text-myText-600 border-t border-zinc-200 dark:border-zinc-800">
@@ -112,7 +112,7 @@ export default function PostHeaderProfileBtn() {
                 <button>پست ها و پیش نویس ها</button>
                 <button>مشاهده امار</button>
                 <button>موضوع های مورد علاقه</button>
-                <button>پست های لایک شده</button>
+                <Link href={"/me/likes"}>پست های لایک شده</Link>
                 <Link href={"/me/lists"}>لیست ها</Link>
               </div>
 

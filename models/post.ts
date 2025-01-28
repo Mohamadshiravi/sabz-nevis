@@ -9,7 +9,7 @@ export type PostModelType = {
   body: string;
   desc: string;
   user: UserModelType;
-  likes: number;
+  likes: UserModelType[] | string[];
   status: string;
   cover: string;
   category: string;
@@ -24,7 +24,7 @@ type PostModelTypeMongoose = {
   body: string;
   desc: string;
   user: mongoose.Types.ObjectId;
-  likes: number;
+  likes: mongoose.Types.ObjectId[];
   status: string;
   category: string;
   cover: string;
@@ -56,8 +56,8 @@ const schema = new mongoose.Schema<PostModelTypeMongoose>(
       required: true,
     },
     likes: {
-      type: Number,
-      default: 0,
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+      required: false,
     },
     status: {
       type: String,

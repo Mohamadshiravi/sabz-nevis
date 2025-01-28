@@ -22,7 +22,7 @@ export default async function UserProfilePage({
   const decodedUserId = decodeURIComponent(params.username).slice(1);
   const isAnyUserExist = await userModel.findOne(
     { username: decodedUserId },
-    "phone displayName username about avatar -_id"
+    "phone displayName username about avatar"
   );
   if (!isAnyUserExist) {
     notFound();
@@ -43,7 +43,7 @@ export default async function UserProfilePage({
             <Image
               width={800}
               height={800}
-              alt={isAnyUserExist.username}
+              alt={"user avatar"}
               src={isAnyUserExist.avatar || "/images/guest-avatar.webp"}
               className="rounded-full w-[90px] aspect-square object-cover"
             />
@@ -63,7 +63,7 @@ export default async function UserProfilePage({
                 دنبال میکند
               </h4>
             </div>
-            <FollowBtn isUserHere={isUserHere} />
+            <FollowBtn id={isAnyUserExist._id} isUserHere={isUserHere} />
             <div className="flex items-center justify-center gap-3 mt-2">
               {!isUserHere && isUserLogedIn && (
                 <div className="relative">

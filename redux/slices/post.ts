@@ -42,6 +42,34 @@ export const AddCommentToPost = createAsyncThunk(
   }
 );
 
+export const likePost = createAsyncThunk(
+  "posts/likePost",
+  async (postId: string) => {
+    const res = await axios.post("/api/post/like", {
+      postId,
+    });
+    if (res.status === 200) {
+      return res.data;
+    } else {
+      return null;
+    }
+  }
+);
+
+export const unLikePost = createAsyncThunk(
+  "posts/unLikePost",
+  async (postId: string) => {
+    const res = await axios.post("/api/post/unlike", {
+      postId,
+    });
+    if (res.status === 200) {
+      return res.data;
+    } else {
+      return null;
+    }
+  }
+);
+
 const slice = createSlice({
   name: "posts",
   initialState,
@@ -59,6 +87,24 @@ const slice = createSlice({
     });
     builder.addCase(AddCommentToPost.fulfilled, (state, action) => {
       return state;
+    });
+    builder.addCase(likePost.fulfilled, (state, action) => {
+      if (state.data) {
+        state.data = state.data?.map((post) => {
+          return post._id === action.payload.post._id
+            ? action.payload.post
+            : post;
+        });
+      }
+    });
+    builder.addCase(unLikePost.fulfilled, (state, action) => {
+      if (state.data) {
+        state.data = state.data?.map((post) => {
+          return post._id === action.payload.post._id
+            ? action.payload.post
+            : post;
+        });
+      }
     });
   },
 });

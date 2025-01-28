@@ -1,26 +1,43 @@
+"use client";
+
 import { PostModelType } from "@/models/post";
 import Image from "next/image";
-import { GoBookmark, GoComment, GoDotFill, GoHeart } from "react-icons/go";
+import {
+  GoBookmark,
+  GoComment,
+  GoDotFill,
+  GoHeart,
+  GoHeartFill,
+} from "react-icons/go";
 import { formatDistanceToNow } from "date-fns";
 import { faIR } from "date-fns/locale";
-import { useTypedSelector } from "@/redux/typedHooks";
+import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { likePost, unLikePost } from "@/redux/slices/post";
+import { SendSucToast } from "@/utils/toast-functions";
+import { useState } from "react";
+import { unLikePostFromLikedPost } from "@/redux/slices/likedPost";
 
 type PostProps = {
   border?: boolean;
-  data?: PostModelType | null;
+  data: PostModelType;
+  isLikedPost?: boolean;
 };
 
-export default function Post({ border, data }: PostProps) {
+export default function Post({ border, data, isLikedPost }: PostProps) {
+  const [loading, setLoading] = useState(false);
+
+  const userId = useTypedSelector((state) => state.user).data?._id;
+  const dispatch = useTypedDispatch();
+  const router = useRouter();
+
   const relativeDate = data?.createdAt
     ? formatDistanceToNow(new Date(data.createdAt), {
         addSuffix: true,
         locale: faIR,
       })
     : "";
-
-  const router = useRouter();
   return (
     <div
       className={`flex flex-col ${
@@ -100,10 +117,25 @@ export default function Post({ border, data }: PostProps) {
           </span>
         </div>
         <div className="flex items-center sm:gap-16 gap-6 text-2xl text-myText-600">
-          <button className="flex items-center gap-2">
-            <GoHeart className="hover:text-red-600 transition" />
-            <span className="text-lg">{data?.likes}</span>
-          </button>
+          {data?.likes.some((e) => e === userId) ? (
+            <button
+              onClick={
+                isLikedPost ? UnLikePostFromLikedPostHandler : UnLikePostHandler
+              }
+              className="flex items-center gap-2"
+            >
+              <GoHeartFill className="text-red-600 transition" />
+              <span className="text-lg">{data?.likes.length}</span>
+            </button>
+          ) : (
+            <button className="flex items-center gap-2">
+              <GoHeart
+                onClick={LikePostHandler}
+                className="hover:text-red-600 transition"
+              />
+              <span className="text-lg">{data?.likes.length}</span>
+            </button>
+          )}
           <button
             onClick={(e) => {
               router.push(`/@${data?.user.username}/posts/${data?._id}`);
@@ -125,4 +157,43 @@ export default function Post({ border, data }: PostProps) {
       </div>
     </div>
   );
+  async function LikePostHandler() {
+    if (!loading) {
+      setLoading(true);
+      const res = await dispatch(likePost(data?._id));
+      if (res.payload) {
+        setLoading(false);
+        SendSucToast("پست لایک شد و به لایک شده های شما اضافه شد");
+      } else {
+        setLoading(false);
+        SendSucToast("پست لایک نشد");
+      }
+    }
+  }
+  async function UnLikePostHandler() {
+    if (!loading) {
+      setLoading(true);
+      const res = await dispatch(unLikePost(data?._id));
+      if (res.payload) {
+        setLoading(false);
+        SendSucToast("پست از لایک شده های شما حذف شد");
+      } else {
+        setLoading(false);
+        SendSucToast("پست  از لایک شده های شما حذف نشد");
+      }
+    }
+  }
+  async function UnLikePostFromLikedPostHandler() {
+    if (!loading) {
+      setLoading(true);
+      const res = await dispatch(unLikePostFromLikedPost(data?._id));
+      if (res.payload) {
+        setLoading(false);
+        SendSucToast("پست از لایک شده های شما حذف شد");
+      } else {
+        setLoading(false);
+        SendSucToast("پست  از لایک شده های شما حذف نشد");
+      }
+    }
+  }
 }

@@ -7,6 +7,7 @@ type loadingBtnProps = {
   loading: boolean;
   width?: string;
   isDisable?: boolean;
+  onPress?: any;
 };
 
 export default function LoadingBtn({
@@ -16,9 +17,11 @@ export default function LoadingBtn({
   icon,
   width,
   isDisable,
+  onPress,
 }: loadingBtnProps) {
   return (
     <button
+      onClick={onPress ? onPress : undefined}
       type="submit"
       className={`rounded-full ${
         fullWidth ? "w-full" : `${width ? `${width}` : "lg:w-[180px] w-full"}`

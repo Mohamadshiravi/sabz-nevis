@@ -142,7 +142,7 @@ export default function PhoneField({ phone }: { phone?: string }) {
                   setIsRegisterModalOpen(true);
                   setIsVerifyCodeModalOpen(false);
                 }}
-                className="flex text-nowrap lg:w-auto w-full text-sm items-center justify-center gap-2 bg-zinc-100 hover:bg-zinc-200 transition rounded-md px-4 py-2 text-myText-600"
+                className="flex text-nowrap lg:w-auto w-full text-sm items-center justify-center gap-2 bg-zinc-200 hover:bg-zinc-200 transition rounded-md px-4 py-2 text-myText-600"
               >
                 <IoIosArrowForward className="text-lg" />
                 برگشت به مرحله قبل

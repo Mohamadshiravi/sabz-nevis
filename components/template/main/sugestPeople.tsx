@@ -10,10 +10,20 @@ import { PostModelType } from "@/models/post";
 import axios from "axios";
 import { UserModelType } from "@/models/user";
 import Link from "next/link";
+import User from "@/components/module/user";
 
 export default function SugestionsPeople() {
   const [loading, setLoading] = useState(true);
-  const [users, setUsers] = useState<[] | UserModelType[]>([]);
+  const [users, setUsers] = useState<
+    | []
+    | {
+        username: string;
+        avatar: string;
+        displayName: string;
+        _id: string;
+        followers: string[];
+      }[]
+  >([]);
 
   useEffect(() => {
     FetchUsers();
@@ -55,34 +65,13 @@ export default function SugestionsPeople() {
         >
           {users.map((e, i) => (
             <SwiperSlide key={i}>
-              <div className="border dark:bg-darkColor-800 dark:border-zinc-800 p-4 border-zinc-200 w-full h-full justify-between bg-white rounded-md flex flex-col items-center">
-                <div className="flex flex-col items-center gap-3 w-full">
-                  <Image
-                    src={e.avatar}
-                    width={500}
-                    height={500}
-                    alt="test"
-                    className="w-[90px] h-[90px] object-cover rounded-full"
-                  />
-
-                  <Link
-                    href={`/@${e.username}/profile`}
-                    className="text-myText-600 text-sm w-full text-center truncate w-full"
-                  >
-                    {e.username}
-                  </Link>
-                  <Link
-                    href={`/@${e.username}/profile`}
-                    className="vazir-bold text-lg mt-2 w-full truncate text-center"
-                  >
-                    {e.displayName}
-                  </Link>
-                </div>
-                <button className="flex w-full text-nowrap text-sm items-center justify-center gap-4 bg-myGreen-600 hover:bg-myGreen-700 transition rounded-full pr-5 pl-3 py-2 text-white vazir-bold">
-                  دنبال کنید
-                  <FiPlus className="text-lg" />
-                </button>
-              </div>
+              <User
+                followers={e.followers}
+                id={e._id}
+                username={e.username}
+                displayName={e.displayName}
+                avatar={e.avatar}
+              />
             </SwiperSlide>
           ))}
         </Swiper>

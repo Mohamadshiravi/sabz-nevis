@@ -41,7 +41,7 @@ export default function AddCommentSection({ id }: AddCommentSectionProps) {
           src={avatar || ""}
           width={200}
           height={200}
-          alt={username!}
+          alt={"user avatar"}
           className="rounded-full w-[30px] h-[30px] object-cover"
         />
         <div className="relative overflow-hidden w-full cursor-text">
