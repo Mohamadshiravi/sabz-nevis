@@ -1,6 +1,8 @@
 import { postModel } from "@/models";
 import IsUserAuthentication from "@/utils/auth/authUser";
 
+export const revalidate = 0;
+
 export async function POST(req: Request) {
   const isUserAuth = await IsUserAuthentication();
   if (!isUserAuth) {

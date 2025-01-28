@@ -90,7 +90,7 @@ export default function PostHeaderProfileBtn() {
                     {userData.data?.displayName || userData.data?.username}
                   </span>
                   <Link
-                    href={`/@${userData.data?.username}`}
+                    href={`/@${userData.data?.username}/profile`}
                     className="text-myGreen-600"
                   >
                     مشاهده پروفایل

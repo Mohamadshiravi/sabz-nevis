@@ -2,6 +2,8 @@ import ConnectToDB from "@/DB/connectToDB";
 import { commentModel } from "@/models";
 import IsUserAuthentication from "@/utils/auth/authUser";
 
+export const revalidate = 0;
+
 export async function PUT(
   req: Request,
   { params }: { params: { id: string } }

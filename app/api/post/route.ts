@@ -1,6 +1,8 @@
 import ConnectToDB from "@/DB/connectToDB";
 import postModel from "@/models/post";
 
+export const revalidate = 0;
+
 export async function GET(req: Request) {
   try {
     await ConnectToDB();
