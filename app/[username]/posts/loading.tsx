@@ -1,4 +1,4 @@
-export default function PostLoading() {
+export default function PostLoadingLayout() {
   return (
     <section>
       <div className="bg-zinc-200 dark:bg-zinc-800 w-full h-[60px] animate-pulse"></div>

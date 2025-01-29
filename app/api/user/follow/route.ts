@@ -1,3 +1,4 @@
+import ConnectToDB from "@/DB/connectToDB";
 import { userModel } from "@/models";
 import IsUserAuthentication from "@/utils/auth/authUser";
 
@@ -10,6 +11,7 @@ export async function POST(req: Request) {
 
     const { id } = await req.json();
 
+    ConnectToDB();
     const followedUser = await userModel.findOneAndUpdate(
       { _id: id },
       {

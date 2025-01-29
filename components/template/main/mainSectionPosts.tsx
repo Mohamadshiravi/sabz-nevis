@@ -7,22 +7,32 @@ import { useEffect } from "react";
 import PostLoading from "@/components/module/skeletonLoadings/post";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
 import { fetchPostFromServer } from "@/redux/slices/post";
+import ColPostLoading from "@/components/module/skeletonLoadings/colPost";
 
 export default function MainSectionPosts() {
   const dispatch = useTypedDispatch();
 
-  useEffect(() => {
-    console.log("get posts");
-    dispatch(fetchPostFromServer());
-  }, []);
-
   const { loading, data: posts } = useTypedSelector((state) => state.posts);
 
+  useEffect(() => {
+    if (!posts) {
+      dispatch(fetchPostFromServer());
+    }
+  }, []);
+
   return loading ? (
-    <div className="flex flex-col gap-8">
-      {Array.from({ length: 8 }).map((e, i) => (
-        <PostLoading key={i} />
-      ))}
+    <div className="grid grid-cols-[1fr] gap-8 w-full">
+      <PostLoading />
+      <PostLoading />
+      <div className="flex w-full overflow-hidden gap-4 px-4 pt-24 pb-4 border border-zinc-200 dark:border-zinc-800 rounded-md">
+        {Array.from({ length: 3 }).map((e, i) => (
+          <div key={i}>
+            <ColPostLoading />
+          </div>
+        ))}
+      </div>
+      <PostLoading />
+      <PostLoading />
     </div>
   ) : (
     <>

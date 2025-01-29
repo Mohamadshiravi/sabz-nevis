@@ -47,7 +47,7 @@ export default function HeaderProfileBtn() {
       <div className="relative h-[40px] z-[40]">
         <button
           onClick={AnimateToggleModal}
-          className="flex items-center bg-zinc-200 cursor-pointer dark:bg-darkColor-700 h-full py-1 pl-0.5 gap-2 rounded-full"
+          className="flex items-center bg-zinc-100 cursor-pointer dark:bg-darkColor-700 h-full py-1 pl-0.5 gap-2 rounded-full"
         >
           <IoIosArrowDown className="mr-3 text-xs" />
           <Image

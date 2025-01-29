@@ -1,11 +1,23 @@
 "use client";
 
 import List from "@/components/module/me/list";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddListModal from "./addListModal";
+import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
+import { fetchListFromServer } from "@/redux/slices/list";
+import PostLoading from "@/components/module/skeletonLoadings/post";
+import ListLoading from "@/components/module/skeletonLoadings/list";
 
 export default function ListsMainSection() {
   const [isAddListmodalOpen, setIsAddListModalOpen] = useState(false);
+
+  useEffect(() => {
+    dispatch(fetchListFromServer());
+  }, []);
+
+  const dispatch = useTypedDispatch();
+
+  const { loading, data } = useTypedSelector((state) => state.lists);
   return (
     <>
       <section className="pt-14 pb-20">
@@ -20,8 +32,9 @@ export default function ListsMainSection() {
           </button>
         </div>
         <div className="flex flex-col gap-10 mt-16 sm:px-8 px-0 w-full">
-          <List />
-          <List />
+          {loading
+            ? Array.from({ length: 6 }).map((e, i) => <ListLoading key={i} />)
+            : data?.map((e, i) => <List data={e} key={i} />)}
         </div>
       </section>
       {isAddListmodalOpen && (

@@ -18,6 +18,8 @@ import { likePost, unLikePost } from "@/redux/slices/post";
 import { SendSucToast } from "@/utils/toast-functions";
 import { useState } from "react";
 import { unLikePostFromLikedPost } from "@/redux/slices/likedPost";
+import { RiLock2Fill } from "react-icons/ri";
+import SavePostDropDown from "../template/postModule/savePostDropdown";
 
 type PostProps = {
   border?: boolean;
@@ -27,6 +29,7 @@ type PostProps = {
 
 export default function Post({ border, data, isLikedPost }: PostProps) {
   const [loading, setLoading] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const userId = useTypedSelector((state) => state.user).data?._id;
   const dispatch = useTypedDispatch();
@@ -150,9 +153,16 @@ export default function Post({ border, data, isLikedPost }: PostProps) {
             <GoComment className="hover:text-zinc-800 transition" />
             <span className="text-lg">{data?.comments.length}</span>
           </button>
-          <button>
-            <GoBookmark className="hover:text-blue-600 transition" />
-          </button>
+
+          <div className="relative">
+            <GoBookmark
+              onClick={() => setIsDropdownOpen(true)}
+              className="hover:text-blue-600 transition cursor-pointer"
+            />
+            {isDropdownOpen && (
+              <SavePostDropDown Close={() => setIsDropdownOpen(false)} />
+            )}
+          </div>
         </div>
       </div>
     </div>
