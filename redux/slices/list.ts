@@ -19,7 +19,36 @@ export const fetchListFromServer = createAsyncThunk(
   async () => {
     const res = await axios.get("/api/list");
 
-    console.log(res);
+    if (res.status === 200) {
+      return res.data;
+    } else {
+      return null;
+    }
+  }
+);
+
+export const addListToServer = createAsyncThunk(
+  "lists/addListToServer",
+  async (payload: { name: string; status: boolean }) => {
+    const res = await axios.post("/api/list", {
+      name: payload.name,
+      status: payload.status ? "public" : "private",
+    });
+
+    if (res.status === 201) {
+      return res.data;
+    } else {
+      return null;
+    }
+  }
+);
+
+export const togglePostToList = createAsyncThunk(
+  "lists/togglePostToList",
+  async (payload: { postId: string; listId: string }) => {
+    const res = await axios.put(`/api/list/${payload.listId}`, {
+      postId: payload.postId,
+    });
 
     if (res.status === 200) {
       return res.data;
@@ -40,6 +69,20 @@ const slice = createSlice({
     });
     builder.addCase(fetchListFromServer.pending, (state, action) => {
       state.loading = true;
+    });
+    builder.addCase(addListToServer.fulfilled, (state, action) => {
+      if (state.data) {
+        state.data?.push(action.payload.list);
+      }
+    });
+    builder.addCase(togglePostToList.fulfilled, (state, action) => {
+      if (state.data) {
+        state.data = state.data?.map((list) => {
+          return list._id === action.payload.list._id
+            ? action.payload.list
+            : list;
+        });
+      }
     });
   },
 });

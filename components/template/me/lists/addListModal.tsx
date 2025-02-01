@@ -1,6 +1,8 @@
 import LoadingBtn from "@/components/module/loadingBtn";
 import PrimaryBtn from "@/components/module/primaryBtn";
 import SabzModal from "@/components/module/sabzModal";
+import { addListToServer } from "@/redux/slices/list";
+import { useTypedDispatch } from "@/redux/typedHooks";
 import { SendErrorToast, SendSucToast } from "@/utils/toast-functions";
 import axios from "axios";
 import { ChangeEvent, useState } from "react";
@@ -14,6 +16,8 @@ export default function AddListModal({
   const [status, setStatus] = useState(false);
 
   const [loading, setLoading] = useState(false);
+
+  const dispatch = useTypedDispatch();
 
   return (
     <SabzModal CloseModal={CloseModal}>
@@ -51,17 +55,14 @@ export default function AddListModal({
   );
   async function AddListHandler(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
-    try {
-      setLoading(true);
-      const res = await axios.post("/api/list", {
-        name,
-        status: status ? "public" : "private",
-      });
 
-      console.log(res);
-
+    setLoading(true);
+    const res = await dispatch(addListToServer({ name, status }));
+    if (res.payload) {
       SendSucToast("لیست ساخته شد");
-    } catch (error) {
+      setLoading(false);
+      CloseModal();
+    } else {
       SendErrorToast("لیست ساخته نشد");
       setLoading(false);
     }

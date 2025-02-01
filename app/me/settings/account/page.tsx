@@ -10,24 +10,14 @@ import UsernameFiled from "@/components/template/settings/account/usernameField"
 import { useTypedSelector } from "@/redux/typedHooks";
 import { SendErrorToast } from "@/utils/toast-functions";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaEdit } from "react-icons/fa";
 
 export default function SettingsAccount() {
-  const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const { data: userData, loading: reduxLoading } = useTypedSelector(
-    (state) => state.user
-  );
+  const { data: userData, loading } = useTypedSelector((state) => state.user);
 
-  useEffect(() => {
-    if (reduxLoading) {
-      setLoading(true);
-    } else {
-      setLoading(false);
-    }
-  });
   return (
     <div className="flex flex-col gap-10 pt-10 lg:pb-10 pb-20">
       {loading ? (

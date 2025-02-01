@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { UserModelType } from "./user";
 import { CommentModelType } from "./comment";
-import { userModel, commentModel } from "./index";
+import { userModel, commentModel } from "@/models";
 
 export type PostModelType = {
   _id: string;

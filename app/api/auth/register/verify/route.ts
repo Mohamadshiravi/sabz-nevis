@@ -1,4 +1,5 @@
 import ConnectToDB from "@/DB/connectToDB";
+import { listModel } from "@/models";
 import otpModel from "@/models/otp";
 import userModel from "@/models/user";
 import { JenerateAccessToken } from "@/utils/auth/tokenControl";
@@ -31,6 +32,12 @@ export async function POST(req: Request) {
     const username = `m_${Date.now()}`;
     const newUser = await userModel.create({ phone, username });
     const token = JenerateAccessToken({ phone: newUser.phone });
+
+    const userSaveList = await listModel.create({
+      name: "پست های ذخیره شده",
+      status: "private",
+      user: newUser._id,
+    });
 
     cookies().set({
       name: "token",

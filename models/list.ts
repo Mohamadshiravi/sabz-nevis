@@ -1,11 +1,13 @@
 import mongoose from "mongoose";
+import { postModel, userModel } from "@/models";
 import { PostModelType } from "./post";
 import { UserModelType } from "./user";
 
 export type ListModelType = {
+  _id: string;
   name: string;
   user: UserModelType | string;
-  posts: PostModelType[] | string[];
+  posts: PostModelType[];
   status: "public" | "private";
 };
 

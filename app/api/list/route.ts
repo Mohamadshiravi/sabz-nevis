@@ -13,7 +13,14 @@ export async function POST(req: Request) {
   try {
     const { name, status } = await req.json();
 
-    const list = await listModel.create({ name, status, user: isUserAuth._id });
+    const createdList = await listModel.create({
+      name,
+      status,
+      user: isUserAuth._id,
+    });
+    const list = await listModel
+      .findById(createdList._id, "-__v")
+      .populate("user", "username");
 
     return Response.json(
       {
@@ -36,10 +43,11 @@ export async function GET(req: Request) {
   try {
     const lists = await listModel
       .find({ user: isUserAuth._id }, "-__v")
-      .populate("user", "username");
+      .populate("user", "username")
+      .populate("posts", "cover");
 
     return Response.json({
-      message: "list created",
+      message: "user lists",
       lists,
     });
   } catch (error) {

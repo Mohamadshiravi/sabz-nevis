@@ -4,6 +4,7 @@ import { PostModelType } from "@/models/post";
 import Image from "next/image";
 import {
   GoBookmark,
+  GoBookmarkFill,
   GoComment,
   GoDotFill,
   GoHeart,
@@ -14,12 +15,15 @@ import { faIR } from "date-fns/locale";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { likePost, unLikePost } from "@/redux/slices/post";
+import { fetchPostFromServer, likePost, unLikePost } from "@/redux/slices/post";
 import { SendSucToast } from "@/utils/toast-functions";
-import { useState } from "react";
-import { unLikePostFromLikedPost } from "@/redux/slices/likedPost";
-import { RiLock2Fill } from "react-icons/ri";
+import { useEffect, useState } from "react";
+import {
+  fetchLikedPosts,
+  unLikePostFromLikedPost,
+} from "@/redux/slices/likedPost";
 import SavePostDropDown from "../template/postModule/savePostDropdown";
+import { fetchListFromServer } from "@/redux/slices/list";
 
 type PostProps = {
   border?: boolean;
@@ -32,6 +36,7 @@ export default function Post({ border, data, isLikedPost }: PostProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const userId = useTypedSelector((state) => state.user).data?._id;
+  const lists = useTypedSelector((state) => state.lists).data;
   const dispatch = useTypedDispatch();
   const router = useRouter();
 
@@ -41,6 +46,12 @@ export default function Post({ border, data, isLikedPost }: PostProps) {
         locale: faIR,
       })
     : "";
+
+  useEffect(() => {
+    if (!lists) {
+      dispatch(fetchListFromServer());
+    }
+  }, []);
   return (
     <div
       className={`flex flex-col ${
@@ -155,12 +166,25 @@ export default function Post({ border, data, isLikedPost }: PostProps) {
           </button>
 
           <div className="relative">
-            <GoBookmark
-              onClick={() => setIsDropdownOpen(true)}
-              className="hover:text-blue-600 transition cursor-pointer"
-            />
+            {lists?.some((list) =>
+              list.posts.some((post) => post._id === data?._id)
+            ) ? (
+              <GoBookmarkFill
+                onClick={() => setIsDropdownOpen(true)}
+                className="hover:text-blue-600 transition cursor-pointer"
+              />
+            ) : (
+              <GoBookmark
+                onClick={() => setIsDropdownOpen(true)}
+                className="hover:text-blue-600 transition cursor-pointer"
+              />
+            )}
+
             {isDropdownOpen && (
-              <SavePostDropDown Close={() => setIsDropdownOpen(false)} />
+              <SavePostDropDown
+                postId={data?._id || null}
+                Close={() => setIsDropdownOpen(false)}
+              />
             )}
           </div>
         </div>
@@ -174,6 +198,7 @@ export default function Post({ border, data, isLikedPost }: PostProps) {
       if (res.payload) {
         setLoading(false);
         SendSucToast("پست لایک شد و به لایک شده های شما اضافه شد");
+        dispatch(fetchLikedPosts());
       } else {
         setLoading(false);
         SendSucToast("پست لایک نشد");
@@ -187,6 +212,7 @@ export default function Post({ border, data, isLikedPost }: PostProps) {
       if (res.payload) {
         setLoading(false);
         SendSucToast("پست از لایک شده های شما حذف شد");
+        dispatch(fetchLikedPosts());
       } else {
         setLoading(false);
         SendSucToast("پست  از لایک شده های شما حذف نشد");
@@ -200,6 +226,8 @@ export default function Post({ border, data, isLikedPost }: PostProps) {
       if (res.payload) {
         setLoading(false);
         SendSucToast("پست از لایک شده های شما حذف شد");
+        dispatch(fetchLikedPosts());
+        dispatch(fetchPostFromServer());
       } else {
         setLoading(false);
         SendSucToast("پست  از لایک شده های شما حذف نشد");

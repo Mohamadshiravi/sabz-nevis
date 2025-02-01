@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { PostModelType } from "./post";
-import { postModel, userModel } from "./index";
+import { postModel, userModel } from "@/models";
 import { UserModelType } from "./user";
 
 export type CommentModelType = {

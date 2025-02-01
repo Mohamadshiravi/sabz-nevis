@@ -12,7 +12,9 @@ export default function LikedPostMainSection() {
   const dispatch = useTypedDispatch();
 
   useEffect(() => {
-    dispatch(fetchLikedPosts());
+    if (!data) {
+      dispatch(fetchLikedPosts());
+    }
   }, []);
 
   return (

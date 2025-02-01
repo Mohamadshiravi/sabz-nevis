@@ -5,14 +5,15 @@ import { useEffect, useState } from "react";
 import AddListModal from "./addListModal";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
 import { fetchListFromServer } from "@/redux/slices/list";
-import PostLoading from "@/components/module/skeletonLoadings/post";
 import ListLoading from "@/components/module/skeletonLoadings/list";
 
 export default function ListsMainSection() {
   const [isAddListmodalOpen, setIsAddListModalOpen] = useState(false);
 
   useEffect(() => {
-    dispatch(fetchListFromServer());
+    if (!data) {
+      dispatch(fetchListFromServer());
+    }
   }, []);
 
   const dispatch = useTypedDispatch();

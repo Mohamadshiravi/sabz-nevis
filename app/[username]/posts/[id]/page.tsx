@@ -20,7 +20,7 @@ type userPostsProps = {
   params: { id: string };
 };
 
-export default async function userPosts({ params }: userPostsProps) {
+export default async function UserPosts({ params }: userPostsProps) {
   if (!mongoose.Types.ObjectId.isValid(params.id)) {
     notFound();
   }

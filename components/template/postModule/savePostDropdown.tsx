@@ -1,6 +1,37 @@
+"use client";
+
+import { togglePostToList, fetchListFromServer } from "@/redux/slices/list";
+import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
+import { useEffect } from "react";
+import { FaCheck } from "react-icons/fa";
 import { RiLock2Fill } from "react-icons/ri";
 
-export default function SavePostDropDown({ Close }: { Close: () => void }) {
+export default function SavePostDropDown({
+  Close,
+  postId,
+}: {
+  Close: () => void;
+  postId: string | null;
+}) {
+  const dispatch = useTypedDispatch();
+
+  const { loading, data } = useTypedSelector((state) => state.lists);
+
+  useEffect(() => {
+    if (!data) {
+      dispatch(fetchListFromServer());
+    }
+  }, []);
+
+  useEffect(() => {
+    if (
+      !data?.some((list) => list.posts.some((post) => post._id === postId)) &&
+      data
+    ) {
+      SavePostHandler(data[0]._id);
+    }
+  }, []);
+
   return (
     <>
       <section
@@ -9,22 +40,44 @@ export default function SavePostDropDown({ Close }: { Close: () => void }) {
       ></section>
       <div className="w-[250px] z-40 bottom-10 left-0 absolute shadow-lg border border-zinc-200 dark:border-zinc-800 transition dark:bg-darkColor-800 bg-white rounded-md rounded-bl-none">
         <span className="w-[13px] h-[13px] bg-white absolute border-b border-r border-zinc-200 transition dark:border-zinc-800 dark:bg-darkColor-800 rotate-45 bottom-[-7px] left-1"></span>
-        <div className="flex flex-col gap-4 p-4">
-          <label className="flex items-center justify-between w-full">
-            <div className="flex items-center gap-2">
-              <input type="checkbox" />
-              <span className="text-sm dark:text-myText-200 vazir-medium">
-                پست های ذخیره شده
-              </span>
-            </div>
-            <RiLock2Fill className="text-base" />
-          </label>
-        </div>
-        <hr className="border-zinc-200 dark:border-zinc-800" />
-        <button className="text-sm text-myGreen-600 py-4 hover:text-myGreen-700 transition text-center w-full">
-          ساخت لیست جدید
-        </button>
+        {loading ? (
+          <div className="text-sm p-4">در حال دریافت لیست های شما ...</div>
+        ) : (
+          <>
+            {data?.map((e, i) => (
+              <div key={i} className="flex flex-col gap-4 p-4">
+                <button
+                  onClick={() => SavePostHandler(e._id)}
+                  className="flex items-center justify-between w-full cursor-pointer"
+                >
+                  <div className="flex items-center gap-2">
+                    <span className="border w-[20px] h-[20px] flex items-center justify-center block text-xs text-myGreen-600 rounded-sm border-zinc-200 dark:border-zinc-800">
+                      {e.posts.some((post) => post._id === postId) && (
+                        <FaCheck />
+                      )}
+                    </span>
+                    <span className="text-sm dark:text-myText-200 vazir-medium">
+                      {e.name}
+                    </span>
+                  </div>
+                  {e.status === "private" && (
+                    <RiLock2Fill className="text-base" />
+                  )}
+                </button>
+              </div>
+            ))}
+            <hr className="border-zinc-200 dark:border-zinc-800" />
+            <button className="text-sm text-myGreen-600 py-4 hover:text-myGreen-700 transition text-center w-full">
+              ساخت لیست جدید
+            </button>
+          </>
+        )}
       </div>
     </>
   );
+  async function SavePostHandler(listId: string) {
+    if (postId) {
+      dispatch(togglePostToList({ postId, listId }));
+    }
+  }
 }

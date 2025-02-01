@@ -8,21 +8,9 @@ import UploadProfilePhoto from "@/components/template/settings/uploadProfilePhot
 import XProfileField from "@/components/template/settings/xProfileField";
 import { updateUserDataToServer } from "@/redux/slices/user";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
-import { useEffect, useState } from "react";
 
 export default function SettingsMain() {
-  const [loading, setLoading] = useState(true);
-  const { data: userData, loading: reduxLoading } = useTypedSelector(
-    (state) => state.user
-  );
-
-  useEffect(() => {
-    if (reduxLoading) {
-      setLoading(true);
-    } else {
-      setLoading(false);
-    }
-  });
+  const { data: userData, loading } = useTypedSelector((state) => state.user);
 
   async function ChangeGenderHandler(value: string) {
     dispatch(updateUserDataToServer({ gender: value }));
