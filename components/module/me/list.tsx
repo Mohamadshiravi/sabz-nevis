@@ -24,7 +24,7 @@ export default function List({ data }: { data: ListModelType }) {
           {data.status === "private" && <RiLock2Fill />}
         </div>
       </div>
-      <div className="grid h-[200px] w-[200px] sm:grid-cols-[6fr_6fr] grid-cols-[3fr_3fr_3fr_3fr] sm:gap-0.5 gap-1">
+      <div className="grid sm:h-[200px] h-[100px] sm:w-[200px] w-full sm:grid-cols-[6fr_6fr] grid-cols-[3fr_3fr_3fr_3fr] sm:gap-0.5 gap-1">
         {data.posts.slice(0, 3).map((e, i) => (
           <Image
             key={i}
@@ -32,7 +32,7 @@ export default function List({ data }: { data: ListModelType }) {
             width={600}
             height={600}
             src={e.cover}
-            className="w-full aspect-square object-cover"
+            className="w-full h-full object-cover"
           />
         ))}
       </div>

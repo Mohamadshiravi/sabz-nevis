@@ -4,7 +4,7 @@ import List from "@/components/module/me/list";
 import { useEffect, useState } from "react";
 import AddListModal from "./addListModal";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
-import { fetchListFromServer } from "@/redux/slices/list";
+import { fetchListsFromServer } from "@/redux/slices/list";
 import ListLoading from "@/components/module/skeletonLoadings/list";
 
 export default function ListsMainSection() {
@@ -12,7 +12,7 @@ export default function ListsMainSection() {
 
   useEffect(() => {
     if (!data) {
-      dispatch(fetchListFromServer());
+      dispatch(fetchListsFromServer());
     }
   }, []);
 

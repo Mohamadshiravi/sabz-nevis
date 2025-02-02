@@ -41,7 +41,7 @@ export default function AddListModal({
             className="bg-zinc-800"
           />
           <label htmlFor="locked">
-            این لیست توسط سایر افراد قابل دیدن نباشد
+            این لیست توسط سایر افراد قابل دیدن باشد
           </label>
         </div>
         <div className="flex items-center justify-center gap-3 mt-10 w-full">

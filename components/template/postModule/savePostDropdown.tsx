@@ -1,6 +1,6 @@
 "use client";
 
-import { togglePostToList, fetchListFromServer } from "@/redux/slices/list";
+import { togglePostToList, fetchListsFromServer } from "@/redux/slices/list";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
 import { useEffect } from "react";
 import { FaCheck } from "react-icons/fa";
@@ -19,7 +19,7 @@ export default function SavePostDropDown({
 
   useEffect(() => {
     if (!data) {
-      dispatch(fetchListFromServer());
+      dispatch(fetchListsFromServer());
     }
   }, []);
 
@@ -66,10 +66,6 @@ export default function SavePostDropDown({
                 </button>
               </div>
             ))}
-            <hr className="border-zinc-200 dark:border-zinc-800" />
-            <button className="text-sm text-myGreen-600 py-4 hover:text-myGreen-700 transition text-center w-full">
-              ساخت لیست جدید
-            </button>
           </>
         )}
       </div>

@@ -26,20 +26,6 @@ export const fetchLikedPosts = createAsyncThunk(
   }
 );
 
-export const unLikePostFromLikedPost = createAsyncThunk(
-  "likedposts/unLikePost",
-  async (postId: string) => {
-    const res = await axios.post("/api/post/unlike", {
-      postId,
-    });
-    if (res.status === 200) {
-      return res.data;
-    } else {
-      return null;
-    }
-  }
-);
-
 const slice = createSlice({
   name: "likedposts",
   initialState,
@@ -51,15 +37,6 @@ const slice = createSlice({
     });
     builder.addCase(fetchLikedPosts.pending, (state, action) => {
       state.loading = true;
-    });
-    builder.addCase(unLikePostFromLikedPost.fulfilled, (state, action) => {
-      if (state.data) {
-        state.data = state.data?.map((post) => {
-          return post._id === action.payload.post._id
-            ? action.payload.post
-            : post;
-        });
-      }
     });
   },
 });

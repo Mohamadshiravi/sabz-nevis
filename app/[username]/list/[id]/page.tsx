@@ -5,9 +5,10 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { GoDotFill } from "react-icons/go";
 import ConnectToDB from "@/DB/connectToDB";
-import Post from "@/components/module/post";
-import { PostModelType } from "@/models/post";
-import PostLoading from "@/components/module/skeletonLoadings/post";
+import { faIR } from "date-fns/locale";
+import { formatDistanceToNow } from "date-fns";
+import RenderPostOfList from "@/components/template/me/lists/renderPostOfList";
+import IsUserAuthentication from "@/utils/auth/authUser";
 
 type userPostsProps = {
   params: { id: string };
@@ -22,18 +23,17 @@ export default async function UserLists({ params }: userPostsProps) {
 
   const list = await listModel
     .findById(params.id, "-__v")
-    .populate("user", "username displayName avatar")
-    .populate({
-      path: "posts",
-      select: "-body -imagesUrl -imagesID -updatedAt -status",
-      populate: {
-        path: "user",
-        select: "username displayName avatar",
-      },
-    });
+    .populate("user", "username displayName avatar");
 
   if (!list) {
     notFound();
+  }
+
+  if (list.status === "private") {
+    const isUserAuth = await IsUserAuthentication();
+    if (isUserAuth._id.toString() !== list.user._id.toString()) {
+      notFound();
+    }
   }
 
   return (
@@ -52,7 +52,12 @@ export default async function UserLists({ params }: userPostsProps) {
             <span>{list.user.displayName || list.user.username}</span>
             <div className="flex items-center gap-2">
               <span className="sm:text-xs text-[10px] text-myText-500">
-                خواندن {list?.readingTime} دقیقه
+                {list.createdAt
+                  ? formatDistanceToNow(new Date(list.createdAt), {
+                      addSuffix: true,
+                      locale: faIR,
+                    })
+                  : ""}
               </span>
               <GoDotFill className="text-[4px] text-myText-500" />
               <span className="sm:text-xs text-[10px] text-myText-500">
@@ -62,16 +67,7 @@ export default async function UserLists({ params }: userPostsProps) {
           </div>
         </div>
         <h1 className="text-3xl vazir-black my-10">{list.name}</h1>
-
-        {list.posts.length === 0 ? (
-          <div>پستی وجود ندارد</div>
-        ) : (
-          <div>
-            {list.posts.map((e: PostModelType, i: any) => (
-              <Post border key={i} data={JSON.parse(JSON.stringify(e))} />
-            ))}
-          </div>
-        )}
+        <RenderPostOfList listId={JSON.parse(JSON.stringify(list._id))} />
       </main>
     </>
   );

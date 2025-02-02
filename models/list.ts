@@ -18,25 +18,30 @@ type ListModelTypeMongoose = {
   status: "public" | "private";
 };
 
-const schema = new mongoose.Schema<ListModelTypeMongoose>({
-  name: {
-    type: String,
-    required: true,
+const schema = new mongoose.Schema<ListModelTypeMongoose>(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    posts: {
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }],
+      required: false,
+    },
+    status: {
+      type: String,
+      default: "private",
+    },
   },
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
-  },
-  posts: {
-    type: [{ type: mongoose.Schema.Types.ObjectId, ref: "Post" }],
-    required: false,
-  },
-  status: {
-    type: String,
-    default: "private",
-  },
-});
+  {
+    timestamps: true,
+  }
+);
 
 const listModel = mongoose.models.List || mongoose.model("List", schema);
 export default listModel;

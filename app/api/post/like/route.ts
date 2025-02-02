@@ -12,17 +12,36 @@ export async function POST(req: Request) {
   try {
     const { postId } = await req.json();
 
-    const post = await postModel
-      .findOneAndUpdate(
+    const checkPost = await postModel.findById(postId);
+
+    if (
+      checkPost.likes.some(
+        (e: any) => e.toString() === isUserAuth._id.toString()
+      )
+    ) {
+      await postModel.findOneAndUpdate(
+        { _id: postId },
+        {
+          $pull: { likes: isUserAuth._id },
+        }
+      );
+    } else {
+      await postModel.findOneAndUpdate(
         { _id: postId },
         {
           $push: { likes: isUserAuth._id },
-        },
-        { new: true }
-      )
+        }
+      );
+    }
+
+    const post = await postModel
+      .findById({ _id: postId })
       .populate("user", "displayName username avatar");
 
-    return Response.json({ message: "post liked", post }, { status: 200 });
+    return Response.json(
+      { message: "post like toggled", post },
+      { status: 200 }
+    );
   } catch (error) {
     return Response.json({ error: "server error" }, { status: 500 });
   }

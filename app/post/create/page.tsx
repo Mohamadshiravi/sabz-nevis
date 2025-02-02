@@ -5,7 +5,7 @@ import PublishModal from "@/components/template/createPost/publishModal";
 import { PostModelType } from "@/models/post";
 import { fetchUserDataFromServer } from "@/redux/slices/user";
 import { useTypedDispatch } from "@/redux/typedHooks";
-import { SendErrorToast, SendSucToast } from "@/utils/toast-functions";
+import { SendErrorToast } from "@/utils/toast-functions";
 import axios from "axios";
 import dynamic from "next/dynamic";
 import Link from "next/link";
@@ -41,8 +41,6 @@ export default function CreatePostPage() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const [loading, setLoading] = useState(true);
-
   const FetchUserData = async () => {
     await dispatch(fetchUserDataFromServer());
   };
@@ -63,7 +61,6 @@ export default function CreatePostPage() {
 
     if (!savedPostId) {
       DraftPostHandler();
-      setLoading(false);
     } else {
       FetchDraftPost(savedPostId);
       setPostID(savedPostId);
@@ -82,12 +79,6 @@ export default function CreatePostPage() {
       setImagesUrl(res.data.post.imagesUrl);
     } catch (error) {}
   }
-
-  useEffect(() => {
-    if (savedPost) {
-      setLoading(false);
-    }
-  }, [savedPost]);
 
   return (
     <>
@@ -134,29 +125,18 @@ export default function CreatePostPage() {
         </div>
       </header>
       <main className="lg:w-[1024px] lg:m-auto w-full lg:px-28 px-4">
-        {loading ? (
-          <div className="mt-10 mb-20 w-full flex flex-col">
-            <div className="bg-zinc-200 dark:bg-zinc-800 w-full h-[70px] animate-pulse"></div>
-            <div className="bg-zinc-200 dark:bg-zinc-800 w-full h-[40px] animate-pulse mt-14"></div>
-            <div className="bg-zinc-200 dark:bg-zinc-800 w-full h-[40px] animate-pulse mt-2"></div>
-            <div className="bg-zinc-200 dark:bg-zinc-800 w-full h-[40px] animate-pulse mt-2"></div>
-            <div className="bg-zinc-200 dark:bg-zinc-800 w-full h-[40px] animate-pulse mt-2"></div>
-            <div className="bg-zinc-200 dark:bg-zinc-800 w-full h-[40px] animate-pulse mt-2"></div>
-          </div>
-        ) : (
-          <SabzTextEditor
-            key={savedPost ? savedPost._id : "initial"}
-            savedBody={savedPost?.body || ""}
-            savedTitle={savedPost?.title || ""}
-            postID={postID}
-            setBody={(value: string) => {
-              setbody(value);
-            }}
-            setTitle={(value: string) => {
-              setTitle(value);
-            }}
-          />
-        )}
+        <SabzTextEditor
+          key={savedPost ? savedPost._id : "initial"}
+          savedBody={savedPost?.body || ""}
+          savedTitle={savedPost?.title || ""}
+          postID={postID}
+          setBody={(value: string) => {
+            setbody(value);
+          }}
+          setTitle={(value: string) => {
+            setTitle(value);
+          }}
+        />
       </main>
       {isModalOpen && (
         <PublishModal

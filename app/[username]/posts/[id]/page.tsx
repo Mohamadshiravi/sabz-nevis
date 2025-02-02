@@ -15,6 +15,7 @@ import ConnectToDB from "@/DB/connectToDB";
 import AddCommentSection from "@/components/template/post/addCommentSection";
 import Comments from "@/components/template/post/comments";
 import { Suspense } from "react";
+import PostEvents from "@/components/template/post/postEvents";
 
 type userPostsProps = {
   params: { id: string };
@@ -103,21 +104,9 @@ export default async function UserPosts({ params }: userPostsProps) {
           </div>
           <div className="border-b border-zinc-200 dark:border-zinc-800 py-4 flex items-center justify-between">
             <span className="text-xs border border-zinc-200 dark:border-zinc-800 px-4 py-1 rounded-sm text-myText-500 dark:text-myText-600">
-              {post.category}
+              {post.category || ""}
             </span>
-            <div className="flex items-center gap-6 text-xl text-myText-600">
-              <button className="flex items-center gap-2">
-                <GoHeart className="hover:text-red-600 transition" />
-                <span className="text-lg">2</span>
-              </button>
-              <button className="flex items-center gap-2">
-                <GoComment className="hover:text-zinc-800 transition" />
-                <span className="text-lg">0</span>
-              </button>
-              <button>
-                <GoBookmark className="hover:text-blue-600 transition" />
-              </button>
-            </div>
+            <PostEvents postId={post._id} />
           </div>
           <UserDetailsSection
             followers={JSON.parse(JSON.stringify(post.user.followers))}
@@ -126,7 +115,7 @@ export default async function UserPosts({ params }: userPostsProps) {
             displayName={JSON.parse(
               JSON.stringify(post.user.displayName || null)
             )}
-            about={JSON.parse(JSON.stringify(post.user.about))}
+            about={JSON.parse(JSON.stringify(post.user.about || ""))}
             username={JSON.parse(JSON.stringify(post.user.username))}
             isUserHere={JSON.parse(JSON.stringify(isUserHere))}
           />
@@ -152,7 +141,7 @@ export default async function UserPosts({ params }: userPostsProps) {
             displayName={JSON.parse(
               JSON.stringify(post.user.displayName || null)
             )}
-            about={JSON.parse(JSON.stringify(post.user.about))}
+            about={JSON.parse(JSON.stringify(post.user.about || ""))}
             username={JSON.parse(JSON.stringify(post.user.username))}
             isUserHere={JSON.parse(JSON.stringify(isUserHere))}
           />

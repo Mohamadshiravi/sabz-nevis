@@ -15,23 +15,28 @@ import { faIR } from "date-fns/locale";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { fetchPostFromServer, likePost, unLikePost } from "@/redux/slices/post";
-import { SendSucToast } from "@/utils/toast-functions";
+import { fetchPostFromServer, toggleLikePost } from "@/redux/slices/post";
+import { SendErrorToast, SendSucToast } from "@/utils/toast-functions";
 import { useEffect, useState } from "react";
-import {
-  fetchLikedPosts,
-  unLikePostFromLikedPost,
-} from "@/redux/slices/likedPost";
+import { fetchLikedPosts } from "@/redux/slices/likedPost";
 import SavePostDropDown from "../template/postModule/savePostDropdown";
-import { fetchListFromServer } from "@/redux/slices/list";
+import { fetchListsFromServer } from "@/redux/slices/list";
 
 type PostProps = {
   border?: boolean;
   data: PostModelType | null;
   isLikedPost?: boolean;
+  isListPost?: boolean;
+  reRenderPosts?: () => void;
 };
 
-export default function Post({ border, data, isLikedPost }: PostProps) {
+export default function Post({
+  border,
+  data,
+  isLikedPost,
+  isListPost,
+  reRenderPosts,
+}: PostProps) {
   const [loading, setLoading] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -49,9 +54,10 @@ export default function Post({ border, data, isLikedPost }: PostProps) {
 
   useEffect(() => {
     if (!lists) {
-      dispatch(fetchListFromServer());
+      dispatch(fetchListsFromServer());
     }
   }, []);
+
   return (
     <div
       className={`flex flex-col ${
@@ -134,7 +140,11 @@ export default function Post({ border, data, isLikedPost }: PostProps) {
           {data?.likes.some((e) => e === userId) ? (
             <button
               onClick={
-                isLikedPost ? UnLikePostFromLikedPostHandler : UnLikePostHandler
+                isListPost
+                  ? ToggleLikeFromListPosts
+                  : isLikedPost
+                  ? ToggleLikeFromLikedPostHandler
+                  : ToggleLikePostHandler
               }
               className="flex items-center gap-2"
             >
@@ -144,7 +154,9 @@ export default function Post({ border, data, isLikedPost }: PostProps) {
           ) : (
             <button className="flex items-center gap-2">
               <GoHeart
-                onClick={LikePostHandler}
+                onClick={
+                  isListPost ? ToggleLikeFromListPosts : ToggleLikePostHandler
+                }
                 className="hover:text-red-600 transition"
               />
               <span className="text-lg">{data?.likes.length}</span>
@@ -191,46 +203,47 @@ export default function Post({ border, data, isLikedPost }: PostProps) {
       </div>
     </div>
   );
-  async function LikePostHandler() {
+  async function ToggleLikePostHandler() {
     if (!loading && data) {
       setLoading(true);
-      const res = await dispatch(likePost(data?._id));
+      const res = await dispatch(toggleLikePost(data?._id));
       if (res.payload) {
         setLoading(false);
-        SendSucToast("پست لایک شد و به لایک شده های شما اضافه شد");
         dispatch(fetchLikedPosts());
       } else {
         setLoading(false);
-        SendSucToast("پست لایک نشد");
+        SendErrorToast("اتصال خود را بررسی کنید");
       }
     }
   }
-  async function UnLikePostHandler() {
+
+  async function ToggleLikeFromLikedPostHandler() {
     if (!loading && data) {
       setLoading(true);
-      const res = await dispatch(unLikePost(data?._id));
+      const res = await dispatch(toggleLikePost(data?._id));
       if (res.payload) {
         setLoading(false);
-        SendSucToast("پست از لایک شده های شما حذف شد");
-        dispatch(fetchLikedPosts());
-      } else {
-        setLoading(false);
-        SendSucToast("پست  از لایک شده های شما حذف نشد");
-      }
-    }
-  }
-  async function UnLikePostFromLikedPostHandler() {
-    if (!loading && data) {
-      setLoading(true);
-      const res = await dispatch(unLikePostFromLikedPost(data?._id));
-      if (res.payload) {
-        setLoading(false);
-        SendSucToast("پست از لایک شده های شما حذف شد");
         dispatch(fetchLikedPosts());
         dispatch(fetchPostFromServer());
       } else {
         setLoading(false);
-        SendSucToast("پست  از لایک شده های شما حذف نشد");
+        SendErrorToast("پست  از لایک شده های شما حذف نشد");
+      }
+    }
+  }
+
+  async function ToggleLikeFromListPosts() {
+    if (!loading && data && reRenderPosts) {
+      setLoading(true);
+      const res = await dispatch(toggleLikePost(data?._id));
+      if (res.payload) {
+        setLoading(false);
+        dispatch(fetchLikedPosts());
+        dispatch(fetchPostFromServer());
+        reRenderPosts();
+      } else {
+        setLoading(false);
+        SendErrorToast("پست  از لایک شده های شما حذف نشد");
       }
     }
   }

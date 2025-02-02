@@ -55,3 +55,34 @@ export async function PUT(
     return Response.json({ message: "server error" }, { status: 500 });
   }
 }
+
+export async function GET(
+  req: Request,
+  { params }: { params: { id: string } }
+) {
+  const isUserAuth = await IsUserAuthentication();
+  if (!isUserAuth) {
+    return Response.json({ message: "unAuth" }, { status: 401 });
+  }
+
+  try {
+    const list = await listModel
+      .findById(params.id, "-__v")
+      .populate("user", "username")
+      .populate({
+        path: "posts",
+        select: "-body -imagesUrl -imagesID -updatedAt -status",
+        populate: {
+          path: "user",
+          select: "username displayName avatar",
+        },
+      });
+
+    return Response.json({
+      message: "user list",
+      list,
+    });
+  } catch (error) {
+    return Response.json({ message: "server error" }, { status: 500 });
+  }
+}

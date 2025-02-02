@@ -14,8 +14,8 @@ const initialState: ListState = {
   error: null,
 };
 
-export const fetchListFromServer = createAsyncThunk(
-  "lists/fetchListFromServer",
+export const fetchListsFromServer = createAsyncThunk(
+  "lists/fetchListsFromServer",
   async () => {
     const res = await axios.get("/api/list");
 
@@ -63,11 +63,11 @@ const slice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchListFromServer.fulfilled, (state, action) => {
+    builder.addCase(fetchListsFromServer.fulfilled, (state, action) => {
       state.loading = false;
       state.data = action.payload.lists;
     });
-    builder.addCase(fetchListFromServer.pending, (state, action) => {
+    builder.addCase(fetchListsFromServer.pending, (state, action) => {
       state.loading = true;
     });
     builder.addCase(addListToServer.fulfilled, (state, action) => {
