@@ -34,17 +34,6 @@ export default function SettingsAccount() {
           <PhoneField phone={userData?.phone} />
           <hr className="border-1 border-zinc-200 dark:border-zinc-800" />
 
-          <div className="flex items-center justify-between w-full">
-            <h3 className="vazir-medium">تغییر رمز عبور</h3>
-            <FaEdit className="text-xl" />
-          </div>
-          <div className="flex items-center justify-between w-full">
-            <h3 className="vazir-medium">فراموشی رمز عبور</h3>
-            <FaEdit className="text-xl" />
-          </div>
-
-          <hr className="border-1 border-zinc-200 dark:border-zinc-800" />
-
           <BlockContactField />
           <div className="flex sm:flex-row flex-col gap-3 items-center justify-between w-full">
             <div className="flex flex-col gap-2">

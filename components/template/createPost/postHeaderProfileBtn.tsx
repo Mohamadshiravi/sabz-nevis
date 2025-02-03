@@ -20,12 +20,6 @@ export default function PostHeaderProfileBtn() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const userData = useTypedSelector((state) => state.user);
-  const dispatch = useTypedDispatch();
-
-  function ChangeThemeHandler() {
-    const theme = userData.theme === "dark" ? "light" : "dark";
-    dispatch(changeTheme(theme));
-  }
 
   function AnimateToggleModal() {
     if (isMenuMount) {
@@ -49,21 +43,8 @@ export default function PostHeaderProfileBtn() {
           className="fixed top-0 left-0 w-full h-screen"
         ></section>
       )}
+
       <section className="flex sm:flex-row flex-col items-center sm:gap-2 gap-1 text-sm">
-        <button
-          onClick={ChangeThemeHandler}
-          className="p-2.5 flex bg-zinc-200 dark:bg-zinc-800 rounded-full items-center justify-between gap-4 dark:text-myText-400 text-myText-600"
-        >
-          {userData.theme === "dark" ? (
-            <>
-              <IoMoonSharp className="text-xl" />
-            </>
-          ) : (
-            <>
-              <MdSunny className="text-xl" />
-            </>
-          )}
-        </button>
         <div className="relative h-[40px] z-[40]">
           <button
             onClick={AnimateToggleModal}

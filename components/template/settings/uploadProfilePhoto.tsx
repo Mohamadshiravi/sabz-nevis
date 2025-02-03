@@ -32,7 +32,7 @@ export default function UploadProfilePhoto({
           width={600}
           height={600}
           alt="test"
-          src={avatar || "/images/guest-avatar.webp"}
+          src={avatar || "/images/avatar-default.jpg"}
           className="w-full h-full object-cover rounded-full"
         />
         <div className="bg-black/40 group-hover:opacity-100 transition duration-300 opacity-0 cursor-pointer rounded-full w-full h-full absolute top-0 left-0 flex items-center justify-center">

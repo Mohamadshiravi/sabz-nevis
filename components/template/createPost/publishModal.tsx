@@ -2,6 +2,7 @@
 
 import LoadingBtn from "@/components/module/loadingBtn";
 import PrimaryBtn from "@/components/module/primaryBtn";
+import { CategoryModelType } from "@/models/category";
 import { SendErrorToast, SendSucToast } from "@/utils/toast-functions";
 import axios from "axios";
 import Image from "next/image";
@@ -31,13 +32,9 @@ export default function PublishModal({
   const [isChangeCoverOpen, setIsChangeCoverOpen] = useState(false);
 
   const [loading, setLoading] = useState(false);
+  const [categoryLoading, setCategoryLoading] = useState(true);
 
-  const [categorys, setCategorys] = useState([
-    "شغل و کار",
-    "موسیقی",
-    "خودشناسی",
-    "فیلم سینمایی",
-  ]);
+  const [categories, setCategories] = useState<[] | CategoryModelType[]>([]);
 
   function AnimateCloseModal() {
     setIsModalOpen(false);
@@ -59,6 +56,8 @@ export default function PublishModal({
   }, [isModalOpen]);
 
   useEffect(() => {
+    FetchCategorys();
+
     if (images && images[0]) {
       setPostCover(images[0]);
     }
@@ -68,6 +67,17 @@ export default function PublishModal({
   }, []);
 
   const router = useRouter();
+
+  async function FetchCategorys() {
+    setCategoryLoading(true);
+    try {
+      const res = await axios.get("/api/category");
+      setCategories(res.data.categories);
+      setCategoryLoading(false);
+    } catch (error) {
+      setCategoryLoading(false);
+    }
+  }
 
   return (
     <>
@@ -178,19 +188,23 @@ export default function PublishModal({
               </h3>
               <h4 className="text-sm">یک تگ موضوع برای پست خود انتخاب کنید</h4>
               <div className="flex items-center gap-2 flex-wrap">
-                {categorys.map((e, i) => (
-                  <span
-                    onClick={() => setCategory(e)}
-                    key={i}
-                    className={`${
-                      category === e
-                        ? "bg-myGreen-600 text-white"
-                        : "bg-zinc-200 hover:bg-zinc-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 border border-zinc-400 dark:border-zinc-600"
-                    } text-sm transition px-3 py-1 rounded-sm cursor-pointer`}
-                  >
-                    {e}
-                  </span>
-                ))}
+                {categoryLoading
+                  ? Array.from({ length: 8 }).map((e, i) => (
+                      <span className="w-[100px] animate-pulse h-[30px] rounded-sm bg-zinc-200 dark:bg-zinc-800"></span>
+                    ))
+                  : categories.map((e, i) => (
+                      <span
+                        onClick={() => setCategory(e._id)}
+                        key={i}
+                        className={`${
+                          category === e._id
+                            ? "bg-myGreen-600 text-white"
+                            : "bg-zinc-200 hover:bg-zinc-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 border border-zinc-400 dark:border-zinc-600"
+                        } text-sm transition px-3 py-1 rounded-sm cursor-pointer`}
+                      >
+                        {e.name}
+                      </span>
+                    ))}
               </div>
               <h4 className="text-sm border-t pt-3 border-zinc-200 dark:border-zinc-800">
                 خواندن پست شما حدودا چقدر طول میکشد ؟
@@ -214,12 +228,9 @@ export default function PublishModal({
                 دقیقه
               </div>
               <div className="md:mt-6 mt-2 pt-6 h-full w-full flex items-end justify-between gap-6">
-                <span
-                  onClick={AnimateCloseModal}
-                  className={`w-full text-sm vazir-medium flex items-center justify-center gap-2 hover:bg-zinc-700 hover:text-white transition px-4 h-[35px] border-2 border-zinc-700 text-zinc-700 dark:border-zinc-300 dark:text-zinc-300 dark:hover:bg-zinc-300 dark:hover:text-zinc-800 rounded-full`}
-                >
+                <PrimaryBtn width="w-full" onPress={AnimateCloseModal}>
                   منصرف شدم
-                </span>
+                </PrimaryBtn>
 
                 <LoadingBtn fullWidth loading={loading}>
                   انتشار

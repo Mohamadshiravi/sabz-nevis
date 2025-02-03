@@ -80,7 +80,7 @@ export default function Post({
             alt={"user avatar"}
             width={200}
             height={200}
-            src={data?.user.avatar || "/images/guest-avatar.webp"}
+            src={data?.user.avatar || "/images/avatar-default.jpg"}
             className="w-[24px] h-[24px] rounded-full ml-3 object-cover"
           />
           <span className="text-sm text-xs text-zinc-800 dark:text-white">
@@ -103,7 +103,7 @@ export default function Post({
                 alt={"user avatar"}
                 width={200}
                 height={200}
-                src={data?.user.avatar || "/images/guest-avatar.webp"}
+                src={data?.user.avatar || "/images/avatar-default.jpg"}
                 className="w-[24px] h-[24px] rounded-full ml-3 object-cover"
               />
               <span className="text-sm text-xs text-zinc-800 dark:text-white">

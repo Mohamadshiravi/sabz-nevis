@@ -12,12 +12,7 @@ export default function SettingsAdvanced() {
   return (
     <div className="flex flex-col gap-10 pt-10 lg:pb-10 pb-20">
       <div className="flex sm:flex-row flex-col gap-3 items-center justify-between w-full">
-        <div className="flex flex-col gap-2">
-          <h3 className="vazir-medium">حالت شب</h3>
-          <h4 className="text-myText-600 text-sm pl-2">
-            حالت خودکار از ساعت ۰۰:۰۰ تا ۶:۰۰ فعال می‌شود.
-          </h4>
-        </div>
+        <h3 className="vazir-medium">حالت شب</h3>
         <div className="flex items-center border border-zinc-400 dark:border-zinc-700 text-xl rounded-full overflow-hidden">
           <button
             onClick={() => {

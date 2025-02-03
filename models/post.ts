@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
 import { UserModelType } from "./user";
 import { CommentModelType } from "./comment";
-import { userModel, commentModel } from "@/models";
+import { userModel, commentModel, categoryModel } from "@/models";
+import { CategoryModelType } from "./category";
 
 export type PostModelType = {
   _id: string;
@@ -12,7 +13,7 @@ export type PostModelType = {
   likes: UserModelType[] | string[];
   status: string;
   cover: string;
-  category: string;
+  category: string | CategoryModelType;
   readingTime: string;
   imagesUrl: string[];
   createdAt: Date;
@@ -26,7 +27,7 @@ type PostModelTypeMongoose = {
   user: mongoose.Types.ObjectId;
   likes: mongoose.Types.ObjectId[];
   status: string;
-  category: string;
+  category: mongoose.Types.ObjectId;
   cover: string;
   readingTime: string;
   imagesID: string[];
@@ -72,7 +73,8 @@ const schema = new mongoose.Schema<PostModelTypeMongoose>(
       required: false,
     },
     category: {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Category",
       required: false,
     },
     comments: {
