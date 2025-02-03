@@ -39,6 +39,7 @@ export default function Post({
 }: PostProps) {
   const [loading, setLoading] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isPostLiked, setIsPostLiked] = useState(false);
 
   const userId = useTypedSelector((state) => state.user).data?._id;
   const lists = useTypedSelector((state) => state.lists).data;
@@ -58,6 +59,12 @@ export default function Post({
     }
   }, []);
 
+  useEffect(() => {
+    if (data?.likes.some((e) => e === userId)) {
+      setIsPostLiked(true);
+    }
+  }, [userId]);
+
   return (
     <div
       className={`flex flex-col ${
@@ -73,7 +80,7 @@ export default function Post({
             alt={"user avatar"}
             width={200}
             height={200}
-            src={data?.user.avatar || "/images/avatar-default.jpg"}
+            src={data?.user.avatar || "/images/guest-avatar.webp"}
             className="w-[24px] h-[24px] rounded-full ml-3 object-cover"
           />
           <span className="text-sm text-xs text-zinc-800 dark:text-white">
@@ -96,7 +103,7 @@ export default function Post({
                 alt={"user avatar"}
                 width={200}
                 height={200}
-                src={data?.user.avatar || "/images/avatar-default.jpg"}
+                src={data?.user.avatar || "/images/guest-avatar.webp"}
                 className="w-[24px] h-[24px] rounded-full ml-3 object-cover"
               />
               <span className="text-sm text-xs text-zinc-800 dark:text-white">
@@ -137,7 +144,7 @@ export default function Post({
           </span>
         </div>
         <div className="flex items-center sm:gap-16 gap-6 text-2xl text-myText-600">
-          {data?.likes.some((e) => e === userId) ? (
+          {isPostLiked ? (
             <button
               onClick={
                 isListPost
@@ -205,6 +212,7 @@ export default function Post({
   );
   async function ToggleLikePostHandler() {
     if (!loading && data) {
+      setIsPostLiked(!isPostLiked);
       setLoading(true);
       const res = await dispatch(toggleLikePost(data?._id));
       if (res.payload) {

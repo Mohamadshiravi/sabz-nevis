@@ -50,8 +50,6 @@ export async function PUT(
       return Response.json({ message: "post added", list });
     }
   } catch (error) {
-    console.log(error);
-
     return Response.json({ message: "server error" }, { status: 500 });
   }
 }

@@ -11,6 +11,14 @@ export async function POST(req: Request) {
 
     const { id } = await req.json();
 
+    const isUserFollowed = await userModel.findOne({ _id: id });
+    if (isUserFollowed.followers.includes(isUserAuth._id)) {
+      return Response.json(
+        { message: "user followed before" },
+        { status: 400 }
+      );
+    }
+
     ConnectToDB();
     const followedUser = await userModel.findOneAndUpdate(
       { _id: id },

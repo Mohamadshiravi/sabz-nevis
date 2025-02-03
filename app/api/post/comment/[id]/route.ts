@@ -22,15 +22,18 @@ export async function PUT(
     );
 
     if (isUserliked) {
-      return Response.json({ message: "user liked" }, { status: 400 });
+      await commentModel.findOneAndUpdate(
+        { _id: params.id },
+        { $pull: { likes: isUserAuth._id } }
+      );
+    } else {
+      await commentModel.findOneAndUpdate(
+        { _id: params.id },
+        { $push: { likes: isUserAuth._id } }
+      );
     }
 
-    await commentModel.findOneAndUpdate(
-      { _id: params.id },
-      { $push: { likes: isUserAuth._id } }
-    );
-
-    return Response.json({ message: "comment liked" });
+    return Response.json({ message: "comment toggled" });
   } catch (error) {
     return Response.json({ message: "server error" }, { status: 500 });
   }

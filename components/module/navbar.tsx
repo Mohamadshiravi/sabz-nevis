@@ -38,7 +38,7 @@ export default function MobileNavbar() {
           width={400}
           height={400}
           alt={"user avatar"}
-          src={userData.data?.avatar || "/images/avatar-default.jpg"}
+          src={userData.data?.avatar || "/images/guest-avatar.webp"}
           className="w-full h-full rounded-full object-cover"
         />
       </Link>

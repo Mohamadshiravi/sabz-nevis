@@ -24,18 +24,24 @@ export default function List({ data }: { data: ListModelType }) {
           {data.status === "private" && <RiLock2Fill />}
         </div>
       </div>
-      <div className="grid sm:h-[200px] h-[100px] sm:w-[200px] w-full sm:grid-cols-[6fr_6fr] grid-cols-[3fr_3fr_3fr_3fr] sm:gap-0.5 gap-1">
-        {data.posts.slice(0, 3).map((e, i) => (
-          <Image
-            key={i}
-            alt="post cover"
-            width={600}
-            height={600}
-            src={e.cover}
-            className="w-full h-full object-cover"
-          />
-        ))}
-      </div>
+      {data.posts.length !== 0 ? (
+        <div className="grid sm:h-[200px] h-[100px] sm:w-[200px] w-full sm:grid-cols-[6fr_6fr] grid-cols-[3fr_3fr_3fr_3fr] sm:gap-0.5 gap-1">
+          {data.posts.slice(0, 3).map((e, i) => (
+            <Image
+              key={i}
+              alt="post cover"
+              width={600}
+              height={600}
+              src={e.cover}
+              className="w-full h-full object-cover"
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="flex items-center justify-center w-full h-full text-sm text-myText-400 sm:h-[200px] h-[100px] sm:w-[200px] w-full">
+          پستی موجود نیست
+        </div>
+      )}
     </div>
   );
 }

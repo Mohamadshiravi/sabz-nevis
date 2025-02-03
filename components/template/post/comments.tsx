@@ -1,5 +1,3 @@
-"use client";
-
 import { CommentModelType } from "@/models/comment";
 
 import Comment from "./comment";

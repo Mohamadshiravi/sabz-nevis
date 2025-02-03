@@ -51,7 +51,7 @@ export default function HeaderProfileBtn() {
         >
           <IoIosArrowDown className="mr-3 text-xs" />
           <Image
-            src={userData.data?.avatar || "/images/avatar-default.jpg"}
+            src={userData.data?.avatar || "/images/guest-avatar.webp"}
             className="rounded-full w-[35px] aspect-square object-cover"
             width={400}
             height={400}
@@ -78,7 +78,7 @@ export default function HeaderProfileBtn() {
                 </Link>
               </div>
               <Image
-                src={userData.data?.avatar || "/images/avatar-default.jpg"}
+                src={userData.data?.avatar || "/images/guest-avatar.webp"}
                 className="rounded-full w-[35px] aspect-square object-cover"
                 width={400}
                 height={400}

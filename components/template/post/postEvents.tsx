@@ -37,10 +37,6 @@ export default function PostEvents({ postId }: { postId: string }) {
     setLoading(false);
   }, []);
 
-  useEffect(() => {
-    console.log(post);
-  }, [post]);
-
   const dispatch = useTypedDispatch();
 
   return loading || listLoading ? (

@@ -70,7 +70,7 @@ export default function PostHeaderProfileBtn() {
             className="flex items-center bg-zinc-200 cursor-pointer dark:bg-darkColor-700 h-full py-1 pl-0.5 gap-2 rounded-full"
           >
             <Image
-              src={userData.data?.avatar || "/images/avatar-default.jpg"}
+              src={userData.data?.avatar || "/images/guest-avatar.webp"}
               className="rounded-full w-[35px] aspect-square object-cover"
               width={400}
               height={400}
@@ -97,7 +97,7 @@ export default function PostHeaderProfileBtn() {
                   </Link>
                 </div>
                 <Image
-                  src={userData.data?.avatar || "/images/avatar-default.jpg"}
+                  src={userData.data?.avatar || "/images/guest-avatar.webp"}
                   className="rounded-full w-[35px] aspect-square object-cover"
                   width={400}
                   height={400}

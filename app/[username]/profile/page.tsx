@@ -69,7 +69,7 @@ export default function MainProfileSction({
           {loading ? (
             Array.from({ length: 3 }).map((e, i) => <PostLoading key={i} />)
           ) : userPosts.length !== 0 ? (
-            userPosts.map((e, i) => <Post data={e} />)
+            userPosts.map((e, i) => <Post key={i} data={e} />)
           ) : (
             <div className="flex flex-col items-center mt-12 gap-3 px-4 md:text-right text-center">
               {!isUserHere ? (

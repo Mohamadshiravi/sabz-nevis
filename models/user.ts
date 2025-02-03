@@ -77,7 +77,7 @@ const schema = new mongoose.Schema<UserModelTypeMongoose>({
   },
   avatar: {
     type: String,
-    default: "/images/avatar-default.jpg",
+    default: "/images/guest-avatar.webp",
   },
   fileID: {
     type: String,

@@ -75,8 +75,6 @@ export async function POST(req: Request) {
 
       currentPost.imagesUrl.map(async (e: string) => {
         if (!imagesSrc.includes(e)) {
-          console.log("unused photo found");
-
           const fileName = e.split("/");
 
           const fileId = await getFileIdFromImageKit(
