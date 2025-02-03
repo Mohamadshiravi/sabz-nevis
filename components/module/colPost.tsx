@@ -29,7 +29,7 @@ export default function ColPost({
       } w-full h-full bg-white dark:bg-darkColor-800 rounded-md overflow-hidden flex flex-col`}
     >
       <Image
-        src={cover}
+        src={cover || "/images/img-default.jpg"}
         width={800}
         height={800}
         alt={"post cover"}

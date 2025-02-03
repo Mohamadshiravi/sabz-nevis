@@ -21,7 +21,8 @@ export async function GET(req: Request) {
             { status: "completed", category },
             "-__v -imagesID -status -body -imagesUrl"
           )
-          .populate("user", "displayName username avatar");
+          .populate("user", "displayName username avatar")
+          .populate("category", "name");
 
         return Response.json({ message: "mightlike post", posts });
       }
@@ -32,6 +33,7 @@ export async function GET(req: Request) {
             "-__v -imagesID -status -body -imagesUrl"
           )
           .populate("user", "displayName username avatar")
+          .populate("category", "name")
           .sort({ likesCount: -1 })
           .limit(10);
 
@@ -44,6 +46,7 @@ export async function GET(req: Request) {
             "-__v -imagesID -status -body -imagesUrl"
           )
           .populate("user", "displayName username avatar")
+          .populate("category", "name")
           .sort("-1");
 
         return Response.json({ message: "user posts", posts });

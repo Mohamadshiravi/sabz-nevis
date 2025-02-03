@@ -137,7 +137,7 @@ export default function Post({
       <div className="w-full flex justify-between mt-8">
         <div className="flex items-center gap-3">
           <span className="text-myText-800 dark:text-myText-400 text-xs bg-zinc-200 dark:bg-darkColor-600 sm:px-8 px-3 py-1 rounded-sm">
-            {data?.category}
+            {data?.category.name}
           </span>
           <span className="sm:text-xs text-[10px] text-myText-500">
             خواندن {data?.readingTime} دقیقه

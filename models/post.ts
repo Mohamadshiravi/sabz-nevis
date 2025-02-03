@@ -13,7 +13,7 @@ export type PostModelType = {
   likes: UserModelType[] | string[];
   status: string;
   cover: string;
-  category: string | CategoryModelType;
+  category: CategoryModelType;
   readingTime: string;
   imagesUrl: string[];
   createdAt: Date;
