@@ -6,7 +6,7 @@ import { UserModelType } from "./user";
 export type ListModelType = {
   _id: string;
   name: string;
-  user: UserModelType | string;
+  user: UserModelType;
   posts: PostModelType[];
   status: "public" | "private";
 };

@@ -1,7 +1,5 @@
 import { postModel } from "@/models/index";
-import { PostModelType } from "@/models/post";
 import IsUserAuthentication from "@/utils/auth/authUser";
-import { el } from "date-fns/locale";
 import ImageKit from "imagekit";
 const cheerio = require("cheerio");
 
@@ -62,63 +60,67 @@ export async function POST(req: Request) {
         .findOne({ _id: postID }, "-_id user imagesID imagesUrl")
         .populate("user", "phone");
 
-      //check access
-      if (currentPost.user.phone !== isUserAuth.phone) {
-        return Response.json(
-          { message: "you dont have Access" },
-          { status: 403 }
-        );
-      }
-
-      //delete unused photo from cloud
-      const imagesSrc = extractImageTagsSrc(body);
-
-      currentPost.imagesUrl.map(async (e: string) => {
-        if (!imagesSrc.includes(e)) {
-          const fileName = e.split("/");
-
-          const fileId = await getFileIdFromImageKit(
-            fileName[fileName.length - 1]
+      if (currentPost) {
+        //check access
+        if (currentPost.user.phone !== isUserAuth.phone) {
+          return Response.json(
+            { message: "you dont have Access" },
+            { status: 403 }
           );
-
-          if (fileId) {
-            await imagekit.deleteFile(fileId);
-            await postModel.findOneAndUpdate(
-              { _id: postID },
-              {
-                $pull: { imagesID: fileId },
-              }
-            );
-            await postModel.findOneAndUpdate(
-              { _id: postID },
-              {
-                $pull: { imagesUrl: e },
-              }
-            );
-          }
         }
-      });
 
-      if (imagesSrc.length === 0 && currentPost.imagesID.length !== 0) {
-        currentPost.imagesID.map(async (imgId: any) => {
-          await imagekit.deleteFile(imgId);
+        //delete unused photo from cloud
+        const imagesSrc = extractImageTagsSrc(body);
 
-          await postModel.findOneAndUpdate(
-            { _id: postID },
-            {
-              $pull: { imagesID: imgId },
+        currentPost.imagesUrl.map(async (e: string) => {
+          if (!imagesSrc.includes(e)) {
+            const fileName = e.split("/");
+
+            const fileId = await getFileIdFromImageKit(
+              fileName[fileName.length - 1]
+            );
+
+            if (fileId) {
+              await imagekit.deleteFile(fileId);
+              await postModel.findOneAndUpdate(
+                { _id: postID },
+                {
+                  $pull: { imagesID: fileId },
+                }
+              );
+              await postModel.findOneAndUpdate(
+                { _id: postID },
+                {
+                  $pull: { imagesUrl: e },
+                }
+              );
             }
-          );
+          }
         });
 
-        currentPost.imagesUrl.map(async (url: any) => {
-          await postModel.findOneAndUpdate(
-            { _id: postID },
-            {
-              $pull: { imagesUrl: url },
-            }
-          );
-        });
+        if (imagesSrc.length === 0 && currentPost.imagesID.length !== 0) {
+          currentPost.imagesID.map(async (imgId: any) => {
+            await imagekit.deleteFile(imgId);
+
+            await postModel.findOneAndUpdate(
+              { _id: postID },
+              {
+                $pull: { imagesID: imgId },
+              }
+            );
+          });
+
+          currentPost.imagesUrl.map(async (url: any) => {
+            await postModel.findOneAndUpdate(
+              { _id: postID },
+              {
+                $pull: { imagesUrl: url },
+              }
+            );
+          });
+        }
+      } else {
+        return Response.json({ message: "post not found" }, { status: 404 });
       }
 
       await postModel.findOneAndUpdate(
@@ -136,6 +138,7 @@ export async function POST(req: Request) {
       });
     }
   } catch (error) {
+    console.log(error);
     return Response.json({ message: "server error" }, { status: 500 });
   }
 }

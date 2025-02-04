@@ -22,7 +22,7 @@ export default function PostLoadingLayout() {
           <div className="bg-zinc-200 h-[25px] dark:bg-zinc-800 w-[100px] animate-pulse mt-4"></div>
           <div className="bg-zinc-200 h-[20px] dark:bg-zinc-800 w-[100px] animate-pulse mt-4"></div>
           <div className="bg-zinc-200 h-[45px] dark:bg-zinc-800 w-[200px] animate-pulse mt-4"></div>
-          <div className="bg-zinc-200 h-[40px] dark:bg-zinc-800 w-[180px] rounded-full animate-pulse mt-2"></div>
+          <div className="bg-zinc-200 h-[40px] dark:bg-zinc-800 w-[180px] rounded-full animate-pulse mt-4"></div>
         </div>
       </section>
     </section>

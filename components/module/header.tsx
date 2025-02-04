@@ -1,21 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import {
-  IoInformationCircleOutline,
-  IoMoonSharp,
-  IoSearch,
-} from "react-icons/io5";
+import { IoMoonSharp, IoSearch } from "react-icons/io5";
 import RegisterBtn from "../template/header/registerBtn";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
 import { changeTheme, fetchUserDataFromServer } from "@/redux/slices/user";
 import { MdNotifications, MdSunny } from "react-icons/md";
 import HeaderProfileBtn from "../template/header/headerProfileBtn";
 import Image from "next/image";
+import { IoIosArrowBack } from "react-icons/io";
+import { useRouter } from "next/navigation";
 
 export default function Header({ isTransparent }: { isTransparent?: boolean }) {
-  const [searchInp, setSearchInp] = useState("جستجو در سبز نویس...");
+  const [searchInp, setSearchInp] = useState("");
   const [loading, setLoading] = useState(true);
 
   const FetchUserData = async () => {
@@ -41,6 +39,8 @@ export default function Header({ isTransparent }: { isTransparent?: boolean }) {
     dispatch(changeTheme(theme));
   }
 
+  const router = useRouter();
+
   return (
     <header
       className={`${
@@ -60,16 +60,25 @@ export default function Header({ isTransparent }: { isTransparent?: boolean }) {
           className="sm:w-[45px] w-[40px]"
         />
       </Link>
-      <div className="rounded-full bg-zinc-100 dark:bg-darkColor-700 text-sm items-center gap-3 px-3 py-1 md:flex hidden">
+      <form
+        onSubmit={SearchHandler}
+        className="rounded-full bg-zinc-100 relative dark:bg-darkColor-700 text-sm items-center gap-3 px-3 py-1 md:flex hidden"
+      >
         <IoSearch className="text-xl" />
         <input
           id="search-inp"
           type="text"
+          placeholder="جست و جو در سبز نویس"
           value={searchInp}
           onChange={(e) => setSearchInp(e.target.value)}
-          className="bg-inherit w-[300px] outline-none py-1.5 text-zinc-400 focus:text-zinc-800"
+          className="bg-inherit w-[300px] outline-none py-1.5"
         />
-      </div>
+        {searchInp !== "" && (
+          <button className="bg-zinc-800 text-white hover:bg-zinc-700 dark:bg-white dark:hover:bg-zinc-200 rounded-full absolute left-1 dark:text-zinc-800 w-[30px] h-[30px] text-xl flex items-center justify-center">
+            <IoIosArrowBack />
+          </button>
+        )}
+      </form>
       <div className="flex gap-1 items-center text-sm">
         {!loading ? (
           <>
@@ -108,4 +117,10 @@ export default function Header({ isTransparent }: { isTransparent?: boolean }) {
       </div>
     </header>
   );
+  function SearchHandler(e: ChangeEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (searchInp !== "") {
+      router.push(`/search/posts?q=${searchInp}`);
+    }
+  }
 }

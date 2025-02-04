@@ -77,7 +77,10 @@ export default function CreatePostPage() {
       setbody(res.data.post.body);
       setTitle(res.data.post.title);
       setImagesUrl(res.data.post.imagesUrl);
-    } catch (error) {}
+    } catch (error) {
+      localStorage.removeItem("postId");
+      setPostID("");
+    }
   }
 
   return (
@@ -163,7 +166,11 @@ export default function CreatePostPage() {
       setImagesUrl(res.data.images);
 
       setDraftLoading(false);
-    } catch (error) {
+    } catch (error: any) {
+      if (error.response.status === 404 || error.response.status === 403) {
+        localStorage.removeItem("postId");
+        setPostID("");
+      }
       SendErrorToast("پست شما ذخیره نمیشود اتصال خود را بررسی کنید !");
       setDraftLoading(false);
     }

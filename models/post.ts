@@ -70,7 +70,7 @@ const schema = new mongoose.Schema<PostModelTypeMongoose>(
     },
     cover: {
       type: String,
-      required: false,
+      default: "/images/img-default.jpg",
     },
     category: {
       type: mongoose.Schema.Types.ObjectId,

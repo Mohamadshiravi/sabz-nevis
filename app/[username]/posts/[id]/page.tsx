@@ -54,14 +54,10 @@ export default async function UserPosts({ params }: userPostsProps) {
     notFound();
   }
 
-  let isUserHere = false;
   const isUserLogedIn = await IsUserAuthentication();
 
-  if (isUserLogedIn) {
-    if (isUserLogedIn._id.toString() === post.user._id.toString()) {
-      isUserHere = true;
-    }
-  }
+  const isUserHere =
+    isUserLogedIn?._id?.toString() === post.user._id.toString();
 
   const relativeDate = post.createdAt
     ? formatDistanceToNow(new Date(post.createdAt), {

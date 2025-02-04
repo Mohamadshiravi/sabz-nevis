@@ -50,21 +50,21 @@ export default function MobileNavbar() {
       >
         <FiSettings className="text-2xl transition" />
       </Link>
-      {!userData.data ? (
-        <button>
-          <RiApps2Fill className="text-xl text-myText-600" />
-        </button>
-      ) : (
-        <Link
-          href={"/post/create"}
-          className="bg-myGreen-600 px-5 py-1 rounded-full"
-        >
-          <AiOutlinePlus className="text-2xl text-white" />
-        </Link>
-      )}
-      <button>
-        <IoSearch className="text-xl text-myText-600" />
-      </button>
+
+      <Link
+        href={"/post/create"}
+        className="bg-myGreen-600 px-5 py-1 rounded-full"
+      >
+        <AiOutlinePlus className="text-2xl text-white" />
+      </Link>
+
+      <Link href={"/searchbar"}>
+        <IoSearch
+          className={`${
+            path === "/searchbar" ? "text-myGreen-600" : "text-myText-600"
+          } text-xl`}
+        />
+      </Link>
       <Link
         href={"/home"}
         className={`${
