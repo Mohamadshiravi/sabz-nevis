@@ -24,7 +24,7 @@ export default async function PodcastLayout({
         }`}
       >
         {userData && <DesktopNavbar />}
-        {/* {children} */}
+        {children}
         <Footer />
       </main>
       <MobileNavbar />
