@@ -16,7 +16,8 @@ export default async function ListsProfileSction({
       user: user._id,
       status: "public",
     })
-    .populate("posts", "cover _id");
+    .populate("posts", "cover _id")
+    .populate("user", "username");
 
   return (
     <>

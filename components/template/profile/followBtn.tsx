@@ -5,10 +5,8 @@ import PrimaryBtn from "@/components/module/primaryBtn";
 import { followUser, UnfollowUser } from "@/redux/slices/user";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
 import { SendErrorToast } from "@/utils/toast-functions";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { FaPlus } from "react-icons/fa";
 import { FiPlus } from "react-icons/fi";
 
 export default function FollowBtn({
@@ -58,13 +56,17 @@ export default function FollowBtn({
     </div>
   );
   async function FollowUserHandler() {
-    setLoading(true);
-    const res = await dispatch(followUser(id));
-    if (!res.payload) {
-      setLoading(false);
-      SendErrorToast("کاربر دنبال نشد");
+    if (userData.data) {
+      setLoading(true);
+      const res = await dispatch(followUser(id));
+      if (!res.payload) {
+        setLoading(false);
+        SendErrorToast("کاربر دنبال نشد");
+      } else {
+        setLoading(false);
+      }
     } else {
-      setLoading(false);
+      SendErrorToast("لطفا وارد اکانت خود شوید");
     }
   }
   async function UnFollowUserHandler() {

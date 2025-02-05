@@ -26,11 +26,7 @@ export default function MainProfileSction({
   const router = useRouter();
 
   useEffect(() => {
-    if (userData.data !== null) {
-      FetchCurrentUser();
-    } else {
-      setLoading(false);
-    }
+    FetchCurrentUser();
   }, [userData.data]);
 
   async function FetchCurrentUser() {

@@ -55,13 +55,17 @@ export default function UserFiled({
     </div>
   );
   async function FollowUserHandler() {
-    setLoading(true);
-    const res = await dispatch(followUser(userId));
-    if (!res.payload) {
-      setLoading(false);
-      SendErrorToast("کاربر دنبال نشد");
+    if (data) {
+      setLoading(true);
+      const res = await dispatch(followUser(userId));
+      if (!res.payload) {
+        setLoading(false);
+        SendErrorToast("کاربر دنبال نشد");
+      } else {
+        setLoading(false);
+      }
     } else {
-      setLoading(false);
+      SendErrorToast("لطفا وارد اکانت خود شوید");
     }
   }
   async function UnFollowUserHandler() {

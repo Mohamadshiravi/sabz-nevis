@@ -1,6 +1,6 @@
 "use client";
 
-import UserFiled from "@/components/template/profile/user";
+import UserFiled from "@/components/module/userField";
 import { UserModelType } from "@/models/user";
 import { SendErrorToast } from "@/utils/toast-functions";
 import axios from "axios";

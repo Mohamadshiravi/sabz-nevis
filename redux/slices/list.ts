@@ -70,6 +70,10 @@ const slice = createSlice({
     builder.addCase(fetchListsFromServer.pending, (state, action) => {
       state.loading = true;
     });
+    builder.addCase(fetchListsFromServer.rejected, (state, action) => {
+      state.loading = false;
+      state.data = [];
+    });
     builder.addCase(addListToServer.fulfilled, (state, action) => {
       if (state.data) {
         state.data?.push(action.payload.list);

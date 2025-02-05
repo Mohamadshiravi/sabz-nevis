@@ -1,10 +1,10 @@
 "use client";
 
 import { RiLock2Fill } from "react-icons/ri";
-import PrimaryBtn from "../primaryBtn";
 import { ListModelType } from "@/models/list";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import PrimaryBtn from "../primaryBtn";
 
 export default function List({ data }: { data: ListModelType }) {
   const router = useRouter();

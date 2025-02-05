@@ -19,7 +19,6 @@ export default async function PodcastLayout({
   return (
     <>
       <Header />
-      {!userData && <HomeBanner />}
       <main
         className={`${
           userData
@@ -28,7 +27,7 @@ export default async function PodcastLayout({
         }`}
       >
         {userData && <DesktopNavbar />}
-        <section className="w-full overflow-hidden">
+        <section className="w-full overflow-hidden pb-20">
           <SearchDetails />
           <SearchNavbar />
           {children}

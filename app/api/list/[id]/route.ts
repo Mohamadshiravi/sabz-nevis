@@ -58,11 +58,6 @@ export async function GET(
   req: Request,
   { params }: { params: { id: string } }
 ) {
-  const isUserAuth = await IsUserAuthentication();
-  if (!isUserAuth) {
-    return Response.json({ message: "unAuth" }, { status: 401 });
-  }
-
   try {
     const list = await listModel
       .findById(params.id, "-__v")

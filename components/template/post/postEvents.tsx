@@ -14,14 +14,14 @@ import {
   GoHeartFill,
 } from "react-icons/go";
 import SavePostDropDown from "../postModule/savePostDropdown";
+import axios from "axios";
+import { PostModelType } from "@/models/post";
 
 export default function PostEvents({ postId }: { postId: string }) {
   const [loading, setLoading] = useState(true);
+  const [post, setPost] = useState<null | PostModelType>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  const post = useTypedSelector((state) => state.posts).data?.filter(
-    (e) => e._id === postId
-  )[0];
   const { data: lists, loading: listLoading } = useTypedSelector(
     (state) => state.lists
   );
@@ -29,7 +29,7 @@ export default function PostEvents({ postId }: { postId: string }) {
 
   useEffect(() => {
     if (!post) {
-      dispatch(fetchPostFromServer());
+      FetchCurrentPost();
     }
     if (!lists) {
       dispatch(fetchListsFromServer());
@@ -38,6 +38,13 @@ export default function PostEvents({ postId }: { postId: string }) {
   }, []);
 
   const dispatch = useTypedDispatch();
+
+  async function FetchCurrentPost() {
+    try {
+      const res = await axios.get(`/api/post/${postId}?filter=simple`);
+      setPost(res.data.post);
+    } catch (error) {}
+  }
 
   return loading || listLoading ? (
     <div className="flex items-center gap-6">
@@ -100,17 +107,21 @@ export default function PostEvents({ postId }: { postId: string }) {
     </div>
   );
   async function ToggleLikePostHandler() {
-    if (!loading && post) {
-      setLoading(true);
-      const res = await dispatch(toggleLikePost(post?._id));
-      if (res.payload) {
-        setLoading(false);
-        dispatch(fetchPostFromServer());
-        dispatch(fetchLikedPosts());
-      } else {
-        setLoading(false);
-        SendErrorToast("اتصال خود را بررسی کنید");
+    if (userId) {
+      if (!loading && post) {
+        setLoading(true);
+        const res = await dispatch(toggleLikePost(post?._id));
+        if (res.payload) {
+          setLoading(false);
+          dispatch(fetchPostFromServer());
+          dispatch(fetchLikedPosts());
+        } else {
+          setLoading(false);
+          SendErrorToast("اتصال خود را بررسی کنید");
+        }
       }
+    } else {
+      SendErrorToast("ابتدا وارد اکانت خود شوید");
     }
   }
 }

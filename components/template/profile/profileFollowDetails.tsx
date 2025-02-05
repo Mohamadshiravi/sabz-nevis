@@ -3,7 +3,7 @@
 import SabzModal from "@/components/module/sabzModal";
 import { UserModelType } from "@/models/user";
 import axios from "axios";
-import UserFiled from "./user";
+import UserFiled from "../../module/userField";
 import { useState } from "react";
 
 export default function ProfileFollowDetails({
@@ -61,7 +61,7 @@ export default function ProfileFollowDetails({
           <div className="flex flex-col gap-0 p-4 overflow-y-scroll no-scrollbar max-h-[500px]">
             {loading ? (
               Array.from({ length: 3 }).map((e, i) => (
-                <div className="flex items-center justify-between py-4">
+                <div key={i} className="flex items-center justify-between py-4">
                   <div className="flex sm:flex-row flex-col items-center gap-4">
                     <div className="w-[60px] h-[60px] rounded-full bg-zinc-200 dark:bg-zinc-800"></div>
                     <div className="w-[120px] h-[30px] bg-zinc-200 dark:bg-zinc-800"></div>
@@ -94,7 +94,7 @@ export default function ProfileFollowDetails({
           <div className="flex flex-col gap-0 p-4 overflow-y-scroll no-scrollbar max-h-[500px]">
             {loading ? (
               Array.from({ length: 3 }).map((e, i) => (
-                <div className="flex items-center justify-between py-4">
+                <div key={i} className="flex items-center justify-between py-4">
                   <div className="flex sm:flex-row flex-col items-center gap-4">
                     <div className="w-[60px] h-[60px] rounded-full bg-zinc-200 dark:bg-zinc-800"></div>
                     <div className="w-[120px] h-[30px] bg-zinc-200 dark:bg-zinc-800"></div>

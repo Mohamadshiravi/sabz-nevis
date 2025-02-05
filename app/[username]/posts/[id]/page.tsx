@@ -31,6 +31,7 @@ export default async function UserPosts({ params }: userPostsProps) {
   const post = await postModel
     .findOne({ _id: params.id }, "-imagesID -status -__v -updatedAt -desc")
     .populate("user", "avatar displayName username about followers")
+    .populate("category", "-__v")
     .populate({
       path: "comments",
       select: "-__v",
@@ -100,9 +101,9 @@ export default async function UserPosts({ params }: userPostsProps) {
           </div>
           <div className="border-b border-zinc-200 dark:border-zinc-800 py-4 flex items-center justify-between">
             <span className="text-xs border border-zinc-200 dark:border-zinc-800 px-4 py-1 rounded-sm text-myText-500 dark:text-myText-600">
-              {post.category || ""}
+              {post.category.name || ""}
             </span>
-            <PostEvents postId={post._id} />
+            <PostEvents postId={JSON.parse(JSON.stringify(post._id))} />
           </div>
           <UserDetailsSection
             followers={JSON.parse(JSON.stringify(post.user.followers))}
@@ -116,10 +117,10 @@ export default async function UserPosts({ params }: userPostsProps) {
             isUserHere={JSON.parse(JSON.stringify(isUserHere))}
           />
           <MayLikeSlider
-            category={JSON.parse(JSON.stringify(post.category))}
+            category={JSON.parse(JSON.stringify(post.category._id))}
             current={JSON.parse(JSON.stringify(post._id))}
           />
-          <div className="sm:py-8 sm:mt-0 mt-8">
+          <div id="commentSection" className="sm:py-8 sm:mt-0 mt-8">
             <div className="flex items-center gap-3 justify-center">
               <span className="bg-myGreen-600 text-white rounded-full flex items-center justify-center w-[40px] h-[40px] text-xl">
                 <GoComment />

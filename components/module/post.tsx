@@ -211,48 +211,60 @@ export default function Post({
     </div>
   );
   async function ToggleLikePostHandler() {
-    if (!loading && data) {
-      setIsPostLiked(!isPostLiked);
-      setLoading(true);
-      const res = await dispatch(toggleLikePost(data?._id));
-      if (res.payload) {
-        setLoading(false);
-        dispatch(fetchLikedPosts());
-      } else {
-        setLoading(false);
-        SendErrorToast("اتصال خود را بررسی کنید");
+    if (userId) {
+      if (!loading && data) {
+        setIsPostLiked(!isPostLiked);
+        setLoading(true);
+        const res = await dispatch(toggleLikePost(data?._id));
+        if (res.payload) {
+          setLoading(false);
+          dispatch(fetchLikedPosts());
+        } else {
+          setLoading(false);
+          SendErrorToast("اتصال خود را بررسی کنید");
+        }
       }
+    } else {
+      SendErrorToast("لطفا وارد اکانت خود شوید");
     }
   }
 
   async function ToggleLikeFromLikedPostHandler() {
-    if (!loading && data) {
-      setLoading(true);
-      const res = await dispatch(toggleLikePost(data?._id));
-      if (res.payload) {
-        setLoading(false);
-        dispatch(fetchLikedPosts());
-        dispatch(fetchPostFromServer());
-      } else {
-        setLoading(false);
-        SendErrorToast("پست  از لایک شده های شما حذف نشد");
+    if (userId) {
+      if (!loading && data) {
+        setLoading(true);
+        const res = await dispatch(toggleLikePost(data?._id));
+        if (res.payload) {
+          setLoading(false);
+          dispatch(fetchLikedPosts());
+          dispatch(fetchPostFromServer());
+        } else {
+          setLoading(false);
+          SendErrorToast("پست  از لایک شده های شما حذف نشد");
+        }
       }
+    } else {
+      SendErrorToast("لطفا وارد اکانت خود شوید");
     }
   }
 
   async function ToggleLikeFromListPosts() {
-    if (!loading && data && reRenderPosts) {
-      setLoading(true);
-      const res = await dispatch(toggleLikePost(data?._id));
-      if (res.payload) {
-        setLoading(false);
-        dispatch(fetchLikedPosts());
-        dispatch(fetchPostFromServer());
-        reRenderPosts();
-      } else {
-        setLoading(false);
-        SendErrorToast("پست  از لایک شده های شما حذف نشد");
+    if (userId) {
+      if (!loading && data && reRenderPosts) {
+        setLoading(true);
+        const res = await dispatch(toggleLikePost(data?._id));
+        if (res.payload) {
+          setLoading(false);
+          dispatch(fetchLikedPosts());
+          dispatch(fetchPostFromServer());
+          reRenderPosts();
+        } else {
+          setLoading(false);
+          SendErrorToast("پست  از لایک شده های شما حذف نشد");
+        }
       }
+    } else {
+      SendErrorToast("لطفا وارد اکانت خود شوید");
     }
   }
 }

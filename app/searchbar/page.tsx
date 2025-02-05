@@ -48,7 +48,7 @@ export default function SearchBarPage() {
             className="bg-inherit lg:text-xl text-base w-full h-full outline-none py-1.5 rounded-l-full"
           />
           {searchInp !== "" && (
-            <button className="bg-zinc-800 text-white hover:bg-zinc-700 dark:bg-white dark:hover:bg-zinc-200 rounded-full absolute left-2 border dark:text-zinc-800 w-[60px] h-[60px] text-3xl flex items-center justify-center">
+            <button className="bg-zinc-800 text-white hover:bg-zinc-700 dark:bg-white dark:hover:bg-zinc-200 rounded-full absolute lg:left-2 left-1 border dark:text-zinc-800 lg:w-[60px] w-[50px] lg:h-[60px] h-[50px] text-3xl flex items-center justify-center">
               <IoIosArrowBack />
             </button>
           )}

@@ -31,7 +31,6 @@ export default function AddCommentSection({ id }: AddCommentSectionProps) {
   const dispatch = useTypedDispatch();
   return username ? (
     <form
-      id="commentSection"
       onSubmit={AddCommentHandler}
       onClick={!isOpen ? () => setIsOpen(true) : undefined}
       className="mt-8 border border-zinc-200 dark:border-zinc-800 rounded-sm p-4"

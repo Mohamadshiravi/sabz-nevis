@@ -36,7 +36,8 @@ export async function POST(req: Request) {
 
     const post = await postModel
       .findById({ _id: postId })
-      .populate("user", "displayName username avatar");
+      .populate("user", "displayName username avatar")
+      .populate("category", "-__v");
 
     return Response.json(
       { message: "post like toggled", post },
@@ -60,7 +61,8 @@ export async function GET(req: Request) {
         },
         "-__v -updatedAt -imagesUrl -imagesID -status -body"
       )
-      .populate("user", "avatar displayName username");
+      .populate("user", "avatar displayName username")
+      .populate("category", "-__v");
 
     return Response.json({ message: "liked post", posts }, { status: 200 });
   } catch (error) {
