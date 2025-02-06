@@ -126,6 +126,7 @@ export async function POST(req: Request) {
       await postModel.findOneAndUpdate(
         { _id: postID },
         {
+          status: "draft",
           title,
           body,
         }
@@ -137,6 +138,28 @@ export async function POST(req: Request) {
         images: post.imagesUrl,
       });
     }
+  } catch (error) {
+    return Response.json({ message: "server error" }, { status: 500 });
+  }
+}
+
+export async function GET(req: Request) {
+  const isUserAuth = await IsUserAuthentication();
+
+  if (!isUserAuth) {
+    return Response.json({ message: "user unAuth" }, { status: 401 });
+  }
+
+  try {
+    const draftPosts = await postModel.find(
+      {
+        user: isUserAuth._id,
+        status: "draft",
+      },
+      "title updatedAt"
+    );
+
+    return Response.json({ draftPosts });
   } catch (error) {
     return Response.json({ message: "server error" }, { status: 500 });
   }

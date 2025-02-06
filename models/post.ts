@@ -17,6 +17,7 @@ export type PostModelType = {
   readingTime: string;
   imagesUrl: string[];
   createdAt: Date;
+  updatedAt: Date;
   comments: CommentModelType[];
 };
 

@@ -4,6 +4,7 @@ import Header from "@/components/module/header";
 import MobileNavbar from "@/components/module/navbar";
 import { CategoryModelType } from "@/models/category";
 import axios from "axios";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useEffect, useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
@@ -65,12 +66,12 @@ export default function SearchBarPage() {
                 ></div>
               ))
             : categorys.map((e, i) => (
-                <div
-                  key={i}
+                <Link
+                  href={`/category/${e._id}`}
                   className="sm:text-lg text-base shadow-lg border-2 border-dashed px-6 flex-grow py-2 vazir-medium rounded-md transition cursor-pointer text-center text-myText-800 dark:text-myText-500 border border-myText-800 dark:border-myText-500"
                 >
                   {e.name}
-                </div>
+                </Link>
               ))}
         </section>
       </main>

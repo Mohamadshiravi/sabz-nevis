@@ -4,7 +4,7 @@ type loadingBtnProps = {
   fullWidth?: boolean;
   children: ReactNode;
   icon?: ReactNode;
-  loading: boolean;
+  loading?: boolean;
   width?: string;
   isDisable?: boolean;
   onPress?: any;

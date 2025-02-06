@@ -30,3 +30,21 @@ export async function POST(req: Request) {
     return Response.json({ message: "server error" }, { status: 500 });
   }
 }
+
+export async function GET(req: Request) {
+  const isUserAuth = await IsUserAuthentication();
+
+  try {
+    if (!isUserAuth) {
+      return Response.json({ message: "user unAuth" }, { status: 401 });
+    }
+    const publishPosts = await postModel.find(
+      { user: isUserAuth._id, status: "completed" },
+      "title updatedAt"
+    );
+
+    return Response.json({ publishPosts });
+  } catch (error) {
+    return Response.json({ message: "server error" }, { status: 500 });
+  }
+}

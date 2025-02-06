@@ -53,6 +53,17 @@ export async function GET(req: Request) {
 
         return Response.json({ message: "user posts", posts });
       }
+      case "category": {
+        const posts = await postModel
+          .find(
+            { status: "completed", category },
+            "-__v -imagesID -status -body -imagesUrl"
+          )
+          .populate("user", "displayName username avatar")
+          .populate("category", "name");
+
+        return Response.json({ message: "categori filtered post", posts });
+      }
       default: {
         const posts = await postModel
           .find(

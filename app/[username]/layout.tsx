@@ -16,6 +16,7 @@ export default async function UserProfilePage({
     { username: decodedUserId },
     "_id"
   );
+
   if (!isAnyUserExist) {
     notFound();
   }

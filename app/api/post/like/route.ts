@@ -58,6 +58,7 @@ export async function GET(req: Request) {
       .find(
         {
           likes: { $in: [isUserAuth._id] },
+          status: "completed",
         },
         "-__v -updatedAt -imagesUrl -imagesID -status -body"
       )

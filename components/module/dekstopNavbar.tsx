@@ -3,10 +3,9 @@
 import { useTypedSelector } from "@/redux/typedHooks";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FaUser } from "react-icons/fa";
+import { FaRegUser, FaUser } from "react-icons/fa";
 import { FiSettings } from "react-icons/fi";
-import { GoBookmark } from "react-icons/go";
-import { IoBarChartOutline } from "react-icons/io5";
+import { GoBookmark, GoHeart } from "react-icons/go";
 import { TiHome } from "react-icons/ti";
 
 export default function DesktopNavbar() {
@@ -34,13 +33,18 @@ export default function DesktopNavbar() {
               path === "/podcasts" && "text-myGreen-600"
             } flex items-center gap-3 text-base hover:text-myGreen-600 transition`}
           >
-            <FaUser className="text-2xl" />
+            <FaRegUser className="text-2xl" />
             <span className="text-nowrap">پروفایل شما</span>
           </Link>
-          <li className="flex items-center gap-3 text-base hover:text-myGreen-600 transition">
-            <IoBarChartOutline className="text-2xl" />
-            <span className="text-nowrap">امار بازدید</span>
-          </li>
+          <Link
+            href={"/me/likes"}
+            className={`${
+              path === "/me/likes" && "text-myGreen-600"
+            } flex items-center gap-3 text-base hover:text-myGreen-600 transition`}
+          >
+            <GoHeart className="text-2xl" />
+            <span className="text-nowrap"> لایک شده ها</span>
+          </Link>
           <Link
             href={"/me/lists"}
             className={`${

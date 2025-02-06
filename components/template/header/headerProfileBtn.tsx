@@ -90,8 +90,7 @@ export default function HeaderProfileBtn() {
                 نوشتن پست جدید
               </Link>
               <Link href={"/me/settings"}>تنظیمات حساب کاربری</Link>
-              <button>پست ها و پیش نویس ها</button>
-              <button>مشاهده امار</button>
+              <Link href={"/me/posts"}>پست ها و پیش نویس ها</Link>
               <button>موضوع های مورد علاقه</button>
               <Link href={"/me/likes"}>پست های لایک شده</Link>
               <Link href={"/me/lists"}>لیست ها</Link>

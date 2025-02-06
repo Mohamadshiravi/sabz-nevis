@@ -74,12 +74,13 @@ export default function Footer({ isSimple }: { isSimple?: boolean }) {
                   ></span>
                 ))
               : categorys.map((e, i) => (
-                  <span
+                  <Link
+                    href={`/category/${e._id}`}
                     key={i}
                     className="text-xs px-2 py-1 rounded-md transition cursor-pointer text-center text-myText-800 dark:text-myText-500 border border-myText-800 dark:border-myText-500"
                   >
                     {e.name}
-                  </span>
+                  </Link>
                 ))}
           </div>
           <Link
