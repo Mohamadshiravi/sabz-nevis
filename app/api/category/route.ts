@@ -1,6 +1,8 @@
+import ConnectToDB from "@/DB/connectToDB";
 import { categoryModel } from "@/models";
 
 export async function POST(req: Request) {
+  await ConnectToDB();
   try {
     const { name } = await req.json();
 
@@ -20,6 +22,7 @@ export async function POST(req: Request) {
   }
 }
 export async function GET(req: Request) {
+  await ConnectToDB();
   try {
     const categories = await categoryModel.find({}, "-__v");
 
