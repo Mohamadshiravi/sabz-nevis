@@ -23,9 +23,13 @@ export default async function ListsProfileSction({
     <>
       <section className="pt-12 pb-24 bg-white dark:bg-darkColor-800">
         <div className="flex lg:w-[800px] md:w-[600px] w-full flex-col md:px-0 px-6 items-center m-auto gap-3 md:text-right text-center md:text-base text-sm">
-          {lists.map((e, i) => (
-            <List key={i} data={JSON.parse(JSON.stringify(e))} />
-          ))}
+          {lists.length === 0 ? (
+            <div>این کاربر هنوز لیستی ندارد</div>
+          ) : (
+            lists.map((e, i) => (
+              <List key={i} data={JSON.parse(JSON.stringify(e))} />
+            ))
+          )}
         </div>
       </section>
     </>
