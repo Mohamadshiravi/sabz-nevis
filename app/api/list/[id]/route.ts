@@ -66,10 +66,16 @@ export async function GET(
       .populate({
         path: "posts",
         select: "-body -imagesUrl -imagesID -updatedAt -status",
-        populate: {
-          path: "user",
-          select: "username displayName avatar",
-        },
+        populate: [
+          {
+            path: "user",
+            select: "username displayName avatar",
+          },
+          {
+            path: "category",
+            select: "name",
+          },
+        ],
       });
 
     return Response.json({
