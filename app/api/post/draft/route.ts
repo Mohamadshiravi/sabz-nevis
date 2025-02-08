@@ -70,55 +70,57 @@ export async function POST(req: Request) {
         }
 
         //delete unused photo from cloud
-        const imagesSrc = extractImageTagsSrc(body);
+        try {
+          const imagesSrc = extractImageTagsSrc(body);
 
-        currentPost.imagesUrl.map(async (e: string) => {
-          if (!imagesSrc.includes(e)) {
-            const fileName = e.split("/");
+          currentPost.imagesUrl.map(async (e: string) => {
+            if (!imagesSrc.includes(e)) {
+              const fileName = e.split("/");
 
-            const fileId = await getFileIdFromImageKit(
-              fileName[fileName.length - 1]
-            );
-
-            if (fileId) {
-              await imagekit.deleteFile(fileId);
-              await postModel.findOneAndUpdate(
-                { _id: postID },
-                {
-                  $pull: { imagesID: fileId },
-                }
+              const fileId = await getFileIdFromImageKit(
+                fileName[fileName.length - 1]
               );
-              await postModel.findOneAndUpdate(
-                { _id: postID },
-                {
-                  $pull: { imagesUrl: e },
-                }
-              );
+
+              if (fileId) {
+                await imagekit.deleteFile(fileId);
+                await postModel.findOneAndUpdate(
+                  { _id: postID },
+                  {
+                    $pull: { imagesID: fileId },
+                  }
+                );
+                await postModel.findOneAndUpdate(
+                  { _id: postID },
+                  {
+                    $pull: { imagesUrl: e },
+                  }
+                );
+              }
             }
+          });
+
+          if (imagesSrc.length === 0 && currentPost.imagesID.length !== 0) {
+            currentPost.imagesID.map(async (imgId: any) => {
+              await imagekit.deleteFile(imgId);
+
+              await postModel.findOneAndUpdate(
+                { _id: postID },
+                {
+                  $pull: { imagesID: imgId },
+                }
+              );
+            });
+
+            currentPost.imagesUrl.map(async (url: any) => {
+              await postModel.findOneAndUpdate(
+                { _id: postID },
+                {
+                  $pull: { imagesUrl: url },
+                }
+              );
+            });
           }
-        });
-
-        if (imagesSrc.length === 0 && currentPost.imagesID.length !== 0) {
-          currentPost.imagesID.map(async (imgId: any) => {
-            await imagekit.deleteFile(imgId);
-
-            await postModel.findOneAndUpdate(
-              { _id: postID },
-              {
-                $pull: { imagesID: imgId },
-              }
-            );
-          });
-
-          currentPost.imagesUrl.map(async (url: any) => {
-            await postModel.findOneAndUpdate(
-              { _id: postID },
-              {
-                $pull: { imagesUrl: url },
-              }
-            );
-          });
-        }
+        } catch (error) {}
       } else {
         return Response.json({ message: "post not found" }, { status: 404 });
       }
