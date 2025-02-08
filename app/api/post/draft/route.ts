@@ -29,6 +29,14 @@ async function getFileIdFromImageKit(fileName: string): Promise<string | null> {
   }
 }
 
+async function deleteImageFromImageKit(fileId: string) {
+  try {
+    await imagekit.deleteFile(fileId);
+  } catch (error) {
+    return null;
+  }
+}
+
 const imagekit = new ImageKit({
   publicKey: process.env.NEXT_PUBLIC_PUBLIC_KEY!,
   privateKey: process.env.CLOUD_PRIVATE_KEY!,
@@ -70,57 +78,56 @@ export async function POST(req: Request) {
         }
 
         //delete unused photo from cloud
-        try {
-          const imagesSrc = extractImageTagsSrc(body);
 
-          currentPost.imagesUrl.map(async (e: string) => {
-            if (!imagesSrc.includes(e)) {
-              const fileName = e.split("/");
+        const imagesSrc = extractImageTagsSrc(body);
 
-              const fileId = await getFileIdFromImageKit(
-                fileName[fileName.length - 1]
+        currentPost.imagesUrl.map(async (e: string) => {
+          if (!imagesSrc.includes(e)) {
+            const fileName = e.split("/");
+
+            const fileId = await getFileIdFromImageKit(
+              fileName[fileName.length - 1]
+            );
+
+            if (fileId) {
+              await deleteImageFromImageKit(fileId);
+              await postModel.findOneAndUpdate(
+                { _id: postID },
+                {
+                  $pull: { imagesID: fileId },
+                }
               );
-
-              if (fileId) {
-                await imagekit.deleteFile(fileId);
-                await postModel.findOneAndUpdate(
-                  { _id: postID },
-                  {
-                    $pull: { imagesID: fileId },
-                  }
-                );
-                await postModel.findOneAndUpdate(
-                  { _id: postID },
-                  {
-                    $pull: { imagesUrl: e },
-                  }
-                );
-              }
+              await postModel.findOneAndUpdate(
+                { _id: postID },
+                {
+                  $pull: { imagesUrl: e },
+                }
+              );
             }
+          }
+        });
+
+        if (imagesSrc.length === 0 && currentPost.imagesID.length !== 0) {
+          currentPost.imagesID.map(async (imgId: any) => {
+            await deleteImageFromImageKit(imgId);
+
+            await postModel.findOneAndUpdate(
+              { _id: postID },
+              {
+                $pull: { imagesID: imgId },
+              }
+            );
           });
 
-          if (imagesSrc.length === 0 && currentPost.imagesID.length !== 0) {
-            currentPost.imagesID.map(async (imgId: any) => {
-              await imagekit.deleteFile(imgId);
-
-              await postModel.findOneAndUpdate(
-                { _id: postID },
-                {
-                  $pull: { imagesID: imgId },
-                }
-              );
-            });
-
-            currentPost.imagesUrl.map(async (url: any) => {
-              await postModel.findOneAndUpdate(
-                { _id: postID },
-                {
-                  $pull: { imagesUrl: url },
-                }
-              );
-            });
-          }
-        } catch (error) {}
+          currentPost.imagesUrl.map(async (url: any) => {
+            await postModel.findOneAndUpdate(
+              { _id: postID },
+              {
+                $pull: { imagesUrl: url },
+              }
+            );
+          });
+        }
       } else {
         return Response.json({ message: "post not found" }, { status: 404 });
       }
@@ -141,8 +148,6 @@ export async function POST(req: Request) {
       });
     }
   } catch (error) {
-    console.log(error);
-
     return Response.json({ message: "server error" }, { status: 500 });
   }
 }
