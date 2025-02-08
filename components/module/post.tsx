@@ -232,6 +232,7 @@ export default function Post({
   async function ToggleLikeFromLikedPostHandler() {
     if (userId) {
       if (!loading && data) {
+        setIsPostLiked(!isPostLiked);
         setLoading(true);
         const res = await dispatch(toggleLikePost(data?._id));
         if (res.payload) {
@@ -251,6 +252,7 @@ export default function Post({
   async function ToggleLikeFromListPosts() {
     if (userId) {
       if (!loading && data && reRenderPosts) {
+        setIsPostLiked(!isPostLiked);
         setLoading(true);
         const res = await dispatch(toggleLikePost(data?._id));
         if (res.payload) {
