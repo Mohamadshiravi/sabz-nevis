@@ -10,6 +10,7 @@ import { ChangeEvent, useState } from "react";
 import SabzModal from "./sabzModal";
 import { SendErrorToast, SendSucToast } from "@/utils/toast-functions";
 import axios from "axios";
+import Link from "next/link";
 
 export default function ProfilePost({
   data,
@@ -21,11 +22,19 @@ export default function ProfilePost({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+
+  console.log(data);
+
   return (
     <>
       <div className="w-full flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 py-6">
         <div className="flex flex-col gap-6">
-          <h2 className="vazir-bold text-xl">{data.title}</h2>
+          <Link
+            href={`/@${data?.user.username}/posts/${data?._id}`}
+            className="vazir-bold text-xl"
+          >
+            {data.title}
+          </Link>
           <div className="text-myText-500 text-sm">
             اخرین ویرایش :
             {data?.updatedAt

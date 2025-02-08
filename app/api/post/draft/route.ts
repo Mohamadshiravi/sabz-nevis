@@ -151,13 +151,15 @@ export async function GET(req: Request) {
   }
 
   try {
-    const draftPosts = await postModel.find(
-      {
-        user: isUserAuth._id,
-        status: "draft",
-      },
-      "title updatedAt"
-    );
+    const draftPosts = await postModel
+      .find(
+        {
+          user: isUserAuth._id,
+          status: "draft",
+        },
+        "title updatedAt"
+      )
+      .populate("user", "username");
 
     return Response.json({ draftPosts });
   } catch (error) {

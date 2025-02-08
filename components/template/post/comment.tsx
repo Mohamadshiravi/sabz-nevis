@@ -149,9 +149,11 @@ export default function Comment({ data }: { data: CommentModelType }) {
         </form>
       )}
       <div className="flex flex-col gap-3 mt-4">
-        {data.replies.map((e, i) => (
-          <CommentReply key={i} data={e} />
-        ))}
+        {data.replies
+          .filter((e) => e.status === "accepted")
+          .map((e, i) => (
+            <CommentReply key={i} data={e} />
+          ))}
       </div>
     </div>
   );

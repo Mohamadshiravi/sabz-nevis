@@ -38,10 +38,9 @@ export async function GET(req: Request) {
     if (!isUserAuth) {
       return Response.json({ message: "user unAuth" }, { status: 401 });
     }
-    const publishPosts = await postModel.find(
-      { user: isUserAuth._id, status: "completed" },
-      "title updatedAt"
-    );
+    const publishPosts = await postModel
+      .find({ user: isUserAuth._id, status: "completed" }, "title updatedAt")
+      .populate("user", "username");
 
     return Response.json({ publishPosts });
   } catch (error) {

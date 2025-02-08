@@ -91,7 +91,6 @@ export default function PostHeaderProfileBtn() {
                 </Link>
                 <Link href={"/me/settings"}>تنظیمات حساب کاربری</Link>
                 <Link href={"/me/posts"}>پست ها و پیش نویس ها</Link>
-                <button>موضوع های مورد علاقه</button>
                 <Link href={"/me/likes"}>پست های لایک شده</Link>
                 <Link href={"/me/lists"}>لیست ها</Link>
               </div>
