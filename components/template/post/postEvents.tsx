@@ -113,6 +113,7 @@ export default function PostEvents({ postId }: { postId: string }) {
         const res = await dispatch(toggleLikePost(post?._id));
         if (res.payload) {
           setLoading(false);
+          FetchCurrentPost();
           dispatch(fetchPostFromServer());
           dispatch(fetchLikedPosts());
         } else {

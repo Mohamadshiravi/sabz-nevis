@@ -89,7 +89,7 @@ export default function SabzTextEditor({
       StarterKit,
       Image.configure({
         HTMLAttributes: {
-          class: "m-auto rounded-md shadow-md",
+          class: "mx-auto my-[15px] rounded-md shadow-md",
         },
       }),
       Color,
