@@ -3,32 +3,28 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { GoPaperclip } from "react-icons/go";
 import { IoIosArrowBack } from "react-icons/io";
-import { useTypedSelector } from "@/redux/typedHooks";
+import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
 import axios from "axios";
 import { CategoryModelType } from "@/models/category";
 import Link from "next/link";
+import { fetchCategoriesFromServer } from "@/redux/slices/category";
 
 export default function Footer({ isSimple }: { isSimple?: boolean }) {
-  const [categorys, setCategorys] = useState<[] | CategoryModelType[]>([]);
-  const [loading, setLoading] = useState(true);
   const userData = useTypedSelector((state) => {
     return state.user;
   });
 
+  const { data: categorys, loading } = useTypedSelector(
+    (state) => state.categories
+  );
+  const dispatch = useTypedDispatch();
+
   useEffect(() => {
-    FetchCategorys();
+    if (!categorys) {
+      dispatch(fetchCategoriesFromServer());
+    }
   }, []);
 
-  async function FetchCategorys() {
-    setLoading(true);
-    try {
-      const res = await axios.get("/api/category");
-      setCategorys(res.data.categories.slice(0, 8));
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-    }
-  }
   return (
     <footer
       className={`w-full sm:pt-14 py-4 lg:flex hidden flex-col gap-4 ${
@@ -73,7 +69,7 @@ export default function Footer({ isSimple }: { isSimple?: boolean }) {
                     className="bg-zinc-200 rounded-md dark:bg-zinc-800 animate-pulse w-[70px] h-[25px]"
                   ></span>
                 ))
-              : categorys.map((e, i) => (
+              : categorys?.slice(0, 10).map((e, i) => (
                   <Link
                     href={`/category/${e._id}`}
                     key={i}

@@ -2,8 +2,8 @@
 
 import Header from "@/components/module/header";
 import MobileNavbar from "@/components/module/navbar";
-import { CategoryModelType } from "@/models/category";
-import axios from "axios";
+import { fetchCategoriesFromServer } from "@/redux/slices/category";
+import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useEffect, useState } from "react";
@@ -12,25 +12,19 @@ import { IoSearch } from "react-icons/io5";
 
 export default function SearchBarPage() {
   const [searchInp, setSearchInp] = useState("");
-  const [categorys, setCategorys] = useState<[] | CategoryModelType[]>([]);
-  const [loading, setLoading] = useState(true);
 
   const router = useRouter();
 
-  useEffect(() => {
-    FetchCategorys();
-  }, []);
+  const { data: categorys, loading } = useTypedSelector(
+    (state) => state.categories
+  );
+  const dispatch = useTypedDispatch();
 
-  async function FetchCategorys() {
-    setLoading(true);
-    try {
-      const res = await axios.get("/api/category");
-      setCategorys(res.data.categories);
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
+  useEffect(() => {
+    if (!categorys) {
+      dispatch(fetchCategoriesFromServer());
     }
-  }
+  }, []);
   return (
     <>
       <Header />
@@ -65,7 +59,7 @@ export default function SearchBarPage() {
                   className="bg-zinc-200 rounded-md dark:bg-zinc-800 animate-pulse w-[110px] flex-grow h-[45px]"
                 ></div>
               ))
-            : categorys.map((e, i) => (
+            : categorys?.map((e, i) => (
                 <Link
                   href={`/category/${e._id}`}
                   className="sm:text-lg text-base shadow-lg border-2 border-dashed px-6 flex-grow py-2 vazir-medium rounded-md transition cursor-pointer text-center text-myText-800 dark:text-myText-500 border border-myText-800 dark:border-myText-500"

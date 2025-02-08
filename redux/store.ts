@@ -3,6 +3,7 @@ import userReducer from "./slices/user";
 import postReducer from "./slices/post";
 import likedPostReducer from "./slices/likedPost";
 import listReducer from "./slices/list";
+import categoriesReducer from "./slices/category";
 
 const store = configureStore({
   reducer: {
@@ -10,10 +11,8 @@ const store = configureStore({
     posts: postReducer,
     likedPosts: likedPostReducer,
     lists: listReducer,
+    categories: categoriesReducer,
   },
-});
-store.subscribe(() => {
-  console.log("store =>", store.getState());
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

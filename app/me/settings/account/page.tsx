@@ -3,7 +3,6 @@
 import LoadingBtn from "@/components/module/loadingBtn";
 import PrimaryBtn from "@/components/module/primaryBtn";
 import SabzModal from "@/components/module/sabzModal";
-import BlockContactField from "@/components/template/settings/account/blockContactField";
 import EmailField from "@/components/template/settings/account/emailField";
 import PhoneField from "@/components/template/settings/account/phoneField";
 import UsernameFiled from "@/components/template/settings/account/usernameField";
@@ -34,7 +33,6 @@ export default function SettingsAccount() {
           <PhoneField phone={userData?.phone} />
           <hr className="border-1 border-zinc-200 dark:border-zinc-800" />
 
-          <BlockContactField />
           <div className="flex sm:flex-row flex-col gap-3 items-center justify-between w-full">
             <div className="flex flex-col gap-2">
               <h3 className="vazir-medium">حذف حساب کاربری</h3>

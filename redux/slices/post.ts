@@ -2,13 +2,13 @@ import { PostModelType } from "@/models/post";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-interface userState {
+interface postState {
   loading: boolean;
   data: PostModelType[] | null;
   error: null | string;
 }
 
-const initialState: userState = {
+const initialState: postState = {
   data: null,
   loading: true,
   error: null,
