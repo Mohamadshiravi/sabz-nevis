@@ -59,6 +59,7 @@ export async function GET(
   { params }: { params: { id: string } }
 ) {
   try {
+    await ConnectToDB();
     const list = await listModel
       .findById(params.id, "-__v")
       .populate("user", "username")
