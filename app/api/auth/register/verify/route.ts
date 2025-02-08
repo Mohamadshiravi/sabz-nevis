@@ -30,10 +30,16 @@ export async function POST(req: Request) {
 
     //jenerate Token and create user
     const username = `m_${Date.now()}`;
-    const newUser = await userModel.create({ phone, username });
+
+    const allUser = await userModel.find({});
+    const newUser = await userModel.create({
+      phone,
+      username,
+      role: allUser.some((e) => e.role === "admin") ? "user" : "admin",
+    });
     const token = JenerateAccessToken({ phone: newUser.phone });
 
-    const userSaveList = await listModel.create({
+    await listModel.create({
       name: "پست های ذخیره شده",
       status: "private",
       user: newUser._id,

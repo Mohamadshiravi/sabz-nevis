@@ -15,6 +15,7 @@ export type UserModelType = {
   avatar: string;
   followers: UserModelType[] | string[];
   following: UserModelType[] | string[];
+  role: string;
 };
 type UserModelTypeMongoose = {
   _id: string;
@@ -32,6 +33,7 @@ type UserModelTypeMongoose = {
   fileID: string;
   followers: mongoose.Types.ObjectId[];
   following: mongoose.Types.ObjectId[];
+  role: string;
 };
 
 const schema = new mongoose.Schema<UserModelTypeMongoose>({
@@ -90,6 +92,10 @@ const schema = new mongoose.Schema<UserModelTypeMongoose>({
   following: {
     type: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
     required: false,
+  },
+  role: {
+    type: String,
+    default: "user",
   },
 });
 
