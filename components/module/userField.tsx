@@ -32,7 +32,7 @@ export default function UserFiled({
           alt="user avatar"
           width={400}
           height={400}
-          className="w-[60px] h-[60px] rounded-full"
+          className="w-[60px] h-[60px] rounded-full object-cover"
         />
         <span>{displayName || username}</span>
       </div>
