@@ -3,6 +3,7 @@
 import { CategoryModelType } from "@/models/category";
 import { SendErrorToast } from "@/utils/toast-functions";
 import axios from "axios";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -42,12 +43,13 @@ export default function SearchedCategoriesSection() {
         <h3 className="text-sm text-center">موضوعی با این مشخصات پیدا نشد</h3>
       ) : (
         data?.map((e, i) => (
-          <span
+          <Link
+            href={`/category/${e._id}`}
             key={i}
             className="text-xl px-4 py-1 rounded-md transition cursor-pointer text-center text-myText-800 dark:text-myText-500 border border-myText-800 dark:border-myText-500"
           >
             {e.name}
-          </span>
+          </Link>
         ))
       )}
     </section>

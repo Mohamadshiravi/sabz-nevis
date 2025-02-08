@@ -71,7 +71,7 @@ export default function ProfileFollowDetails({
               ))
             ) : userFollowers.length === 0 ? (
               <h3 className="text-sm text-center">
-                کاربر کسی را دنبال نکرده است
+                کاربر دنبال کننده ای ندارد
               </h3>
             ) : (
               userFollowers.map((e, i) => (

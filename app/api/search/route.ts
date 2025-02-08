@@ -43,6 +43,7 @@ export async function GET(req: Request) {
           .find(
             {
               name: { $regex: vord, $options: "i" },
+              status: "public",
             },
             "-__v"
           )
