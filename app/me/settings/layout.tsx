@@ -4,7 +4,7 @@ import Header from "@/components/module/header";
 import MobileNavbar from "@/components/module/navbar";
 import SettingsNavbar from "@/components/template/settings/settingsNavbar";
 
-export default async function SettingLayout({
+export default function SettingLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

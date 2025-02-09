@@ -1,6 +1,7 @@
 import ConnectToDB from "@/DB/connectToDB";
 import { commentModel } from "@/models";
 import IsUserAuthentication from "@/utils/auth/authUser";
+import IsUserAdmin from "@/utils/auth/isUserAdmin";
 
 export const revalidate = 0;
 
@@ -34,6 +35,26 @@ export async function PUT(
     }
 
     return Response.json({ message: "comment toggled" });
+  } catch (error) {
+    return Response.json({ message: "server error" }, { status: 500 });
+  }
+}
+
+export async function DELETE(
+  req: Request,
+  { params }: { params: { id: string } }
+) {
+  const isUserAdmin = await IsUserAdmin();
+  if (!isUserAdmin) {
+    return Response.json({ message: "forbiden" }, { status: 403 });
+  }
+
+  try {
+    await ConnectToDB();
+
+    await commentModel.findOneAndDelete({ _id: params.id });
+
+    return Response.json({ message: "comment deleted" });
   } catch (error) {
     return Response.json({ message: "server error" }, { status: 500 });
   }

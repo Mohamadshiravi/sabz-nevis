@@ -11,11 +11,22 @@ export type CommentModelType = {
   createdAt: Date;
   status: "queued" | "accepted";
   likes: mongoose.Types.ObjectId[];
-  replyTo: mongoose.Types.ObjectId;
+  replyTo: CommentModelType;
   replies: CommentModelType[];
 };
+type CommentModelTypeMongoose = {
+  _id: string;
+  user: UserModelType;
+  body: string;
+  post: PostModelType;
+  createdAt: Date;
+  status: "queued" | "accepted";
+  likes: mongoose.Types.ObjectId[];
+  replyTo: mongoose.Types.ObjectId;
+  replies: mongoose.Types.ObjectId[];
+};
 
-const schema = new mongoose.Schema<CommentModelType>(
+const schema = new mongoose.Schema<CommentModelTypeMongoose>(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
