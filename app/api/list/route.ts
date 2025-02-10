@@ -13,6 +13,10 @@ export async function POST(req: Request) {
   try {
     const { name, status } = await req.json();
 
+    if (name === "پست های ذخیره شده") {
+      return Response.json({ message: "cant create this" }, { status: 400 });
+    }
+
     const createdList = await listModel.create({
       name,
       status,

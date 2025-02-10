@@ -35,7 +35,14 @@ export default function ListsMainSection() {
         <div className="flex flex-col gap-10 mt-16 sm:px-8 px-0 w-full">
           {loading
             ? Array.from({ length: 3 }).map((e, i) => <ListLoading key={i} />)
-            : data?.map((e, i) => <List data={e} key={i} />)}
+            : data?.map((e, i) => (
+                <List
+                  useRedux
+                  reRenderLists={() => dispatch(fetchListsFromServer)}
+                  data={e}
+                  key={i}
+                />
+              ))}
         </div>
       </section>
       {isAddListmodalOpen && (

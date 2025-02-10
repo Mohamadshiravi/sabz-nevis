@@ -11,7 +11,7 @@ export default function AdminPanelNavbar() {
   const path = usePathname();
 
   return (
-    <div onClick={(e) => e.stopPropagation()} className="w-full block z-50">
+    <div className="w-full block z-50">
       <nav className="flex-col flex justify-between h-screen pl-24 pr-6 py-10 fixed lg:top-16 top-0 border-l border-zinc-200 dark:bg-darkColor-800 bg-white dark:border-zinc-800">
         <ul className="flex flex-col gap-8">
           <Link

@@ -1,6 +1,7 @@
 import ConnectToDB from "@/DB/connectToDB";
 import { commentModel, listModel, postModel } from "@/models/index";
 import IsUserAuthentication from "@/utils/auth/authUser";
+import IsUserAdmin from "@/utils/auth/isUserAdmin";
 
 export async function GET(
   req: Request,
@@ -68,8 +69,11 @@ export async function DELETE(
   }
 
   if (post.user.toString() !== isUserAuth._id.toString()) {
-    //other users dont have access to delete post
-    return Response.json({ message: "dont access" }, { status: 403 });
+    const isUserAdmin = await IsUserAdmin();
+    if (!isUserAdmin) {
+      return Response.json({ message: "dont access" }, { status: 403 });
+    }
+    //other users dont have access to delete post // only admin can delete other user posts
   }
 
   try {

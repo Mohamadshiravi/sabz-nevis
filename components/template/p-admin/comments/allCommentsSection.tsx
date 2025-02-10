@@ -46,7 +46,7 @@ export default function AllCommentSection() {
   }
   return (
     <>
-      <div className="mt-10 p-6">
+      <div className="mt-10 sm:p-6">
         <h3 className="vazir-bold text-xl">کامنت های تایید نشده</h3>
         <div className="flex flex-col gap-3 mt-4">
           {loading ? (
@@ -67,7 +67,7 @@ export default function AllCommentSection() {
           )}
         </div>
       </div>
-      <div className="mt-10 p-6">
+      <div className="mt-10 sm:p-6">
         <h3 className="vazir-bold text-xl">تمام کامنت های ثبت شده</h3>
         <div className="flex flex-col gap-3 mt-4">
           {loading ? (

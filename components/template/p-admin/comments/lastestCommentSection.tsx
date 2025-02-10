@@ -57,7 +57,7 @@ export default function LastestCommentSection({
   return (
     <>
       {!isSimple && (
-        <div className="mt-10 p-6">
+        <div className="mt-10 sm:p-6">
           <h3 className="vazir-bold text-xl">اخرین کامنت های تایید نشده</h3>
           <div className="flex flex-col gap-3 mt-4">
             {loading ? (
@@ -78,7 +78,7 @@ export default function LastestCommentSection({
           </div>
         </div>
       )}
-      <div className="mt-10 p-6">
+      <div className="mt-10 sm:p-6">
         <h3 className="vazir-bold text-xl">اخرین کامنت های ثبت شده</h3>
         <div className="flex flex-col gap-3 mt-4">
           {loading ? (

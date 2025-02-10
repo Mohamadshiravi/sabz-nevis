@@ -56,15 +56,19 @@ export default function AddListModal({
   async function AddListHandler(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
 
-    setLoading(true);
-    const res = await dispatch(addListToServer({ name, status }));
-    if (res.payload) {
-      SendSucToast("لیست ساخته شد");
-      setLoading(false);
-      CloseModal();
+    if (name !== "پست های ذخیره شده") {
+      setLoading(true);
+      const res = await dispatch(addListToServer({ name, status }));
+      if (res.payload) {
+        SendSucToast("لیست ساخته شد");
+        setLoading(false);
+        CloseModal();
+      } else {
+        SendErrorToast("لیست ساخته نشد");
+        setLoading(false);
+      }
     } else {
-      SendErrorToast("لیست ساخته نشد");
-      setLoading(false);
+      SendErrorToast("اسم تکراری است");
     }
   }
 }

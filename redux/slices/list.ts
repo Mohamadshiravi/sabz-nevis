@@ -58,6 +58,19 @@ export const togglePostToList = createAsyncThunk(
   }
 );
 
+export const deleteListFromServer = createAsyncThunk(
+  "lists/deleteListFromServer",
+  async (id: string) => {
+    const res = await axios.delete(`/api/list/${id}`);
+
+    if (res.status === 200) {
+      return res.data;
+    } else {
+      return null;
+    }
+  }
+);
+
 const slice = createSlice({
   name: "lists",
   initialState,
@@ -86,6 +99,11 @@ const slice = createSlice({
             ? action.payload.list
             : list;
         });
+      }
+    });
+    builder.addCase(deleteListFromServer.fulfilled, (state, action) => {
+      if (state.data) {
+        state.data = state.data.filter((e) => e._id !== action.payload.id);
       }
     });
   },
