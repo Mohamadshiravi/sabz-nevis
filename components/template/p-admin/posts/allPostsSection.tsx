@@ -5,14 +5,27 @@ import { SendErrorToast } from "@/utils/toast-functions";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import AdminPanelPosts from "./adminPanelPosts";
+import { IoIosSearch } from "react-icons/io";
 
 export default function AllPostsSection() {
   const [posts, setPosts] = useState<[] | PostModelType[]>([]);
   const [loading, setLoading] = useState(true);
 
+  const [searchInp, setsearchInp] = useState("");
+
   useEffect(() => {
-    FetchAllPosts();
-  }, []);
+    const timer = setTimeout(() => {
+      if (searchInp !== "") {
+        FetchSearchedPosts();
+      }
+    }, 800);
+
+    if (searchInp === "") {
+      FetchAllPosts();
+    }
+
+    return () => clearTimeout(timer);
+  }, [searchInp]);
 
   async function FetchAllPosts() {
     setLoading(true);
@@ -26,11 +39,33 @@ export default function AllPostsSection() {
     }
   }
 
-  useEffect(() => {
-    console.log(posts);
-  }, [posts]);
+  async function FetchSearchedPosts() {
+    console.log("search");
+
+    setLoading(true);
+    try {
+      const res = await axios.get(`/api/search?type=post&&vord=${searchInp}`);
+
+      setPosts(res.data.data);
+      setLoading(false);
+    } catch (error) {
+      SendErrorToast("مشکلی در هنگام دریافت پست ها پیش امد");
+      setLoading(false);
+    }
+  }
+
   return (
     <div className="mt-4 sm:p-10 p-0 flex flex-col gap-3">
+      <div className="flex items-center gap-3 border-2 text-base vazir-light rounded-md px-3 py-3 border-zinc-200 dark:border-zinc-800">
+        <IoIosSearch className="text-2xl text-zinc-500" />
+        <input
+          onChange={(e) => setsearchInp(e.target.value)}
+          value={searchInp}
+          placeholder="جستجو در پست ها"
+          type="text"
+          className="w-full bg-inherit outline-none"
+        />
+      </div>
       {loading ? (
         Array.from({ length: 6 }).map((e, i) => (
           <div

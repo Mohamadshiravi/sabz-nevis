@@ -20,7 +20,7 @@ export default function List({
 }: {
   data: ListModelType;
   reRenderLists?: () => void;
-  useRedux: boolean;
+  useRedux?: boolean;
 }) {
   const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);

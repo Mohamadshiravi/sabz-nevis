@@ -10,7 +10,8 @@ export async function GET(req: Request) {
     const posts = await postModel
       .find({ status: "completed" }, "-__v -imagesID -status -body -imagesUrl")
       .populate("user", "displayName username avatar")
-      .populate("category", "name");
+      .populate("category", "name")
+      .sort({ createdAt: -1 });
 
     return Response.json({ message: "all post", posts });
   } catch (error) {

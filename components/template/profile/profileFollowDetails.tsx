@@ -3,7 +3,7 @@
 import SabzModal from "@/components/module/sabzModal";
 import { UserModelType } from "@/models/user";
 import axios from "axios";
-import UserFiled from "../../module/userField";
+import UserField from "../../module/userField";
 import { useState } from "react";
 
 export default function ProfileFollowDetails({
@@ -76,7 +76,7 @@ export default function ProfileFollowDetails({
             ) : (
               userFollowers.map((e, i) => (
                 <>
-                  <UserFiled
+                  <UserField
                     key={i}
                     userId={e._id}
                     username={e.username}
@@ -108,7 +108,7 @@ export default function ProfileFollowDetails({
               </h3>
             ) : (
               userFollowing.map((e, i) => (
-                <UserFiled
+                <UserField
                   key={i}
                   userId={e._id}
                   username={e.username}

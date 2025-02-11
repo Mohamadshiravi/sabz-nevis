@@ -28,7 +28,10 @@ export async function GET(req: Request) {
       case "users": {
         const data = await userModel.find(
           {
-            displayName: { $regex: vord, $options: "i" },
+            $or: [
+              { displayName: { $regex: vord, $options: "i" } },
+              { username: { $regex: vord, $options: "i" } },
+            ],
           },
           "username displayName avatar"
         );
@@ -48,7 +51,7 @@ export async function GET(req: Request) {
             "-__v"
           )
           .populate("posts", "cover")
-          .populate("user", "username");
+          .populate("user", "username displayName avatar");
 
         return Response.json(
           { message: "filtered data", data },
@@ -69,7 +72,7 @@ export async function GET(req: Request) {
         );
       }
     }
-    return Response.json({ message: "select typed" }, { status: 200 });
+    return Response.json({ message: "no filter recived" }, { status: 400 });
   } catch (error) {
     return Response.json({ message: "server error" }, { status: 500 });
   }

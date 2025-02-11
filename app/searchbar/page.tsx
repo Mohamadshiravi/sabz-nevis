@@ -11,7 +11,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import { IoSearch } from "react-icons/io5";
 
 export default function SearchBarPage() {
-  const [searchInp, setSearchInp] = useState("");
+  const [searchInp, setsearchInp] = useState("");
 
   const router = useRouter();
 
@@ -39,7 +39,7 @@ export default function SearchBarPage() {
             type="text"
             placeholder="جست و جو در سبز نویس"
             value={searchInp}
-            onChange={(e) => setSearchInp(e.target.value)}
+            onChange={(e) => setsearchInp(e.target.value)}
             className="bg-inherit lg:text-xl text-base w-full h-full outline-none py-1.5 rounded-l-full"
           />
           {searchInp !== "" && (

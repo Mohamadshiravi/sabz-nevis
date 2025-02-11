@@ -13,7 +13,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import { useRouter } from "next/navigation";
 
 export default function Header({ isTransparent }: { isTransparent?: boolean }) {
-  const [searchInp, setSearchInp] = useState("");
+  const [searchInp, setsearchInp] = useState("");
   const [loading, setLoading] = useState(true);
 
   const FetchUserData = async () => {
@@ -70,7 +70,7 @@ export default function Header({ isTransparent }: { isTransparent?: boolean }) {
           type="text"
           placeholder="جست و جو در سبز نویس"
           value={searchInp}
-          onChange={(e) => setSearchInp(e.target.value)}
+          onChange={(e) => setsearchInp(e.target.value)}
           className="bg-inherit w-[300px] outline-none py-1.5"
         />
         {searchInp !== "" && (

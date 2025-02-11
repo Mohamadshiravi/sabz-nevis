@@ -1,6 +1,6 @@
 "use client";
 
-import UserFiled from "@/components/module/userField";
+import UserField from "@/components/module/userField";
 import { UserModelType } from "@/models/user";
 import { SendErrorToast } from "@/utils/toast-functions";
 import axios from "axios";
@@ -46,7 +46,7 @@ export default function SearchedUsersSection() {
         <h3 className="text-sm text-center">کاربری با این مشخصات پیدا نشد</h3>
       ) : (
         data?.map((e, i) => (
-          <UserFiled
+          <UserField
             key={i}
             userId={e._id}
             username={e.username}

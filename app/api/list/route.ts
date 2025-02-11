@@ -48,7 +48,8 @@ export async function GET(req: Request) {
     const lists = await listModel
       .find({ user: isUserAuth._id }, "-__v")
       .populate("user", "username")
-      .populate("posts", "cover");
+      .populate("posts", "cover")
+      .sort({ createdAt: -1 });
 
     return Response.json({
       message: "user lists",

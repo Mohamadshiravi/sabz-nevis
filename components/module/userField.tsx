@@ -7,7 +7,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { FiPlus } from "react-icons/fi";
 
-export default function UserFiled({
+export default function UserField({
   username,
   displayName,
   avatar,

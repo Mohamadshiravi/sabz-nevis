@@ -1,8 +1,10 @@
 import AllListsSection from "@/components/template/p-admin/lists/allListSection";
+import ConnectToDB from "@/DB/connectToDB";
 import { listModel } from "@/models";
 import { BsPostcard } from "react-icons/bs";
 
 export default async function AdminPanellistsPage() {
+  await ConnectToDB();
   const lists = await listModel.find({ status: "public" }, "_id");
   return (
     <section className="mt-8">

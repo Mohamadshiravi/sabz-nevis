@@ -1,4 +1,5 @@
 import LastestCommentSection from "@/components/template/p-admin/comments/lastestCommentSection";
+import ConnectToDB from "@/DB/connectToDB";
 import {
   categoryModel,
   commentModel,
@@ -12,6 +13,7 @@ import { GoBookmark } from "react-icons/go";
 import { MdOutlineLabel } from "react-icons/md";
 
 export default async function AdminPanelDashboard() {
+  await ConnectToDB();
   const posts = await postModel.find({ status: "completed" }, "_id");
   const lists = await listModel.find({ status: "public" }, "_id");
   const users = await userModel.find({}, "_id");
