@@ -3,9 +3,15 @@
 @tailwind utilities;
 
 .renderHtmlDiv p {
+  margin: 40px 0px;
   white-space: pre-wrap;
   word-wrap: break-word;
-  word-break: break-all;
+}
+.renderHtmlDiv h2 {
+  font-size: 25px;
+}
+.renderHtmlDiv h3 {
+  font-size: 20px;
 }
 .renderHtmlDiv pre code {
   white-space: pre-wrap;
