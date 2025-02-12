@@ -37,6 +37,7 @@ export default function ListsMainSection() {
             ? Array.from({ length: 3 }).map((e, i) => <ListLoading key={i} />)
             : data?.map((e, i) => (
                 <List
+                  isDeletable
                   useRedux
                   reRenderLists={() => dispatch(fetchListsFromServer)}
                   data={e}

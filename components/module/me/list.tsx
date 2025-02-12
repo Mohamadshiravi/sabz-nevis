@@ -17,17 +17,18 @@ export default function List({
   data,
   reRenderLists,
   useRedux,
+  isDeletable,
 }: {
   data: ListModelType;
   reRenderLists?: () => void;
   useRedux?: boolean;
+  isDeletable?: boolean;
 }) {
   const [loading, setLoading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const router = useRouter();
 
   const dispatch = useTypedDispatch();
-  const userId = useTypedSelector((state) => state.user).data?._id;
 
   return (
     <>
@@ -35,7 +36,7 @@ export default function List({
         <div className="px-4 flex flex-col justify-between">
           <h3 className="vazir-bold sm:text-2xl text-xl mt-4">{data.name}</h3>
           <div className="flex items-center gap-2 py-4 sm:mt-0 mt-2">
-            {data.user._id === userId && data.name !== "پست های ذخیره شده" && (
+            {isDeletable && data.name !== "پست های ذخیره شده" && (
               <LoadingBtn
                 width="sm:w-[130px] w-full"
                 loading={loading}
