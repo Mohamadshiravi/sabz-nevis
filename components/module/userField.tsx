@@ -28,7 +28,7 @@ export default function UserField({
   return (
     <div className="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 py-4">
       <Link
-        href={`/@${data?.username}/profile`}
+        href={`/@${username}/profile`}
         className="flex sm:flex-row flex-col items-center gap-4"
       >
         <Image
