@@ -4,6 +4,7 @@ import { followUser, UnfollowUser } from "@/redux/slices/user";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
 import { SendErrorToast } from "@/utils/toast-functions";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { FiPlus } from "react-icons/fi";
 
@@ -26,7 +27,10 @@ export default function UserField({
   const dispatch = useTypedDispatch();
   return (
     <div className="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 py-4">
-      <div className="flex sm:flex-row flex-col items-center gap-4">
+      <Link
+        href={`/@${data?.username}/profile`}
+        className="flex sm:flex-row flex-col items-center gap-4"
+      >
         <Image
           src={avatar}
           alt="user avatar"
@@ -35,7 +39,7 @@ export default function UserField({
           className="w-[60px] h-[60px] rounded-full object-cover"
         />
         <span>{displayName || username}</span>
-      </div>
+      </Link>
       {userId === data?._id ? (
         <button></button>
       ) : data?.following.some((e) => e === userId) ? (
