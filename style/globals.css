@@ -9,9 +9,11 @@
 }
 .renderHtmlDiv h2 {
   font-size: 25px;
+  margin: 20px 0px;
 }
 .renderHtmlDiv h3 {
   font-size: 20px;
+  margin: 20px 0px;
 }
 .renderHtmlDiv pre code {
   white-space: pre-wrap;
@@ -37,9 +39,14 @@
   opacity: 1;
 }
 
+.listStyle li p {
+  margin: 0px;
+}
+
 .listStyle li {
   position: relative;
   margin-bottom: 0.75rem;
+  margin-top: 0.75rem;
   padding-right: 25px;
   font-weight: 500;
   font-size: 1rem;

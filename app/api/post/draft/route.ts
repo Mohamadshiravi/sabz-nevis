@@ -168,7 +168,8 @@ export async function GET(req: Request) {
         },
         "title updatedAt"
       )
-      .populate("user", "username");
+      .populate("user", "username")
+      .sort({ createdAt: -1 });
 
     return Response.json({ draftPosts });
   } catch (error) {

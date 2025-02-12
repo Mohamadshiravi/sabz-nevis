@@ -40,7 +40,8 @@ export async function GET(req: Request) {
     }
     const publishPosts = await postModel
       .find({ user: isUserAuth._id, status: "completed" }, "title updatedAt")
-      .populate("user", "username");
+      .populate("user", "username")
+      .sort({ createdAt: -1 });
 
     return Response.json({ publishPosts });
   } catch (error) {
