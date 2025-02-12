@@ -27,17 +27,21 @@ export async function GET(req: Request) {
         return Response.json({ message: "mightlike post", posts });
       }
       case "top": {
-        const posts = await postModel
+        const allPosts = await postModel
           .find(
             { status: "completed" },
             "-__v -imagesID -status -body -imagesUrl"
           )
           .populate("user", "displayName username avatar")
-          .populate("category", "name")
-          .sort({ likesCount: -1 })
-          .limit(10);
+          .populate("category", "name");
 
-        return Response.json({ message: "top post", posts });
+        // مرتب‌سازی پست‌ها بر اساس تعداد لایک‌ها (از بیشتر به کمتر)
+        allPosts.sort((a, b) => b.likes.length - a.likes.length);
+
+        // محدود کردن نتایج به ۱۰ مورد
+        const posts = allPosts.slice(0, 10);
+
+        return Response.json({ message: "top posts", posts });
       }
       case "userPost": {
         const posts = await postModel
