@@ -28,13 +28,16 @@ export default function ColPost({
         bordered && "border border-zinc-200 dark:border-zinc-800"
       } w-full h-full bg-white dark:bg-darkColor-800 rounded-md overflow-hidden flex flex-col`}
     >
-      <Image
-        src={cover || "/images/img-default.jpg"}
-        width={800}
-        height={800}
-        alt={"post cover"}
-        className="h-[190px] object-cover"
-      />
+      <Link href={`/@${username}/posts/${id}`}>
+        <Image
+          src={cover || "/images/img-default.jpg"}
+          width={800}
+          height={800}
+          alt={"post cover"}
+          className="h-[190px] object-cover"
+        />
+      </Link>
+
       <div className="p-4 flex flex-col">
         <Link
           href={`/@${username}/posts/${id}`}

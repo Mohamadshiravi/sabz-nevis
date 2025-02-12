@@ -1,22 +1,24 @@
-import DesktopNavbar from "@/components/module/dekstopNavbar";
-import Footer from "@/components/module/footer";
-import Header from "@/components/module/header";
-import MobileNavbar from "@/components/module/navbar";
 import AdminPanelHeader from "@/components/template/p-admin/adminPanelHeader";
 import AdminPanelNavbar from "@/components/template/p-admin/adminPanelNavbar";
-import SettingsNavbar from "@/components/template/settings/settingsNavbar";
+import IsUserAdmin from "@/utils/auth/isUserAdmin";
 import { Metadata } from "next";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "خوشامدید ادمین",
   description: "سبز نویس یک وبسایت برای نوشتن وبلاگ های خودتون",
 };
 
-export default function SettingLayout({
+export default async function AdminPanelLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const isUserAdmin = await IsUserAdmin();
+  if (!isUserAdmin) {
+    redirect("/login");
+  }
+
   return (
     <>
       <AdminPanelHeader />

@@ -1,8 +1,14 @@
 import ConnectToDB from "@/DB/connectToDB";
 import { categoryModel } from "@/models";
+import IsUserAdmin from "@/utils/auth/isUserAdmin";
 
 export async function POST(req: Request) {
   await ConnectToDB();
+
+  const isUserAdmin = await IsUserAdmin();
+  if (!isUserAdmin) {
+    return Response.json({ message: "forbiden" }, { status: 403 });
+  }
   try {
     const { name } = await req.json();
 

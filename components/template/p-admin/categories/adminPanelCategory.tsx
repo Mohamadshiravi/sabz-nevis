@@ -24,12 +24,12 @@ export default function AdminPanelCategory({
         {data.name}
         <div className="flex items-center gap-3">
           <Link href={`/category/${data._id}`}>
-            <FaEye className="text-zinc-400 hover:text-white transition text-xl" />
+            <FaEye className="text-zinc-400 dark:hover:text-white hover:text-zinc-700 transition text-xl" />
           </Link>
 
           <MdDelete
             onClick={() => setIsModalOpen(true)}
-            className="text-zinc-400 hover:text-white transition text-xl"
+            className="text-zinc-400 dark:hover:text-white hover:text-zinc-700 transition text-xl"
           />
         </div>
       </div>
