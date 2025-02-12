@@ -8,7 +8,8 @@ export async function POST(req: Request) {
   }
 
   try {
-    const { postID, cover, desc, readingTime, category } = await req.json();
+    const { postID, cover, desc, readingTime, category, title } =
+      await req.json();
 
     const currentPost = await postModel
       .findOne({ _id: postID }, "-_id user")
@@ -23,7 +24,7 @@ export async function POST(req: Request) {
 
     const updatedPost = await postModel.findOneAndUpdate(
       { _id: postID },
-      { status: "completed", postID, cover, desc, readingTime, category }
+      { status: "completed", postID, cover, desc, readingTime, category, title }
     );
     return Response.json({ message: "post published", id: updatedPost._id });
   } catch (error) {

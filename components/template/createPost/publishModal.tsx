@@ -17,12 +17,14 @@ type PublishModalProps = {
   CloseModal: () => void;
   postId: string;
   images: string[] | null;
+  title: string;
 };
 
 export default function PublishModal({
   CloseModal,
   postId,
   images,
+  title,
 }: PublishModalProps) {
   const [isModalOpen, setIsModalOpen] = useState(true);
   const [category, setCategory] = useState("");
@@ -194,8 +196,11 @@ export default function PublishModal({
             <h4 className="text-sm">یک تگ موضوع برای پست خود انتخاب کنید</h4>
             <div className="flex items-center gap-2 flex-wrap">
               {categoryLoading
-                ? Array.from({ length: 8 }).map((e, i) => (
-                    <span className="w-[100px] animate-pulse h-[30px] rounded-sm bg-zinc-200 dark:bg-zinc-800"></span>
+                ? Array.from({ length: 20 }).map((e, i) => (
+                    <span
+                      key={i}
+                      className="w-[100px] animate-pulse h-[30px] rounded-sm bg-zinc-200 dark:bg-zinc-800"
+                    ></span>
                   ))
                 : categories.map((e, i) => (
                     <span
@@ -257,6 +262,7 @@ export default function PublishModal({
           desc: descInp,
           readingTime: time,
           category,
+          title,
         });
 
         localStorage.removeItem("postId");

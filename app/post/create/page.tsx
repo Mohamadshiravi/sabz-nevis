@@ -149,6 +149,7 @@ export default function CreatePostPage() {
       </main>
       {isModalOpen && (
         <PublishModal
+          title={title}
           key={savedPost ? savedPost._id : "initial"}
           postId={postID}
           images={imagesUrl}
