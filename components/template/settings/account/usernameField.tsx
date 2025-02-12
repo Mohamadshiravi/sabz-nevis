@@ -13,7 +13,7 @@ export default function UsernameFiled({ username }: { username?: string }) {
   const [loading, setLoading] = useState(false);
   const [value, setValue] = useState("");
 
-  const regex = /^[a-zA-Z0-9_]+$/;
+  const regex = /^[a-zA-Z0-9_.]+$/;
 
   useEffect(() => {
     setValue(username || "");
