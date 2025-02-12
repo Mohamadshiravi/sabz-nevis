@@ -3,6 +3,8 @@
 import LoadingBtn from "@/components/module/loadingBtn";
 import PrimaryBtn from "@/components/module/primaryBtn";
 import { CategoryModelType } from "@/models/category";
+import { fetchPostFromServer } from "@/redux/slices/post";
+import { useTypedDispatch } from "@/redux/typedHooks";
 import { SendErrorToast, SendSucToast } from "@/utils/toast-functions";
 import axios from "axios";
 import Image from "next/image";
@@ -35,6 +37,8 @@ export default function PublishModal({
   const [categoryLoading, setCategoryLoading] = useState(true);
 
   const [categories, setCategories] = useState<[] | CategoryModelType[]>([]);
+
+  const dispatch = useTypedDispatch();
 
   function AnimateCloseModal() {
     setIsModalOpen(false);
@@ -258,6 +262,7 @@ export default function PublishModal({
         localStorage.removeItem("postId");
         setLoading(false);
         SendSucToast("پست با موفقیت منتشر شد");
+        dispatch(fetchPostFromServer());
         router.push("/home");
       } catch (error) {
         setLoading(false);
