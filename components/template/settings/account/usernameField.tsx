@@ -1,6 +1,7 @@
 import LoadingBtn from "@/components/module/loadingBtn";
 import PrimaryBtn from "@/components/module/primaryBtn";
 import SabzModal from "@/components/module/sabzModal";
+import { fetchListsFromServer } from "@/redux/slices/list";
 import { updateUserDataToServer } from "@/redux/slices/user";
 import { useTypedDispatch } from "@/redux/typedHooks";
 import { SendErrorToast, SendSucToast } from "@/utils/toast-functions";
@@ -28,6 +29,7 @@ export default function UsernameFiled({ username }: { username?: string }) {
         SendSucToast("نام کاربری شما تغییر کرد");
         setLoading(false);
         setIsModalOpen(false);
+        dispatch(fetchListsFromServer());
       } else {
         SendErrorToast("مشکلی پیش امد");
         setLoading(false);

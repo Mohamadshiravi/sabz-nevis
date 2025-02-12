@@ -74,7 +74,7 @@ export default function PhoneField({ phone }: { phone?: string }) {
         <SabzModal CloseModal={() => setIsRegisterModalOpen(false)}>
           <form onSubmit={sendCodeHandler} className="w-full p-4">
             <h3 className="vazir-bold text-lg border-b border-zinc-200 dark:border-zinc-800 py-2">
-              ایمیل
+              تغییر شماره موبایل
             </h3>
             <input
               dir="ltr"
