@@ -10,7 +10,7 @@ import LoadingBtn from "../loadingBtn";
 import SabzModal from "../sabzModal";
 import axios from "axios";
 import { SendErrorToast, SendSucToast } from "@/utils/toast-functions";
-import { useTypedDispatch } from "@/redux/typedHooks";
+import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
 import { deleteListFromServer } from "@/redux/slices/list";
 
 export default function List({
@@ -27,6 +27,7 @@ export default function List({
   const router = useRouter();
 
   const dispatch = useTypedDispatch();
+  const userId = useTypedSelector((state) => state.user).data?._id;
 
   return (
     <>
@@ -34,7 +35,7 @@ export default function List({
         <div className="px-4 flex flex-col justify-between">
           <h3 className="vazir-bold sm:text-2xl text-xl mt-4">{data.name}</h3>
           <div className="flex items-center gap-2 py-4 sm:mt-0 mt-2">
-            {data.name !== "پست های ذخیره شده" && (
+            {data.user._id === userId && data.name !== "پست های ذخیره شده" && (
               <LoadingBtn
                 width="sm:w-[130px] w-full"
                 loading={loading}
