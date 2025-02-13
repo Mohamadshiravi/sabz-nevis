@@ -52,6 +52,10 @@ export default function MayLikeSlider({
               </div>
             ))}
           </div>
+        ) : posts.length === 0 ? (
+          <div className="h-[300px] flex items-center justify-center text-zinc-500 vazir-medium">
+            هنوز پست مشابهی نوشته نشده است
+          </div>
         ) : (
           <Swiper
             breakpoints={{

@@ -2,18 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+.renderHtmlDiv p:empty::before {
+  content: "";
+  display: inline-block;
+}
 .renderHtmlDiv p {
-  margin: 40px 0px;
-  white-space: pre-wrap;
-  word-wrap: break-word;
+  direction: rtl !important;
 }
 .renderHtmlDiv h2 {
   font-size: 25px;
-  margin: 20px 0px;
+  margin: 10px 0px;
 }
 .renderHtmlDiv h3 {
   font-size: 20px;
-  margin: 20px 0px;
+  margin: 10px 0px;
 }
 .renderHtmlDiv pre code {
   white-space: pre-wrap;

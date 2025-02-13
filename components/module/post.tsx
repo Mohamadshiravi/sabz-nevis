@@ -143,7 +143,7 @@ export default function Post({
             خواندن {data?.readingTime} دقیقه
           </span>
         </div>
-        <div className="flex items-center sm:gap-16 gap-6 text-2xl text-myText-600">
+        <div className="flex items-center sm:gap-16 gap-3 text-2xl text-myText-600">
           {isPostLiked ? (
             <button
               onClick={

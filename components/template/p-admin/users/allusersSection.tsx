@@ -7,12 +7,19 @@ import { IoIosSearch } from "react-icons/io";
 import { UserModelType } from "@/models/user";
 import AdminPanelUserField from "./adminPanelUser";
 import UserField from "@/components/module/userField";
+import { banUserModelType } from "@/models/banuser";
+import AdminPanelBanUserField from "./adminPanelBanuser";
 
 export default function AllUsersSection() {
   const [users, setUsers] = useState<[] | UserModelType[]>([]);
+  const [banUsers, setBanUsers] = useState<[] | banUserModelType[]>([]);
   const [loading, setLoading] = useState(true);
 
   const [searchInp, setsearchInp] = useState("");
+
+  useEffect(() => {
+    FetchBanUsers();
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -42,13 +49,24 @@ export default function AllUsersSection() {
   }
 
   async function FetchSearchedUsers() {
-    console.log("search");
-
     setLoading(true);
     try {
       const res = await axios.get(`/api/search?type=users&&vord=${searchInp}`);
 
       setUsers(res.data.data);
+      setLoading(false);
+    } catch (error) {
+      SendErrorToast("مشکلی در هنگام دریافت کاربران پیش امد");
+      setLoading(false);
+    }
+  }
+
+  async function FetchBanUsers() {
+    setLoading(true);
+    try {
+      const res = await axios.get("/api/user/ban");
+
+      setBanUsers(res.data.banUsers);
       setLoading(false);
     } catch (error) {
       SendErrorToast("مشکلی در هنگام دریافت کاربران پیش امد");
@@ -72,11 +90,11 @@ export default function AllUsersSection() {
         Array.from({ length: 6 }).map((e, i) => (
           <div
             key={i}
-            className="flex border justify-between border-zinc-200 dark:border-zinc-800 p-4 rounded-md"
+            className="flex border items-center justify-between border-zinc-200 dark:border-zinc-800 p-4 rounded-md"
           >
-            <div className="flex items-center gap-4">
+            <div className="flex sm:flex-row flex-col items-center gap-4">
               <div className="w-[60px] h-[60px] rounded-full bg-zinc-200 dark:bg-zinc-800 animate-pulse"></div>
-              <div className="w-[150px] h-[30px] bg-zinc-200 dark:bg-zinc-800 animate-pulse"></div>
+              <div className="sm:w-[150px] w-[100px] h-[30px] bg-zinc-200 dark:bg-zinc-800 animate-pulse"></div>
             </div>
             <div className="flex flex-col gap-2 items-center gap-1">
               <div className="w-[150px] h-[35px] rounded-full bg-zinc-200 dark:bg-zinc-800 animate-pulse"></div>
@@ -85,12 +103,42 @@ export default function AllUsersSection() {
           </div>
         ))
       ) : users.length === 0 ? (
-        <div> کاربری موجود نیست</div>
+        <div className="py-10"> کاربری موجود نیست</div>
       ) : (
         users?.map((e, i) => (
           <AdminPanelUserField reRenderUsers={FetchAllUsers} key={i} data={e} />
         ))
       )}
+      <div className="border border-zinc-200 dark:border-zinc-800 rounded-md p-4">
+        <h3 className="vazir-medium text-lg text-center w-full pb-4">
+          کاربران بن شده
+        </h3>
+        {loading ? (
+          Array.from({ length: 6 }).map((e, i) => (
+            <div
+              key={i}
+              className="flex border items-center justify-between border-zinc-200 dark:border-zinc-800 p-4 rounded-md"
+            >
+              <div className="flex sm:flex-row flex-col items-center gap-4">
+                <div className="sm:w-[150px] w-[100px] h-[30px] bg-zinc-200 dark:bg-zinc-800 animate-pulse"></div>
+              </div>
+              <div className="flex flex-col gap-2 items-center gap-1">
+                <div className="w-[150px] h-[35px] rounded-full bg-zinc-200 dark:bg-zinc-800 animate-pulse"></div>
+              </div>
+            </div>
+          ))
+        ) : banUsers.length === 0 ? (
+          <div> کاربری بن شده ای موجود نیست</div>
+        ) : (
+          banUsers?.map((e, i) => (
+            <AdminPanelBanUserField
+              reRenderUsers={FetchBanUsers}
+              key={i}
+              data={e}
+            />
+          ))
+        )}
+      </div>
     </div>
   );
 }

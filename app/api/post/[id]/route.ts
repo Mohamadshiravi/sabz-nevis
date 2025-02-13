@@ -2,6 +2,13 @@ import ConnectToDB from "@/DB/connectToDB";
 import { commentModel, listModel, postModel } from "@/models/index";
 import IsUserAuthentication from "@/utils/auth/authUser";
 import IsUserAdmin from "@/utils/auth/isUserAdmin";
+import ImageKit from "imagekit";
+
+const imagekit = new ImageKit({
+  publicKey: process.env.NEXT_PUBLIC_PUBLIC_KEY!,
+  privateKey: process.env.CLOUD_PRIVATE_KEY!,
+  urlEndpoint: process.env.NEXT_PUBLIC_URL_ENDPOINT!,
+});
 
 export async function GET(
   req: Request,
@@ -62,7 +69,7 @@ export async function DELETE(
     return Response.json({ message: "unAuth" }, { status: 401 });
   }
 
-  const post = await postModel.findOne({ _id: params.id }, "_id user");
+  const post = await postModel.findOne({ _id: params.id }, "_id user imagesID");
 
   if (!post) {
     return Response.json({ message: "not found" }, { status: 404 });
@@ -77,7 +84,12 @@ export async function DELETE(
   }
 
   try {
+    post.imagesID.map(async (fileId: string) => {
+      await imagekit.deleteFile(fileId);
+    });
+
     await postModel.findOneAndDelete({ _id: params.id });
+
     await listModel.updateMany(
       { posts: params.id },
       { $pull: { posts: params.id } }

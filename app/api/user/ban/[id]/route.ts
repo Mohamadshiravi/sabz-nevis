@@ -1,6 +1,5 @@
-import ConnectToDB from "@/DB/connectToDB";
 import { commentModel, listModel, postModel, userModel } from "@/models";
-import { PostModelType } from "@/models/post";
+import banUserModel from "@/models/banuser";
 import IsUserAdmin from "@/utils/auth/isUserAdmin";
 import ImageKit from "imagekit";
 
@@ -10,25 +9,7 @@ const imagekit = new ImageKit({
   urlEndpoint: process.env.NEXT_PUBLIC_URL_ENDPOINT!,
 });
 
-export async function GET(
-  req: Request,
-  { params }: { params: { id: string } }
-) {
-  try {
-    await ConnectToDB();
-
-    const user = await userModel.findOne(
-      { username: params.id },
-      "phone displayName"
-    );
-
-    return Response.json({ user });
-  } catch (error) {
-    return Response.json({ message: "server error" }, { status: 500 });
-  }
-}
-
-export async function DELETE(
+export async function PUT(
   req: Request,
   { params }: { params: { id: string } }
 ) {
@@ -42,6 +23,7 @@ export async function DELETE(
       { _id: params.id },
       "phone fileID _id"
     );
+    await banUserModel.create({ phone: user.phone });
     if (user.fileID) {
       await imagekit.deleteFile(user.fileID);
     }
@@ -67,7 +49,26 @@ export async function DELETE(
     await postModel.deleteMany({ user: user._id });
     await listModel.deleteMany({ user: user._id });
     await commentModel.deleteMany({ user: user._id });
+
     return Response.json({ message: "user deleted" }, { status: 200 });
+  } catch (error) {
+    return Response.json({ message: "server error" }, { status: 500 });
+  }
+}
+
+export async function DELETE(
+  req: Request,
+  { params }: { params: { id: string } }
+) {
+  const isUserAdmin = await IsUserAdmin();
+  if (!isUserAdmin) {
+    return Response.json({ message: "forbiden" }, { status: 403 });
+  }
+
+  try {
+    await banUserModel.findOneAndDelete({ _id: params.id });
+
+    return Response.json({ message: "ban user deleted" }, { status: 200 });
   } catch (error) {
     return Response.json({ message: "server error" }, { status: 500 });
   }

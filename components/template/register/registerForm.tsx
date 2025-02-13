@@ -34,6 +34,8 @@ export default function RegisterForm() {
         setLoading(false);
         if (error.status === 422) {
           SendErrorToast("شماره موبایل تکراری است");
+        } else if (error.status === 400) {
+          SendErrorToast("شما بن شده اید !");
         } else {
           SendErrorToast("مشکلی در ارسال وجود دارد");
         }

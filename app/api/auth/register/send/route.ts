@@ -1,4 +1,5 @@
 import ConnectToDB from "@/DB/connectToDB";
+import banUserModel from "@/models/banuser";
 import otpModel from "@/models/otp";
 import userModel from "@/models/user";
 const request = require("request");
@@ -20,6 +21,13 @@ export async function POST(req: Request) {
   if (isPhoneExist) {
     return new Response(JSON.stringify({ message: "user Already Exist" }), {
       status: 422,
+    });
+  }
+
+  const isPhoneBanned = await banUserModel.findOne({ phone });
+  if (isPhoneBanned) {
+    return new Response(JSON.stringify({ message: "user banned" }), {
+      status: 400,
     });
   }
 

@@ -9,13 +9,14 @@ import UsernameFiled from "@/components/template/settings/account/usernameField"
 import { useTypedSelector } from "@/redux/typedHooks";
 import { SendErrorToast } from "@/utils/toast-functions";
 import axios from "axios";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { FaEdit } from "react-icons/fa";
 
 export default function SettingsAccount() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { data: userData, loading } = useTypedSelector((state) => state.user);
+  const [btnLoading, setBtnLoading] = useState(false);
 
   return (
     <div className="flex flex-col gap-10 pt-10 lg:pb-10 pb-20">
@@ -63,7 +64,7 @@ export default function SettingsAccount() {
                   با این کار حساب کاربری و تمام اطلاعات شما حذف خواهد شد !
                 </h4>
                 <div className="flex items-center justify-center gap-4 mt-28">
-                  <LoadingBtn width={"w-[150px]"} loading={false}>
+                  <LoadingBtn width={"w-[150px]"} loading={btnLoading}>
                     بله
                   </LoadingBtn>
                   <PrimaryBtn
@@ -80,12 +81,18 @@ export default function SettingsAccount() {
       )}
     </div>
   );
-  async function DeleteAccountHandler() {
+  async function DeleteAccountHandler(e: ChangeEvent<HTMLFormElement>) {
+    setBtnLoading(true);
+    e.preventDefault();
     try {
-      await axios.delete("/api/auth/delete");
-      location.reload();
+      const res = await axios.delete("/api/auth/delete");
+      setBtnLoading(false);
+      setTimeout(() => {
+        location.reload();
+      }, 300);
     } catch (error) {
       SendErrorToast("مشکلی پیش امد");
+      setBtnLoading(false);
     }
   }
 }

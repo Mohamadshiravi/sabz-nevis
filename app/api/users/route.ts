@@ -11,7 +11,7 @@ export async function GET(req: Request) {
     if (isUserAuth) {
       const filteredUsers = await userModel.find(
         { _id: { $ne: isUserAuth._id } },
-        "avatar username displayName followers"
+        "avatar username displayName followers role"
       );
 
       return Response.json({ users: filteredUsers });

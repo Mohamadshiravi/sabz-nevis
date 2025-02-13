@@ -96,7 +96,6 @@ export default function SabzTextEditor({
       TextStyle,
       Blockquote.configure({
         HTMLAttributes: {
-          dir: "auto",
           class:
             "bg-zinc-200 dark:bg-zinc-800 px-4 py-2 border-zinc-300 dark:border-zinc-700 border-x-4 my-2",
         },
@@ -116,34 +115,21 @@ export default function SabzTextEditor({
       Link.configure({
         openOnClick: true,
         HTMLAttributes: {
-          dir: "auto",
           class: "linkStyle",
         },
       }),
       Heading.configure({
         levels: [1, 2, 3],
-        HTMLAttributes: {
-          dir: "auto",
-        },
+        HTMLAttributes: {},
       }),
       Paragraph.configure({
-        HTMLAttributes: {
-          dir: "auto",
-        },
+        HTMLAttributes: {},
       }),
       Italic,
       Bold,
       Placeholder.configure({
         placeholder: "هر چی دوست داری بنویس ...",
         emptyEditorClass: "is-editor-empty",
-      }),
-      Link.configure({
-        openOnClick: false,
-        HTMLAttributes: {
-          dir: "auto",
-          class:
-            "text-myGreen-600 hover:text-myGreen-700 underline transition cursor-pointer",
-        },
       }),
     ],
     content: savedBody,

@@ -29,7 +29,11 @@ export default function AddDisplayNameModal({
   const userAvatar = useTypedSelector((state) => state.user).data?.avatar;
 
   return (
-    <SabzModal CloseModal={CloseModal}>
+    <SabzModal
+      CloseModal={() => {
+        location.reload();
+      }}
+    >
       <form
         onSubmit={setDisplayNameHandler}
         className="flex flex-col items-center gap-3 w-full sm:px-20 px-8 py-10"
@@ -89,6 +93,9 @@ export default function AddDisplayNameModal({
             autoClose: 4000,
             theme: "colored",
           });
+          setTimeout(() => {
+            location.reload();
+          }, 300);
         } else {
           toast.update(id, {
             render: "عکس پروفایل شما تغییر نکرد",

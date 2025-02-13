@@ -30,6 +30,8 @@ export default function List({
 
   const dispatch = useTypedDispatch();
 
+  console.log(data);
+
   return (
     <>
       <div className="flex w-full justify-between sm:flex-row flex-col bg-zinc-100 dark:bg-darkColor-700 border border-zinc-200 dark:border-zinc-700 rounded-md overflow-hidden">
@@ -57,15 +59,15 @@ export default function List({
           </div>
         </div>
         {data.posts.length !== 0 ? (
-          <div className="grid sm:h-[200px] h-[100px] sm:w-[200px] w-full sm:grid-cols-[6fr_6fr] grid-cols-[3fr_3fr_3fr_3fr] sm:gap-0.5 gap-1">
-            {data.posts.slice(0, 3).map((e, i) => (
+          <div className="grid sm:h-[200px] h-[100px] sm:w-[200px] w-full sm:grid-cols-[6fr_6fr] sm:grid-rows-[6fr_6fr] grid-cols-[3fr_3fr_3fr_3fr] sm:gap-0.5 gap-1">
+            {data.posts.slice(0, 4).map((e, i) => (
               <Image
                 key={i}
                 alt="post cover"
                 width={600}
                 height={600}
                 src={e.cover || "/images/img-default.jpg"}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover "
               />
             ))}
           </div>
