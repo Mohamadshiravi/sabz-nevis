@@ -59,13 +59,14 @@ export default function AddDisplayNameForm() {
         />
         <div className="flex items-center gap-4 justify-between w-full">
           <PrimaryBtn
+            width="w-full"
             onPress={() => {
               location.href = "/home";
             }}
           >
             رد کردن این مرحله
           </PrimaryBtn>
-          <LoadingBtn fullWidth loading={loading}>
+          <LoadingBtn width="w-full" loading={loading}>
             ذخیره
           </LoadingBtn>
         </div>

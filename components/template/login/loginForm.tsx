@@ -27,6 +27,9 @@ export default function LoginForm() {
           setLoading(false);
           setCredential(res.data.phone);
           setIsCodeSend(true);
+        } else if (res.status === 202) {
+          setLoading(false);
+          location.href = "/home";
         }
       } catch (error: any) {
         setLoading(false);

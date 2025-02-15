@@ -44,7 +44,7 @@ export async function POST(req: Request) {
               pass: process.env.SMS_PANEL_PASS!,
               fromNum: "3000505",
               toNum: phone,
-              patternCode: "wd0jbf2gn3av97x",
+              patternCode: "1vp50n9txyedeo8",
               inputData: [{ "verification-code": randomCode }],
             },
             json: true,

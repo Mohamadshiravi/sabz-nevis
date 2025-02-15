@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { BsPostcard } from "react-icons/bs";
-import { FaRegComments, FaRegUser } from "react-icons/fa";
+import { FaHome, FaRegComments, FaRegUser } from "react-icons/fa";
 import { GoBookmark } from "react-icons/go";
 import { MdOutlineDashboard, MdOutlineNewLabel } from "react-icons/md";
 
@@ -14,6 +14,13 @@ export default function AdminPanelNavbar() {
     <div className="w-full block z-50">
       <nav className="flex-col flex justify-between h-screen pl-24 pr-6 py-10 fixed lg:top-16 top-0 border-l border-zinc-200 dark:bg-darkColor-800 bg-white dark:border-zinc-800">
         <ul className="flex flex-col gap-8">
+          <Link
+            href={"/home"}
+            className={`flex items-center gap-3 text-base hover:text-myGreen-600 transition`}
+          >
+            <FaHome className="text-2xl" />
+            <span className="text-nowrap">خانه</span>
+          </Link>
           <Link
             href={"/p-admin"}
             className={`${
