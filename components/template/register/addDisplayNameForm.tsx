@@ -1,4 +1,5 @@
 import LoadingBtn from "@/components/module/loadingBtn";
+import PrimaryBtn from "@/components/module/primaryBtn";
 import {
   addAvatarToServer,
   fetchUserDataFromServer,
@@ -57,12 +58,13 @@ export default function AddDisplayNameForm() {
           placeholder="نام و نام خانوادگی "
         />
         <div className="flex items-center gap-4 justify-between w-full">
-          <Link
-            href={"/home"}
-            className="border-2 text-center w-full hover:bg-zinc-800 transition hover:text-white border-zinc-800 text-sm px-5 py-1.5 rounded-full vazir-medium"
+          <PrimaryBtn
+            onPress={() => {
+              location.href = "/home";
+            }}
           >
             رد کردن این مرحله
-          </Link>
+          </PrimaryBtn>
           <LoadingBtn fullWidth loading={loading}>
             ذخیره
           </LoadingBtn>

@@ -14,14 +14,14 @@ export default function UploadProfilePhoto({
 }) {
   const dispatch = useTypedDispatch();
   return (
-    <div className="flex items-center justify-between w-full">
-      <div className="flex flex-col gap-2">
+    <div className="flex items-center justify-between w-full gap-2">
+      <div className="flex flex-col gap-2 sm:w-[90%] w-[70%]">
         <h3 className="vazir-medium">عکس پروفایل</h3>
         <h4 className="text-myText-600 text-sm pl-2">
           عکس شما در صفحه پروفایل و پست‌ها نمایش داده می‌شود.
         </h4>
       </div>
-      <label className="relative w-[60px] h-[60px] group">
+      <label className="relative w-[70px] h-[70px] group rounded-full">
         <input
           accept="image/*"
           onChange={AddAvatarHandler}
@@ -36,7 +36,7 @@ export default function UploadProfilePhoto({
           className="w-full h-full object-cover rounded-full"
         />
         <div className="bg-black/40 group-hover:opacity-100 transition duration-300 opacity-0 cursor-pointer rounded-full w-full h-full absolute top-0 left-0 flex items-center justify-center">
-          <MdPhotoCamera className="text-zinc-300 text-xl" />
+          <MdPhotoCamera className="text-zinc-300 text-3xl" />
         </div>
       </label>
     </div>
@@ -47,7 +47,7 @@ export default function UploadProfilePhoto({
 
       const id = toast.loading("در حال اپلود عکس ...");
 
-      if (fileSizeInMB < 5) {
+      if (fileSizeInMB < 2) {
         const formData = new FormData();
         formData.append("img", e.target.files[0]);
 
@@ -70,7 +70,7 @@ export default function UploadProfilePhoto({
           });
         }
       } else {
-        SendErrorToast("حجم عکس نباید بیشتر از پنج مگابایت باشد");
+        SendErrorToast("حجم عکس نباید بیشتر از دو مگابایت باشد");
       }
     }
   }
