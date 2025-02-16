@@ -46,10 +46,6 @@ export default function CommentField({
     setCommentLikeLength(data.likes.length);
   }, [userId]);
 
-  useEffect(() => {
-    console.log(isCommentLiked);
-  }, [isCommentLiked]);
-
   return (
     <div className="border border-zinc-200 dark:border-zinc-800 p-4 rounded-sm">
       <Link

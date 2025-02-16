@@ -49,7 +49,6 @@ export default function AllListsSection() {
     setLoading(true);
     try {
       const res = await axios.get(`/api/search?type=lists&&vord=${searchInp}`);
-      console.log(res);
 
       setLists(res.data.data);
       setLoading(false);

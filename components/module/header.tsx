@@ -39,10 +39,6 @@ export default function Header({ isTransparent }: { isTransparent?: boolean }) {
 
   const { data: userLists } = useTypedSelector((state) => state.lists);
 
-  useEffect(() => {
-    console.log(userLists);
-  }, [userLists]);
-
   function ChangeThemeHandler() {
     const theme = userData.theme === "dark" ? "light" : "dark";
     dispatch(changeTheme(theme));

@@ -53,8 +53,6 @@ export async function GET(req: Request) {
           .populate("category", "name")
           .sort("-1");
 
-        console.log(posts);
-
         return Response.json({ message: "user posts", posts });
       }
       case "category": {

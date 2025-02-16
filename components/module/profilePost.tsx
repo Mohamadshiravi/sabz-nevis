@@ -23,8 +23,6 @@ export default function ProfilePost({
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  console.log(data);
-
   return (
     <>
       <div className="w-full flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 py-6">

@@ -40,8 +40,6 @@ export default function AllPostsSection() {
   }
 
   async function FetchSearchedPosts() {
-    console.log("search");
-
     setLoading(true);
     try {
       const res = await axios.get(`/api/search?type=post&&vord=${searchInp}`);

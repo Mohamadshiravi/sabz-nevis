@@ -24,8 +24,6 @@ export default function SearchedListsSection() {
         `/api/search?type=lists&&vord=${searchParam}`
       );
 
-      console.log(res);
-
       setData(res.data.data);
       setLoading(false);
     } catch (error) {

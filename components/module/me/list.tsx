@@ -30,8 +30,6 @@ export default function List({
 
   const dispatch = useTypedDispatch();
 
-  console.log(data);
-
   return (
     <>
       <div className="flex w-full justify-between sm:flex-row flex-col bg-zinc-100 dark:bg-darkColor-700 border border-zinc-200 dark:border-zinc-700 rounded-md overflow-hidden">
