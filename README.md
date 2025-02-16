@@ -3,7 +3,7 @@
   <a href="https://github.com/Mohamadshiravi/set-coffee.git"><img src="public/md/1.png" alt="sabznevis"></a>
 </h1>
 
-<h4 align="center">A full-Stack Website for Write blog with tiptap textEditor</h4>
+<h4 align="center">A full-Stack Website for Write and read blog with tiptap textEditor</h4>
 
 <p align="center">
   <a href="http://nextjs.org">
