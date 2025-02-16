@@ -11,17 +11,17 @@ import HeaderProfileBtn from "../template/header/headerProfileBtn";
 import Image from "next/image";
 import { IoIosArrowBack } from "react-icons/io";
 import { useRouter } from "next/navigation";
+import { fetchListsFromServer } from "@/redux/slices/list";
 
 export default function Header({ isTransparent }: { isTransparent?: boolean }) {
   const [searchInp, setsearchInp] = useState("");
-  const [loading, setLoading] = useState(true);
 
   const FetchUserData = async () => {
-    if (userData.data === null) {
-      await dispatch(fetchUserDataFromServer());
-      setLoading(false);
-    } else {
-      setLoading(false);
+    if (!userData.data) {
+      dispatch(fetchUserDataFromServer());
+    }
+    if (!userLists) {
+      dispatch(fetchListsFromServer());
     }
   };
 
@@ -33,6 +33,15 @@ export default function Header({ isTransparent }: { isTransparent?: boolean }) {
   const userData = useTypedSelector((state) => {
     return state.user;
   });
+  const loading = useTypedSelector((state) => {
+    return state.user;
+  }).loading;
+
+  const { data: userLists } = useTypedSelector((state) => state.lists);
+
+  useEffect(() => {
+    console.log(userLists);
+  }, [userLists]);
 
   function ChangeThemeHandler() {
     const theme = userData.theme === "dark" ? "light" : "dark";

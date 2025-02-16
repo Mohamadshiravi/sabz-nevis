@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<h1 align="center">
+  <br>
+  <a href="https://github.com/Mohamadshiravi/set-coffee.git"><img src="public/md/1.png" alt="sabznevis"></a>
+</h1>
 
-## Getting Started
+<h4 align="center">A full-Stack Website for Write blog with tiptap textEditor</h4>
 
-First, run the development server:
+<p align="center">
+  <a href="http://nextjs.org">
+    <img src="https://img.shields.io/badge/next.js-v14-black">
+    <img src="https://img.shields.io/badge/tailwind-v3-indigo">
+    <img src="https://img.shields.io/badge/redux-purple">
+    <img src="https://img.shields.io/badge/typeScript-blue">
+  </a>
+</p>
+
+<br/>
+
+### Features:
+
+- **Advanced text editor powered by Tiptap with image upload support**
+- **User authentication via SMS using Faraz SMS panel**
+- **All uploaded images are stored in ImageKit cloud storage**
+- **Profile picture upload functionality**
+- **Advanced blogging system with real-time content saving to prevent data loss, even after refreshing or closing the page**
+- **Follow/Unfollow system for users**
+- **Dedicated user profile pages with customizable settings (profile picture, about me, etc.)**
+- **Well-optimized Dark Mode for better user experience**
+- **Post liking feature**
+- **Ability to create and manage private or public lists and save posts in lists**
+- **Advanced search system covering users, posts, lists, and topics**
+- **Comprehensive comment system with support for replies and likes**
+- **Full-featured admin panel with user banning, comment moderation, and more**
+
+<h2 align="center">
+  <a href="https://github.com/Mohamadshiravi/set-coffee.git"><img src="public/md/14.png" alt="sabznevis"></a>
+</h2>
+
+Live on [https://sabznevis.vercel.app](https://sabznevis.vercel.app)
+<br />
+admin panel [https://sabznevis.vercel.app/p-admin](https://sabznevis.vercel.app/p-admin)
+
+### Admin Panel : (login with this phone):
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+phone : 09011468142
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<h2 align="center">
+  <a href="https://github.com/Mohamadshiravi/set-coffee.git"><img src="public/md/12.png" alt="sabznevis"></a>
+</h2>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Run Project on local
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Note:**
 
-## Learn More
+> !!! You need MongoDB for Run Project
+> !!! You need faraz Sms Panel to Authentication with sms
+> !!! You need ImageKit account and storage for upload on cloud
 
-To learn more about Next.js, take a look at the following resources:
+add This environment variables to run project :
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+PRIVATE_KEY : randomString
+MONGODB_URI : your mongodb connection string
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+SMS_PANEL_PASS : 'your faraz SmS account password
+SMS_PANEL_USERNAME : 'your faraz SmS account username
+SMS_PANEL_PATTERN : 'your faraz SmS pattern
 
-## Deploy on Vercel
+NEXT_PUBLIC_PUBLIC_KEY= 'get it form Imagekit'
+CLOUD_PRIVATE_KEY='get it form Imagekit'
+NEXT_PUBLIC_URL_ENDPOINT='get it form Imagekit'
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+And, You Need build Project By :
+
+```bash
+npm run build
+# or
+yarn build
+# or
+pnpm build
+```
+
+Next Run with :
+
+```bash
+npm run start
+# or
+yarn start
+# or
+pnpm start
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the project

@@ -51,11 +51,11 @@ export async function POST(req: Request) {
             url: "http://ippanel.com/api/select",
             body: {
               op: "pattern",
-              user: "mohamad85",
+              user: process.env.SMS_PANEL_USERNAME!,
               pass: process.env.SMS_PANEL_PASS!,
               fromNum: "3000505",
               toNum: isPhoneExist.phone,
-              patternCode: "1vp50n9txyedeo8",
+              patternCode: process.env.SMS_PANEL_PATTERN!,
               inputData: [{ "verification-code": randomCode }],
             },
             json: true,

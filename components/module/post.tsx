@@ -42,7 +42,9 @@ export default function Post({
   const [isPostLiked, setIsPostLiked] = useState(false);
 
   const userId = useTypedSelector((state) => state.user).data?._id;
-  const lists = useTypedSelector((state) => state.lists).data;
+  const { loading: listLoading, data: lists } = useTypedSelector(
+    (state) => state.lists
+  );
   const dispatch = useTypedDispatch();
   const router = useRouter();
 
@@ -52,12 +54,6 @@ export default function Post({
         locale: faIR,
       })
     : "";
-
-  useEffect(() => {
-    if (!lists) {
-      dispatch(fetchListsFromServer());
-    }
-  }, []);
 
   useEffect(() => {
     if (data?.likes.some((e) => e === userId)) {

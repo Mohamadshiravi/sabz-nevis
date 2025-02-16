@@ -2,10 +2,15 @@
 
 import { useTypedSelector } from "@/redux/typedHooks";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function GoToAdminPanel() {
   const { data, loading } = useTypedSelector((state) => state.user);
+  const path = usePathname();
+
+  const regex = /^\/p-admin(\/.*)?$/;
   return (
+    !regex.test(path) &&
     !loading &&
     data &&
     data?.role === "admin" && (
