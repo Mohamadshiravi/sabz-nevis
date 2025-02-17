@@ -98,6 +98,10 @@ const slice = createSlice({
       state.error = null;
       state.loading = true;
     });
+    builder.addCase(fetchUserDataFromServer.rejected, (state) => {
+      state.error = "unAuth";
+      state.loading = false;
+    });
     builder.addCase(updateUserDataToServer.fulfilled, (state, action) => {
       state.data = action.payload.user;
     });
