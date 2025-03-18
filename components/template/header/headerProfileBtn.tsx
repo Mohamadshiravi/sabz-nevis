@@ -2,7 +2,7 @@ import { changeTheme, fetchUserDataFromServer } from "@/redux/slices/user";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
 import axios from "axios";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoMoonSharp } from "react-icons/io5";
 import { MdSunny } from "react-icons/md";
@@ -130,7 +130,8 @@ export default function HeaderProfileBtn() {
       )}
     </>
   );
-  async function LogOutHandler() {
+  async function LogOutHandler(e: ChangeEvent<HTMLFormElement>) {
+    e.preventDefault();
     try {
       const res = await axios.get("/api/auth/logout");
       location.reload();

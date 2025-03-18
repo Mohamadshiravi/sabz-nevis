@@ -1,6 +1,6 @@
 import { CategoryModelType } from "@/models/category";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import axiosInatnce from "@/utils/axios";
 
 interface categoryState {
   loading: boolean;
@@ -17,7 +17,7 @@ const initialState: categoryState = {
 export const fetchCategoriesFromServer = createAsyncThunk(
   "categories/fetchCategoriesFromServer",
   async () => {
-    const res = await axios.get("/api/category");
+    const res = await axiosInatnce.get("/api/category");
     if (res.status === 200) {
       return res.data.categories;
     } else {

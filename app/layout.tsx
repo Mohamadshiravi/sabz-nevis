@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 import ReduxProvider from "@/redux/provider";
 import GetTheme from "@/components/module/getTheme/getTheme";
 import GoToAdminPanel from "@/components/module/adminPanelBtn";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "سبز نویس | هر چی میخوای بنویس",
@@ -28,7 +29,7 @@ export default function RootLayout({
         <ReduxProvider>
           <GetTheme />
           {children}
-          <ToastContainer stacked />
+          <Toaster />
           <GoToAdminPanel />
         </ReduxProvider>
       </body>

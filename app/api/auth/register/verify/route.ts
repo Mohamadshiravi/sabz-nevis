@@ -31,7 +31,7 @@ export async function POST(req: Request) {
     //jenerate Token and create user
     const username = `m_${Date.now()}`;
 
-    const allUser = await userModel.find({});
+    const allUser = await userModel.find({}, "role");
     const newUser = await userModel.create({
       phone,
       username,

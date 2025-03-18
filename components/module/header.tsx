@@ -17,9 +17,7 @@ export default function Header({ isTransparent }: { isTransparent?: boolean }) {
   const [searchInp, setsearchInp] = useState("");
 
   const FetchUserData = async () => {
-    console.log(userData);
-
-    if (!userData.data) {
+    if (!userData.data && userData.error !== "unAuth") {
       dispatch(fetchUserDataFromServer());
     }
     if (!userLists) {

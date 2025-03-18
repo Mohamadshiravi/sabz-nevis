@@ -1,6 +1,6 @@
 import { ListModelType } from "@/models/list";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import axiosInatnce from "@/utils/axios";
 
 interface ListState {
   loading: boolean;
@@ -17,7 +17,7 @@ const initialState: ListState = {
 export const fetchListsFromServer = createAsyncThunk(
   "lists/fetchListsFromServer",
   async () => {
-    const res = await axios.get("/api/list");
+    const res = await axiosInatnce.get("/api/list");
 
     if (res.status === 200) {
       return res.data;
@@ -30,7 +30,7 @@ export const fetchListsFromServer = createAsyncThunk(
 export const addListToServer = createAsyncThunk(
   "lists/addListToServer",
   async (payload: { name: string; status: boolean }) => {
-    const res = await axios.post("/api/list", {
+    const res = await axiosInatnce.post("/api/list", {
       name: payload.name,
       status: payload.status ? "public" : "private",
     });
@@ -46,7 +46,7 @@ export const addListToServer = createAsyncThunk(
 export const togglePostToList = createAsyncThunk(
   "lists/togglePostToList",
   async (payload: { postId: string; listId: string }) => {
-    const res = await axios.put(`/api/list/${payload.listId}`, {
+    const res = await axiosInatnce.put(`/api/list/${payload.listId}`, {
       postId: payload.postId,
     });
 
@@ -61,7 +61,7 @@ export const togglePostToList = createAsyncThunk(
 export const deleteListFromServer = createAsyncThunk(
   "lists/deleteListFromServer",
   async (id: string) => {
-    const res = await axios.delete(`/api/list/${id}`);
+    const res = await axiosInatnce.delete(`/api/list/${id}`);
 
     if (res.status === 200) {
       return res.data;

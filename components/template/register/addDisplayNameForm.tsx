@@ -112,7 +112,9 @@ export default function AddDisplayNameForm() {
 
     try {
       if (displayName !== "") {
-        const res = await axios.post("/api/auth/me/update", { displayName });
+        const res = await axios.post("/api/auth/me/update", {
+          displayName,
+        });
         if (res.status === 200) {
           SendSucToast("اطلاعات شما با موفقیت وارد شد");
           setLoading(false);

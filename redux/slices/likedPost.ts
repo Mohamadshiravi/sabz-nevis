@@ -1,6 +1,6 @@
 import { PostModelType } from "@/models/post";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import axiosInatnce from "@/utils/axios";
 
 interface likedPostState {
   loading: boolean;
@@ -17,7 +17,7 @@ const initialState: likedPostState = {
 export const fetchLikedPosts = createAsyncThunk(
   "likedposts/fetchLikedPosts",
   async () => {
-    const res = await axios.get("/api/post/like");
+    const res = await axiosInatnce.get("/api/post/like");
     if (res.status === 200) {
       return res.data;
     } else {

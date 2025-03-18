@@ -1,6 +1,6 @@
 import { PostModelType } from "@/models/post";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import axiosInatnce from "@/utils/axios";
 
 interface postState {
   loading: boolean;
@@ -17,7 +17,7 @@ const initialState: postState = {
 export const fetchPostFromServer = createAsyncThunk(
   "posts/fetchPostFromServer",
   async () => {
-    const res = await axios.get("/api/post");
+    const res = await axiosInatnce.get("/api/post");
     if (res.status === 200) {
       return res.data.posts;
     } else {
@@ -29,7 +29,7 @@ export const fetchPostFromServer = createAsyncThunk(
 export const AddCommentToPost = createAsyncThunk(
   "posts/AddCommentToPost",
   async (payload: { id: string; body: string; replyTo?: string }) => {
-    const res = await axios.post("/api/post/comment", {
+    const res = await axiosInatnce.post("/api/post/comment", {
       postId: payload.id,
       body: payload.body,
       replyTo: payload.replyTo || null,
@@ -45,7 +45,7 @@ export const AddCommentToPost = createAsyncThunk(
 export const toggleLikePost = createAsyncThunk(
   "posts/toggleLikePost",
   async (postId: string) => {
-    const res = await axios.post("/api/post/like", {
+    const res = await axiosInatnce.post("/api/post/like", {
       postId,
     });
     if (res.status === 200) {
