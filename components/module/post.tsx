@@ -16,11 +16,10 @@ import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { fetchPostFromServer, toggleLikePost } from "@/redux/slices/post";
-import { SendErrorToast, SendSucToast } from "@/utils/toast-functions";
+import { SendErrorToast } from "@/utils/toast-functions";
 import { useEffect, useState } from "react";
 import { fetchLikedPosts } from "@/redux/slices/likedPost";
 import SavePostDropDown from "../template/postModule/savePostDropdown";
-import { fetchListsFromServer } from "@/redux/slices/list";
 
 type PostProps = {
   border?: boolean;
@@ -79,7 +78,7 @@ export default function Post({
             src={data?.user.avatar || "/images/avatar-default.jpg"}
             className="w-[24px] h-[24px] rounded-full ml-3 object-cover"
           />
-          <span className="text-sm text-xs text-zinc-800 dark:text-white">
+          <span className="text-xs text-zinc-800 dark:text-white">
             {data?.user.displayName
               ? data?.user.displayName
               : data?.user.username}
@@ -102,7 +101,7 @@ export default function Post({
                 src={data?.user.avatar || "/images/avatar-default.jpg"}
                 className="w-[24px] h-[24px] rounded-full ml-3 object-cover"
               />
-              <span className="text-sm text-xs text-zinc-800 dark:text-white">
+              <span className="text-xs text-zinc-800 dark:text-white">
                 {data?.user.displayName
                   ? data?.user.displayName
                   : data?.user.username}

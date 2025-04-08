@@ -18,11 +18,7 @@ export const fetchPostFromServer = createAsyncThunk(
   "posts/fetchPostFromServer",
   async () => {
     const res = await axiosInatnce.get("/api/post");
-    if (res.status === 200) {
-      return res.data.posts;
-    } else {
-      return null;
-    }
+    return res.data.posts;
   }
 );
 
@@ -34,11 +30,7 @@ export const AddCommentToPost = createAsyncThunk(
       body: payload.body,
       replyTo: payload.replyTo || null,
     });
-    if (res.status === 201) {
-      return res.data;
-    } else {
-      return null;
-    }
+    return res.data;
   }
 );
 
@@ -48,11 +40,8 @@ export const toggleLikePost = createAsyncThunk(
     const res = await axiosInatnce.post("/api/post/like", {
       postId,
     });
-    if (res.status === 200) {
-      return res.data;
-    } else {
-      return null;
-    }
+
+    return res.data;
   }
 );
 

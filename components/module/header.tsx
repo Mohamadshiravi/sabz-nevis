@@ -20,6 +20,7 @@ export default function Header({ isTransparent }: { isTransparent?: boolean }) {
     if (!userData.data && userData.error !== "unAuth") {
       dispatch(fetchUserDataFromServer());
     }
+
     if (!userLists) {
       dispatch(fetchListsFromServer());
     }

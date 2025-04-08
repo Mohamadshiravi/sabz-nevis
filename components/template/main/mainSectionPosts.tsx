@@ -42,8 +42,8 @@ export default function MainSectionPosts() {
       <Post border data={posts && posts[2]} />
       <Post border data={posts && posts[3]} />
       <SugestionsPeople />
-      {posts?.slice(4).map((e, i) => (
-        <Post key={i} border data={e} />
+      {posts?.slice(4).map((e) => (
+        <Post key={e._id} border data={e} />
       ))}
     </>
   );
