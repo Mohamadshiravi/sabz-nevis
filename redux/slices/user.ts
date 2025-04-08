@@ -21,7 +21,6 @@ export const fetchUserDataFromServer = createAsyncThunk(
   async () => {
     const res = await axiosInatnce.get("/api/auth/me");
 
-    console.log("res", res);
     return res.data;
   }
 );
