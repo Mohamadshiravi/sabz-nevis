@@ -11,8 +11,8 @@ export default function PostsNavbar() {
         href={"/me/posts"}
         className={`${
           path === "/me/posts"
-            ? "text-myText-800 dark:text-white vazir-bold after:content-[''] after:absolute after:w-full after:bottom-[-1px] after:left-0 after:h-[2px] after:bg-myText-800 dark:after:bg-white"
-            : "text-myText-600 dark:text-zinc-200 dark:hover:text-white hover:text-myText-800 vazir-medium"
+            ? "text-my-text-800 dark:text-white vazir-bold after:content-[''] after:absolute after:w-full after:-bottom-px after:left-0 after:h-[2px] after:bg-my-text-800 dark:after:bg-white"
+            : "text-my-text-600 dark:text-zinc-200 dark:hover:text-white hover:text-my-text-800 vazir-medium"
         } pb-2 px-4 text-nowrap relative transition`}
       >
         پیش نویس ها
@@ -21,8 +21,8 @@ export default function PostsNavbar() {
         href={"/me/posts/published"}
         className={`${
           path === "/me/posts/published"
-            ? "text-myText-800 dark:text-white vazir-bold after:content-[''] after:absolute after:w-full after:bottom-[-1px] after:left-0 after:h-[2px] after:bg-myText-800 dark:after:bg-white"
-            : "text-myText-600 dark:text-zinc-200 dark:hover:text-white hover:text-myText-800 vazir-medium"
+            ? "text-my-text-800 dark:text-white vazir-bold after:content-[''] after:absolute after:w-full after:-bottom-px after:left-0 after:h-[2px] after:bg-my-text-800 dark:after:bg-white"
+            : "text-my-text-600 dark:text-zinc-200 dark:hover:text-white hover:text-my-text-800 vazir-medium"
         } pb-2 px-4 text-nowrap relative transition`}
       >
         منتشر شده ها

@@ -31,7 +31,7 @@ export default function PodcastSection() {
   return (
     <Link href={"/podcasts"} className="w-full flex flex-col gap-4">
       <div className="flex items-center gap-4">
-        <span className="bg-zinc-200 dark:bg-darkColor-700 p-2 rounded-full text-xl text-zinc-400">
+        <span className="bg-zinc-200 dark:bg-dark-color-700 p-2 rounded-full text-xl text-zinc-400">
           <FaMicrophone />
         </span>
         <p className="vazir-bold text-sm">پست‌های صوتی انتخابی برای شما</p>
@@ -52,8 +52,8 @@ export default function PodcastSection() {
                   alt={e.name}
                   className="w-full h-full object-cover"
                 />
-                <div className="w-full h-full bg-gradient-to-b from-black/0 to-black/70 z-[1] absolute top-0 left-0"></div>
-                <span className="absolute bottom-3 right-2 z-[2] vazir-bold text-sm">
+                <div className="w-full h-full bg-linear-to-b from-black/0 to-black/70 z-1 absolute top-0 left-0"></div>
+                <span className="absolute bottom-3 right-2 z-2 vazir-bold text-sm">
                   {e.name}
                 </span>
               </div>
@@ -62,7 +62,7 @@ export default function PodcastSection() {
         </Swiper>
         <div className="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-700 mt-3 py-3">
           <span className="vazir-bold">پادکست رفتار</span>
-          <button className="flex gap-2 items-center text-myGreen-600 text-xs">
+          <button className="flex gap-2 items-center text-my-green-600 text-xs">
             مشاهده همه قسمت‌ها
             <IoIosArrowBack className="text-sm" />
           </button>
@@ -75,14 +75,14 @@ export default function PodcastSection() {
                 width={100}
                 height={100}
                 alt="podcast"
-                className="w-[45px] h-[45px] object-cover rounded-sm"
+                className="w-[45px] h-[45px] object-cover rounded-xs"
               />
               <div className="flex flex-col justify-between py-1">
                 <span className="text-xs vazir-bold">اپیزود اول</span>
                 <span className="text-[10px] text-zinc-500">44 : 54</span>
               </div>
             </div>
-            <button className="bg-myGreen-600 p-1 rounded-full text-white text-2xl">
+            <button className="bg-my-green-600 p-1 rounded-full text-white text-2xl">
               <MdPlayArrow />
             </button>
           </div>
@@ -93,14 +93,14 @@ export default function PodcastSection() {
                 width={100}
                 height={100}
                 alt="podcast"
-                className="w-[45px] h-[45px] object-cover rounded-sm"
+                className="w-[45px] h-[45px] object-cover rounded-xs"
               />
               <div className="flex flex-col justify-between py-1">
                 <span className="text-xs vazir-bold">اپیزود دوم</span>
                 <span className="text-[10px] text-zinc-500">44 : 54</span>
               </div>
             </div>
-            <button className="bg-myGreen-600 p-1 rounded-full text-white text-2xl">
+            <button className="bg-my-green-600 p-1 rounded-full text-white text-2xl">
               <MdPlayArrow />
             </button>
           </div>
@@ -111,14 +111,14 @@ export default function PodcastSection() {
                 width={100}
                 height={100}
                 alt="podcast"
-                className="w-[45px] h-[45px] object-cover rounded-sm"
+                className="w-[45px] h-[45px] object-cover rounded-xs"
               />
               <div className="flex flex-col justify-between py-1">
                 <span className="text-xs vazir-bold">اپیزود سوم</span>
                 <span className="text-[10px] text-zinc-500">44 : 54</span>
               </div>
             </div>
-            <button className="bg-myGreen-600 p-1 rounded-full text-white text-2xl">
+            <button className="bg-my-green-600 p-1 rounded-full text-white text-2xl">
               <MdPlayArrow />
             </button>
           </div>
@@ -129,14 +129,14 @@ export default function PodcastSection() {
                 width={100}
                 height={100}
                 alt="podcast"
-                className="w-[45px] h-[45px] object-cover rounded-sm"
+                className="w-[45px] h-[45px] object-cover rounded-xs"
               />
               <div className="flex flex-col justify-between py-1">
                 <span className="text-xs vazir-bold">اپیزود چهارم</span>
                 <span className="text-[10px] text-zinc-500">44 : 54</span>
               </div>
             </div>
-            <button className="bg-myGreen-600 p-1 rounded-full text-white text-2xl">
+            <button className="bg-my-green-600 p-1 rounded-full text-white text-2xl">
               <MdPlayArrow />
             </button>
           </div>

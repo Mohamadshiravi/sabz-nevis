@@ -40,10 +40,10 @@ export default function SavePostDropDown({
         onClick={Close}
         className="w-full h-screen fixed top-0 left-0 z-40"
       ></section>
-      <div className="w-[250px] z-40 bottom-10 left-0 absolute shadow-lg border border-zinc-200 dark:border-zinc-800 transition dark:bg-darkColor-800 bg-white rounded-md rounded-bl-none">
+      <div className="w-[250px] z-40 bottom-10 left-0 absolute shadow-lg border border-zinc-200 dark:border-zinc-800 transition dark:bg-dark-color-800 bg-white rounded-md rounded-bl-none">
         {username ? (
           <>
-            <span className="w-[13px] h-[13px] bg-white absolute border-b border-r border-zinc-200 transition dark:border-zinc-800 dark:bg-darkColor-800 rotate-45 bottom-[-7px] left-1"></span>
+            <span className="w-[13px] h-[13px] bg-white absolute border-b border-r border-zinc-200 transition dark:border-zinc-800 dark:bg-dark-color-800 rotate-45 bottom-[-7px] left-1"></span>
             {loading ? (
               <div className="text-sm p-4">در حال دریافت لیست های شما ...</div>
             ) : (
@@ -55,12 +55,12 @@ export default function SavePostDropDown({
                       className="flex items-center justify-between w-full cursor-pointer"
                     >
                       <div className="flex items-center gap-2">
-                        <span className="border w-[20px] h-[20px] flex items-center justify-center block text-xs text-myGreen-600 rounded-sm border-zinc-200 dark:border-zinc-800">
+                        <span className="border w-[20px] h-[20px] flex items-center justify-center block text-xs text-my-green-600 rounded-xs border-zinc-200 dark:border-zinc-800">
                           {e.posts.some((post) => post._id === postId) && (
                             <FaCheck />
                           )}
                         </span>
-                        <span className="text-sm dark:text-myText-200 vazir-medium">
+                        <span className="text-sm dark:text-my-text-200 vazir-medium">
                           {e.name}
                         </span>
                       </div>

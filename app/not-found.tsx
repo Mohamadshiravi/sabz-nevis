@@ -3,8 +3,8 @@ import Link from "next/link";
 export default function NotFound() {
   return (
     <div className="flex flex-col items-center justify-center h-screen text-center">
-      <h1 className="text-9xl font-bold text-myGreen-600">404</h1>
-      <p className="my-4 text-xl text-myText-600 vazir-bold">
+      <h1 className="text-9xl font-bold text-my-green-600">404</h1>
+      <p className="my-4 text-xl text-my-text-600 vazir-bold">
         صفحه موردنظر شما در سبز نویس پیدا نشد!
       </p>
       <Link

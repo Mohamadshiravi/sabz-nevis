@@ -33,7 +33,7 @@ export default function ProfilePost({
           >
             {data.title}
           </Link>
-          <div className="text-myText-500 text-sm">
+          <div className="text-my-text-500 text-sm">
             اخرین ویرایش :
             {data?.updatedAt
               ? formatDistanceToNow(new Date(data.updatedAt), {

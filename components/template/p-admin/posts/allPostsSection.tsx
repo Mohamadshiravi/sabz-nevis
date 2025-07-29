@@ -61,7 +61,7 @@ export default function AllPostsSection() {
           value={searchInp}
           placeholder="جستجو در پست ها"
           type="text"
-          className="w-full bg-inherit outline-none"
+          className="w-full bg-inherit outline-hidden"
         />
       </div>
       {loading ? (

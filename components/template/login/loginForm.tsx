@@ -51,10 +51,10 @@ export default function LoginForm() {
         onSubmit={sendCodeHandler}
         className="flex flex-col lg:justify-center w-full h-full gap-3 px-8"
       >
-        <h1 className="vazir-black text-xl text-myGreen-600 lg:mt-0 mt-8">
+        <h1 className="vazir-black text-xl text-my-green-600 lg:mt-0 mt-8">
           ورود به حساب کاربری
         </h1>
-        <h3 className="text-myText-600">
+        <h3 className="text-my-text-600">
           شماره موبایل یا نام کاربری خود را وارد کنید
         </h3>
         <div className="flex flex-col items-end gap-4">
@@ -65,7 +65,7 @@ export default function LoginForm() {
             }}
             value={credential}
             type="text"
-            className="InpShadow w-full outline-none border px-4 border-zinc-200 py-3 rounded-full shadow-md"
+            className="InpShadow w-full outline-hidden border px-4 border-zinc-200 py-3 rounded-full shadow-md"
             placeholder="شماره موبایل , نام کاربری"
           />
           <LoadingBtn

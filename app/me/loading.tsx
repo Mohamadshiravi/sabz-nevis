@@ -22,7 +22,7 @@ export default function MeLoading() {
             <div className="w-[30px] h-[30px] rounded-full bg-zinc-200 animate-pulse animate-pulse dark:bg-zinc-800"></div>
             <div className="w-[200px] h-[40px] bg-zinc-200 animate-pulse dark:bg-zinc-800"></div>
           </div>
-          <div className="flex items-center flex-wrap gap-2 p-2 flex-grow mt-3 w-full">
+          <div className="flex items-center flex-wrap gap-2 p-2 grow mt-3 w-full">
             <div className="w-[90px] h-[30px] rounded-md bg-zinc-200 animate-pulse dark:bg-zinc-800"></div>
             <div className="w-[90px] h-[30px] rounded-md bg-zinc-200 animate-pulse dark:bg-zinc-800"></div>
             <div className="w-[90px] h-[30px] rounded-md bg-zinc-200 animate-pulse dark:bg-zinc-800"></div>

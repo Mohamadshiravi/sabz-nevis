@@ -17,7 +17,7 @@ export default function UploadProfilePhoto({
     <div className="flex items-center justify-between w-full gap-2">
       <div className="flex flex-col gap-2 sm:w-[90%] w-[70%]">
         <h3 className="vazir-medium">عکس پروفایل</h3>
-        <h4 className="text-myText-600 text-sm pl-2">
+        <h4 className="text-my-text-600 text-sm pl-2">
           عکس شما در صفحه پروفایل و پست‌ها نمایش داده می‌شود.
         </h4>
       </div>

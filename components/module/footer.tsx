@@ -56,7 +56,7 @@ export default function Footer({ isSimple }: { isSimple?: boolean }) {
         )}
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-4">
-            <span className="bg-zinc-200 dark:bg-darkColor-700 p-2 rounded-full text-xl text-zinc-400">
+            <span className="bg-zinc-200 dark:bg-dark-color-700 p-2 rounded-full text-xl text-zinc-400">
               <GoPaperclip />
             </span>
             <p className="vazir-bold text-sm">موضوعات پیشنهادی</p>
@@ -73,7 +73,7 @@ export default function Footer({ isSimple }: { isSimple?: boolean }) {
                   <Link
                     href={`/category/${e._id}`}
                     key={i}
-                    className="text-xs px-2 py-1 rounded-md transition cursor-pointer text-center text-myText-800 dark:text-myText-500 border border-myText-800 dark:border-myText-500"
+                    className="text-xs px-2 py-1 rounded-md transition cursor-pointer text-center text-my-text-800 dark:text-my-text-500 border border-my-text-800 dark:border-my-text-500"
                   >
                     {e.name}
                   </Link>
@@ -81,7 +81,7 @@ export default function Footer({ isSimple }: { isSimple?: boolean }) {
           </div>
           <Link
             href={"/searchbar"}
-            className="flex gap-2 items-center text-myGreen-600 text-xs self-end mt-2"
+            className="flex gap-2 items-center text-my-green-600 text-xs self-end mt-2"
           >
             مشاهده موضوعات بیشتر
             <IoIosArrowBack className="text-sm" />

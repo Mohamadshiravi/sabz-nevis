@@ -32,7 +32,7 @@ export default function List({
 
   return (
     <>
-      <div className="flex w-full justify-between sm:flex-row flex-col bg-zinc-100 dark:bg-darkColor-700 border border-zinc-200 dark:border-zinc-700 rounded-md overflow-hidden">
+      <div className="flex w-full justify-between sm:flex-row flex-col bg-zinc-100 dark:bg-dark-color-700 border border-zinc-200 dark:border-zinc-700 rounded-md overflow-hidden">
         <div className="px-4 flex flex-col justify-between">
           <h3 className="vazir-bold sm:text-2xl text-xl mt-4">{data.name}</h3>
           <div className="flex items-center gap-2 py-4 sm:mt-0 mt-2">
@@ -70,7 +70,7 @@ export default function List({
             ))}
           </div>
         ) : (
-          <div className="flex items-center pb-3 justify-center w-full h-full text-sm text-myText-400 sm:h-[200px] h-[100px] sm:w-[200px] w-full">
+          <div className="flex items-center pb-3 justify-center w-full h-full text-sm text-my-text-400 sm:h-[200px] h-[100px] sm:w-[200px] w-full">
             پستی موجود نیست
           </div>
         )}

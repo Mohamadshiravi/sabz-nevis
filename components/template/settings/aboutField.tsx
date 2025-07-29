@@ -52,7 +52,7 @@ export default function AboutField({ about }: { about?: string }) {
       >
         <div className="flex flex-col gap-2">
           <h3 className="vazir-medium">درباره شما</h3>
-          <h4 className="text-myText-600 text-sm pl-2">
+          <h4 className="text-my-text-600 text-sm pl-2">
             بیوگرافی شما در صفحه پروفایل نمایش داده می شود. حداکثر ۲۰۰ کاراکتر
           </h4>
         </div>
@@ -70,7 +70,7 @@ export default function AboutField({ about }: { about?: string }) {
               placeholder="درباره خود بنویسید"
               onChange={(e) => setValue(e.target.value)}
               value={value}
-              className="border-b border-zinc-300 bg-inherit dark:border-zinc-700 w-full px-2 py-1 outline-none mt-10 max-h-[300px] min-h-[100px]"
+              className="border-b border-zinc-300 bg-inherit dark:border-zinc-700 w-full px-2 py-1 outline-hidden mt-10 max-h-[300px] min-h-[100px]"
             />
             <div className="flex items-center justify-end gap-3 mt-10">
               <PrimaryBtn

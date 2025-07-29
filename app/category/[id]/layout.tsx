@@ -46,7 +46,7 @@ export default async function PodcastLayout(
         {userData && <DesktopNavbar />}
         <section className="w-full overflow-hidden pb-20">
           <div className="mt-20 flex items-center gap-4">
-            <span className="bg-zinc-200 dark:bg-darkColor-700 p-2 rounded-full text-2xl text-zinc-400">
+            <span className="bg-zinc-200 dark:bg-dark-color-700 p-2 rounded-full text-2xl text-zinc-400">
               <GoPaperclip />
             </span>
             <p className="vazir-bold text-2xl">{category.name}</p>
@@ -54,7 +54,7 @@ export default async function PodcastLayout(
 
           <div className="select-none w-full text-sm flex items-center gap-3 border-b border-zinc-200 dark:border-b-zinc-700 mt-14">
             <button
-              className={`text-myText-800 dark:text-white vazir-bold after:content-[''] after:absolute after:w-full after:bottom-[-1px] after:left-0 after:h-[1px] after:bg-myText-800 dark:after:bg-white pb-2 px-2 text-nowrap relative transition`}
+              className={`text-my-text-800 dark:text-white vazir-bold after:content-[''] after:absolute after:w-full after:-bottom-px after:left-0 after:h-px after:bg-my-text-800 dark:after:bg-white pb-2 px-2 text-nowrap relative transition`}
             >
               جدیدترین ها
             </button>

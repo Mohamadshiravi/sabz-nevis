@@ -54,7 +54,7 @@ export default function UserDetailsSection({
 
           <span className="vazir-bold">{displayName || username}</span>
         </div>
-        <span className="text-sm vazir-light sm:w-[400px] text-myText-600">
+        <span className="text-sm vazir-light sm:w-[400px] text-my-text-600">
           {about || ""}
         </span>
       </div>

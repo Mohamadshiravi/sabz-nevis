@@ -52,7 +52,7 @@ export default function AllCommentSection() {
           {loading ? (
             Array.from({ length: 3 }).map((e, i) => <CommentLoading key={i} />)
           ) : acceptedComments.length === 0 ? (
-            <h4 className="text-myText-500">همه کامنت ها تایید شده اند</h4>
+            <h4 className="text-my-text-500">همه کامنت ها تایید شده اند</h4>
           ) : (
             acceptedComments.map((e, i) => (
               <CommentField
@@ -73,7 +73,7 @@ export default function AllCommentSection() {
           {loading ? (
             Array.from({ length: 3 }).map((e, i) => <CommentLoading key={i} />)
           ) : queuedComments.length === 0 ? (
-            <h4 className="text-myText-500">هیچ کامنتی ثبت نشده</h4>
+            <h4 className="text-my-text-500">هیچ کامنتی ثبت نشده</h4>
           ) : (
             queuedComments.map((e, i) => (
               <CommentField

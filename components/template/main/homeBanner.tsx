@@ -40,7 +40,7 @@ export default function HomeBanner() {
           />
           <Link
             href={"/register"}
-            className="flex text-nowrap text-xs items-center gap-3 bg-myGreen-600 hover:bg-myGreen-700 transition rounded-full pr-5 pl-3 py-1.5 text-white vazir-bold"
+            className="flex text-nowrap text-xs items-center gap-3 bg-my-green-600 hover:bg-my-green-700 transition rounded-full pr-5 pl-3 py-1.5 text-white vazir-bold"
           >
             شروع به نوشتن
             <IoIosArrowBack className="text-sm" />

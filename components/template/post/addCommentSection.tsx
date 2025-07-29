@@ -33,7 +33,7 @@ export default function AddCommentSection({ id }: AddCommentSectionProps) {
     <form
       onSubmit={AddCommentHandler}
       onClick={!isOpen ? () => setIsOpen(true) : undefined}
-      className="mt-8 border border-zinc-200 dark:border-zinc-800 rounded-sm p-4"
+      className="mt-8 border border-zinc-200 dark:border-zinc-800 rounded-xs p-4"
     >
       <div className="flex items-center gap-4">
         <Image
@@ -45,14 +45,14 @@ export default function AddCommentSection({ id }: AddCommentSectionProps) {
         />
         <div className="relative overflow-hidden w-full cursor-text">
           <span
-            className={`text-myGreen-600 absolute block transition duration-300 ${
+            className={`text-my-green-600 absolute block transition duration-300 ${
               isOpen ? "translate-y-0" : "translate-y-[25px]"
             }`}
           >
             {username}
           </span>
           <span
-            className={`block transition duration-300 text-myText-600 text-sm ${
+            className={`block transition duration-300 text-my-text-600 text-sm ${
               !isOpen ? "translate-y-0" : "translate-y-[-25px]"
             }`}
           >
@@ -68,7 +68,7 @@ export default function AddCommentSection({ id }: AddCommentSectionProps) {
                 <span
                   onClick={() => setInput(e)}
                   key={i}
-                  className="border cursor-pointer border-myGreen-600 text-myGreen-600 text-xs px-2 py-1 rounded-sm"
+                  className="border cursor-pointer border-my-green-600 text-my-green-600 text-xs px-2 py-1 rounded-xs"
                 >
                   {e}...
                 </span>
@@ -78,7 +78,7 @@ export default function AddCommentSection({ id }: AddCommentSectionProps) {
           <textarea
             onChange={(e) => setInput(e.target.value)}
             value={input}
-            className="bg-inherit text-sm mt-4 w-full min-h-[100px] max-h-[600px] outline-none"
+            className="bg-inherit text-sm mt-4 w-full min-h-[100px] max-h-[600px] outline-hidden"
             placeholder="نظر خود را بنویسید"
           />
           <div className="flex items-center justify-end gap-4 border-t border-zinc-200 dark:border-zinc-800 pt-4">
@@ -103,7 +103,7 @@ export default function AddCommentSection({ id }: AddCommentSectionProps) {
       )}
     </form>
   ) : (
-    <div className="bg-myGreen-600/10 my-8 py-3 px-4 rounded-sm text-emerald-800">
+    <div className="bg-my-green-600/10 my-8 py-3 px-4 rounded-xs text-emerald-800">
       برای نوشتن نظر ابتدا وارد اکانت خود شوید
     </div>
   );

@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 
 export default function LoginSection() {
   return (
-    <main className="flex lg:flex-row flex-col items-center w-full h-screen text-myText-800">
-      <section className="relative w-full lg:h-full h-[300px] flex items-center justify-center bg-gradient-to-tl from-[#00b09b] to-[#96c93d]">
+    <main className="flex lg:flex-row flex-col items-center w-full h-screen text-my-text-800">
+      <section className="relative w-full lg:h-full h-[300px] flex items-center justify-center bg-linear-to-tl from-[#00b09b] to-[#96c93d]">
         <Link
           href={"/home"}
           className="absolute top-4 right-4  text-emerald-700 text-sm"

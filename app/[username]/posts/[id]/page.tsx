@@ -83,11 +83,11 @@ export default async function UserPosts(props: userPostsProps) {
             <div className="flex flex-col justify-between h-full">
               <span>{post.user.displayName || post.user.username}</span>
               <div className="flex items-center gap-2">
-                <span className="sm:text-xs text-[10px] text-myText-500">
+                <span className="sm:text-xs text-[10px] text-my-text-500">
                   خواندن {post?.readingTime} دقیقه
                 </span>
-                <GoDotFill className="text-[4px] text-myText-500" />
-                <span className="sm:text-xs text-[10px] text-myText-500">
+                <GoDotFill className="text-[4px] text-my-text-500" />
+                <span className="sm:text-xs text-[10px] text-my-text-500">
                   {relativeDate}
                 </span>
               </div>
@@ -101,7 +101,7 @@ export default async function UserPosts(props: userPostsProps) {
             ></div>
           </div>
           <div className="border-b border-zinc-200 dark:border-zinc-800 py-4 flex items-center justify-between">
-            <span className="text-xs border border-zinc-200 dark:border-zinc-800 px-4 py-1 rounded-sm text-myText-500 dark:text-myText-600">
+            <span className="text-xs border border-zinc-200 dark:border-zinc-800 px-4 py-1 rounded-xs text-my-text-500 dark:text-my-text-600">
               {post.category.name || ""}
             </span>
             <PostEvents postId={JSON.parse(JSON.stringify(post._id))} />
@@ -123,7 +123,7 @@ export default async function UserPosts(props: userPostsProps) {
           />
           <div id="commentSection" className="sm:py-8 sm:mt-0 mt-8">
             <div className="flex items-center gap-3 justify-center">
-              <span className="bg-myGreen-600 text-white rounded-full flex items-center justify-center w-[40px] h-[40px] text-xl">
+              <span className="bg-my-green-600 text-white rounded-full flex items-center justify-center w-[40px] h-[40px] text-xl">
                 <GoComment />
               </span>
               <span className="vazir-medium">نظرات</span>

@@ -47,7 +47,7 @@ export default function CommentField({
   }, [userId]);
 
   return (
-    <div className="border border-zinc-200 dark:border-zinc-800 p-4 rounded-sm">
+    <div className="border border-zinc-200 dark:border-zinc-800 p-4 rounded-xs">
       <Link
         href={`/@${data?.user.username}/profile`}
         className="flex items-center gap-4 h-[40px]"
@@ -60,10 +60,10 @@ export default function CommentField({
           className="rounded-full w-[40px] h-[40px] object-cover"
         />
         <div className="flex flex-col justify-between h-full">
-          <span className="text-myGreen-600 text-sm">
+          <span className="text-my-green-600 text-sm">
             {data.user.displayName || data.user.username}
           </span>
-          <span className="text-xs text-myText-500">
+          <span className="text-xs text-my-text-500">
             {data.createdAt
               ? formatDistanceToNow(new Date(data.createdAt), {
                   addSuffix: true,
@@ -95,7 +95,7 @@ export default function CommentField({
         {username && (
           <button
             onClick={() => setIsReplyOpen(true)}
-            className="text-myText-500 hover:text-myText-600 transition"
+            className="text-my-text-500 hover:text-my-text-600 transition"
           >
             <FaReply />
           </button>
@@ -104,7 +104,7 @@ export default function CommentField({
       {isReplyOpen && (
         <form
           onSubmit={AddCommentHandler}
-          className="mt-8 border border-zinc-200 dark:border-zinc-800 rounded-sm p-4"
+          className="mt-8 border border-zinc-200 dark:border-zinc-800 rounded-xs p-4"
         >
           <div className="flex items-center gap-4">
             <Image
@@ -116,7 +116,7 @@ export default function CommentField({
             />
             <div className="relative overflow-hidden w-full cursor-text">
               <span
-                className={`text-myGreen-600 block transition duration-300 `}
+                className={`text-my-green-600 block transition duration-300 `}
               >
                 {username}
               </span>
@@ -127,7 +127,7 @@ export default function CommentField({
             <textarea
               onChange={(e) => setInput(e.target.value)}
               value={input}
-              className="bg-inherit text-sm mt-4 w-full min-h-[100px] max-h-[600px] outline-none"
+              className="bg-inherit text-sm mt-4 w-full min-h-[100px] max-h-[600px] outline-hidden"
               placeholder="نظر خود را بنویسید"
             />
             <div className="flex items-center justify-end gap-4 border-t border-zinc-200 dark:border-zinc-800 pt-4">
@@ -153,7 +153,7 @@ export default function CommentField({
       )}
       {data.replyTo && (
         <div className="flex flex-col gap-3 mt-4">
-          <span className="text-sm text-myText-500">ریپلای به :</span>
+          <span className="text-sm text-my-text-500">ریپلای به :</span>
           <CommentReplyField data={data.replyTo} />
         </div>
       )}

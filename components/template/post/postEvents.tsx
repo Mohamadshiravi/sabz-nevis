@@ -53,7 +53,7 @@ export default function PostEvents({ postId }: { postId: string }) {
       <div className="w-[30px] h-[30px] bg-zinc-200 dark:bg-zinc-800 rounded-full"></div>
     </div>
   ) : (
-    <div className="flex items-center gap-6 text-xl text-myText-600">
+    <div className="flex items-center gap-6 text-xl text-my-text-600">
       {post?.likes.some((e) => e === userId) ? (
         <button
           onClick={ToggleLikePostHandler}

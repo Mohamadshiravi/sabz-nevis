@@ -26,7 +26,7 @@ export default function ColPost({
     <div
       className={`${
         bordered && "border border-zinc-200 dark:border-zinc-800"
-      } w-full h-full bg-white dark:bg-darkColor-800 rounded-md overflow-hidden flex flex-col`}
+      } w-full h-full bg-white dark:bg-dark-color-800 rounded-md overflow-hidden flex flex-col`}
     >
       <Link href={`/@${username}/posts/${id}`}>
         <Image
@@ -41,7 +41,7 @@ export default function ColPost({
       <div className="p-4 flex flex-col">
         <Link
           href={`/@${username}/posts/${id}`}
-          className="twoLineText text-myText-600 text-sm vazir-bold"
+          className="twoLineText text-my-text-600 text-sm vazir-bold"
         >
           {title}
         </Link>
@@ -61,7 +61,7 @@ export default function ColPost({
               {displayName || username}
             </span>
           </Link>
-          <span className="text-xs text-myText-600">
+          <span className="text-xs text-my-text-600">
             خواندن {readingTime} دقیقه
           </span>
         </div>

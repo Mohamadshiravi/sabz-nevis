@@ -66,7 +66,7 @@ export default function Post({
         border && "border-b border-zinc-200 dark:border-b-zinc-800 pb-6"
       } `}
     >
-      <div className="text-myText-600 sm:hidden flex items-center gap-1">
+      <div className="text-my-text-600 sm:hidden flex items-center gap-1">
         <Link
           href={`/@${data?.user.username}/profile`}
           className="flex items-center gap-1"
@@ -89,7 +89,7 @@ export default function Post({
       </div>
       <div className="flex justify-between mt-3">
         <div className="flex flex-col sm:gap-3 gap-2 sm:pl-10 pl-4">
-          <div className="items-center gap-1 text-myText-600 sm:flex hidden">
+          <div className="items-center gap-1 text-my-text-600 sm:flex hidden">
             <Link
               href={`/@${data?.user.username}/profile`}
               className="flex items-center gap-1"
@@ -115,7 +115,7 @@ export default function Post({
             className="flex flex-col sm:gap-3 gap-2"
           >
             <h2 className="text-lg vazir-bold">{data?.title}</h2>
-            <p className="twoLineText sm:text-sm text-xs text-myText-600">
+            <p className="twoLineText sm:text-sm text-xs text-my-text-600">
               {data?.desc}
             </p>
           </Link>
@@ -126,19 +126,19 @@ export default function Post({
           width={800}
           height={800}
           alt="photo title"
-          className="sm:w-[120px] sm:h-[120px] w-[90px] h-[90px] rounded-sm object-cover"
+          className="sm:w-[120px] sm:h-[120px] w-[90px] h-[90px] rounded-xs object-cover"
         />
       </div>
       <div className="w-full flex justify-between mt-8">
         <div className="flex items-center gap-3">
-          <span className="text-myText-800 dark:text-myText-400 text-xs bg-zinc-200 dark:bg-darkColor-600 sm:px-8 px-3 py-1 rounded-sm">
+          <span className="text-my-text-800 dark:text-my-text-400 text-xs bg-zinc-200 dark:bg-dark-color-600 sm:px-8 px-3 py-1 rounded-xs">
             {data?.category.name}
           </span>
-          <span className="sm:text-xs text-[10px] text-myText-500">
+          <span className="sm:text-xs text-[10px] text-my-text-500">
             خواندن {data?.readingTime} دقیقه
           </span>
         </div>
-        <div className="flex items-center sm:gap-16 gap-3 text-2xl text-myText-600">
+        <div className="flex items-center sm:gap-16 gap-3 text-2xl text-my-text-600">
           {isPostLiked ? (
             <button
               onClick={

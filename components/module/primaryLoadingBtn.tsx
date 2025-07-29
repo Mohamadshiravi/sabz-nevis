@@ -29,8 +29,8 @@ export default function PrimaryLoadingBtn({
         !loading
           ? `${
               isDisable
-                ? "border-myGreen-600/50 text-myGreen-600/50"
-                : "border-myGreen-600 hover:bg-myGreen-600 text-myGreen-600 hover:text-white"
+                ? "border-my-green-600/50 text-my-green-600/50"
+                : "border-my-green-600 hover:bg-my-green-600 text-my-green-600 hover:text-white"
             }`
           : "bg-zinc-200 cursor-not-allowed"
       } flex items-center border-2 py-1.5 overflow-hidden h-[35px] transition justify-center text-sm vazir-medium`}

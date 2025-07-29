@@ -60,10 +60,10 @@ export default function RegisterModal({
         onSubmit={sendCodeHandler}
         className={`transition sm:px-20 px-8 py-16 flex flex-col gap-2 items-center w-full`}
       >
-        <h3 className="text-lg vazir-bold text-myGreen-600">
+        <h3 className="text-lg vazir-bold text-my-green-600">
           ایجاد حساب کاربری
         </h3>
-        <h4 className="text-myText-600">شماره موبایل خود را وارد کنید</h4>
+        <h4 className="text-my-text-600">شماره موبایل خود را وارد کنید</h4>
         <input
           dir="ltr"
           onChange={(e) => {
@@ -72,7 +72,7 @@ export default function RegisterModal({
           }}
           value={phoneInp}
           type="text"
-          className="outline-none w-full border-b bg-inherit border-zinc-300 dark:border-zinc-700 py-2 mt-4"
+          className="outline-hidden w-full border-b bg-inherit border-zinc-300 dark:border-zinc-700 py-2 mt-4"
           placeholder="شماره موبایل خود را وارد کنید"
         />
 

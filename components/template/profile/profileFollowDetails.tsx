@@ -25,7 +25,7 @@ export default function ProfileFollowDetails({
 
   return (
     <>
-      <div className="flex items-center mt-3 gap-10 text-sm text-myText-600 dark:text-myText-400">
+      <div className="flex items-center mt-3 gap-10 text-sm text-my-text-600 dark:text-my-text-400">
         <h4
           className="cursor-pointer"
           onClick={() => {

@@ -29,7 +29,7 @@ export default function User({
   const userData = useTypedSelector((state) => state.user);
 
   return (
-    <div className="border dark:bg-darkColor-800 dark:border-zinc-800 p-4 border-zinc-200 w-full h-full justify-between bg-white rounded-md flex flex-col items-center">
+    <div className="border dark:bg-dark-color-800 dark:border-zinc-800 p-4 border-zinc-200 w-full h-full justify-between bg-white rounded-md flex flex-col items-center">
       <div className="flex flex-col items-center gap-3 w-full">
         <Image
           src={avatar}
@@ -41,7 +41,7 @@ export default function User({
 
         <Link
           href={`/@${username}/profile`}
-          className="text-myText-600 text-sm w-full text-center truncate w-full"
+          className="text-my-text-600 text-sm w-full text-center truncate w-full"
         >
           {username}
         </Link>

@@ -155,7 +155,7 @@ export default function SabzTextEditor({
     immediatelyRender: false,
     editorProps: {
       attributes: {
-        class: "outline-none leading-loose",
+        class: "outline-hidden leading-loose",
       },
     },
   });
@@ -169,17 +169,17 @@ export default function SabzTextEditor({
         }}
         value={headerInp}
         placeholder="عنوان را اینجا وارد کنید"
-        className="text-3xl vazir-bold lg:pr-10 bg-inherit w-full outline-none"
+        className="text-3xl vazir-bold lg:pr-10 bg-inherit w-full outline-hidden"
       />
       <section className="relative mt-16">
         {editor && (
           <BubbleMenu editor={editor} tippyOptions={{ duration: 100 }}>
             <div className="flex">
-              <div className="flex items-center gap-2 border border-zinc-200 dark:border-zinc-800 shadow-sm bg-white dark:bg-zinc-900 p-1 rounded-md">
+              <div className="flex items-center gap-2 border border-zinc-200 dark:border-zinc-800 shadow-xs bg-white dark:bg-zinc-900 p-1 rounded-md">
                 <div className="flex lg:flex-row flex-col items-center gap-2">
                   <label
                     title="Change Text Color"
-                    className={`bg-white curosr-pointer hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 text-zinc-600 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-white shadow-none transition rounded-sm dark:shadow-lg w-[33px] h-[33px] flex items-center justify-center`}
+                    className={`bg-white curosr-pointer hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 text-zinc-600 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-white shadow-none transition rounded-xs dark:shadow-lg w-[33px] h-[33px] flex items-center justify-center`}
                   >
                     <input
                       onChange={(e) => {
@@ -206,9 +206,9 @@ export default function SabzTextEditor({
                     title="add blockquote area"
                     className={`${
                       editor.isActive("blockquote")
-                        ? "bg-myGreen-600 hover:bg-mygreen-700 text-white"
+                        ? "bg-my-green-600 hover:bg-mygreen-700 text-white"
                         : "bg-white hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 text-zinc-600 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-white"
-                    } shadow-none transition rounded-sm dark:shadow-lg w-[33px] h-[33px] flex items-center justify-center`}
+                    } shadow-none transition rounded-xs dark:shadow-lg w-[33px] h-[33px] flex items-center justify-center`}
                   >
                     <SiComma />
                   </button>
@@ -219,9 +219,9 @@ export default function SabzTextEditor({
                     title="add code area"
                     className={`${
                       editor.isActive("codeBlock")
-                        ? "bg-myGreen-600 hover:bg-mygreen-700 text-white"
+                        ? "bg-my-green-600 hover:bg-mygreen-700 text-white"
                         : "bg-white hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 text-zinc-600 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-white"
-                    } shadow-none transition rounded-sm dark:shadow-lg w-[33px] h-[33px] flex items-center justify-center`}
+                    } shadow-none transition rounded-xs dark:shadow-lg w-[33px] h-[33px] flex items-center justify-center`}
                   >
                     <FaCode />
                   </button>
@@ -234,9 +234,9 @@ export default function SabzTextEditor({
                     title="add list circle"
                     className={`${
                       editor.isActive("bulletList")
-                        ? "bg-myGreen-600 hover:bg-mygreen-700 text-white"
+                        ? "bg-my-green-600 hover:bg-mygreen-700 text-white"
                         : "bg-white hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 text-zinc-600 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-white"
-                    } shadow-none transition rounded-sm dark:shadow-lg w-[33px] h-[33px] flex items-center justify-center`}
+                    } shadow-none transition rounded-xs dark:shadow-lg w-[33px] h-[33px] flex items-center justify-center`}
                   >
                     <FaListUl />
                   </button>
@@ -246,9 +246,9 @@ export default function SabzTextEditor({
                     onClick={() => editor.chain().focus().toggleItalic().run()}
                     className={`${
                       editor.isActive("italic")
-                        ? "bg-myGreen-600 hover:bg-mygreen-700 text-white"
+                        ? "bg-my-green-600 hover:bg-mygreen-700 text-white"
                         : "bg-white hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 text-zinc-600 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-white"
-                    } shadow-none transition rounded-sm dark:shadow-lg w-[33px] h-[33px] flex items-center justify-center`}
+                    } shadow-none transition rounded-xs dark:shadow-lg w-[33px] h-[33px] flex items-center justify-center`}
                   >
                     <FaItalic />
                   </button>
@@ -257,9 +257,9 @@ export default function SabzTextEditor({
                     onClick={() => editor.chain().focus().toggleBold().run()}
                     className={`${
                       editor.isActive("bold")
-                        ? "bg-myGreen-600 hover:bg-mygreen-700 text-white"
+                        ? "bg-my-green-600 hover:bg-mygreen-700 text-white"
                         : "bg-white hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 text-zinc-600 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-white"
-                    } shadow-none transition rounded-sm dark:shadow-lg w-[33px] h-[33px] flex items-center justify-center`}
+                    } shadow-none transition rounded-xs dark:shadow-lg w-[33px] h-[33px] flex items-center justify-center`}
                   >
                     <FaBold />
                   </button>
@@ -272,9 +272,9 @@ export default function SabzTextEditor({
                     onClick={AddHyperLinkHandler}
                     className={`${
                       editor.isActive("link")
-                        ? "bg-myGreen-600 hover:bg-mygreen-700 text-white"
+                        ? "bg-my-green-600 hover:bg-mygreen-700 text-white"
                         : "bg-white hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 text-zinc-600 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-white"
-                    } shadow-none transition rounded-sm dark:shadow-lg w-[33px] h-[33px] flex items-center justify-center`}
+                    } shadow-none transition rounded-xs dark:shadow-lg w-[33px] h-[33px] flex items-center justify-center`}
                   >
                     <FaLink />
                   </button>
@@ -286,9 +286,9 @@ export default function SabzTextEditor({
                     }}
                     className={`${
                       editor.isActive("heading", { level: 3 })
-                        ? "bg-myGreen-600 hover:bg-mygreen-700 text-white"
+                        ? "bg-my-green-600 hover:bg-mygreen-700 text-white"
                         : "bg-white hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 text-zinc-600 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-white"
-                    } shadow-none transition rounded-sm dark:shadow-lg w-[33px] h-[33px] flex items-center justify-center`}
+                    } shadow-none transition rounded-xs dark:shadow-lg w-[33px] h-[33px] flex items-center justify-center`}
                   >
                     <BiText />
                   </button>
@@ -299,9 +299,9 @@ export default function SabzTextEditor({
                     }}
                     className={`${
                       editor.isActive("heading", { level: 2 })
-                        ? "bg-myGreen-600 hover:bg-mygreen-700 text-white"
+                        ? "bg-my-green-600 hover:bg-mygreen-700 text-white"
                         : "bg-white hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 text-zinc-600 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-white"
-                    } shadow-none transition rounded-sm dark:shadow-lg w-[33px] h-[33px] flex items-center justify-center`}
+                    } shadow-none transition rounded-xs dark:shadow-lg w-[33px] h-[33px] flex items-center justify-center`}
                   >
                     <BiText className="text-2xl" />
                   </button>
@@ -334,7 +334,7 @@ export default function SabzTextEditor({
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setIsToolBarOpen((p) => !p)}
-                className={`border flex dark:border-zinc-500 z-[4] text-sm dark:text-zinc-500 w-[35px] h-[35px] items-center justify-center rounded-full`}
+                className={`border flex dark:border-zinc-500 z-4 text-sm dark:text-zinc-500 w-[35px] h-[35px] items-center justify-center rounded-full`}
               >
                 <FaPlus
                   className={`${isToolbarOpen && "rotate-45"} transition`}
@@ -346,7 +346,7 @@ export default function SabzTextEditor({
                   isToolbarOpen
                     ? "translate-x-[-45px] opacity-100"
                     : "translate-x-0 opacity-0"
-                } absolute transition z-[3] border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-800 rounded-full text-zinc-700 dark:text-zinc-300 text-xl shadow-lg`}
+                } absolute transition z-3 border border-zinc-300 dark:border-zinc-800 bg-white dark:bg-zinc-800 rounded-full text-zinc-700 dark:text-zinc-300 text-xl shadow-lg`}
               >
                 <label className="w-[35px] cursor-pointer h-[35px] flex items-center justify-center">
                   <input

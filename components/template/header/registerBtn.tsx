@@ -21,17 +21,17 @@ export default function RegisterBtn() {
       <div className="relative">
         <Link
           href={"/register"}
-          className="bg-myGreen-600 hover:bg-myGreen-700 transition rounded-full px-4 py-1.5 text-white vazir-bold"
+          className="bg-my-green-600 hover:bg-my-green-700 transition rounded-full px-4 py-1.5 text-white vazir-bold"
         >
           ثبت نام
         </Link>
         <div
           className={`${
             isDeskModalOpen ? "flex" : "hidden"
-          } bg-myGreen-600 flex-col gap-4 rounded-md w-[330px] absolute top-12 left-0 px-5 py-6`}
+          } bg-my-green-600 flex-col gap-4 rounded-md w-[330px] absolute top-12 left-0 px-5 py-6`}
         >
-          <div className="w-[40px] h-[40px] bg-myGreen-600 absolute -top-2 left-4 rotate-45 z-[0]"></div>
-          <div className="flex items-center justify-between z-[1]">
+          <div className="w-[40px] h-[40px] bg-my-green-600 absolute -top-2 left-4 rotate-45 z-0"></div>
+          <div className="flex items-center justify-between z-1">
             <h4 className="text-white vazir-medium">
               ثبت‌نام برای دسترسی به تمام امکانات سایت
             </h4>
@@ -45,7 +45,7 @@ export default function RegisterBtn() {
           <input
             type="number"
             placeholder="شماره موبایل خود را وارد کنید"
-            className="px-3 py-3 rounded-md bg-white/20 placeWhite outline-none"
+            className="px-3 py-3 rounded-md bg-white/20 placeWhite outline-hidden"
             value={inp}
             onChange={(e) => {
               setInp(e.target.value);

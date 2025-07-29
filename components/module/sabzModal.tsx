@@ -45,7 +45,7 @@ export default function SabzModal({ children, CloseModal }: SabzModalProps) {
           onClick={stopPropagation}
           className={`${
             isModalOpen ? "scale-[100%] opacity-1" : "scale-[80%] opacity-0"
-          } transition duration-300 bg-white dark:bg-darkColor-800 open-animate z-50 p-1 rounded-md shadow-xl sm:w-[600px] w-[92%]`}
+          } transition duration-300 bg-white dark:bg-dark-color-800 open-animate z-50 p-1 rounded-md shadow-xl sm:w-[600px] w-[92%]`}
         >
           {children}
         </div>

@@ -44,10 +44,10 @@ export default function HeaderProfileBtn() {
           className="fixed top-0 left-0 w-full h-screen"
         ></section>
       )}
-      <div className="relative h-[40px] z-[40]">
+      <div className="relative h-[40px] z-40">
         <button
           onClick={AnimateToggleModal}
-          className="flex items-center bg-zinc-100 cursor-pointer dark:bg-darkColor-700 h-full py-1 pl-0.5 gap-2 rounded-full"
+          className="flex items-center bg-zinc-100 cursor-pointer dark:bg-dark-color-700 h-full py-1 pl-0.5 gap-2 rounded-full"
         >
           <IoIosArrowDown className="mr-3 text-xs" />
           <Image
@@ -62,17 +62,17 @@ export default function HeaderProfileBtn() {
           <div
             className={`${
               isMenuOpen ? "opacity-1" : "opacity-0"
-            } absolute shadow-lg border border-zinc-200 dark:border-zinc-800 transition top-[51px] left-0 w-[240px] dark:bg-darkColor-800 bg-white rounded-md vazir-medium`}
+            } absolute shadow-lg border border-zinc-200 dark:border-zinc-800 transition top-[51px] left-0 w-[240px] dark:bg-dark-color-800 bg-white rounded-md vazir-medium`}
           >
-            <span className="w-[13px] h-[13px] bg-white absolute border-t border-l border-zinc-200 transition dark:border-zinc-800 dark:bg-darkColor-800 rotate-45 top-[-7px] left-6"></span>
+            <span className="w-[13px] h-[13px] bg-white absolute border-t border-l border-zinc-200 transition dark:border-zinc-800 dark:bg-dark-color-800 rotate-45 top-[-7px] left-6"></span>
             <div className="flex justify-between items-center p-4">
               <div className="flex flex-col gap-2 vazir-regular">
-                <span className="dark:text-myText-500 text-myText-600">
+                <span className="dark:text-my-text-500 text-my-text-600">
                   {userData.data?.displayName || userData.data?.username}
                 </span>
                 <Link
                   href={`/@${userData.data?.username}/profile`}
-                  className="text-myGreen-600"
+                  className="text-my-green-600"
                 >
                   مشاهده پروفایل
                 </Link>
@@ -85,8 +85,8 @@ export default function HeaderProfileBtn() {
                 alt={"user avatar"}
               />
             </div>
-            <div className="p-4 flex flex-col items-start gap-4 dark:text-myText-400 text-myText-600 border-t border-zinc-200 dark:border-zinc-800">
-              <Link href={"/post/create"} className="text-myGreen-600">
+            <div className="p-4 flex flex-col items-start gap-4 dark:text-my-text-400 text-my-text-600 border-t border-zinc-200 dark:border-zinc-800">
+              <Link href={"/post/create"} className="text-my-green-600">
                 نوشتن پست جدید
               </Link>
               <Link href={"/me/settings"}>تنظیمات حساب کاربری</Link>
@@ -97,7 +97,7 @@ export default function HeaderProfileBtn() {
 
             <button
               onClick={() => setIsModalOpen(true)}
-              className="p-4 flex flex-col w-full items-start gap-4 dark:text-myText-400 text-myText-600 border-t border-zinc-200 dark:border-zinc-800"
+              className="p-4 flex flex-col w-full items-start gap-4 dark:text-my-text-400 text-my-text-600 border-t border-zinc-200 dark:border-zinc-800"
             >
               خروج
             </button>

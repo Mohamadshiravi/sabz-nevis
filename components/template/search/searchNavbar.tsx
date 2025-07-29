@@ -13,8 +13,8 @@ export default function SearchNavbar() {
         href={`/search/posts?q=${searchedWord}`}
         className={`${
           `${path}?q=${searchedWord}` === `/search/posts?q=${searchedWord}`
-            ? "text-myText-800 dark:text-white vazir-bold after:content-[''] after:absolute after:w-full after:bottom-[-1px] after:left-0 after:h-[1px] after:bg-myText-800 dark:after:bg-white"
-            : "text-myText-600 dark:text-zinc-200 dark:hover:text-white hover:text-myText-800 vazir-medium"
+            ? "text-my-text-800 dark:text-white vazir-bold after:content-[''] after:absolute after:w-full after:-bottom-px after:left-0 after:h-px after:bg-my-text-800 dark:after:bg-white"
+            : "text-my-text-600 dark:text-zinc-200 dark:hover:text-white hover:text-my-text-800 vazir-medium"
         } pb-2 px-2 text-nowrap relative transition`}
       >
         پست ها
@@ -23,8 +23,8 @@ export default function SearchNavbar() {
         href={`/search/users?q=${searchedWord}`}
         className={`${
           `${path}?q=${searchedWord}` === `/search/users?q=${searchedWord}`
-            ? "text-myText-800 dark:text-white vazir-bold after:content-[''] after:absolute after:w-full after:bottom-[-1px] after:left-0 after:h-[1px] after:bg-myText-800 dark:after:bg-white"
-            : "text-myText-600 dark:text-zinc-200 dark:hover:text-white hover:text-myText-800 vazir-medium"
+            ? "text-my-text-800 dark:text-white vazir-bold after:content-[''] after:absolute after:w-full after:-bottom-px after:left-0 after:h-px after:bg-my-text-800 dark:after:bg-white"
+            : "text-my-text-600 dark:text-zinc-200 dark:hover:text-white hover:text-my-text-800 vazir-medium"
         } pb-2 px-2 text-nowrap relative transition`}
       >
         کاربران
@@ -33,8 +33,8 @@ export default function SearchNavbar() {
         href={`/search/lists?q=${searchedWord}`}
         className={`${
           `${path}?q=${searchedWord}` === `/search/lists?q=${searchedWord}`
-            ? "text-myText-800 dark:text-white vazir-bold after:content-[''] after:absolute after:w-full after:bottom-[-1px] after:left-0 after:h-[1px] after:bg-myText-800 dark:after:bg-white"
-            : "text-myText-600 dark:text-zinc-200 dark:hover:text-white hover:text-myText-800 vazir-medium"
+            ? "text-my-text-800 dark:text-white vazir-bold after:content-[''] after:absolute after:w-full after:-bottom-px after:left-0 after:h-px after:bg-my-text-800 dark:after:bg-white"
+            : "text-my-text-600 dark:text-zinc-200 dark:hover:text-white hover:text-my-text-800 vazir-medium"
         } pb-2 px-2 text-nowrap relative transition`}
       >
         لیست ها
@@ -43,8 +43,8 @@ export default function SearchNavbar() {
         href={`/search/categories?q=${searchedWord}`}
         className={`${
           `${path}?q=${searchedWord}` === `/search/categories?q=${searchedWord}`
-            ? "text-myText-800 dark:text-white vazir-bold after:content-[''] after:absolute after:w-full after:bottom-[-1px] after:left-0 after:h-[1px] after:bg-myText-800 dark:after:bg-white"
-            : "text-myText-600 dark:text-zinc-200 dark:hover:text-white hover:text-myText-800 vazir-medium"
+            ? "text-my-text-800 dark:text-white vazir-bold after:content-[''] after:absolute after:w-full after:-bottom-px after:left-0 after:h-px after:bg-my-text-800 dark:after:bg-white"
+            : "text-my-text-600 dark:text-zinc-200 dark:hover:text-white hover:text-my-text-800 vazir-medium"
         } pb-2 px-2 text-nowrap relative transition`}
       >
         موضوع ها

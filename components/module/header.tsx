@@ -53,7 +53,7 @@ export default function Header({ isTransparent }: { isTransparent?: boolean }) {
         userData.data ? "lg:sticky top-0 left-0" : "relative"
       } flex items-center justify-between md:px-6 px-2 py-2 ${
         !isTransparent
-          ? "border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-darkColor-800"
+          ? "border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-dark-color-800"
           : "bg-transparent"
       } z-40`}
     >
@@ -68,7 +68,7 @@ export default function Header({ isTransparent }: { isTransparent?: boolean }) {
       </Link>
       <form
         onSubmit={SearchHandler}
-        className="rounded-full bg-zinc-100 relative dark:bg-darkColor-700 text-sm items-center gap-3 px-3 py-1 md:flex hidden"
+        className="rounded-full bg-zinc-100 relative dark:bg-dark-color-700 text-sm items-center gap-3 px-3 py-1 md:flex hidden"
       >
         <IoSearch className="text-xl" />
         <input
@@ -77,7 +77,7 @@ export default function Header({ isTransparent }: { isTransparent?: boolean }) {
           placeholder="جست و جو در سبز نویس"
           value={searchInp}
           onChange={(e) => setSearchInp(e.target.value)}
-          className="bg-inherit w-[300px] outline-none py-1.5"
+          className="bg-inherit w-[300px] outline-hidden py-1.5"
         />
         {searchInp !== "" && (
           <button className="bg-zinc-800 text-white hover:bg-zinc-700 dark:bg-white dark:hover:bg-zinc-200 rounded-full absolute left-1 dark:text-zinc-800 w-[30px] h-[30px] text-xl flex items-center justify-center">
@@ -99,7 +99,7 @@ export default function Header({ isTransparent }: { isTransparent?: boolean }) {
               <div className="flex items-center gap-3">
                 <button
                   onClick={ChangeThemeHandler}
-                  className="p-2.5 flex bg-zinc-100 dark:bg-zinc-800 rounded-full items-center justify-between gap-4 dark:text-myText-400 text-myText-600"
+                  className="p-2.5 flex bg-zinc-100 dark:bg-zinc-800 rounded-full items-center justify-between gap-4 dark:text-my-text-400 text-my-text-600"
                 >
                   {userData.theme === "dark" ? (
                     <>

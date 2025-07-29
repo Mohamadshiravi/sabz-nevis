@@ -1,0 +1,35 @@
+@font-face {
+  font-family: "vazir-regular";
+  src: url("../public/font/vazir/Vazir-Regular-FD.woff2");
+}
+.vazir-regular {
+  font-family: "vazir-regular";
+}
+@font-face {
+  font-family: "vazir-medium";
+  src: url("../public/font/vazir/Vazir-Medium-FD.woff2");
+}
+.vazir-medium {
+  font-family: "vazir-medium";
+}
+@font-face {
+  font-family: "vazir-light";
+  src: url("../public/font/vazir/Vazir-Light-FD.woff2");
+}
+.vazir-light {
+  font-family: "vazir-light";
+}
+@font-face {
+  font-family: "vazir-bold";
+  src: url("../public/font/vazir/Vazir-Bold-FD.woff2");
+}
+.vazir-bold {
+  font-family: "vazir-bold";
+}
+@font-face {
+  font-family: "vazir-black";
+  src: url("../public/font/vazir/Vazir-Black-FD.woff2");
+}
+.vazir-black {
+  font-family: "vazir-black";
+}

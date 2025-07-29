@@ -10,10 +10,10 @@ export default async function AdminPanelDashboard() {
 
   return (
     <section className="mt-8">
-      <div className="border border-zinc-200 dark:border-zinc-800 px-6 py-10 flex-grow rounded-md flex gap-8 items-center justify-center vazir-medium">
+      <div className="border border-zinc-200 dark:border-zinc-800 px-6 py-10 grow rounded-md flex gap-8 items-center justify-center vazir-medium">
         <div className="flex flex-col items-center gap-2 text-lg">
           <span>مجموع کامنت ها</span>
-          <span className="font-mono font-bold text-3xl text-myGreen-600">
+          <span className="font-mono font-bold text-3xl text-my-green-600">
             {comments.length}
           </span>
         </div>

@@ -52,7 +52,7 @@ export default async function UserLists(props: userPostsProps) {
           <div className="flex flex-col justify-between h-full">
             <span>{list.user.displayName || list.user.username}</span>
             <div className="flex items-center gap-2">
-              <span className="sm:text-xs text-[10px] text-myText-500">
+              <span className="sm:text-xs text-[10px] text-my-text-500">
                 {list.createdAt
                   ? formatDistanceToNow(new Date(list.createdAt), {
                       addSuffix: true,
@@ -60,8 +60,8 @@ export default async function UserLists(props: userPostsProps) {
                     })
                   : ""}
               </span>
-              <GoDotFill className="text-[4px] text-myText-500" />
-              <span className="sm:text-xs text-[10px] text-myText-500">
+              <GoDotFill className="text-[4px] text-my-text-500" />
+              <span className="sm:text-xs text-[10px] text-my-text-500">
                 {list.posts.length} پست
               </span>
             </div>

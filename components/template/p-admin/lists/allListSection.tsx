@@ -67,7 +67,7 @@ export default function AllListsSection() {
           value={searchInp}
           placeholder="جستجو در لیست ها"
           type="text"
-          className="w-full bg-inherit outline-none"
+          className="w-full bg-inherit outline-hidden"
         />
       </div>
       {loading ? (

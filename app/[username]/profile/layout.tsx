@@ -42,7 +42,7 @@ export default async function UserProfilePage(
   }
   return (
     <>
-      <main className="bg-myText-200 dark:bg-darkColor-700">
+      <main className="bg-my-text-200 dark:bg-dark-color-700">
         <Header isTransparent />
         <section className="border-b-2 border-zinc-200 dark:border-b-zinc-700">
           <section className="flex flex-col items-center mt-4 gap-2">
@@ -56,7 +56,7 @@ export default async function UserProfilePage(
             <h1 className="vazir-black text-xl">
               {isAnyUserExist.displayName || isAnyUserExist.username}
             </h1>
-            <h3 className="text-sm dark:text-myText-400 px-4 overflow-hidden w-full text-center md:w-[400px] w-full">
+            <h3 className="text-sm dark:text-my-text-400 px-4 overflow-hidden w-full text-center md:w-[400px] w-full">
               {isAnyUserExist.about}
             </h3>
             <ProfileFollowDetails

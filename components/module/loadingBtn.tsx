@@ -29,8 +29,8 @@ export default function LoadingBtn({
         !loading
           ? `${
               isDisable
-                ? "bg-myGreen-600/50"
-                : "bg-myGreen-600 hover:bg-myGreen-700"
+                ? "bg-my-green-600/50"
+                : "bg-my-green-600 hover:bg-my-green-700"
             }`
           : "bg-zinc-200 cursor-not-allowed"
       } flex items-center py-1.5 overflow-hidden h-[35px] transition justify-center text-sm text-white vazir-medium`}

@@ -21,7 +21,7 @@ export default function SettingsAdvanced() {
             className={`px-4 py-2 ${
               userData.theme !== "dark"
                 ? "border-l border-zinc-400 dark:border-zinc-700"
-                : "bg-myGreen-600 text-white"
+                : "bg-my-green-600 text-white"
             }`}
           >
             <IoMoonSharp />
@@ -33,7 +33,7 @@ export default function SettingsAdvanced() {
             className={`px-4 py-2 ${
               userData.theme === "dark"
                 ? "border-r border-zinc-400 dark:border-zinc-700"
-                : "bg-myGreen-600 text-white"
+                : "bg-my-green-600 text-white"
             }`}
           >
             <MdSunny />

@@ -25,8 +25,8 @@ export default function AdminPanelList({
 
   return (
     <>
-      <div className="flex flex-col bg-zinc-100 dark:bg-darkColor-700 border border-zinc-200 dark:border-zinc-700 rounded-md overflow-hidden">
-        <div className="text-myText-600 flex items-center gap-1 border-b border-zinc-200 dark:border-zinc-800 p-3">
+      <div className="flex flex-col bg-zinc-100 dark:bg-dark-color-700 border border-zinc-200 dark:border-zinc-700 rounded-md overflow-hidden">
+        <div className="text-my-text-600 flex items-center gap-1 border-b border-zinc-200 dark:border-zinc-800 p-3">
           <Link
             href={`/@${data?.user.username}/profile`}
             className="flex items-center gap-1"
@@ -81,7 +81,7 @@ export default function AdminPanelList({
               ))}
             </div>
           ) : (
-            <div className="flex items-center justify-center w-full h-full text-sm text-myText-400 sm:h-[200px] h-[100px] sm:w-[200px] w-full">
+            <div className="flex items-center justify-center w-full h-full text-sm text-my-text-400 sm:h-[200px] h-[100px] sm:w-[200px] w-full">
               پستی موجود نیست
             </div>
           )}

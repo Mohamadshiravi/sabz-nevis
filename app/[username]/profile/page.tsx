@@ -61,7 +61,7 @@ export default function MainProfileSction(
   }
   return (
     <>
-      <section className="pt-12 pb-24 bg-white dark:bg-darkColor-800">
+      <section className="pt-12 pb-24 bg-white dark:bg-dark-color-800">
         <div className="flex flex-col gap-8 lg:w-8/12 w-full lg:px-0 sm:px-20 px-4 m-auto">
           {loading ? (
             Array.from({ length: 3 }).map((e, i) => <PostLoading key={i} />)

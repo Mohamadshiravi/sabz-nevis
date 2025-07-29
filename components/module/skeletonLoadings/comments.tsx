@@ -1,6 +1,6 @@
 export default function CommentLoading() {
   return (
-    <div className="border border-zinc-200 dark:border-zinc-800 p-4 rounded-sm">
+    <div className="border border-zinc-200 dark:border-zinc-800 p-4 rounded-xs">
       <div className="flex items-center gap-4 h-[40px]">
         <div className="rounded-full w-[40px] h-[40px] object-cover bg-zinc-200 dark:bg-zinc-800 animate-pulse"></div>
 

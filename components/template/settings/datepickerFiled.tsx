@@ -48,11 +48,11 @@ export default function DatePickerField({ birthDay }: { birthDay?: string }) {
       >
         <div className="flex flex-col gap-2">
           <h3 className="vazir-medium">تاریخ تولد</h3>
-          <h4 className="text-myText-600 text-sm pl-2">
+          <h4 className="text-my-text-600 text-sm pl-2">
             تاریخ تولد در پروفایل نمایش داده نمی‌شود.
           </h4>
         </div>
-        <span className="text-xs border border-zinc-200 px-4 py-1 rounded-md outline-none">
+        <span className="text-xs border border-zinc-200 px-4 py-1 rounded-md outline-hidden">
           {birthDay || "تاریخ تولد خود را وارد کنید"}
         </span>
       </div>
@@ -67,7 +67,7 @@ export default function DatePickerField({ birthDay }: { birthDay?: string }) {
               placeholder="تاریخ تولد خود را وارد کنید نمونه : 1385/8/8"
               onChange={(e) => setValue(e.target.value)}
               value={value}
-              className="border-b bg-inherit dark:border-zinc-700 border-zinc-300 w-full px-2 py-1 outline-none mt-10"
+              className="border-b bg-inherit dark:border-zinc-700 border-zinc-300 w-full px-2 py-1 outline-hidden mt-10"
             />
             <div className="flex items-center justify-end gap-3 mt-10">
               <PrimaryBtn

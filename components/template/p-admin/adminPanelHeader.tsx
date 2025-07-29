@@ -45,14 +45,14 @@ export default function AdminPanelHeader() {
       {isMenuOpen && (
         <section
           onClick={() => setIsMenuOpen(false)}
-          className="fixed top-0 left-0 h-screen w-full backdrop-blur-[5px] z-[41] lg:hidden block"
+          className="fixed top-0 left-0 h-screen w-full backdrop-blur-[5px] z-41 lg:hidden block"
         >
           <AdminPanelNavbar />
         </section>
       )}
       <header
         className="flex items-center justify-between md:px-6 px-2 py-2 
-            border-b border-zinc-200 dark:border-zinc-800 sticky top-0 left-0 bg-white dark:bg-darkColor-800 z-40"
+            border-b border-zinc-200 dark:border-zinc-800 sticky top-0 left-0 bg-white dark:bg-dark-color-800 z-40"
       >
         <Link href={"/home"} className="lg:block hidden">
           <Image
@@ -75,7 +75,7 @@ export default function AdminPanelHeader() {
               <div className="flex items-center gap-3">
                 <button
                   onClick={ChangeThemeHandler}
-                  className="p-2.5 flex bg-zinc-100 dark:bg-zinc-800 rounded-full items-center justify-between gap-4 dark:text-myText-400 text-myText-600"
+                  className="p-2.5 flex bg-zinc-100 dark:bg-zinc-800 rounded-full items-center justify-between gap-4 dark:text-my-text-400 text-my-text-600"
                 >
                   {userData.theme === "dark" ? (
                     <>

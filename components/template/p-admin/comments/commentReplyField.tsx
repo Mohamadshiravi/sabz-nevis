@@ -43,10 +43,10 @@ export default function CommentReplyField({
           className="rounded-full w-[40px] h-[40px] object-cover"
         />
         <div className="flex flex-col justify-between h-full">
-          <span className="text-myGreen-600 text-sm">
+          <span className="text-my-green-600 text-sm">
             {data.user.displayName || data.user.username}
           </span>
-          <span className="text-xs text-myText-500">
+          <span className="text-xs text-my-text-500">
             {data.createdAt
               ? formatDistanceToNow(new Date(data.createdAt), {
                   addSuffix: true,

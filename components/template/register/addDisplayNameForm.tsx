@@ -54,7 +54,7 @@ export default function AddDisplayNameForm() {
           value={displayName}
           onChange={(e) => setDisplayName(e.target.value)}
           type="text"
-          className="InpShadow mt-10 w-full outline-none border px-4 border-zinc-200 py-3 rounded-full shadow-md"
+          className="InpShadow mt-10 w-full outline-hidden border px-4 border-zinc-200 py-3 rounded-full shadow-md"
           placeholder="نام و نام خانوادگی "
         />
         <div className="flex items-center gap-4 justify-between w-full">

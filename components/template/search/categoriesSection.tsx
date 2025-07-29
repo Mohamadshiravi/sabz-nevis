@@ -46,7 +46,7 @@ export default function SearchedCategoriesSection() {
           <Link
             href={`/category/${e._id}`}
             key={i}
-            className="text-xl px-4 py-1 rounded-md transition cursor-pointer text-center text-myText-800 dark:text-myText-500 border border-myText-800 dark:border-myText-500"
+            className="text-xl px-4 py-1 rounded-md transition cursor-pointer text-center text-my-text-800 dark:text-my-text-500 border border-my-text-800 dark:border-my-text-500"
           >
             {e.name}
           </Link>

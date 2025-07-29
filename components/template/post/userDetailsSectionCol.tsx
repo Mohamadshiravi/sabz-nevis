@@ -48,11 +48,11 @@ export default function UserDetailsSectionCol({
 
       <span className="vazir-bold">{displayName || username}</span>
 
-      <span className="vazir-medium text-myGreen-600 text-sm py-2">
+      <span className="vazir-medium text-my-green-600 text-sm py-2">
         0 دنبال کننده
       </span>
 
-      <span className="text-sm vazir-light w-[200px] text-myText-600">
+      <span className="text-sm vazir-light w-[200px] text-my-text-600">
         {about || ""}
       </span>
 

@@ -28,7 +28,7 @@ export default function AdminPanelPosts({
   return (
     <>
       <div className="flex flex-col border border-zinc-200 dark:border-zinc-800 p-4 rounded-md">
-        <div className="text-myText-600 flex items-center gap-1 border-b border-zinc-200 dark:border-zinc-800 pb-3">
+        <div className="text-my-text-600 flex items-center gap-1 border-b border-zinc-200 dark:border-zinc-800 pb-3">
           <Link
             href={`/@${data?.user.username}/profile`}
             className="flex items-center gap-1"
@@ -50,7 +50,7 @@ export default function AdminPanelPosts({
         <div className="w-full flex items-center justify-between mt-3">
           <div className="flex flex-col gap-0">
             <div className="vazir-bold text-xl">{data.title}</div>
-            <div className="text-myText-500 text-sm mt-6">
+            <div className="text-my-text-500 text-sm mt-6">
               اخرین ویرایش :
               {data?.updatedAt
                 ? formatDistanceToNow(new Date(data.updatedAt), {
@@ -59,7 +59,7 @@ export default function AdminPanelPosts({
                   })
                 : ""}
             </div>
-            <div className="text-myText-500 text-sm mt-2">
+            <div className="text-my-text-500 text-sm mt-2">
               ساخته شده در :
               {data?.createdAt
                 ? formatDistanceToNow(new Date(data.createdAt), {

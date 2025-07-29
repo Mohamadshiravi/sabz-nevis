@@ -46,7 +46,7 @@ export default function AllCategoriesSection() {
             value={value}
             placeholder="افزودن موضوع جدید"
             type="text"
-            className="w-full bg-inherit outline-none"
+            className="w-full bg-inherit outline-hidden"
           />
         </div>
         <LoadingBtn>افزودن</LoadingBtn>
@@ -57,7 +57,7 @@ export default function AllCategoriesSection() {
           ? Array.from({ length: 30 }).map((e, i) => (
               <div
                 key={i}
-                className="bg-zinc-200 rounded-md dark:bg-zinc-800 animate-pulse w-[110px] flex-grow h-[45px]"
+                className="bg-zinc-200 rounded-md dark:bg-zinc-800 animate-pulse w-[110px] grow h-[45px]"
               ></div>
             ))
           : categories?.map((e, i) => (

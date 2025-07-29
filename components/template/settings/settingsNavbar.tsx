@@ -11,8 +11,8 @@ export default function SettingsNavbar() {
         href={"/me/settings"}
         className={`${
           path === "/me/settings"
-            ? "text-myText-800 dark:text-white vazir-bold after:content-[''] after:absolute after:w-full after:bottom-[-1px] after:left-0 after:h-[2px] after:bg-myText-800 dark:after:bg-white"
-            : "text-myText-600 dark:text-zinc-200 dark:hover:text-white hover:text-myText-800 vazir-medium"
+            ? "text-my-text-800 dark:text-white vazir-bold after:content-[''] after:absolute after:w-full after:-bottom-px after:left-0 after:h-[2px] after:bg-my-text-800 dark:after:bg-white"
+            : "text-my-text-600 dark:text-zinc-200 dark:hover:text-white hover:text-my-text-800 vazir-medium"
         } pb-2 px-2 text-nowrap relative transition`}
       >
         درباره شما
@@ -21,8 +21,8 @@ export default function SettingsNavbar() {
         href={"/me/settings/account"}
         className={`${
           path === "/me/settings/account"
-            ? "text-myText-800 dark:text-white vazir-bold after:content-[''] after:absolute after:w-full after:bottom-[-1px] after:left-0 after:h-[2px] after:bg-myText-800 dark:after:bg-white"
-            : "text-myText-600 dark:text-zinc-200 dark:hover:text-white hover:text-myText-800 vazir-medium"
+            ? "text-my-text-800 dark:text-white vazir-bold after:content-[''] after:absolute after:w-full after:-bottom-px after:left-0 after:h-[2px] after:bg-my-text-800 dark:after:bg-white"
+            : "text-my-text-600 dark:text-zinc-200 dark:hover:text-white hover:text-my-text-800 vazir-medium"
         } pb-2 px-2 text-nowrap relative transition`}
       >
         حساب کاربری
@@ -31,8 +31,8 @@ export default function SettingsNavbar() {
         href={"/me/settings/advanced"}
         className={`${
           path === "/me/settings/advanced"
-            ? "text-myText-800 dark:text-white vazir-bold after:content-[''] after:absolute after:w-full after:bottom-[-1px] after:left-0 after:h-[2px] after:bg-myText-800 dark:after:bg-white"
-            : "text-myText-600 dark:text-zinc-200 dark:hover:text-white hover:text-myText-800 vazir-medium"
+            ? "text-my-text-800 dark:text-white vazir-bold after:content-[''] after:absolute after:w-full after:-bottom-px after:left-0 after:h-[2px] after:bg-my-text-800 dark:after:bg-white"
+            : "text-my-text-600 dark:text-zinc-200 dark:hover:text-white hover:text-my-text-800 vazir-medium"
         } pb-2 px-2 text-nowrap relative transition`}
       >
         شخصی سازی

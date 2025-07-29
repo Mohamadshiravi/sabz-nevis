@@ -82,7 +82,7 @@ export default function PhoneField({ phone }: { phone?: string }) {
               onChange={(e) => setPhoneInp(e.target.value)}
               value={phoneInp}
               type="text"
-              className="border-b border-zinc-300 bg-inherit dark:border-zinc-700 w-full px-2 py-1 outline-none mt-10"
+              className="border-b border-zinc-300 bg-inherit dark:border-zinc-700 w-full px-2 py-1 outline-hidden mt-10"
             />
             <div className="flex items-center justify-end gap-3 mt-10">
               <PrimaryBtn
@@ -104,10 +104,10 @@ export default function PhoneField({ phone }: { phone?: string }) {
             onSubmit={HandlerVerifyCode}
             className={`bg-white flex flex-col sm:px-20 px-8 gap-2 py-16 items-center`}
           >
-            <h1 className="vazir-black text-xl text-myGreen-600 lg:mt-0 mt-8">
+            <h1 className="vazir-black text-xl text-my-green-600 lg:mt-0 mt-8">
               کد تائید را وارد کنید
             </h1>
-            <h3 className="text-myText-600">
+            <h3 className="text-my-text-600">
               کد تائید برای شماره موبایل
               <span className="vazir-bold px-1 underline">{phoneInp}</span>
               ارسال گردید
@@ -119,18 +119,18 @@ export default function PhoneField({ phone }: { phone?: string }) {
                   key={i}
                   maxLength={1}
                   type="tel"
-                  className="InpShadow outline-none text-center border border-zinc-200 py-3 rounded-full sm:w-[50px] w-[40px] sm:h-[50px] h-[40px] p-1"
+                  className="InpShadow outline-hidden text-center border border-zinc-200 py-3 rounded-full sm:w-[50px] w-[40px] sm:h-[50px] h-[40px] p-1"
                   onChange={(e) => handleInputChange(e, i)}
                 />
               ))}
             </div>
             <div className="flex flex-col items-center gap-4 mt-10">
               {seconds === 0 ? (
-                <button className="text-myGreen-600 text-sm">
+                <button className="text-my-green-600 text-sm">
                   ارسال مجدد کد
                 </button>
               ) : (
-                <span className="text-myGreen-600 text-sm">
+                <span className="text-my-green-600 text-sm">
                   تا ارسال مجدد کد : {formatTime(seconds)}
                 </span>
               )}
@@ -142,7 +142,7 @@ export default function PhoneField({ phone }: { phone?: string }) {
                   setIsRegisterModalOpen(true);
                   setIsVerifyCodeModalOpen(false);
                 }}
-                className="flex text-nowrap lg:w-auto w-full text-sm items-center justify-center gap-2 bg-zinc-200 hover:bg-zinc-200 transition rounded-md px-4 py-2 text-myText-600"
+                className="flex text-nowrap lg:w-auto w-full text-sm items-center justify-center gap-2 bg-zinc-200 hover:bg-zinc-200 transition rounded-md px-4 py-2 text-my-text-600"
               >
                 <IoIosArrowForward className="text-lg" />
                 برگشت به مرحله قبل

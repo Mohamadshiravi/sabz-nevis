@@ -93,7 +93,7 @@ export default function CreatePostPage() {
           {!draftLoading ? (
             <Link
               href={"/me/posts"}
-              className="border sm:block hidden border-myGreen-600 text-myGreen-600 px-2 py-2 text-[11px] rounded-sm hover:text-myGreen-600Hover hover:border-myGreen-600Hover transition"
+              className="border sm:block hidden border-my-green-600 text-my-green-600 px-2 py-2 text-[11px] rounded-xs hover:text-myGreen-600Hover hover:border-myGreen-600Hover transition"
             >
               رفتن به پیش نویس ها
             </Link>
@@ -119,7 +119,7 @@ export default function CreatePostPage() {
             {!draftLoading ? (
               <Link
                 href={"/me/posts"}
-                className="border sm:hidden block border-myGreen-600 text-myGreen-600 px-2 py-2 text-[11px] rounded-sm hover:text-myGreen-600Hover hover:border-myGreen-600Hover transition"
+                className="border sm:hidden block border-my-green-600 text-my-green-600 px-2 py-2 text-[11px] rounded-xs hover:text-myGreen-600Hover hover:border-myGreen-600Hover transition"
               >
                 رفتن به پیش نویس ها
               </Link>

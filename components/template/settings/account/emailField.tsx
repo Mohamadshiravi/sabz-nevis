@@ -62,7 +62,7 @@ export default function EmailField({ email }: { email?: string }) {
               onChange={(e) => setValue(e.target.value)}
               value={value}
               type="text"
-              className="border-b border-zinc-300 bg-inherit dark:border-zinc-700 w-full px-2 py-1 outline-none mt-10"
+              className="border-b border-zinc-300 bg-inherit dark:border-zinc-700 w-full px-2 py-1 outline-hidden mt-10"
             />
             <div className="flex items-center justify-end gap-3 mt-10">
               <PrimaryBtn

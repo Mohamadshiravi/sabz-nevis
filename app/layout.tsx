@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "@/style/globals.css";
-import { ToastContainer } from "react-toastify";
+import "@/style/fonts.css";
+
 import ReduxProvider from "@/redux/provider";
 import GetTheme from "@/components/module/getTheme/getTheme";
 import GoToAdminPanel from "@/components/module/adminPanelBtn";
@@ -24,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="fa-IR" dir="rtl">
       <body
-        className={`antialiased text-base select-none vazir-regular text-myText-800 bg-white dark:bg-darkColor-800 dark:text-white`}
+        className={`antialiased text-base select-none vazir-regular text-my-text-800 bg-white dark:bg-dark-color-800 dark:text-white`}
       >
         <ReduxProvider>
           <GetTheme />

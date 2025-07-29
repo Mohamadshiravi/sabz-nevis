@@ -30,10 +30,10 @@ export default function AddListModal({
           onChange={(e) => setName(e.target.value)}
           value={name}
           type="text"
-          className="outline-none w-full border-b text-sm border-zinc-300 dark:border-zinc-700 py-2 mt-10 bg-inherit"
+          className="outline-hidden w-full border-b text-sm border-zinc-300 dark:border-zinc-700 py-2 mt-10 bg-inherit"
           placeholder="نام لیست خود را وارد کنید"
         />
-        <div className="flex items-center gap-2 text-sm mt-2 dark:text-myText-400">
+        <div className="flex items-center gap-2 text-sm mt-2 dark:text-my-text-400">
           <input
             checked={status}
             onChange={(e) => setStatus(e.target.checked)}

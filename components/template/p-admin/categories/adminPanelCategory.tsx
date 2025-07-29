@@ -20,7 +20,7 @@ export default function AdminPanelCategory({
   const [loading, setLoading] = useState(false);
   return (
     <>
-      <div className="sm:text-lg flex items-center justify-between gap-4 text-base shadow-lg border-2 border-dashed px-4 flex-grow py-2 vazir-medium rounded-md transition cursor-pointer text-center text-myText-800 dark:text-myText-500 border border-myText-800 dark:border-myText-500">
+      <div className="sm:text-lg flex items-center justify-between gap-4 text-base shadow-lg border-2 border-dashed px-4 grow py-2 vazir-medium rounded-md transition cursor-pointer text-center text-my-text-800 dark:text-my-text-500 border border-my-text-800 dark:border-my-text-500">
         {data.name}
         <div className="flex items-center gap-3">
           <Link href={`/category/${data._id}`}>

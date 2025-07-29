@@ -46,7 +46,7 @@ export default function XProfileField({ xProfile }: { xProfile?: string }) {
       >
         <div className="flex flex-col gap-2">
           <h3 className="vazir-medium">پروفایل اکس (x.com)</h3>
-          <h4 className="text-myText-600 text-sm pl-2">
+          <h4 className="text-my-text-600 text-sm pl-2">
             نام کاربری شما در اکس
           </h4>
         </div>
@@ -65,7 +65,7 @@ export default function XProfileField({ xProfile }: { xProfile?: string }) {
               placeholder=" نام کاربری شما در اکس"
               onChange={(e) => setValue(e.target.value)}
               value={value}
-              className="border-b border-zinc-300 bg-inherit dark:border-zinc-700 w-full px-2 py-1 outline-none mt-10"
+              className="border-b border-zinc-300 bg-inherit dark:border-zinc-700 w-full px-2 py-1 outline-hidden mt-10"
             />
             <div className="flex items-center justify-end gap-3 mt-10">
               <PrimaryBtn
