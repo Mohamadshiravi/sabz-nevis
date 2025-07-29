@@ -45,7 +45,7 @@ export async function POST(req: Request) {
       user: newUser._id,
     });
 
-    cookies().set({
+    (await cookies()).set({
       name: "token",
       value: token,
       httpOnly: true,

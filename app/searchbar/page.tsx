@@ -11,17 +11,17 @@ import { IoIosArrowBack } from "react-icons/io";
 import { IoSearch } from "react-icons/io5";
 
 export default function SearchBarPage() {
-  const [searchInp, setsearchInp] = useState("");
+  const [searchInp, setSearchInp] = useState("");
 
   const router = useRouter();
 
-  const { data: categorys, loading } = useTypedSelector(
+  const { data: categories, loading } = useTypedSelector(
     (state) => state.categories
   );
   const dispatch = useTypedDispatch();
 
   useEffect(() => {
-    if (!categorys) {
+    if (!categories) {
       dispatch(fetchCategoriesFromServer());
     }
   }, []);
@@ -39,7 +39,7 @@ export default function SearchBarPage() {
             type="text"
             placeholder="جست و جو در سبز نویس"
             value={searchInp}
-            onChange={(e) => setsearchInp(e.target.value)}
+            onChange={(e) => setSearchInp(e.target.value)}
             className="bg-inherit lg:text-xl text-base w-full h-full outline-none py-1.5 rounded-l-full"
           />
           {searchInp !== "" && (
@@ -59,10 +59,11 @@ export default function SearchBarPage() {
                   className="bg-zinc-200 rounded-md dark:bg-zinc-800 animate-pulse w-[110px] flex-grow h-[45px]"
                 ></div>
               ))
-            : categorys?.map((e, i) => (
+            : categories?.map((e) => (
                 <Link
+                  key={e._id}
                   href={`/category/${e._id}`}
-                  className="sm:text-lg text-base shadow-lg border-2 border-dashed px-6 flex-grow py-2 vazir-medium rounded-md transition cursor-pointer text-center text-myText-800 dark:text-myText-500 border border-myText-800 dark:border-myText-500"
+                  className="sm:text-lg text-base shadow-lg border-dashed px-6 flex-grow py-2 vazir-medium rounded-md transition cursor-pointer text-center text-myText-800 dark:text-myText-500 border border-myText-800 dark:border-myText-500"
                 >
                   {e.name}
                 </Link>

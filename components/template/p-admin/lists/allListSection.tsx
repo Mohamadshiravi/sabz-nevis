@@ -12,7 +12,7 @@ export default function AllListsSection() {
   const [lists, setLists] = useState<[] | ListModelType[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const [searchInp, setsearchInp] = useState("");
+  const [searchInp, setSearchInp] = useState("");
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -63,7 +63,7 @@ export default function AllListsSection() {
       <div className="flex items-center gap-3 border-2 text-base vazir-light rounded-md px-3 py-3 border-zinc-200 dark:border-zinc-800">
         <IoIosSearch className="text-2xl text-zinc-500" />
         <input
-          onChange={(e) => setsearchInp(e.target.value)}
+          onChange={(e) => setSearchInp(e.target.value)}
           value={searchInp}
           placeholder="جستجو در لیست ها"
           type="text"

@@ -37,7 +37,7 @@ export async function POST(req: Request) {
     await otpModel.findOneAndDelete({ _id: isPhoneExist._id });
 
     //Change user phone
-    const oldToken = cookies().get("token")?.value;
+    const oldToken = (await cookies()).get("token")?.value;
     let oldPhone = null;
     if (typeof oldToken === "string") {
       const verifyToken = VerifyAccessToken(oldToken);
@@ -49,7 +49,7 @@ export async function POST(req: Request) {
     await userModel.findOneAndUpdate({ phone: oldPhone }, { phone });
     const token = JenerateAccessToken({ phone });
 
-    cookies().set({
+    (await cookies()).set({
       name: "token",
       value: token,
       httpOnly: true,

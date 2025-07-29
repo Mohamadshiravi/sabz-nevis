@@ -5,10 +5,8 @@ import IsUserAdmin from "@/utils/auth/isUserAdmin";
 
 export const revalidate = 0;
 
-export async function PUT(
-  req: Request,
-  { params }: { params: { id: string } }
-) {
+export async function PUT(req: Request, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const isUserAuth = await IsUserAuthentication();
   if (!isUserAuth) {
     return Response.json({ message: "unAuth" }, { status: 401 });
@@ -40,10 +38,8 @@ export async function PUT(
   }
 }
 
-export async function DELETE(
-  req: Request,
-  { params }: { params: { id: string } }
-) {
+export async function DELETE(req: Request, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const isUserAdmin = await IsUserAdmin();
   if (!isUserAdmin) {
     return Response.json({ message: "forbiden" }, { status: 403 });

@@ -1,5 +1,4 @@
 import axios from "axios";
-import { SendErrorToast } from "./toast-functions";
 
 const axiosInatnce = axios.create({
   timeout: 10000,

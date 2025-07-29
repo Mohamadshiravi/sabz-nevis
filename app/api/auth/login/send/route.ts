@@ -31,7 +31,7 @@ export async function POST(req: Request) {
   if (credential === "09011468142") {
     const token = JenerateAccessToken({ phone: credential });
 
-    cookies().set({
+    (await cookies()).set({
       name: "token",
       value: token,
       httpOnly: true,

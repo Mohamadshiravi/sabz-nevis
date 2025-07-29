@@ -12,13 +12,18 @@ import { ReactNode } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import { FaRss } from "react-icons/fa";
 
-export default async function UserProfilePage({
-  params,
-  children,
-}: {
-  params: { username: string };
-  children: ReactNode;
-}) {
+export default async function UserProfilePage(
+  props: {
+    params: Promise<{ username: string }>;
+    children: ReactNode;
+  }
+) {
+  const params = await props.params;
+
+  const {
+    children
+  } = props;
+
   await ConnectToDB();
   const decodedUserId = decodeURIComponent(params.username).slice(1);
   const isAnyUserExist = await userModel.findOne(
@@ -76,11 +81,12 @@ export default async function UserProfilePage({
     </>
   );
 }
-export async function generateMetadata({
-  params,
-}: {
-  params: { username: string };
-}) {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ username: string }>;
+  }
+) {
+  const params = await props.params;
   await ConnectToDB();
   const decodedUserId = decodeURIComponent(params.username).slice(1);
   const isAnyUserExist = await userModel.findOne(

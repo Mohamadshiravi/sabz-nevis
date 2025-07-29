@@ -9,13 +9,18 @@ import { notFound } from "next/navigation";
 import { ReactNode } from "react";
 import { GoPaperclip } from "react-icons/go";
 
-export default async function PodcastLayout({
-  children,
-  params,
-}: {
-  children: ReactNode;
-  params: { id: string };
-}) {
+export default async function PodcastLayout(
+  props: {
+    children: ReactNode;
+    params: Promise<{ id: string }>;
+  }
+) {
+  const params = await props.params;
+
+  const {
+    children
+  } = props;
+
   const userData = await IsUserAuthentication();
 
   if (!mongoose.Types.ObjectId.isValid(params.id)) {

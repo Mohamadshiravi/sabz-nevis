@@ -12,7 +12,7 @@ export function VerifyAccessToken(token: string) {
     if (typeof payload === "object") {
       return payload;
     }
-  } catch (error) {
+  } catch (_) {
     return false;
   }
 }

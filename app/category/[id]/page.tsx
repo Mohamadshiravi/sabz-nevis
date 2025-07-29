@@ -5,13 +5,14 @@ import PostLoading from "@/components/module/skeletonLoadings/post";
 import { PostModelType } from "@/models/post";
 import { SendErrorToast } from "@/utils/toast-functions";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, use } from "react";
 
-export default function CategoryFilteredPosts({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default function CategoryFilteredPosts(
+  props: {
+    params: Promise<{ id: string }>;
+  }
+) {
+  const params = use(props.params);
   const [data, setData] = useState<null | PostModelType[]>(null);
   const [loading, setLoading] = useState(true);
 

@@ -1,11 +1,12 @@
 import List from "@/components/module/me/list";
 import { listModel, userModel } from "@/models";
 
-export default async function ListsProfileSction({
-  params,
-}: {
-  params: { username: string };
-}) {
+export default async function ListsProfileSction(
+  props: {
+    params: Promise<{ username: string }>;
+  }
+) {
+  const params = await props.params;
   const user = await userModel.findOne(
     { username: params.username.slice(3) },
     "_id"

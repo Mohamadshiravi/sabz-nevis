@@ -31,7 +31,7 @@ const SabzTextEditor = dynamic(
 
 export default function CreatePostPage() {
   const [title, setTitle] = useState("");
-  const [body, setbody] = useState("");
+  const [body, setBody] = useState("");
 
   const [draftLoading, setDraftLoading] = useState(false);
   const [postID, setPostID] = useState("");
@@ -74,7 +74,7 @@ export default function CreatePostPage() {
       const res = await axios.get(`/api/post/${postId}`);
       setSavedPost(res.data.post);
 
-      setbody(res.data.post.body);
+      setBody(res.data.post.body);
       setTitle(res.data.post.title);
       setImagesUrl(res.data.post.imagesUrl);
     } catch (error) {
@@ -104,7 +104,7 @@ export default function CreatePostPage() {
           )}
         </div>
         <div className="flex items-center gap-8 pl-3">
-          <div className="flex flex-col gap-2 items-center gap-2">
+          <div className="flex flex-col gap-2 items-center">
             <button
               onClick={() => {
                 title !== ""
@@ -140,7 +140,7 @@ export default function CreatePostPage() {
           savedTitle={savedPost?.title || ""}
           postID={postID}
           setBody={(value: string) => {
-            setbody(value);
+            setBody(value);
           }}
           setTitle={(value: string) => {
             setTitle(value);

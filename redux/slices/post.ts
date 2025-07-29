@@ -60,7 +60,7 @@ const slice = createSlice({
       state.error = null;
       state.loading = true;
     });
-    builder.addCase(AddCommentToPost.fulfilled, (state, action) => {
+    builder.addCase(AddCommentToPost.fulfilled, (state) => {
       return state;
     });
     builder.addCase(toggleLikePost.fulfilled, (state, action) => {

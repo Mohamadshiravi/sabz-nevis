@@ -18,10 +18,11 @@ import { Suspense } from "react";
 import PostEvents from "@/components/template/post/postEvents";
 
 type userPostsProps = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
-export default async function UserPosts({ params }: userPostsProps) {
+export default async function UserPosts(props: userPostsProps) {
+  const params = await props.params;
   if (!mongoose.Types.ObjectId.isValid(params.id)) {
     notFound();
   }
@@ -148,7 +149,8 @@ export default async function UserPosts({ params }: userPostsProps) {
   );
 }
 
-export async function generateMetadata({ params }: { params: { id: string } }) {
+export async function generateMetadata(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   await ConnectToDB();
   const post = await postModel.findOne({ _id: params.id }, "title -_id");
 

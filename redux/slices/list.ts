@@ -80,10 +80,10 @@ const slice = createSlice({
       state.loading = false;
       state.data = action.payload.lists;
     });
-    builder.addCase(fetchListsFromServer.pending, (state, action) => {
+    builder.addCase(fetchListsFromServer.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(fetchListsFromServer.rejected, (state, action) => {
+    builder.addCase(fetchListsFromServer.rejected, (state) => {
       state.loading = false;
       state.data = [];
     });

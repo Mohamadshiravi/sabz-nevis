@@ -5,7 +5,7 @@ import userModel from "@/models/user";
 
 export default async function IsUserAdmin() {
   try {
-    const token = cookies().get("token")?.value;
+    const token = (await cookies()).get("token")?.value;
 
     if (!token) {
       return false;
@@ -31,7 +31,7 @@ export default async function IsUserAdmin() {
     }
 
     return user;
-  } catch (error) {
+  } catch (_) {
     return false;
   }
 }

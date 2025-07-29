@@ -62,7 +62,7 @@ export default function PublishModal({
   }, [isModalOpen]);
 
   useEffect(() => {
-    FetchCategorys();
+    Fetchcategories();
 
     if (images && images[0]) {
       setPostCover(images[0]);
@@ -74,7 +74,7 @@ export default function PublishModal({
 
   const router = useRouter();
 
-  async function FetchCategorys() {
+  async function Fetchcategories() {
     setCategoryLoading(true);
     try {
       const res = await axios.get("/api/category");

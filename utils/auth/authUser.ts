@@ -5,7 +5,7 @@ import userModel from "@/models/user";
 
 export default async function IsUserAuthentication() {
   try {
-    const token = cookies().get("token")?.value;
+    const token = (await cookies()).get("token")?.value;
 
     if (!token) {
       return false;
@@ -25,7 +25,7 @@ export default async function IsUserAuthentication() {
       return false;
     }
     return user;
-  } catch (error) {
+  } catch (_) {
     return false;
   }
 }

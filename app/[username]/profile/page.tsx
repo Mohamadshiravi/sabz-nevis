@@ -7,14 +7,15 @@ import { PostModelType } from "@/models/post";
 import { useTypedSelector } from "@/redux/typedHooks";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, use } from "react";
 import { IoIosArrowBack } from "react-icons/io";
 
-export default function MainProfileSction({
-  params,
-}: {
-  params: { username: string };
-}) {
+export default function MainProfileSction(
+  props: {
+    params: Promise<{ username: string }>;
+  }
+) {
+  const params = use(props.params);
   const [loading, setLoading] = useState(true);
   const [isUserHere, setIsUserHere] = useState(false);
   const [userPosts, setUserPosts] = useState<[] | PostModelType[]>([]);

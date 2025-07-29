@@ -13,7 +13,7 @@ const imagekit = new ImageKit({
 
 export async function DELETE() {
   try {
-    const token = cookies().get("token")?.value;
+    const token = (await cookies()).get("token")?.value;
 
     if (!token) {
       return Response.json({ message: "error" }, { status: 401 });

@@ -9,10 +9,8 @@ const imagekit = new ImageKit({
   urlEndpoint: process.env.NEXT_PUBLIC_URL_ENDPOINT!,
 });
 
-export async function PUT(
-  req: Request,
-  { params }: { params: { id: string } }
-) {
+export async function PUT(req: Request, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const isUserAdmin = await IsUserAdmin();
   if (!isUserAdmin) {
     return Response.json({ message: "forbiden" }, { status: 403 });
@@ -56,10 +54,8 @@ export async function PUT(
   }
 }
 
-export async function DELETE(
-  req: Request,
-  { params }: { params: { id: string } }
-) {
+export async function DELETE(req: Request, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const isUserAdmin = await IsUserAdmin();
   if (!isUserAdmin) {
     return Response.json({ message: "forbiden" }, { status: 403 });

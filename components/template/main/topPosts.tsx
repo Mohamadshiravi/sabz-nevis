@@ -2,7 +2,6 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import Image from "next/image";
 import ColPost from "@/components/module/colPost";
 import { useEffect, useState } from "react";
 import { PostModelType } from "@/models/post";
@@ -16,6 +15,7 @@ export default function TopPosts() {
   useEffect(() => {
     FetchTopPost();
   }, []);
+
   async function FetchTopPost() {
     setLoading(true);
     try {

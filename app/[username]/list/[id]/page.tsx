@@ -11,10 +11,11 @@ import RenderPostOfList from "@/components/template/me/lists/renderPostOfList";
 import IsUserAuthentication from "@/utils/auth/authUser";
 
 type userPostsProps = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
-export default async function UserLists({ params }: userPostsProps) {
+export default async function UserLists(props: userPostsProps) {
+  const params = await props.params;
   if (!mongoose.Types.ObjectId.isValid(params.id)) {
     notFound();
   }
@@ -73,7 +74,8 @@ export default async function UserLists({ params }: userPostsProps) {
   );
 }
 
-export async function generateMetadata({ params }: { params: { id: string } }) {
+export async function generateMetadata(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   await ConnectToDB();
   const list = await listModel.findOne({ _id: params.id }, "name -_id");
 

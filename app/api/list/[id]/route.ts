@@ -3,10 +3,8 @@ import { listModel } from "@/models/index";
 import IsUserAuthentication from "@/utils/auth/authUser";
 import IsUserAdmin from "@/utils/auth/isUserAdmin";
 
-export async function PUT(
-  req: Request,
-  { params }: { params: { id: string } }
-) {
+export async function PUT(req: Request, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const isUserAuth = await IsUserAuthentication();
   if (!isUserAuth) {
     return Response.json({ message: "unAuth" }, { status: 401 });
@@ -55,10 +53,8 @@ export async function PUT(
   }
 }
 
-export async function GET(
-  req: Request,
-  { params }: { params: { id: string } }
-) {
+export async function GET(req: Request, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   try {
     await ConnectToDB();
     const list = await listModel
@@ -88,10 +84,8 @@ export async function GET(
   }
 }
 
-export async function DELETE(
-  req: Request,
-  { params }: { params: { id: string } }
-) {
+export async function DELETE(req: Request, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const isUserAuth = await IsUserAuthentication();
   if (!isUserAuth) {
     return Response.json({ message: "unAuth" }, { status: 401 });

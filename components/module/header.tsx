@@ -14,7 +14,7 @@ import { useRouter } from "next/navigation";
 import { fetchListsFromServer } from "@/redux/slices/list";
 
 export default function Header({ isTransparent }: { isTransparent?: boolean }) {
-  const [searchInp, setsearchInp] = useState("");
+  const [searchInp, setSearchInp] = useState("");
 
   const FetchUserData = async () => {
     if (!userData.data && userData.error !== "unAuth") {
@@ -76,7 +76,7 @@ export default function Header({ isTransparent }: { isTransparent?: boolean }) {
           type="text"
           placeholder="جست و جو در سبز نویس"
           value={searchInp}
-          onChange={(e) => setsearchInp(e.target.value)}
+          onChange={(e) => setSearchInp(e.target.value)}
           className="bg-inherit w-[300px] outline-none py-1.5"
         />
         {searchInp !== "" && (

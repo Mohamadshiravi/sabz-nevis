@@ -35,7 +35,7 @@ const slice = createSlice({
       state.loading = false;
       state.data = action.payload.posts;
     });
-    builder.addCase(fetchLikedPosts.pending, (state, action) => {
+    builder.addCase(fetchLikedPosts.pending, (state) => {
       state.loading = true;
     });
   },

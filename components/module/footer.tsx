@@ -14,13 +14,13 @@ export default function Footer({ isSimple }: { isSimple?: boolean }) {
     return state.user;
   });
 
-  const { data: categorys, loading } = useTypedSelector(
+  const { data: categories, loading } = useTypedSelector(
     (state) => state.categories
   );
   const dispatch = useTypedDispatch();
 
   useEffect(() => {
-    if (!categorys) {
+    if (!categories) {
       dispatch(fetchCategoriesFromServer());
     }
   }, []);
@@ -69,7 +69,7 @@ export default function Footer({ isSimple }: { isSimple?: boolean }) {
                     className="bg-zinc-200 rounded-md dark:bg-zinc-800 animate-pulse w-[70px] h-[25px]"
                   ></span>
                 ))
-              : categorys?.slice(0, 10).map((e, i) => (
+              : categories?.slice(0, 10).map((e, i) => (
                   <Link
                     href={`/category/${e._id}`}
                     key={i}

@@ -1,10 +1,8 @@
 import { categoryModel } from "@/models";
 import IsUserAdmin from "@/utils/auth/isUserAdmin";
 
-export async function DELETE(
-  req: Request,
-  { params }: { params: { id: string } }
-) {
+export async function DELETE(req: Request, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const isUserAdmin = await IsUserAdmin();
   if (!isUserAdmin) {
     return Response.json({ message: "forbiden" }, { status: 403 });
