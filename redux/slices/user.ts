@@ -1,5 +1,5 @@
 import { UserModelType } from "@/models/user";
-import axiosInatnce from "@/utils/axios";
+import axiosInstance from "@/utils/axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 interface userState {
@@ -19,7 +19,7 @@ const initialState: userState = {
 export const fetchUserDataFromServer = createAsyncThunk(
   "user/fetchUserDataFromServer",
   async () => {
-    const res = await axiosInatnce.get("/api/auth/me");
+    const res = await axiosInstance.get("/api/auth/me");
 
     return res.data;
   }
@@ -28,7 +28,7 @@ export const fetchUserDataFromServer = createAsyncThunk(
 export const updateUserDataToServer = createAsyncThunk(
   "user/updateUserDataToServer",
   async (payload: any) => {
-    const res = await axiosInatnce.post("/api/auth/me/update", payload);
+    const res = await axiosInstance.post("/api/auth/me/update", payload);
     return res.data;
   }
 );
@@ -36,7 +36,7 @@ export const updateUserDataToServer = createAsyncThunk(
 export const addAvatarToServer = createAsyncThunk(
   "user/addAvatarToServer",
   async (payload: any) => {
-    const res = await axiosInatnce.post("/api/auth/me/update/avatar", payload);
+    const res = await axiosInstance.post("/api/auth/me/update/avatar", payload);
     return res.data;
   }
 );
@@ -44,14 +44,14 @@ export const addAvatarToServer = createAsyncThunk(
 export const followUser = createAsyncThunk(
   "user/followUser",
   async (id: string) => {
-    const res = await axiosInatnce.post("/api/user/follow", { id });
+    const res = await axiosInstance.post("/api/user/follow", { id });
     return res.data;
   }
 );
 export const UnfollowUser = createAsyncThunk(
   "user/UnfollowUser",
   async (id: string) => {
-    const res = await axiosInatnce.post("/api/user/unfollow", { id });
+    const res = await axiosInstance.post("/api/user/unfollow", { id });
     return res.data;
   }
 );

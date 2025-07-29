@@ -4,8 +4,8 @@ import List from "@/components/module/me/list";
 import { useEffect, useState } from "react";
 import AddListModal from "./addListModal";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
-import { fetchListsFromServer } from "@/redux/slices/list";
 import ListLoading from "@/components/module/skeletonLoadings/list";
+import { fetchListsFromServer } from "@/redux/slices/list";
 
 export default function ListsMainSection() {
   const [isAddListmodalOpen, setIsAddListModalOpen] = useState(false);
@@ -39,7 +39,7 @@ export default function ListsMainSection() {
                 <List
                   isDeletable
                   useRedux
-                  reRenderLists={() => dispatch(fetchListsFromServer)}
+                  reRenderLists={() => dispatch(fetchListsFromServer())}
                   data={e}
                   key={i}
                 />

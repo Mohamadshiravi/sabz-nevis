@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const axiosInatnce = axios.create({
+const axiosInstance = axios.create({
   timeout: 10000,
   headers: {
     "Content-Type": "aplication/json",
   },
 });
 
-export default axiosInatnce;
+export default axiosInstance;

@@ -6,7 +6,7 @@ import RegisterBtn from "../template/header/registerBtn";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useTypedDispatch, useTypedSelector } from "@/redux/typedHooks";
 import { changeTheme, fetchUserDataFromServer } from "@/redux/slices/user";
-import { MdNotifications, MdSunny } from "react-icons/md";
+import { MdSunny } from "react-icons/md";
 import HeaderProfileBtn from "../template/header/headerProfileBtn";
 import Image from "next/image";
 import { IoIosArrowBack } from "react-icons/io";
