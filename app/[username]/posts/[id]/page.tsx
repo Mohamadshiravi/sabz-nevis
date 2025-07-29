@@ -9,12 +9,11 @@ import mongoose from "mongoose";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { GoDotFill } from "react-icons/go";
-import { GoBookmark, GoComment, GoHeart } from "react-icons/go";
+import { GoComment } from "react-icons/go";
 import UserDetailsSectionCol from "@/components/template/post/userDetailsSectionCol";
 import ConnectToDB from "@/DB/connectToDB";
 import AddCommentSection from "@/components/template/post/addCommentSection";
 import Comments from "@/components/template/post/comments";
-import { Suspense } from "react";
 import PostEvents from "@/components/template/post/postEvents";
 
 type userPostsProps = {
@@ -149,7 +148,9 @@ export default async function UserPosts(props: userPostsProps) {
   );
 }
 
-export async function generateMetadata(props: { params: Promise<{ id: string }> }) {
+export async function generateMetadata(props: {
+  params: Promise<{ id: string }>;
+}) {
   const params = await props.params;
   await ConnectToDB();
   const post = await postModel.findOne({ _id: params.id }, "title -_id");

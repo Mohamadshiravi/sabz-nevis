@@ -10,16 +10,13 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState, use } from "react";
 import { IoIosArrowBack } from "react-icons/io";
 
-export default function MainProfileSction(
-  props: {
-    params: Promise<{ username: string }>;
-  }
-) {
+export default function MainProfileSection(props: {
+  params: Promise<{ username: string }>;
+}) {
   const params = use(props.params);
   const [loading, setLoading] = useState(true);
   const [isUserHere, setIsUserHere] = useState(false);
   const [userPosts, setUserPosts] = useState<[] | PostModelType[]>([]);
-
   const [userDisplayName, setUserDisplayName] = useState("");
 
   const userData = useTypedSelector((state) => state.user);
